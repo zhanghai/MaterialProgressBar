@@ -15,7 +15,6 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
-import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v4.view.ViewCompat;
 import android.util.Log;
 
@@ -44,21 +43,20 @@ public class ProgressIndeterminateHorizontalDrawable extends Drawable implements
     private RectTransformX mRect2TransformX = new RectTransformX(RECT_2_TRANSFORM_X);
     private Animator[] mAnimators;
 
-    private ProgressIndeterminateHorizontalDrawable(Context context) {
+    public ProgressIndeterminateHorizontalDrawable(Context context) {
+
         float density = context.getResources().getDisplayMetrics().density;
         mIntrinsicHeight = Math.round(INTRINSIC_HEIGHT_DP * density);
+
+        int colorControlActivated = getThemeAttrColor(context, R.attr.colorControlActivated);
+        // setTint() has been overridden for compatibility; DrawableCompat won't work because
+        // wrapped Drawable won't be Animatable.
+        setTint(colorControlActivated);
+
         mAnimators = new Animator[] {
                 Animators.createIndeterminateHorizontalRect1(mRect1TransformX),
                 Animators.createIndeterminateHorizontalRect2(mRect2TransformX)
         };
-    }
-
-    public static Drawable create(Context context) {
-        Drawable drawable = new ProgressIndeterminateHorizontalDrawable(context);
-        drawable = DrawableCompat.wrap(drawable);
-        int colorControlActivated = getThemeAttrColor(context, R.attr.colorControlActivated);
-        DrawableCompat.setTint(drawable, colorControlActivated);
-        return drawable;
     }
 
     private static int getThemeAttrColor(Context context, int attr) {
@@ -87,6 +85,15 @@ public class ProgressIndeterminateHorizontalDrawable extends Drawable implements
             mAlpha = alpha;
             invalidateSelf();
         }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    // Rewrite for compatibility.
+    @Override
+    public void setTint(int tint) {
+        setTintList(ColorStateList.valueOf(tint));
     }
 
     /**

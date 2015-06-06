@@ -5,7 +5,6 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.graphics.Path;
-import android.support.annotation.NonNull;
 
 import me.zhanghai.android.materialprogressbar.internal.ObjectAnimatorCompat;
 
@@ -66,7 +65,6 @@ class Animators {
         PATH_INDETERMINATE_HORIZONTAL_RECT2_SCALE_X.lineTo(3, 0.1f);
     }
 
-    @NonNull
     public static Animator createIndeterminateHorizontalRect1(Object target) {
 
         ObjectAnimator translateXAnimator = ObjectAnimatorCompat.ofFloat(target, "translateX",
@@ -88,7 +86,6 @@ class Animators {
         return animatorSet;
     }
 
-    @NonNull
     public static Animator createIndeterminateHorizontalRect2(Object target) {
 
         ObjectAnimator translateXAnimator = ObjectAnimatorCompat.ofFloat(target, "translateX",

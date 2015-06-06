@@ -1,11 +1,10 @@
 package me.zhanghai.android.materialprogressbar;
 
 import android.graphics.Path;
-import android.support.annotation.NonNull;
 import android.support.v4.view.animation.PathInterpolatorCompat;
 import android.view.animation.Interpolator;
 
-public class Interpolators {
+class Interpolators {
 
     // M 0.0,0.0
     // L 0.2 0
@@ -71,24 +70,20 @@ public class Interpolators {
 
     private Interpolators() {}
 
-    @NonNull
     public static Interpolator createIndeterminateHorizontalRect1TranslateX() {
         return PathInterpolatorCompat.create(
                 PATH_INDETERMINATE_HORIZONTAL_RECT1_TRANSLATE_X);
     }
 
-    @NonNull
     public static Interpolator createIndeterminateHorizontalRect1ScaleX() {
         return PathInterpolatorCompat.create(PATH_INDETERMINATE_HORIZONTAL_RECT1_SCALE_X);
     }
 
-    @NonNull
     public static Interpolator createIndeterminateHorizontalRect2TranslateX() {
         return PathInterpolatorCompat.create(
                 PATH_INDETERMINATE_HORIZONTAL_RECT2_TRANSLATE_X);
     }
 
-    @NonNull
     public static Interpolator createIndeterminateHorizontalRect2ScaleX() {
         return PathInterpolatorCompat.create(PATH_INDETERMINATE_HORIZONTAL_RECT2_SCALE_X);
     }
