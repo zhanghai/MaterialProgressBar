@@ -1,5 +1,7 @@
 # MaterialProgressBar
 
+![Icon](sample/src/main/launcher_icon-web.png)
+
 Material ProgressBar consistent on all Android platforms.
 
 ## Screenshot
