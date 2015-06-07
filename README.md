@@ -32,8 +32,8 @@ Three material style `Drawable`s are backported to Android 4.0 (Ice Cream Sandwi
 
 In order to assign your `ProgressBar` the correct size on all versions, you need to use one of the styles this library provided. The trick inside it is `android:minHeight`, `android:maxHeight` (and width) that controls the `Drawable` size.
 
-- [`Widget.MaterialProgressBar.ProgressBar.Horizontal`]
-- [`Widget.MaterialProgressBar.ProgressBar`]
+- `Widget.MaterialProgressBar.ProgressBar.Horizontal`
+- `Widget.MaterialProgressBar.ProgressBar`
 - And more size and no-padding variants in [styles.xml](library/src/main/res/values/styles.xml)
 
 For a detailed example, you can refer to the `onCreate()` method of the sample's [`MainActivity`](sample/src/main/java/me/zhanghai/android/materialprogressbar/sample/MainActivity.java) and its layout [main_activity.xml](sample/src/main/res/layout/main_activity.xml).
