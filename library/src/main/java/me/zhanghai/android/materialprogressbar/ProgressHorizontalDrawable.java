@@ -5,11 +5,13 @@
 
 package me.zhanghai.android.materialprogressbar;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
+import android.os.Build;
 
 import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
 
@@ -67,8 +69,9 @@ public class ProgressHorizontalDrawable extends LayerDrawable {
     /**
      * {@inheritDoc}
      */
-    // Rewrite for compatibility.
+    // Rewrite for compatibility and workaround lint.
     @Override
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void setTint(int tint) {
         mTrackDrawable.setTint(tint);
         mSecondaryProgressDrawable.setTint(tint);
@@ -78,8 +81,9 @@ public class ProgressHorizontalDrawable extends LayerDrawable {
     /**
      * {@inheritDoc}
      */
-    // Rewrite for compatibility.
+    // Rewrite for compatibility and workaround lint.
     @Override
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void setTintList(ColorStateList tint) {
         mTrackDrawable.setTintList(tint);
         mSecondaryProgressDrawable.setTintList(tint);
@@ -89,8 +93,9 @@ public class ProgressHorizontalDrawable extends LayerDrawable {
     /**
      * {@inheritDoc}
      */
-    // Rewrite for compatibility.
+    // Rewrite for compatibility and workaround lint.
     @Override
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void setTintMode(PorterDuff.Mode tintMode) {
         mTrackDrawable.setTintMode(tintMode);
         mSecondaryProgressDrawable.setTintMode(tintMode);

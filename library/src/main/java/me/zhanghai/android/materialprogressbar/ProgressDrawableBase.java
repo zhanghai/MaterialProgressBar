@@ -95,6 +95,9 @@ abstract class ProgressDrawableBase extends Drawable {
         invalidateSelf();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setTintList(ColorStateList tint) {
         mTint = tint;
@@ -102,6 +105,9 @@ abstract class ProgressDrawableBase extends Drawable {
         invalidateSelf();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setTintMode(PorterDuff.Mode tintMode) {
         mTintMode = tintMode;
