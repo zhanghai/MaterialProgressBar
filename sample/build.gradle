@@ -11,10 +11,20 @@ android {
         versionCode 1
         versionName "1.0"
     }
+    signingConfigs {
+        release {
+            storeFile file('../../github.jks')
+            storePassword System.console() != null ? System.console().readLine("\nKeystore password: ") : ""
+            keyAlias 'patternlock'
+            keyPassword System.console() != null ? System.console().readLine("\nKey password: ") : ""
+        }
+    }
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 }
