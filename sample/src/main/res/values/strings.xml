@@ -19,6 +19,11 @@
     <string name="toolbar_progress">ProgressBar on Toolbar</string>
     <string name="horizontal_progress_toolbar">Horizontal</string>
     <string name="indeterminate_horizontal_progress_toolbar">Indeterminate horizontal</string>
-
     <string name="action_about">About</string>
+
+    <string name="about_title">About</string>
+    <string name="about_name">MaterialProgressBar</string>
+    <string name="about_version">Version %1$s</string>
+    <string name="about_credit">Zhang Hai 2015</string>
+    <string name="about_github"><a href="https://github.com/DreaminginCodeZH/MaterialProgressBar">View on GitHub</a></string>
 </resources>
