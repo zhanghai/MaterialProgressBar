@@ -23,14 +23,16 @@ public class MainActivity extends AppCompatActivity {
     ProgressBar libraryHorizontalProgress;
     @InjectView(R.id.indeterminate_horizontal_progress_library)
     ProgressBar libraryIndeterminateHorizontalProgress;
-    @InjectView(R.id.indeterminate_horizontal_progress_library_toolbar)
-    ProgressBar libraryIndeterminateHorizontalProgressToolbar;
     @InjectView(R.id.indeterminate_progress_large_library)
     ProgressBar libraryIndeterminateProgressLarge;
     @InjectView(R.id.indeterminate_progress_library)
     ProgressBar libraryIndeterminateProgress;
     @InjectView(R.id.indeterminate_progress_small_library)
     ProgressBar libraryIndeterminateProgressSmall;
+    @InjectView(R.id.horizontal_progress_toolbar)
+    ProgressBar toolbarHorizontalProgress;
+    @InjectView(R.id.indeterminate_horizontal_progress_toolbar)
+    ProgressBar toolbarIndeterminateHorizontalProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,17 +42,25 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.inject(this);
 
         libraryHorizontalProgress.setProgressDrawable(new ProgressHorizontalDrawable(this));
+
         libraryIndeterminateHorizontalProgress.setIndeterminateDrawable(
                 new ProgressIndeterminateHorizontalDrawable(this));
-        ProgressIndeterminateHorizontalDrawable toolbarDrawable =
-                new ProgressIndeterminateHorizontalDrawable(this);
-        toolbarDrawable.setShowTrack(false);
-        toolbarDrawable.setUseIntrinsicPadding(false);
-        libraryIndeterminateHorizontalProgressToolbar.setIndeterminateDrawable(
-                toolbarDrawable);
+
         libraryIndeterminateProgressLarge.setIndeterminateDrawable(new ProgressIndeterminateDrawable(this));
         libraryIndeterminateProgress.setIndeterminateDrawable(new ProgressIndeterminateDrawable(this));
         libraryIndeterminateProgressSmall.setIndeterminateDrawable(new ProgressIndeterminateDrawable(this));
+
+        ProgressHorizontalDrawable toolbarDrawable = new ProgressHorizontalDrawable(this);
+        toolbarDrawable.setShowTrack(false);
+        toolbarDrawable.setUseIntrinsicPadding(false);
+        toolbarHorizontalProgress.setProgressDrawable(toolbarDrawable);
+
+        ProgressIndeterminateHorizontalDrawable toolbarIndeterminateDrawable =
+                new ProgressIndeterminateHorizontalDrawable(this);
+        toolbarIndeterminateDrawable.setShowTrack(false);
+        toolbarIndeterminateDrawable.setUseIntrinsicPadding(false);
+        toolbarIndeterminateHorizontalProgress.setIndeterminateDrawable(
+                toolbarIndeterminateDrawable);
     }
 
     @Override

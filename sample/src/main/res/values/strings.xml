@@ -16,6 +16,9 @@
     <string name="indeterminate_horizontal_progress">Indeterminate horizontal ProgressBar</string>
     <string name="indeterminate_progress">Indeterminate ProgressBar</string>
     <string name="progress">ProgressBar</string>
+    <string name="toolbar_progress">ProgressBar on Toolbar</string>
+    <string name="horizontal_progress_toolbar">Horizontal</string>
+    <string name="indeterminate_horizontal_progress_toolbar">Indeterminate horizontal</string>
 
     <string name="action_about">About</string>
 </resources>
