@@ -73,6 +73,24 @@ class Interpolators {
                 0.737253971954f, 0.878896194318f, 1, 1);
     }
 
+    // L 0.5,0
+    // C 0.7,0 0.6,1 1,1
+    private static final Path PATH_TRIM_PATH_START;
+    static {
+        PATH_TRIM_PATH_START = new Path();
+        PATH_TRIM_PATH_START.lineTo(0.5f, 0);
+        PATH_TRIM_PATH_START.cubicTo(0.7f, 0, 0.6f, 1, 1, 1);
+    }
+
+    // C 0.2,0 0.1,1 0.5,1
+    // L 1,1
+    private static final Path PATH_TRIM_PATH_END;
+    static {
+        PATH_TRIM_PATH_END = new Path();
+        PATH_TRIM_PATH_END.cubicTo(0.2f, 0, 0.1f, 1, 0.5f, 1);
+        PATH_TRIM_PATH_END.lineTo(1, 1);
+    }
+
     private Interpolators() {}
 
     public static Interpolator createIndeterminateHorizontalRect1TranslateX() {
@@ -91,5 +109,13 @@ class Interpolators {
 
     public static Interpolator createIndeterminateHorizontalRect2ScaleX() {
         return PathInterpolatorCompat.create(PATH_INDETERMINATE_HORIZONTAL_RECT2_SCALE_X);
+    }
+
+    public static Interpolator createTrimPathStart() {
+        return PathInterpolatorCompat.create(PATH_TRIM_PATH_START);
+    }
+
+    public static Interpolator createTrimPathEnd() {
+        return PathInterpolatorCompat.create(PATH_TRIM_PATH_END);
     }
 }

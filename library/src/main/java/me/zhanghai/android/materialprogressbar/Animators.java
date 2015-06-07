@@ -10,6 +10,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.graphics.Path;
+import android.view.animation.LinearInterpolator;
 
 import me.zhanghai.android.materialprogressbar.internal.ObjectAnimatorCompat;
 
@@ -110,5 +111,39 @@ class Animators {
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.playTogether(translateXAnimator, scaleXAnimator);
         return animatorSet;
+    }
+
+    public static Animator createIndeterminate(Object target) {
+
+        ObjectAnimator trimPathStartAnimator = ObjectAnimator.ofFloat(target, "trimPathStart", 0,
+                0.75f);
+        trimPathStartAnimator.setDuration(1333);
+        trimPathStartAnimator.setInterpolator(Interpolators.createTrimPathStart());
+        trimPathStartAnimator.setRepeatCount(ValueAnimator.INFINITE);
+
+        ObjectAnimator trimPathEndAnimator = ObjectAnimator.ofFloat(target, "trimPathEnd", 0,
+                0.75f);
+        trimPathEndAnimator.setDuration(1333);
+        trimPathEndAnimator.setInterpolator(Interpolators.createTrimPathEnd());
+        trimPathEndAnimator.setRepeatCount(ValueAnimator.INFINITE);
+
+        ObjectAnimator trimPathOffsetAnimator = ObjectAnimator.ofFloat(target, "trimPathOffset", 0,
+                0.25f);
+        trimPathOffsetAnimator.setDuration(1333);
+        trimPathOffsetAnimator.setInterpolator(new LinearInterpolator());
+        trimPathOffsetAnimator.setRepeatCount(ValueAnimator.INFINITE);
+
+        AnimatorSet animatorSet = new AnimatorSet();
+        animatorSet.playTogether(trimPathStartAnimator, trimPathEndAnimator,
+                trimPathOffsetAnimator);
+        return animatorSet;
+    }
+
+    public static Animator createIndeterminateRotation(Object target) {
+        ObjectAnimator rotationAnimator = ObjectAnimator.ofFloat(target, "rotation", 0, 720);
+        rotationAnimator.setDuration(6665);
+        rotationAnimator.setInterpolator(new LinearInterpolator());
+        rotationAnimator.setRepeatCount(ValueAnimator.INFINITE);
+        return rotationAnimator;
     }
 }

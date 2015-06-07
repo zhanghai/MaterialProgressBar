@@ -5,7 +5,6 @@
 
 package me.zhanghai.android.materialprogressbar;
 
-import android.animation.Animator;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -14,25 +13,20 @@ import android.graphics.RectF;
 
 import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
 
-public class ProgressIndeterminateHorizontalDrawable extends ProgressIndeterminateDrawableBase {
+public class SingleProgressHorizontalDrawable extends ProgressDrawableBase {
 
     private static final float PROGRESS_INTRINSIC_HEIGHT_DP = 3.2f;
     private static final float PADDED_INTRINSIC_HEIGHT_DP = 16;
     private static final RectF RECT_BOUND = new RectF(-180, -1, 180, 1);
     private static final RectF RECT_PADDED_BOUND = new RectF(-180, -5, 180, 5);
-    private static final RectF RECT_PROGRESS = new RectF(-144, -1, 144, 1);
-    private static final RectTransformX RECT_1_TRANSFORM_X = new RectTransformX(-522.6f, 0.1f);
-    private static final RectTransformX RECT_2_TRANSFORM_X = new RectTransformX(-197.6f, 0.1f);
+    private static final int LEVEL_MAX = 10000;
 
     private int mProgressIntrinsicHeight;
     private int mPaddedIntrinsicHeight;
     private boolean mShowTrack = true;
     private float mTrackAlpha;
 
-    private RectTransformX mRect1TransformX = new RectTransformX(RECT_1_TRANSFORM_X);
-    private RectTransformX mRect2TransformX = new RectTransformX(RECT_2_TRANSFORM_X);
-
-    public ProgressIndeterminateHorizontalDrawable(Context context) {
+    public SingleProgressHorizontalDrawable(Context context) {
         super(context);
 
         float density = context.getResources().getDisplayMetrics().density;
@@ -40,11 +34,6 @@ public class ProgressIndeterminateHorizontalDrawable extends ProgressIndetermina
         mPaddedIntrinsicHeight = Math.round(PADDED_INTRINSIC_HEIGHT_DP * density);
 
         mTrackAlpha = ThemeUtils.getThemeAttrFloat(context, android.R.attr.disabledAlpha);
-
-        mAnimators = new Animator[] {
-                Animators.createIndeterminateHorizontalRect1(mRect1TransformX),
-                Animators.createIndeterminateHorizontalRect2(mRect2TransformX)
-        };
     }
 
     public boolean getShowTrack() {
@@ -81,6 +70,12 @@ public class ProgressIndeterminateHorizontalDrawable extends ProgressIndetermina
     }
 
     @Override
+    protected boolean onLevelChange(int level) {
+        invalidateSelf();
+        return true;
+    }
+
+    @Override
     protected void onPreparePaint(Paint paint) {
         paint.setStyle(Paint.Style.FILL);
     }
@@ -101,48 +96,25 @@ public class ProgressIndeterminateHorizontalDrawable extends ProgressIndetermina
             drawTrackRect(canvas, paint);
             paint.setAlpha(mAlpha);
         }
-        drawProgressRect(canvas, mRect2TransformX, paint);
-        drawProgressRect(canvas, mRect1TransformX, paint);
+        drawProgressRect(canvas, paint);
     }
 
     private static void drawTrackRect(Canvas canvas, Paint paint) {
         canvas.drawRect(RECT_BOUND, paint);
     }
 
-    private static void drawProgressRect(Canvas canvas, RectTransformX transformX, Paint paint) {
+    private void drawProgressRect(Canvas canvas, Paint paint) {
+
+        int level = getLevel();
+        if (level == 0) {
+            return;
+        }
 
         int saveCount = canvas.save();
-        canvas.translate(transformX.mTranslateX, 0);
-        canvas.scale(transformX.mScaleX, 1);
+        canvas.scale((float) level / LEVEL_MAX, 1, RECT_BOUND.left, 0);
 
-        canvas.drawRect(RECT_PROGRESS, paint);
+        canvas.drawRect(RECT_BOUND, paint);
 
         canvas.restoreToCount(saveCount);
-    }
-
-    private static class RectTransformX {
-
-        public float mTranslateX;
-        public float mScaleX;
-
-        public RectTransformX(float translateX, float scaleX) {
-            mTranslateX = translateX;
-            mScaleX = scaleX;
-        }
-
-        public RectTransformX(RectTransformX that) {
-            mTranslateX = that.mTranslateX;
-            mScaleX = that.mScaleX;
-        }
-
-        @SuppressWarnings("unused")
-        public void setTranslateX(float translateX) {
-            mTranslateX = translateX;
-        }
-
-        @SuppressWarnings("unused")
-        public void setScaleX(float scaleX) {
-            mScaleX = scaleX;
-        }
     }
 }
