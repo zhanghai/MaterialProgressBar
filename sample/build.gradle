@@ -5,7 +5,7 @@ android {
     buildToolsVersion "22.0.1"
 
     defaultConfig {
-        applicationId "me.zhanghai.android.materialprogressbar"
+        applicationId "me.zhanghai.android.materialprogressbar.sample"
         minSdkVersion 14
         targetSdkVersion 22
         versionCode 1

@@ -1,4 +1,4 @@
-package me.zhanghai.android.materialprogressbar;
+package me.zhanghai.android.materialprogressbar.sample;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
