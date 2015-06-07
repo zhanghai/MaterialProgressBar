@@ -15,7 +15,7 @@ android {
         release {
             storeFile file('../../github.jks')
             storePassword System.console() != null ? System.console().readLine("\nKeystore password: ") : ""
-            keyAlias 'patternlock'
+            keyAlias 'materialprogressbar'
             keyPassword System.console() != null ? System.console().readLine("\nKey password: ") : ""
         }
     }
