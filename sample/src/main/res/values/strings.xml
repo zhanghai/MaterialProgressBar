@@ -1,6 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (c) 2015 Zhang Hai <Dreaming.in.Code.ZH@Gmail.com>
+  ~ All Rights Reserved.
+  -->
+
 <resources>
+
     <string name="app_name">MaterialProgressBar Sample</string>
 
-    <string name="hello_world">Hello world!</string>
+    <string name="library_implementation">Library implementation</string>
+    <string name="native_implementation">Native implementation</string>
+    <string name="indeterminate_horizontal_progress">Indeterminate horizontal ProgressBar</string>
+
     <string name="action_settings">Settings</string>
 </resources>

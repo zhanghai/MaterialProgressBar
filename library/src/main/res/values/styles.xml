@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (c) 2015 Zhang Hai <Dreaming.in.Code.ZH@Gmail.com>
+  ~ All Rights Reserved.
+  -->
+
+<resources>
+
+    <style name="Widget.MaterialProgressBar.ProgressBar.Horizontal" parent="Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:minHeight">3.2dp</item>
+        <item name="android:maxHeight">3.2dp</item>
+        <item name="android:paddingTop">6.4dp</item>
+        <item name="android:paddingBottom">6.4dp</item>
+    </style>
+</resources>

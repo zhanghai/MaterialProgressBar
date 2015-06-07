@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2015 Zhang Hai <Dreaming.in.Code.ZH@Gmail.com>
+ * All Rights Reserved.
+ */
+
 package me.zhanghai.android.materialprogressbar;
 
 import android.animation.Animator;
@@ -37,11 +42,13 @@ public class ProgressIndeterminateHorizontalDrawable extends Drawable implements
     private PorterDuffColorFilter mTintFilter;
     private int mLayoutDirection;
     private boolean mAutoMirrored = true;
+    private boolean mShowTrack = true;
+    private float mTrackAlpha;
+    private Animator[] mAnimators;
 
     private Paint mPaint;
     private RectTransformX mRect1TransformX = new RectTransformX(RECT_1_TRANSFORM_X);
     private RectTransformX mRect2TransformX = new RectTransformX(RECT_2_TRANSFORM_X);
-    private Animator[] mAnimators;
 
     public ProgressIndeterminateHorizontalDrawable(Context context) {
 
@@ -52,6 +59,8 @@ public class ProgressIndeterminateHorizontalDrawable extends Drawable implements
         // setTint() has been overridden for compatibility; DrawableCompat won't work because
         // wrapped Drawable won't be Animatable.
         setTint(colorControlActivated);
+
+        mTrackAlpha = getThemeAttrFloat(context, android.R.attr.disabledAlpha);
 
         mAnimators = new Animator[] {
                 Animators.createIndeterminateHorizontalRect1(mRect1TransformX),
@@ -65,6 +74,26 @@ public class ProgressIndeterminateHorizontalDrawable extends Drawable implements
             return a.getColor(0, 0);
         } finally {
             a.recycle();
+        }
+    }
+
+    private static float getThemeAttrFloat(Context context, int attr) {
+        TypedArray a = context.obtainStyledAttributes(null, new int[] {attr});
+        try {
+            return a.getFloat(0, 0);
+        } finally {
+            a.recycle();
+        }
+    }
+
+    public boolean getShowTrack() {
+        return mShowTrack;
+    }
+
+    public void setShowTrack(boolean showTrack) {
+        if (mShowTrack != showTrack) {
+            mShowTrack = showTrack;
+            invalidateSelf();
         }
     }
 
@@ -182,15 +211,13 @@ public class ProgressIndeterminateHorizontalDrawable extends Drawable implements
 
     @Override
     public int getOpacity() {
-        return PixelFormat.OPAQUE;
-    }
-
-    public RectTransformX getRect1Target() {
-        return mRect1TransformX;
-    }
-
-    public RectTransformX getRect2Target() {
-        return mRect2TransformX;
+        if (mAlpha == 0) {
+            return PixelFormat.TRANSPARENT;
+        } else if (mAlpha == 0xFF && (!mShowTrack || mTrackAlpha == 1)) {
+            return PixelFormat.OPAQUE;
+        } else {
+            return PixelFormat.TRANSLUCENT;
+        }
     }
 
     @Override
@@ -223,8 +250,13 @@ public class ProgressIndeterminateHorizontalDrawable extends Drawable implements
         canvas.scale(bounds.width() / RECT_BOUND.width(), bounds.height() / RECT_BOUND.height());
         canvas.translate(RECT_BOUND.width() / 2, RECT_BOUND.height() / 2);
 
-        drawProgressRect(canvas, mRect2TransformX);
-        drawProgressRect(canvas, mRect1TransformX);
+        if (mShowTrack) {
+            mPaint.setAlpha(Math.round(mAlpha * mTrackAlpha));
+            drawTrackRect(canvas, mPaint);
+        }
+        mPaint.setAlpha(mAlpha);
+        drawProgressRect(canvas, mRect2TransformX, mPaint);
+        drawProgressRect(canvas, mRect1TransformX, mPaint);
 
         canvas.restoreToCount(saveCount);
 
@@ -237,18 +269,17 @@ public class ProgressIndeterminateHorizontalDrawable extends Drawable implements
         return isAutoMirrored() && getLayoutDirection() == ViewCompat.LAYOUT_DIRECTION_RTL;
     }
 
-    private void drawProgressRect(Canvas canvas, RectTransformX transformX) {
+    private static void drawTrackRect(Canvas canvas, Paint paint) {
+        canvas.drawRect(RECT_BOUND, paint);
+    }
 
-        if (transformX.scaleX == 0) {
-            Log.w(LOG_TAG, "Skipping rect with scaleX = 0");
-            return;
-        }
+    private static void drawProgressRect(Canvas canvas, RectTransformX transformX, Paint paint) {
 
         int saveCount = canvas.save();
-        canvas.translate(transformX.translateX, 0);
-        canvas.scale(transformX.scaleX, 1);
+        canvas.translate(transformX.mTranslateX, 0);
+        canvas.scale(transformX.mScaleX, 1);
 
-        canvas.drawRect(RECT_PROGRESS, mPaint);
+        canvas.drawRect(RECT_PROGRESS, paint);
 
         canvas.restoreToCount(saveCount);
     }
@@ -303,25 +334,25 @@ public class ProgressIndeterminateHorizontalDrawable extends Drawable implements
 
     private static class RectTransformX {
 
-        public float translateX;
-        public float scaleX;
+        public float mTranslateX;
+        public float mScaleX;
 
         public RectTransformX(float translateX, float scaleX) {
-            this.translateX = translateX;
-            this.scaleX = scaleX;
+            mTranslateX = translateX;
+            mScaleX = scaleX;
         }
 
         public RectTransformX(RectTransformX that) {
-            translateX = that.translateX;
-            scaleX = that.scaleX;
+            mTranslateX = that.mTranslateX;
+            mScaleX = that.mScaleX;
         }
 
         public void setTranslateX(float translateX) {
-            this.translateX = translateX;
+            mTranslateX = translateX;
         }
 
         public void setScaleX(float scaleX) {
-            this.scaleX = scaleX;
+            mScaleX = scaleX;
         }
     }
 }

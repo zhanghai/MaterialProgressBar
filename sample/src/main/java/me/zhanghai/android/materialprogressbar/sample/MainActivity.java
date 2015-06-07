@@ -1,18 +1,34 @@
+/*
+ * Copyright (c) 2015 Zhang Hai <Dreaming.in.Code.ZH@Gmail.com>
+ * All Rights Reserved.
+ */
+
 package me.zhanghai.android.materialprogressbar.sample;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ProgressBar;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import me.zhanghai.android.materialprogressbar.ProgressIndeterminateHorizontalDrawable;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
+
+    @InjectView(R.id.indeterminate_horizontal_progress_library)
+    ProgressBar libraryIndeterminateHorizontalProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.main_activity);
+        ButterKnife.inject(this);
+
+        libraryIndeterminateHorizontalProgress.setIndeterminateDrawable(
+                new ProgressIndeterminateHorizontalDrawable(this));
     }
 
     @Override
