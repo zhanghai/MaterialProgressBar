@@ -18,9 +18,9 @@ Android 5.1.1
 
 ## Integration
 
-[Sample application APK](#TODO)
+[Sample application APK](dist/sample.apk)
 
-[Library AAR](#TODO)
+[Library AAR](dist/library.aar)
 
 ## Usage
 
