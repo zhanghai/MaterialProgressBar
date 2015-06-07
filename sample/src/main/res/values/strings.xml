@@ -11,11 +11,9 @@
 
     <string name="native_implementation">Native implementation</string>
     <string name="library_implementation">Library implementation</string>
-    <string name="library_implementation_toolbar">Library implementation (without track and padding)</string>
     <string name="horizontal_progress">Horizontal ProgressBar</string>
     <string name="indeterminate_horizontal_progress">Indeterminate horizontal ProgressBar</string>
     <string name="indeterminate_progress">Indeterminate ProgressBar</string>
-    <string name="progress">ProgressBar</string>
     <string name="toolbar_progress">ProgressBar on Toolbar</string>
     <string name="horizontal_progress_toolbar">Horizontal</string>
     <string name="indeterminate_horizontal_progress_toolbar">Indeterminate horizontal</string>
