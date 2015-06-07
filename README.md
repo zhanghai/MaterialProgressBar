@@ -42,7 +42,7 @@ For a detailed example, you can refer to the `onCreate()` method of the sample's
 
 ## Pre-ICS versions
 
-Neither Support v4 nor AppCompat v7 backports animation API to versions prior tot ICS, and the [NineOldAndroids](https://github.com/JakeWharton/NineOldAndroids/) has already been deprecated since people should all be using `minSdkVersion="14"`now, so versions older than ICS are not supported.
+Neither Support v4 nor AppCompat v7 backports animation API to versions prior tot ICS, and the [NineOldAndroids](https://github.com/JakeWharton/NineOldAndroids/) library has already been deprecated since people should all be using `minSdkVersion="14"`now, so versions older than ICS are not supported.
 
 ## License
 
