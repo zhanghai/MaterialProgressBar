@@ -15,32 +15,32 @@ import android.os.Build;
 
 import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
 
-public class ProgressHorizontalDrawable extends LayerDrawable {
+public class HorizontalProgressDrawable extends LayerDrawable {
 
     private int mSecondaryAlpha;
-    private SingleProgressHorizontalDrawable mTrackDrawable;
-    private SingleProgressHorizontalDrawable mSecondaryProgressDrawable;
-    private SingleProgressHorizontalDrawable mProgressDrawable;
+    private SingleHorizontalProgressDrawable mTrackDrawable;
+    private SingleHorizontalProgressDrawable mSecondaryProgressDrawable;
+    private SingleHorizontalProgressDrawable mProgressDrawable;
 
-    public ProgressHorizontalDrawable(Context context) {
+    public HorizontalProgressDrawable(Context context) {
         super(new Drawable[]{
-                new SingleProgressHorizontalDrawable(context),
-                new SingleProgressHorizontalDrawable(context),
-                new SingleProgressHorizontalDrawable(context)
+                new SingleHorizontalProgressDrawable(context),
+                new SingleHorizontalProgressDrawable(context),
+                new SingleHorizontalProgressDrawable(context)
         });
 
         setId(0, android.R.id.background);
-        mTrackDrawable = (SingleProgressHorizontalDrawable) getDrawable(0);
+        mTrackDrawable = (SingleHorizontalProgressDrawable) getDrawable(0);
 
         setId(1, android.R.id.secondaryProgress);
-        mSecondaryProgressDrawable = (SingleProgressHorizontalDrawable) getDrawable(1);
+        mSecondaryProgressDrawable = (SingleHorizontalProgressDrawable) getDrawable(1);
         float disabledAlpha = ThemeUtils.getThemeAttrFloat(context, android.R.attr.disabledAlpha);
         mSecondaryAlpha = Math.round(disabledAlpha * 0xFF);
         mSecondaryProgressDrawable.setAlpha(mSecondaryAlpha);
         mSecondaryProgressDrawable.setShowTrack(false);
 
         setId(2, android.R.id.progress);
-        mProgressDrawable = (SingleProgressHorizontalDrawable) getDrawable(2);
+        mProgressDrawable = (SingleHorizontalProgressDrawable) getDrawable(2);
         mProgressDrawable.setShowTrack(false);
     }
 

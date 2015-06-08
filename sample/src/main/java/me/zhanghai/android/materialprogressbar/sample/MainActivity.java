@@ -14,9 +14,9 @@ import android.widget.ProgressBar;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import me.zhanghai.android.materialprogressbar.ProgressHorizontalDrawable;
-import me.zhanghai.android.materialprogressbar.ProgressIndeterminateDrawable;
-import me.zhanghai.android.materialprogressbar.ProgressIndeterminateHorizontalDrawable;
+import me.zhanghai.android.materialprogressbar.HorizontalProgressDrawable;
+import me.zhanghai.android.materialprogressbar.IndeterminateProgressDrawable;
+import me.zhanghai.android.materialprogressbar.HorizontalIndeterminateProgressDrawable;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,22 +42,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.main_activity);
         ButterKnife.inject(this);
 
-        libraryHorizontalProgress.setProgressDrawable(new ProgressHorizontalDrawable(this));
+        libraryHorizontalProgress.setProgressDrawable(new HorizontalProgressDrawable(this));
 
         libraryIndeterminateHorizontalProgress.setIndeterminateDrawable(
-                new ProgressIndeterminateHorizontalDrawable(this));
+                new HorizontalIndeterminateProgressDrawable(this));
 
-        libraryIndeterminateProgressLarge.setIndeterminateDrawable(new ProgressIndeterminateDrawable(this));
-        libraryIndeterminateProgress.setIndeterminateDrawable(new ProgressIndeterminateDrawable(this));
-        libraryIndeterminateProgressSmall.setIndeterminateDrawable(new ProgressIndeterminateDrawable(this));
+        libraryIndeterminateProgressLarge.setIndeterminateDrawable(new IndeterminateProgressDrawable(this));
+        libraryIndeterminateProgress.setIndeterminateDrawable(new IndeterminateProgressDrawable(this));
+        libraryIndeterminateProgressSmall.setIndeterminateDrawable(new IndeterminateProgressDrawable(this));
 
-        ProgressHorizontalDrawable toolbarDrawable = new ProgressHorizontalDrawable(this);
+        HorizontalProgressDrawable toolbarDrawable = new HorizontalProgressDrawable(this);
         toolbarDrawable.setShowTrack(false);
         toolbarDrawable.setUseIntrinsicPadding(false);
         toolbarHorizontalProgress.setProgressDrawable(toolbarDrawable);
 
-        ProgressIndeterminateHorizontalDrawable toolbarIndeterminateDrawable =
-                new ProgressIndeterminateHorizontalDrawable(this);
+        HorizontalIndeterminateProgressDrawable toolbarIndeterminateDrawable =
+                new HorizontalIndeterminateProgressDrawable(this);
         toolbarIndeterminateDrawable.setShowTrack(false);
         toolbarIndeterminateDrawable.setUseIntrinsicPadding(false);
         toolbarIndeterminateHorizontalProgress.setIndeterminateDrawable(

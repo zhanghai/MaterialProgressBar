@@ -28,14 +28,14 @@ Android 5.1.1
 
 Three material design `Drawable`s are backported to Android 4.0 (API 14), so you can create one and set it directly on your `ProgressBar`.
 
-- [`ProgressHorizontalDrawable`](library/src/main/java/me/zhanghai/android/materialprogressbar/ProgressHorizontalDrawable.java)
-- [`ProgressIndeterminateHorizontalDrawable`](library/src/main/java/me/zhanghai/android/materialprogressbar/ProgressIndeterminateHorizontalDrawable.java)
-- [`ProgressIndeterminateDrawable`](library/src/main/java/me/zhanghai/android/materialprogressbar/ProgressIndeterminateDrawable.java)
+- [`HorizontalProgressDrawable`](library/src/main/java/me/zhanghai/android/materialprogressbar/HorizontalProgressDrawable.java)
+- [`IndeterminateHorizontalProgressDrawable`](library/src/main/java/me/zhanghai/android/materialprogressbar/IndeterminateHorizontalProgressDrawable.java)
+- [`IndeterminateProgressDrawable`](library/src/main/java/me/zhanghai/android/materialprogressbar/IndeterminateProgressDrawable.java)
 
-For example, to set a `ProgressIndeterminateHorizontalDrawable` on a `ProgressBar`.
+For example, to set a `HorizontalIndeterminateProgressDrawable` on a `ProgressBar`.
 
 ```java
-progressBar.setIndeterminateDrawable(new ProgressIndeterminateHorizontalDrawable(this));
+progressBar.setIndeterminateDrawable(new HorizontalIndeterminateProgressDrawable(this));
 ```
 
 In order to make your `ProgressBar` take the correct and consistent size on all versions, you need to use one of the styles this library provided. The trick inside it is `android:minHeight`, `android:maxHeight` (and width) that controls the `Drawable` size.

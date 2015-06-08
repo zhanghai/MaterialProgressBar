@@ -13,7 +13,7 @@ import android.graphics.RectF;
 
 import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
 
-public class SingleProgressHorizontalDrawable extends ProgressDrawableBase {
+public class SingleHorizontalProgressDrawable extends ProgressDrawableBase {
 
     private static final float PROGRESS_INTRINSIC_HEIGHT_DP = 3.2f;
     private static final float PADDED_INTRINSIC_HEIGHT_DP = 16;
@@ -26,7 +26,7 @@ public class SingleProgressHorizontalDrawable extends ProgressDrawableBase {
     private boolean mShowTrack = true;
     private float mTrackAlpha;
 
-    public SingleProgressHorizontalDrawable(Context context) {
+    public SingleHorizontalProgressDrawable(Context context) {
         super(context);
 
         float density = context.getResources().getDisplayMetrics().density;

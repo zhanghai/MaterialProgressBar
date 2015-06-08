@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import me.zhanghai.android.materialprogressbar.ProgressIndeterminateDrawable;
+import me.zhanghai.android.materialprogressbar.IndeterminateProgressDrawable;
 
 public class AboutActivity extends AppCompatActivity {
 
@@ -34,7 +34,7 @@ public class AboutActivity extends AppCompatActivity {
         setContentView(R.layout.about_activity);
         ButterKnife.inject(this);
 
-        iconProgress.setIndeterminateDrawable(new ProgressIndeterminateDrawable(this));
+        iconProgress.setIndeterminateDrawable(new IndeterminateProgressDrawable(this));
         String version = getString(R.string.about_version,
                 AppUtils.getPackageInfo(this).versionName);
         versionText.setText(version);

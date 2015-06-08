@@ -14,7 +14,7 @@ import android.graphics.RectF;
 
 import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
 
-public class ProgressIndeterminateHorizontalDrawable extends ProgressIndeterminateDrawableBase {
+public class HorizontalIndeterminateProgressDrawable extends IndeterminateProgressDrawableBase {
 
     private static final float PROGRESS_INTRINSIC_HEIGHT_DP = 3.2f;
     private static final float PADDED_INTRINSIC_HEIGHT_DP = 16;
@@ -32,7 +32,7 @@ public class ProgressIndeterminateHorizontalDrawable extends ProgressIndetermina
     private RectTransformX mRect1TransformX = new RectTransformX(RECT_1_TRANSFORM_X);
     private RectTransformX mRect2TransformX = new RectTransformX(RECT_2_TRANSFORM_X);
 
-    public ProgressIndeterminateHorizontalDrawable(Context context) {
+    public HorizontalIndeterminateProgressDrawable(Context context) {
         super(context);
 
         float density = context.getResources().getDisplayMetrics().density;

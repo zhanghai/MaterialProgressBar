@@ -12,7 +12,7 @@ import android.graphics.Paint;
 import android.graphics.PixelFormat;
 import android.graphics.RectF;
 
-public class ProgressIndeterminateDrawable extends ProgressIndeterminateDrawableBase {
+public class IndeterminateProgressDrawable extends IndeterminateProgressDrawableBase {
 
     private static final float PROGRESS_INTRINSIC_SIZE_DP = 3.2f;
     private static final float PADDED_INTRINSIC_SIZE_DP = 16;
@@ -26,7 +26,7 @@ public class ProgressIndeterminateDrawable extends ProgressIndeterminateDrawable
     private RingPathTransform mRingPathTransform = new RingPathTransform();
     private RingRotation mRingRotation = new RingRotation();
 
-    public ProgressIndeterminateDrawable(Context context) {
+    public IndeterminateProgressDrawable(Context context) {
         super(context);
 
         float density = context.getResources().getDisplayMetrics().density;
