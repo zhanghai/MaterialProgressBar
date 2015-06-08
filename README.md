@@ -6,9 +6,9 @@ Material design ProgressBar with consistent appearance on Android 4.0+.
 
 ## Screenshot
 
-Android 4.4
+Android 4.4.4
 
-![Android 4.4](screenshot/android_4_4.png)
+![Android 4.4.4](screenshot/android_4_4_4.png)
 
 Samsung Android 5.0.1 (native implementation fails to tint)
 
