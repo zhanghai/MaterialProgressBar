@@ -20,9 +20,9 @@ Android 5.1.1
 
 ## Integration
 
-[Sample application APK](dist/sample.apk)
-
 [Library AAR](dist/library.aar)
+
+[Sample application APK](dist/sample.apk)
 
 ## Usage
 
@@ -32,11 +32,30 @@ Three material design `Drawable`s are backported to Android 4.0 (API 14), so you
 - [`ProgressIndeterminateHorizontalDrawable.java`](library/src/main/java/me/zhanghai/android/materialprogressbar/ProgressIndeterminateHorizontalDrawable.java)
 - [`ProgressIndeterminateDrawable.java`](library/src/main/java/me/zhanghai/android/materialprogressbar/ProgressIndeterminateDrawable.java)
 
-In order to assign your `ProgressBar` the correct size on all versions, you need to use one of the styles this library provided. The trick inside it is `android:minHeight`, `android:maxHeight` (and width) that controls the `Drawable` size.
+For example, setting a `ProgressIndeterminateHorizontalDrawable` on a `ProgressBar`.
+
+```java
+progressBar.setIndeterminateDrawable(new ProgressIndeterminateHorizontalDrawable(this));
+```
+
+In order to make your `ProgressBar` take the correct and consistent size on all versions, you need to use one of the styles this library provided. The trick inside it is `android:minHeight`, `android:maxHeight` (and width) that controls the `Drawable` size.
 
 - `Widget.MaterialProgressBar.ProgressBar.Horizontal`
 - `Widget.MaterialProgressBar.ProgressBar`
 - And more size and no-padding variants in [styles.xml](library/src/main/res/values/styles.xml)
+
+For example, defining a indeterminate horizontal `ProgressBar`.
+
+```xml
+<ProgressBar
+            android:id="@+id/indeterminate_horizontal_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal" />
+```
+
+You can also customize the behavior of these `Drawable`s by calling `setShowTrack()` and `setUseIntrinsicPadding()`. Tint-related methods `setTint()`, `setTintList()` and `setTintMode` are also backported so that you can use them directly.
 
 For a detailed example, you can refer to the `onCreate()` method of the sample's [`MainActivity`](sample/src/main/java/me/zhanghai/android/materialprogressbar/sample/MainActivity.java) and its layout [main_activity.xml](sample/src/main/res/layout/main_activity.xml).
 
