@@ -29,10 +29,10 @@ Android 5.1.1
 Three material design `Drawable`s are backported to Android 4.0 (API 14), so you can create one and set it directly on your `ProgressBar`.
 
 - [`ProgressHorizontalDrawable`](library/src/main/java/me/zhanghai/android/materialprogressbar/ProgressHorizontalDrawable.java)
-- [`ProgressIndeterminateHorizontalDrawable.java`](library/src/main/java/me/zhanghai/android/materialprogressbar/ProgressIndeterminateHorizontalDrawable.java)
-- [`ProgressIndeterminateDrawable.java`](library/src/main/java/me/zhanghai/android/materialprogressbar/ProgressIndeterminateDrawable.java)
+- [`ProgressIndeterminateHorizontalDrawable`](library/src/main/java/me/zhanghai/android/materialprogressbar/ProgressIndeterminateHorizontalDrawable.java)
+- [`ProgressIndeterminateDrawable`](library/src/main/java/me/zhanghai/android/materialprogressbar/ProgressIndeterminateDrawable.java)
 
-For example, setting a `ProgressIndeterminateHorizontalDrawable` on a `ProgressBar`.
+For example, to set a `ProgressIndeterminateHorizontalDrawable` on a `ProgressBar`.
 
 ```java
 progressBar.setIndeterminateDrawable(new ProgressIndeterminateHorizontalDrawable(this));
@@ -44,7 +44,7 @@ In order to make your `ProgressBar` take the correct and consistent size on all 
 - `Widget.MaterialProgressBar.ProgressBar`
 - And more size and no-padding variants in [styles.xml](library/src/main/res/values/styles.xml)
 
-For example, defining a indeterminate horizontal `ProgressBar`.
+For example, to define a indeterminate horizontal `ProgressBar`.
 
 ```xml
 <ProgressBar
@@ -54,6 +54,8 @@ For example, defining a indeterminate horizontal `ProgressBar`.
             android:indeterminate="true"
             style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal" />
 ```
+
+Don't forget to create and set the `Drawable` as above.
 
 You can also customize the behavior of these `Drawable`s by calling `setShowTrack()` and `setUseIntrinsicPadding()`. Tint-related methods `setTint()`, `setTintList()` and `setTintMode` are also backported so that you can use them directly.
 
