@@ -44,7 +44,7 @@ In order to make your `ProgressBar` take the correct and consistent size on all 
 - `Widget.MaterialProgressBar.ProgressBar`
 - And more size and no-padding variants in [styles.xml](library/src/main/res/values/styles.xml)
 
-For example, to define a indeterminate horizontal `ProgressBar`.
+For example, to define an indeterminate horizontal `ProgressBar`.
 
 ```xml
 <ProgressBar
