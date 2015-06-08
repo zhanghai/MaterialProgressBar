@@ -2,7 +2,7 @@
 
 ![Icon](sample/src/main/launcher_icon-web.png)
 
-Material design ProgressBar with consistent appearance on all supported Android platforms.
+Material design ProgressBar with consistent appearance on Android 4.0+.
 
 ## Screenshot
 
@@ -10,7 +10,7 @@ Android 4.4
 
 ![Android 4.4](screenshot/android_4_4.png)
 
-Samsung Android 5.0.1 (native implementation with issue in tinting)
+Samsung Android 5.0.1 (native implementation fails to tint)
 
 ![Samsung Android 5.0.1](screenshot/android_5_0_1_samsung.png)
 
@@ -26,7 +26,7 @@ Android 5.1.1
 
 ## Usage
 
-Three material style `Drawable`s are backported to Android 4.0 (Ice Cream Sandwich), so you can create one and set it directly on your `ProgressBar`.
+Three material design `Drawable`s are backported to Android 4.0 (API 14), so you can create one and set it directly on your `ProgressBar`.
 
 - [`ProgressHorizontalDrawable`](library/src/main/java/me/zhanghai/android/materialprogressbar/ProgressHorizontalDrawable.java)
 - [`ProgressIndeterminateHorizontalDrawable.java`](library/src/main/java/me/zhanghai/android/materialprogressbar/ProgressIndeterminateHorizontalDrawable.java)
@@ -40,9 +40,9 @@ In order to assign your `ProgressBar` the correct size on all versions, you need
 
 For a detailed example, you can refer to the `onCreate()` method of the sample's [`MainActivity`](sample/src/main/java/me/zhanghai/android/materialprogressbar/sample/MainActivity.java) and its layout [main_activity.xml](sample/src/main/res/layout/main_activity.xml).
 
-## Pre-ICS versions
+## Older versions
 
-Neither Support v4 nor AppCompat v7 backports animation API to versions prior tot ICS, and the [NineOldAndroids](https://github.com/JakeWharton/NineOldAndroids/) library has already been deprecated since people should all be using `minSdkVersion="14"`now, so versions older than ICS are not supported.
+Neither Support v4 nor AppCompat v7 backported animation API to versions prior tot ICS, and the [NineOldAndroids](https://github.com/JakeWharton/NineOldAndroids/) library has already been deprecated since people should all be using `minSdkVersion="14"` now, so versions older than ICS are not supported.
 
 ## License
 
