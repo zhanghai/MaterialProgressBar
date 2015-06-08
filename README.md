@@ -2,7 +2,7 @@
 
 ![Icon](sample/src/main/launcher_icon-web.png)
 
-Material ProgressBar consistent on all Android platforms.
+Material design ProgressBar with consistent appearance on all supported Android platforms.
 
 ## Screenshot
 
@@ -10,7 +10,7 @@ Android 4.4
 
 ![Android 4.4](screenshot/android_4_4.png)
 
-Samsung Android 5.0.1 (with bug in tinting)
+Samsung Android 5.0.1 (native implementation with issue in tinting)
 
 ![Samsung Android 5.0.1](screenshot/android_5_0_1_samsung.png)
 
