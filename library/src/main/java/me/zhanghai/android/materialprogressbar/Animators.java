@@ -73,18 +73,18 @@ class Animators {
 
     public static Animator createIndeterminateHorizontalRect1(Object target) {
 
-        ObjectAnimator translateXAnimator = ObjectAnimatorCompat.ofFloat(target, "translateX",
-                null, PATH_INDETERMINATE_HORIZONTAL_RECT1_TRANSLATE_X);
+        ObjectAnimator translateXAnimator = ObjectAnimatorCompat.ofFloat(target, "translateX", null,
+                PATH_INDETERMINATE_HORIZONTAL_RECT1_TRANSLATE_X);
         translateXAnimator.setDuration(2000);
         translateXAnimator.setInterpolator(
-                Interpolators.createIndeterminateHorizontalRect1TranslateX());
+                Interpolators.INDETERMINATE_HORIZONTAL_RECT1_TRANSLATE_X.INSTANCE);
         translateXAnimator.setRepeatCount(ValueAnimator.INFINITE);
 
         ObjectAnimator scaleXAnimator = ObjectAnimatorCompat.ofFloat(target, null, "scaleX",
                 PATH_INDETERMINATE_HORIZONTAL_RECT1_SCALE_X);
         scaleXAnimator.setDuration(2000);
         scaleXAnimator.setInterpolator(
-                Interpolators.createIndeterminateHorizontalRect1ScaleX());
+                Interpolators.INDETERMINATE_HORIZONTAL_RECT1_SCALE_X.INSTANCE);
         scaleXAnimator.setRepeatCount(ValueAnimator.INFINITE);
 
         AnimatorSet animatorSet = new AnimatorSet();
@@ -94,18 +94,18 @@ class Animators {
 
     public static Animator createIndeterminateHorizontalRect2(Object target) {
 
-        ObjectAnimator translateXAnimator = ObjectAnimatorCompat.ofFloat(target, "translateX",
-                null, PATH_INDETERMINATE_HORIZONTAL_RECT2_TRANSLATE_X);
+        ObjectAnimator translateXAnimator = ObjectAnimatorCompat.ofFloat(target, "translateX", null,
+                PATH_INDETERMINATE_HORIZONTAL_RECT2_TRANSLATE_X);
         translateXAnimator.setDuration(2000);
         translateXAnimator.setInterpolator(
-                Interpolators.createIndeterminateHorizontalRect2TranslateX());
+                Interpolators.INDETERMINATE_HORIZONTAL_RECT2_TRANSLATE_X.INSTANCE);
         translateXAnimator.setRepeatCount(ValueAnimator.INFINITE);
 
         ObjectAnimator scaleXAnimator = ObjectAnimatorCompat.ofFloat(target, null, "scaleX",
                 PATH_INDETERMINATE_HORIZONTAL_RECT2_SCALE_X);
         scaleXAnimator.setDuration(2000);
         scaleXAnimator.setInterpolator(
-                Interpolators.createIndeterminateHorizontalRect2ScaleX());
+                Interpolators.INDETERMINATE_HORIZONTAL_RECT2_SCALE_X.INSTANCE);
         scaleXAnimator.setRepeatCount(ValueAnimator.INFINITE);
 
         AnimatorSet animatorSet = new AnimatorSet();
@@ -118,13 +118,13 @@ class Animators {
         ObjectAnimator trimPathStartAnimator = ObjectAnimator.ofFloat(target, "trimPathStart", 0,
                 0.75f);
         trimPathStartAnimator.setDuration(1333);
-        trimPathStartAnimator.setInterpolator(Interpolators.createTrimPathStart());
+        trimPathStartAnimator.setInterpolator(Interpolators.TRIM_PATH_START.INSTANCE);
         trimPathStartAnimator.setRepeatCount(ValueAnimator.INFINITE);
 
         ObjectAnimator trimPathEndAnimator = ObjectAnimator.ofFloat(target, "trimPathEnd", 0,
                 0.75f);
         trimPathEndAnimator.setDuration(1333);
-        trimPathEndAnimator.setInterpolator(Interpolators.createTrimPathEnd());
+        trimPathEndAnimator.setInterpolator(Interpolators.TRIM_PATH_END.INSTANCE);
         trimPathEndAnimator.setRepeatCount(ValueAnimator.INFINITE);
 
         ObjectAnimator trimPathOffsetAnimator = ObjectAnimator.ofFloat(target, "trimPathOffset", 0,
