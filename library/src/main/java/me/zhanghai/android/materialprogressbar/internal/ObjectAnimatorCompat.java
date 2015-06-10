@@ -12,7 +12,7 @@ import android.util.Property;
 
 /**
  * Helper for accessing features in {@link ObjectAnimator} introduced after API level 11 (for
- * {@link android.animation.PropertyValuesHolder) in a backwards compatible fashion.
+ * {@link android.animation.PropertyValuesHolder}) in a backwards compatible fashion.
  */
 public class ObjectAnimatorCompat {
 
