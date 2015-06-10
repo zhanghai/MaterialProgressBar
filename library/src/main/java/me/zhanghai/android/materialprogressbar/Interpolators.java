@@ -8,9 +8,17 @@ package me.zhanghai.android.materialprogressbar;
 import android.graphics.Path;
 import android.support.v4.view.animation.PathInterpolatorCompat;
 import android.view.animation.Interpolator;
+import android.view.animation.LinearInterpolator;
 
+/**
+ * Interpolators backported for Animators in this library.
+ */
 class Interpolators {
 
+    /**
+     * Backported Interpolator for
+     * {@code @android:interpolator/progress_indeterminate_horizontal_rect1_translatex}.
+     */
     public static class INDETERMINATE_HORIZONTAL_RECT1_TRANSLATE_X {
         // M 0.0,0.0
         // L 0.2 0
@@ -30,6 +38,10 @@ class Interpolators {
                 PathInterpolatorCompat.create(PATH_INDETERMINATE_HORIZONTAL_RECT1_TRANSLATE_X);
     }
 
+    /**
+     * Backported Interpolator for
+     * {@code @android:interpolator/progress_indeterminate_horizontal_rect1_scalex}.
+     */
     public static class INDETERMINATE_HORIZONTAL_RECT1_SCALE_X {
         // M 0 0
         // L 0.3665 0
@@ -49,6 +61,10 @@ class Interpolators {
                 PathInterpolatorCompat.create(PATH_INDETERMINATE_HORIZONTAL_RECT1_SCALE_X);
     }
 
+    /**
+     * Backported Interpolator for
+     * {@code @android:interpolator/progress_indeterminate_horizontal_rect2_translatex}.
+     */
     public static class INDETERMINATE_HORIZONTAL_RECT2_TRANSLATE_X {
         // M 0.0,0.0
         // C 0.0375,0.0 0.128764607715,0.0895380946618 0.25,0.218553507947
@@ -70,6 +86,10 @@ class Interpolators {
                 PathInterpolatorCompat.create(PATH_INDETERMINATE_HORIZONTAL_RECT2_TRANSLATE_X);
     }
 
+    /**
+     * Backported Interpolator for
+     * {@code @android:interpolator/progress_indeterminate_horizontal_rect2_scalex}.
+     */
     public static class INDETERMINATE_HORIZONTAL_RECT2_SCALE_X {
         // M 0,0
         // C 0.06834272400867,0.01992566661414 0.19220331656133,0.15855429260523 0.33333333333333,
@@ -92,6 +112,9 @@ class Interpolators {
                 PathInterpolatorCompat.create(PATH_INDETERMINATE_HORIZONTAL_RECT2_SCALE_X);
     }
 
+    /**
+     * Backported Interpolator for {@code @android:interpolator/trim_start_interpolator}.
+     */
     public static class TRIM_PATH_START {
         // L 0.5,0
         // C 0.7,0 0.6,1 1,1
@@ -105,6 +128,9 @@ class Interpolators {
                 PathInterpolatorCompat.create(PATH_TRIM_PATH_START);
     }
 
+    /**
+     * Backported Interpolator for {@code @android:interpolator/trim_end_interpolator}.
+     */
     public static class TRIM_PATH_END {
         // C 0.2,0 0.1,1 0.5,1
         // L 1,1
@@ -115,6 +141,13 @@ class Interpolators {
             PATH_TRIM_PATH_END.lineTo(1, 1);
         }
         public static final Interpolator INSTANCE = PathInterpolatorCompat.create(PATH_TRIM_PATH_END);
+    }
+
+    /**
+     * Lazy-initialized singleton Interpolator for {@code @android:interpolator/linear}.
+     */
+    public static class LINEAR {
+        public static final Interpolator INSTANCE = new LinearInterpolator();
     }
 
     private Interpolators() {}

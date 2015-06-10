@@ -12,6 +12,9 @@ import android.graphics.Paint;
 import android.graphics.PixelFormat;
 import android.graphics.RectF;
 
+/**
+ * A backported {@code Drawable} for indeterminate circular {@code ProgressBar}.
+ */
 public class IndeterminateProgressDrawable extends IndeterminateProgressDrawableBase {
 
     private static final float PROGRESS_INTRINSIC_SIZE_DP = 3.2f;
@@ -26,6 +29,11 @@ public class IndeterminateProgressDrawable extends IndeterminateProgressDrawable
     private RingPathTransform mRingPathTransform = new RingPathTransform();
     private RingRotation mRingRotation = new RingRotation();
 
+    /**
+     * Create a new {@code IndeterminateProgressDrawable}.
+     *
+     * @param context the {@code Context} for retrieving style information.
+     */
     public IndeterminateProgressDrawable(Context context) {
         super(context);
 
@@ -39,14 +47,24 @@ public class IndeterminateProgressDrawable extends IndeterminateProgressDrawable
         };
     }
 
-    @Override
-    public int getIntrinsicWidth() {
+    private int getIntrinsicSize() {
         return mUseIntrinsicPadding ? mPaddedIntrinsicSize : mProgressIntrinsicSize;
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int getIntrinsicWidth() {
+        return getIntrinsicSize();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int getIntrinsicHeight() {
-        return getIntrinsicWidth();
+        return getIntrinsicSize();
     }
 
     /**

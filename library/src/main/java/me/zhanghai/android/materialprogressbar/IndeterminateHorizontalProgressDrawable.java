@@ -14,6 +14,9 @@ import android.graphics.RectF;
 
 import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
 
+/**
+ * A backported {@code Drawable} for indeterminate horizontal {@code ProgressBar}.
+ */
 public class IndeterminateHorizontalProgressDrawable extends IndeterminateProgressDrawableBase {
 
     private static final float PROGRESS_INTRINSIC_HEIGHT_DP = 3.2f;
@@ -32,6 +35,11 @@ public class IndeterminateHorizontalProgressDrawable extends IndeterminateProgre
     private RectTransformX mRect1TransformX = new RectTransformX(RECT_1_TRANSFORM_X);
     private RectTransformX mRect2TransformX = new RectTransformX(RECT_2_TRANSFORM_X);
 
+    /**
+     * Create a new {@code IndeterminateHorizontalProgressDrawable}.
+     *
+     * @param context the {@code Context} for retrieving style information.
+     */
     public IndeterminateHorizontalProgressDrawable(Context context) {
         super(context);
 
@@ -39,7 +47,7 @@ public class IndeterminateHorizontalProgressDrawable extends IndeterminateProgre
         mProgressIntrinsicHeight = Math.round(PROGRESS_INTRINSIC_HEIGHT_DP * density);
         mPaddedIntrinsicHeight = Math.round(PADDED_INTRINSIC_HEIGHT_DP * density);
 
-        mTrackAlpha = ThemeUtils.getThemeAttrFloat(context, android.R.attr.disabledAlpha);
+        mTrackAlpha = ThemeUtils.getAttrFloat(context, android.R.attr.disabledAlpha);
 
         mAnimators = new Animator[] {
                 Animators.createIndeterminateHorizontalRect1(mRect1TransformX),
@@ -47,10 +55,18 @@ public class IndeterminateHorizontalProgressDrawable extends IndeterminateProgre
         };
     }
 
+    /**
+     * Get whether this {@code Drawable} is showing a track. The default is true.
+     *
+     * @return Whether this {@code Drawable} is showing a track.
+     */
     public boolean getShowTrack() {
         return mShowTrack;
     }
 
+    /**
+     * Set whether this {@code Drawable} should show a track. The default is true.
+     */
     public void setShowTrack(boolean showTrack) {
         if (mShowTrack != showTrack) {
             mShowTrack = showTrack;

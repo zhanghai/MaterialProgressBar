@@ -10,10 +10,12 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.graphics.Path;
-import android.view.animation.LinearInterpolator;
 
 import me.zhanghai.android.materialprogressbar.internal.ObjectAnimatorCompat;
 
+/**
+ * Animators backported for Drawables in this library.
+ */
 class Animators {
 
     private Animators() {}
@@ -71,6 +73,13 @@ class Animators {
         PATH_INDETERMINATE_HORIZONTAL_RECT2_SCALE_X.lineTo(3, 0.1f);
     }
 
+    /**
+     * Create a backported Animator for
+     * {@code @android:anim/progress_indeterminate_horizontal_rect1}.
+     *
+     * @param target The object whose properties are to be animated.
+     * @return An Animator object that is set up to behave the same as the its native counterpart.
+     */
     public static Animator createIndeterminateHorizontalRect1(Object target) {
 
         ObjectAnimator translateXAnimator = ObjectAnimatorCompat.ofFloat(target, "translateX", null,
@@ -92,6 +101,13 @@ class Animators {
         return animatorSet;
     }
 
+    /**
+     * Create a backported Animator for
+     * {@code @android:anim/progress_indeterminate_horizontal_rect2}.
+     *
+     * @param target The object whose properties are to be animated.
+     * @return An Animator object that is set up to behave the same as the its native counterpart.
+     */
     public static Animator createIndeterminateHorizontalRect2(Object target) {
 
         ObjectAnimator translateXAnimator = ObjectAnimatorCompat.ofFloat(target, "translateX", null,
@@ -113,6 +129,12 @@ class Animators {
         return animatorSet;
     }
 
+    /**
+     * Create a backported Animator for {@code @android:anim/progress_indeterminate_material}.
+     *
+     * @param target The object whose properties are to be animated.
+     * @return An Animator object that is set up to behave the same as the its native counterpart.
+     */
     public static Animator createIndeterminate(Object target) {
 
         ObjectAnimator trimPathStartAnimator = ObjectAnimator.ofFloat(target, "trimPathStart", 0,
@@ -130,7 +152,7 @@ class Animators {
         ObjectAnimator trimPathOffsetAnimator = ObjectAnimator.ofFloat(target, "trimPathOffset", 0,
                 0.25f);
         trimPathOffsetAnimator.setDuration(1333);
-        trimPathOffsetAnimator.setInterpolator(new LinearInterpolator());
+        trimPathOffsetAnimator.setInterpolator(Interpolators.LINEAR.INSTANCE);
         trimPathOffsetAnimator.setRepeatCount(ValueAnimator.INFINITE);
 
         AnimatorSet animatorSet = new AnimatorSet();
@@ -139,10 +161,17 @@ class Animators {
         return animatorSet;
     }
 
+    /**
+     * Create a backported Animator for
+     * {@code @android:anim/progress_indeterminate_rotation_material}.
+     *
+     * @param target The object whose properties are to be animated.
+     * @return An Animator object that is set up to behave the same as the its native counterpart.
+     */
     public static Animator createIndeterminateRotation(Object target) {
         ObjectAnimator rotationAnimator = ObjectAnimator.ofFloat(target, "rotation", 0, 720);
         rotationAnimator.setDuration(6665);
-        rotationAnimator.setInterpolator(new LinearInterpolator());
+        rotationAnimator.setInterpolator(Interpolators.LINEAR.INSTANCE);
         rotationAnimator.setRepeatCount(ValueAnimator.INFINITE);
         return rotationAnimator;
     }
