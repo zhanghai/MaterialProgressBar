@@ -61,6 +61,14 @@ You can also customize the behavior of these `Drawable`s by calling `setShowTrac
 
 For a detailed example, you can refer to the `onCreate()` method of the sample's [`MainActivity`](sample/src/main/java/me/zhanghai/android/materialprogressbar/sample/MainActivity.java) and its layout [main_activity.xml](sample/src/main/res/layout/main_activity.xml).
 
+## ProGuard
+
+If you are using ProGuard, you need to add the following line to your ProGuard configuration file, so that `ObjectAnimator` can work properly.
+
+```
+-keep class me.zhanghai.android.materialprogressbar.** { *; }
+```
+
 ## Older versions
 
 Neither Support v4 nor AppCompat v7 backported animation API to versions prior to ICS, and the [NineOldAndroids](https://github.com/JakeWharton/NineOldAndroids/) library has already been deprecated since people should all be using `minSdkVersion="14"` now, so versions older than ICS are not supported.

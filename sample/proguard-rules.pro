@@ -16,6 +16,9 @@
 #   public *;
 #}
 
+# Library
+-keep class me.zhanghai.android.materialprogressbar.** { *; }
+
 # ButterKnife
 -keep class butterknife.** { *; }
 -dontwarn butterknife.internal.**
