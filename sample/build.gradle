@@ -1,15 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+    compileSdkVersion Integer.parseInt(project.ANDROID_COMPILE_SDK_VERSION)
+    buildToolsVersion project.ANDROID_BUILD_TOOLS_VERSION
 
     defaultConfig {
         applicationId "me.zhanghai.android.materialprogressbar.sample"
         minSdkVersion 14
-        targetSdkVersion 22
-        versionCode 1
-        versionName "1.0.0"
+        targetSdkVersion Integer.parseInt(project.ANDROID_TARGET_SDK_VERSION)
     }
     signingConfigs {
         release {

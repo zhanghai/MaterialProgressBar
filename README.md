@@ -18,11 +18,15 @@ Android 5.1.1
 
 ![Android 5.1.1](screenshot/android_5_1_1.png)
 
+[Sample application APK](dist/sample.apk)
+
 ## Integration
 
-[Library AAR](dist/library.aar)
+Gradle:
 
-[Sample application APK](dist/sample.apk)
+```gradle
+compile me.zhanghai.android.materialprogressbar:library:1.0.1'
+```
 
 ## Usage
 
