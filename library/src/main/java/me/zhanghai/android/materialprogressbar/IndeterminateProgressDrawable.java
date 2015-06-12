@@ -11,6 +11,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
 import android.graphics.RectF;
+import android.support.annotation.Keep;
 
 /**
  * A backported {@code Drawable} for indeterminate circular {@code ProgressBar}.
@@ -124,16 +125,19 @@ public class IndeterminateProgressDrawable extends IndeterminateProgressDrawable
         public float mTrimPathEnd;
         public float mTrimPathOffset;
 
+        @Keep
         @SuppressWarnings("unused")
         public void setTrimPathStart(float trimPathStart) {
             mTrimPathStart = trimPathStart;
         }
 
+        @Keep
         @SuppressWarnings("unused")
         public void setTrimPathEnd(float trimPathEnd) {
             mTrimPathEnd = trimPathEnd;
         }
 
+        @Keep
         @SuppressWarnings("unused")
         public void setTrimPathOffset(float trimPathOffset) {
             mTrimPathOffset = trimPathOffset;
@@ -144,6 +148,7 @@ public class IndeterminateProgressDrawable extends IndeterminateProgressDrawable
 
         private float mRotation;
 
+        @Keep
         @SuppressWarnings("unused")
         public void setRotation(float rotation) {
             mRotation = rotation;

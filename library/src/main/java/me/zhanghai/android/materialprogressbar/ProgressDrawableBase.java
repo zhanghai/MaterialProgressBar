@@ -15,6 +15,7 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.Keep;
 import android.support.v4.view.ViewCompat;
 
 import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
@@ -133,6 +134,7 @@ abstract class ProgressDrawableBase extends Drawable {
      *   {@link android.view.View#LAYOUT_DIRECTION_RTL}
      */
     //@Override
+    @Keep
     public int getLayoutDirection() {
         return mLayoutDirection;
     }
@@ -145,6 +147,7 @@ abstract class ProgressDrawableBase extends Drawable {
      *   {@link android.view.View#LAYOUT_DIRECTION_RTL}
      */
     //@Override
+    @Keep
     public void setLayoutDirection(int layoutDirection) {
         if (getLayoutDirection() != layoutDirection) {
             mLayoutDirection = layoutDirection;

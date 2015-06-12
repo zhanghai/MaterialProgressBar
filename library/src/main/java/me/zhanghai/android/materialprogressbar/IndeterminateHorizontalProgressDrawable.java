@@ -11,6 +11,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
 import android.graphics.RectF;
+import android.support.annotation.Keep;
 
 import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
 
@@ -151,11 +152,13 @@ public class IndeterminateHorizontalProgressDrawable extends IndeterminateProgre
             mScaleX = that.mScaleX;
         }
 
+        @Keep
         @SuppressWarnings("unused")
         public void setTranslateX(float translateX) {
             mTranslateX = translateX;
         }
 
+        @Keep
         @SuppressWarnings("unused")
         public void setScaleX(float scaleX) {
             mScaleX = scaleX;
