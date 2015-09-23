@@ -7,13 +7,13 @@
 
 <resources>
     <declare-styleable name="MaterialProgressBar">
-        <!-- Style of progress drawable: horizontal or ring. Defaults to horizontal. -->
+        <!-- Style of progress drawable: horizontal or circular. Defaults to circular. -->
         <attr name="mpb_progressStyle" format="enum">
-            <enum name="horizontal" value="0" />
-            <enum name="ring" value="1" />
+            <enum name="circular" value="0" />
+            <enum name="horizontal" value="1" />
         </attr>
         <!--
-          ~ Whether both determinate and indeterminate drawables should be set on this ProgressBar.
+          ~ Whether both determinate and indeterminate drawables should be set on this progress bar.
           ~ Determinate ring progress drawable is not supported yet. Defaults to false.
           -->
         <attr name="mpb_setBothDrawables" format="boolean" />

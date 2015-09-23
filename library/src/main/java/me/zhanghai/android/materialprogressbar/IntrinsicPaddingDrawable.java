@@ -10,7 +10,7 @@ public interface IntrinsicPaddingDrawable {
     /**
      * Get whether this {@code Drawable} is using an intrinsic padding. The default is true.
      *
-     * @return whether this {@code Drawable} is using an intrinsic padding.
+     * @return Whether this {@code Drawable} is using an intrinsic padding.
      */
     boolean getUseIntrinsicPadding();
 

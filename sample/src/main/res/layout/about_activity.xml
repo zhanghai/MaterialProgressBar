@@ -24,7 +24,6 @@
         android:layout_width="192dp"
         android:layout_height="192dp"
         android:indeterminate="true"
-        app:mpb_progressStyle="ring"
         style="@style/Widget.MaterialProgressBar.ProgressBar.Large" />
 
     <TextView

@@ -21,8 +21,8 @@ import me.zhanghai.android.materialprogressbar.internal.DrawableCompat;
 
 public class MaterialProgressBar extends ProgressBar {
 
-    public static final int PROGRESS_STYLE_HORIZONTAL = 0;
-    public static final int PROGRESS_STYLE_RING = 1;
+    public static final int PROGRESS_STYLE_CIRCULAR = 0;
+    public static final int PROGRESS_STYLE_HORIZONTAL = 1;
 
     private int mProgressStyle;
     private TintInfo mProgressTint = new TintInfo();
@@ -58,7 +58,7 @@ public class MaterialProgressBar extends ProgressBar {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.MaterialProgressBar,
                 defStyleAttr, defStyleRes);
         mProgressStyle = a.getInt(R.styleable.MaterialProgressBar_mpb_progressStyle,
-                PROGRESS_STYLE_HORIZONTAL);
+                PROGRESS_STYLE_CIRCULAR);
         boolean setBothDrawables = a.getBoolean(
                 R.styleable.MaterialProgressBar_mpb_setBothDrawables, false);
         boolean useIntrinsicPadding = a.getBoolean(
@@ -78,6 +78,14 @@ public class MaterialProgressBar extends ProgressBar {
         a.recycle();
 
         switch (mProgressStyle) {
+            case PROGRESS_STYLE_CIRCULAR:
+                if (!isIndeterminate() || setBothDrawables) {
+                    throw new UnsupportedOperationException(
+                            "Determinate circular drawable is not yet supported");
+                } else {
+                    setIndeterminateDrawable(new IndeterminateProgressDrawable(context));
+                }
+                break;
             case PROGRESS_STYLE_HORIZONTAL:
                 if (isIndeterminate() || setBothDrawables) {
                     setIndeterminateDrawable(new IndeterminateHorizontalProgressDrawable(context));
@@ -86,16 +94,8 @@ public class MaterialProgressBar extends ProgressBar {
                     setProgressDrawable(new HorizontalProgressDrawable(context));
                 }
                 break;
-            case PROGRESS_STYLE_RING:
-                if (!isIndeterminate() || setBothDrawables) {
-                    throw new UnsupportedOperationException(
-                            "Determinate ring drawable is not yet supported");
-                } else {
-                    setIndeterminateDrawable(new IndeterminateProgressDrawable(context));
-                }
-                break;
             default:
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("Unknown progress style: " + mProgressStyle);
         }
         setUseIntrinsicPadding(useIntrinsicPadding);
         setShowTrack(showTrack);
@@ -104,7 +104,7 @@ public class MaterialProgressBar extends ProgressBar {
     /**
      * Get the style of current progress drawable.
      *
-     * @return the style of current progress drawable.
+     * @return The style of current progress drawable.
      */
     public int getProgressStyle() {
         return mProgressStyle;
@@ -113,7 +113,7 @@ public class MaterialProgressBar extends ProgressBar {
     /**
      * Get the progress drawable of this ProgressBar.
      *
-     * @return the progress drawable.
+     * @return The progress drawable.
      */
     public Drawable getDrawable() {
         return isIndeterminate() ? getIndeterminateDrawable() : getProgressDrawable();
@@ -122,8 +122,8 @@ public class MaterialProgressBar extends ProgressBar {
     /**
      * Get whether the progress drawable is using an intrinsic padding. The default is true.
      *
-     * @return whether the progress drawable is using an intrinsic padding.
-     * @throws IllegalStateException if drawable does not implement
+     * @return Whether the progress drawable is using an intrinsic padding.
+     * @throws IllegalStateException If the progress drawable does not implement
      * {@link IntrinsicPaddingDrawable}.
      */
     public boolean getUseIntrinsicPadding() {
@@ -138,7 +138,7 @@ public class MaterialProgressBar extends ProgressBar {
     /**
      * Set whether the progress drawable should use an intrinsic padding. The default is true.
      *
-     * @throws IllegalStateException if drawable does not implement
+     * @throws IllegalStateException If the progress drawable does not implement
      * {@link IntrinsicPaddingDrawable}.
      */
     public void setUseIntrinsicPadding(boolean useIntrinsicPadding) {
@@ -153,8 +153,8 @@ public class MaterialProgressBar extends ProgressBar {
     /**
      * Get whether the progress drawable is showing a track. The default is true.
      *
-     * @return whether the progress drawable is showing a track, or {@code false} if drawable does
-     * not implement {@link ShowTrackDrawable}.
+     * @return Whether the progress drawable is showing a track, or {@code false} if the drawable
+     * does not implement {@link ShowTrackDrawable}.
      */
     public boolean getShowTrack() {
         Drawable drawable = getDrawable();
@@ -168,11 +168,11 @@ public class MaterialProgressBar extends ProgressBar {
     /**
      * Set whether the progress drawable should show a track. The default is true.
      *
-     * @param showTrack whether track should be shown. When {@code false}, does nothing if drawable
-     *                  does not implement {@link ShowTrackDrawable}. When {@code true}, throws
-     *                  {@link IllegalStateException}.
-     * @throws IllegalStateException if {@code showTrack} is {@code true} but drawable does not
-     * implement {@link ShowTrackDrawable}.
+     * @param showTrack Whether track should be shown. When {@code false}, does nothing if the
+     *                  progress drawable does not implement {@link ShowTrackDrawable}. When
+     *                  {@code true}, throws {@link IllegalStateException}.
+     * @throws IllegalStateException If {@code showTrack} is {@code true} but the progress drawable
+     * does not implement {@link ShowTrackDrawable}.
      */
     public void setShowTrack(boolean showTrack) {
         Drawable drawable = getDrawable();
@@ -206,7 +206,7 @@ public class MaterialProgressBar extends ProgressBar {
     /**
      * Return the tint applied to the progress drawable, if specified.
      *
-     * @return the tint applied to the progress drawable.
+     * @return The tint applied to the progress drawable.
      * @see #setProgressTintList(ColorStateList)
      */
     @Nullable
@@ -223,7 +223,7 @@ public class MaterialProgressBar extends ProgressBar {
      * and apply the specified tint and tint mode using
      * {@link Drawable#setTintList(ColorStateList)}.
      *
-     * @param tint the tint to apply, may be {@code null} to clear tint.
+     * @param tint The tint to apply, may be {@code null} to clear tint.
      *
      * @see #getProgressTintList()
      * @see Drawable#setTintList(ColorStateList)
@@ -239,7 +239,7 @@ public class MaterialProgressBar extends ProgressBar {
     /**
      * Return the blending mode used to apply the tint to the progress drawable, if specified.
      *
-     * @return the blending mode used to apply the tint to the progress drawable.
+     * @return The blending mode used to apply the tint to the progress drawable.
      * @see #setBackgroundTintMode(PorterDuff.Mode)
      */
     @Nullable
@@ -253,7 +253,7 @@ public class MaterialProgressBar extends ProgressBar {
      * {@link #setProgressTintList(ColorStateList)}} to the progress drawable. The default mode is
      * {@link PorterDuff.Mode#SRC_IN}.
      *
-     * @param tintMode the blending mode used to apply the tint, may be {@code null} to clear tint
+     * @param tintMode The blending mode used to apply the tint, may be {@code null} to clear tint
      * @see #getProgressTintMode()
      * @see Drawable#setTintMode(PorterDuff.Mode)
      */
