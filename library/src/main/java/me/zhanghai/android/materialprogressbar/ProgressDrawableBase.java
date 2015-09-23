@@ -16,16 +16,17 @@ import android.graphics.PorterDuffColorFilter;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.Keep;
+import android.support.annotation.NonNull;
 import android.support.v4.view.ViewCompat;
 
 import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
 
-abstract class ProgressDrawableBase extends Drawable {
+abstract class ProgressDrawableBase extends Drawable implements IntrinsicPaddingDrawable {
 
     protected boolean mUseIntrinsicPadding = true;
     protected int mAlpha = 0xFF;
     protected ColorFilter mColorFilter;
-    protected ColorStateList mTint;
+    protected ColorStateList mTintList;
     protected PorterDuff.Mode mTintMode = PorterDuff.Mode.SRC_IN;
     protected PorterDuffColorFilter mTintFilter;
     protected int mLayoutDirection;
@@ -41,17 +42,17 @@ abstract class ProgressDrawableBase extends Drawable {
     }
 
     /**
-     * Get whether this {@code Drawable} is showing a track. The default is true.
-     *
-     * @return Whether this {@code Drawable} is showing a track.
+     * {@inheritDoc}
      */
+    @Override
     public boolean getUseIntrinsicPadding() {
         return mUseIntrinsicPadding;
     }
 
     /**
-     * Set whether this {@code Drawable} should show a track. The default is true.
+     * {@inheritDoc}
      */
+    @Override
     public void setUseIntrinsicPadding(boolean useIntrinsicPadding) {
         if (mUseIntrinsicPadding != useIntrinsicPadding) {
             mUseIntrinsicPadding = useIntrinsicPadding;
@@ -100,9 +101,9 @@ abstract class ProgressDrawableBase extends Drawable {
      * {@inheritDoc}
      */
     @Override
-    public void setTintList(ColorStateList tint) {
-        mTint = tint;
-        mTintFilter = makeTintFilter(tint, mTintMode);
+    public void setTintList(ColorStateList tintList) {
+        mTintList = tintList;
+        mTintFilter = makeTintFilter(mTintList, mTintMode);
         invalidateSelf();
     }
 
@@ -110,9 +111,9 @@ abstract class ProgressDrawableBase extends Drawable {
      * {@inheritDoc}
      */
     @Override
-    public void setTintMode(PorterDuff.Mode tintMode) {
+    public void setTintMode(@NonNull PorterDuff.Mode tintMode) {
         mTintMode = tintMode;
-        mTintFilter = makeTintFilter(mTint, tintMode);
+        mTintFilter = makeTintFilter(mTintList, mTintMode);
         invalidateSelf();
     }
 

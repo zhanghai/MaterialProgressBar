@@ -5,20 +5,20 @@
 
 package me.zhanghai.android.materialprogressbar;
 
-import android.annotation.TargetApi;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
-import android.os.Build;
 
 import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
 
 /**
  * A backported {@code Drawable} for determinate horizontal {@code ProgressBar}.
  */
-public class HorizontalProgressDrawable extends LayerDrawable {
+public class HorizontalProgressDrawable extends LayerDrawable
+        implements IntrinsicPaddingDrawable, ShowTrackDrawable {
 
     private int mSecondaryAlpha;
     private SingleHorizontalProgressDrawable mTrackDrawable;
@@ -53,17 +53,16 @@ public class HorizontalProgressDrawable extends LayerDrawable {
     }
 
     /**
-     * Get whether this {@code Drawable} is showing a track. The default is true.
-     *
-     * @return Whether this {@code Drawable} is showing a track.
+     * {@inheritDoc}
      */
     public boolean getShowTrack() {
         return mTrackDrawable.getShowTrack();
     }
 
     /**
-     * Set whether this {@code Drawable} should show a track. The default is true.
+     * {@inheritDoc}
      */
+    @Override
     public void setShowTrack(boolean showTrack) {
         if (mTrackDrawable.getShowTrack() != showTrack) {
             mTrackDrawable.setShowTrack(showTrack);
@@ -73,19 +72,18 @@ public class HorizontalProgressDrawable extends LayerDrawable {
     }
 
     /**
-     * Get whether this {@code Drawable} is using an intrinsic padding. The default is true.
-     *
-     * @return Whether this {@code Drawable} is using an intrinsic padding.
+     * {@inheritDoc}
      */
+    @Override
     public boolean getUseIntrinsicPadding() {
         return mTrackDrawable.getUseIntrinsicPadding();
     }
 
     /**
-     * Set whether this {@code Drawable} should use an intrinsic padding. The default is true.
+     * {@inheritDoc}
      */
+    @Override
     public void setUseIntrinsicPadding(boolean useIntrinsicPadding) {
-
         mTrackDrawable.setUseIntrinsicPadding(useIntrinsicPadding);
         mSecondaryProgressDrawable.setUseIntrinsicPadding(useIntrinsicPadding);
         mProgressDrawable.setUseIntrinsicPadding(useIntrinsicPadding);
@@ -96,7 +94,7 @@ public class HorizontalProgressDrawable extends LayerDrawable {
      */
     // Rewrite for compatibility and workaround lint.
     @Override
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    @SuppressLint("NewApi")
     public void setTint(int tint) {
         mTrackDrawable.setTint(tint);
         mSecondaryProgressDrawable.setTint(tint);
@@ -108,7 +106,7 @@ public class HorizontalProgressDrawable extends LayerDrawable {
      */
     // Rewrite for compatibility and workaround lint.
     @Override
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    @SuppressLint("NewApi")
     public void setTintList(ColorStateList tint) {
         mTrackDrawable.setTintList(tint);
         mSecondaryProgressDrawable.setTintList(tint);
@@ -120,7 +118,7 @@ public class HorizontalProgressDrawable extends LayerDrawable {
      */
     // Rewrite for compatibility and workaround lint.
     @Override
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    @SuppressLint("NewApi")
     public void setTintMode(PorterDuff.Mode tintMode) {
         mTrackDrawable.setTintMode(tintMode);
         mSecondaryProgressDrawable.setTintMode(tintMode);

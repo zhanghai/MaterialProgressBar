@@ -9,14 +9,14 @@
 
     <string name="app_name">MaterialProgressBar Sample</string>
 
-    <string name="native_implementation">Native implementation</string>
-    <string name="library_implementation">Library implementation</string>
+    <string name="native_implementation">Native Implementation</string>
+    <string name="library_implementation">Library Implementation</string>
     <string name="horizontal_progress">Horizontal ProgressBar</string>
-    <string name="indeterminate_horizontal_progress">Indeterminate horizontal ProgressBar</string>
+    <string name="indeterminate_horizontal_progress">Indeterminate Horizontal ProgressBar</string>
     <string name="indeterminate_progress">Indeterminate ProgressBar</string>
     <string name="toolbar_progress">ProgressBar on Toolbar</string>
     <string name="horizontal_progress_toolbar">Horizontal</string>
-    <string name="indeterminate_horizontal_progress_toolbar">Indeterminate horizontal</string>
+    <string name="indeterminate_horizontal_progress_toolbar">Indeterminate Horizontal</string>
     <string name="action_about">About</string>
 
     <string name="about_title">About</string>

@@ -18,8 +18,6 @@ import me.zhanghai.android.materialprogressbar.IndeterminateProgressDrawable;
 
 public class AboutActivity extends AppCompatActivity {
 
-    @InjectView(R.id.about_icon)
-    ProgressBar iconProgress;
     @InjectView(R.id.about_version)
     TextView versionText;
     @InjectView(R.id.about_github)
@@ -29,12 +27,11 @@ public class AboutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         setContentView(R.layout.about_activity);
         ButterKnife.inject(this);
 
-        iconProgress.setIndeterminateDrawable(new IndeterminateProgressDrawable(this));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         String version = getString(R.string.about_version,
                 AppUtils.getPackageInfo(this).versionName);
         versionText.setText(version);

@@ -18,7 +18,8 @@ import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
 /**
  * A backported {@code Drawable} for indeterminate horizontal {@code ProgressBar}.
  */
-public class IndeterminateHorizontalProgressDrawable extends IndeterminateProgressDrawableBase {
+public class IndeterminateHorizontalProgressDrawable extends IndeterminateProgressDrawableBase
+        implements ShowTrackDrawable {
 
     private static final float PROGRESS_INTRINSIC_HEIGHT_DP = 3.2f;
     private static final float PADDED_INTRINSIC_HEIGHT_DP = 16;
@@ -57,17 +58,17 @@ public class IndeterminateHorizontalProgressDrawable extends IndeterminateProgre
     }
 
     /**
-     * Get whether this {@code Drawable} is showing a track. The default is true.
-     *
-     * @return Whether this {@code Drawable} is showing a track.
+     * {@inheritDoc}
      */
+    @Override
     public boolean getShowTrack() {
         return mShowTrack;
     }
 
     /**
-     * Set whether this {@code Drawable} should show a track. The default is true.
+     * {@inheritDoc}
      */
+    @Override
     public void setShowTrack(boolean showTrack) {
         if (mShowTrack != showTrack) {
             mShowTrack = showTrack;
