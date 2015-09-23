@@ -55,7 +55,7 @@ In order to make your `ProgressBar` take the correct and consistent size on all 
 
 Available custom attributes:
 
-- `app:mpb_progressStyle`: Style of progress drawable: `horizontal` or `circular`. Defaults to `circular`.
+- `app:mpb_progressStyle`: Style of progress drawable: `circular` or `horizontal`. Defaults to `circular`.
 - `app:mpb_setBothDrawables`: Whether both determinate and indeterminate drawables should be set on this progress bar. Determinate circular progress drawable is not supported yet. Defaults to `false`.
 - `app:mpb_useIntrinsicPadding`: Whether progress drawable should use its intrinsic padding. Defaults to `true`.
 - `app:mpb_showTrack`: Whether progress drawable should show a track. Defaults to `true` for horizontal progress drawable, `false` otherwise.
