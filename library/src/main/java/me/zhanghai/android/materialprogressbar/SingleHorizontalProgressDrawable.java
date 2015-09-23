@@ -33,7 +33,7 @@ class SingleHorizontalProgressDrawable extends ProgressDrawableBase {
         mProgressIntrinsicHeight = Math.round(PROGRESS_INTRINSIC_HEIGHT_DP * density);
         mPaddedIntrinsicHeight = Math.round(PADDED_INTRINSIC_HEIGHT_DP * density);
 
-        mTrackAlpha = ThemeUtils.getAttrFloat(context, android.R.attr.disabledAlpha);
+        mTrackAlpha = ThemeUtils.getFloatFromAttrRes(android.R.attr.disabledAlpha, context);
     }
 
     public boolean getShowTrack() {

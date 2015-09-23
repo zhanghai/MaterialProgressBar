@@ -10,13 +10,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ProgressBar;
-
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-import me.zhanghai.android.materialprogressbar.HorizontalProgressDrawable;
-import me.zhanghai.android.materialprogressbar.IndeterminateProgressDrawable;
-import me.zhanghai.android.materialprogressbar.IndeterminateHorizontalProgressDrawable;
 
 public class MainActivity extends AppCompatActivity {
 

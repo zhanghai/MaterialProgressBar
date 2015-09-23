@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "me.zhanghai.android.materialprogressbar.sample"
-        minSdkVersion 14
+        minSdkVersion Integer.parseInt(project.ANDROID_MIN_SDK_VERSION)
         targetSdkVersion Integer.parseInt(project.ANDROID_TARGET_SDK_VERSION)
         versionCode Integer.parseInt(project.VERSION_CODE)
         versionName project.VERSION_NAME
@@ -31,7 +31,7 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:22.2.0'
-    compile 'com.jakewharton:butterknife:6.1.0'
+    compile 'com.android.support:appcompat-v7:23.0.1'
+    compile 'com.jakewharton:butterknife:7.0.1'
     compile project(':library')
 }

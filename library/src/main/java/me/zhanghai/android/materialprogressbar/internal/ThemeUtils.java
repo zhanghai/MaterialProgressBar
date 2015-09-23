@@ -15,8 +15,8 @@ public class ThemeUtils {
 
     private ThemeUtils() {}
 
-    public static int getAttrColor(Context context, int attr) {
-        TypedArray a = context.obtainStyledAttributes(null, new int[]{attr});
+    public static int getColorFromAttrRes(int attr, Context context) {
+        TypedArray a = context.obtainStyledAttributes(new int[] {attr});
         try {
             return a.getColor(0, 0);
         } finally {
@@ -24,8 +24,8 @@ public class ThemeUtils {
         }
     }
 
-    public static float getAttrFloat(Context context, int attr) {
-        TypedArray a = context.obtainStyledAttributes(null, new int[] {attr});
+    public static float getFloatFromAttrRes(int attrRes, Context context) {
+        TypedArray a = context.obtainStyledAttributes(new int[] {attrRes});
         try {
             return a.getFloat(0, 0);
         } finally {

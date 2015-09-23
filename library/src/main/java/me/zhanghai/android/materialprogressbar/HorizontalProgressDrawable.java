@@ -42,7 +42,7 @@ public class HorizontalProgressDrawable extends LayerDrawable
 
         setId(1, android.R.id.secondaryProgress);
         mSecondaryProgressDrawable = (SingleHorizontalProgressDrawable) getDrawable(1);
-        float disabledAlpha = ThemeUtils.getAttrFloat(context, android.R.attr.disabledAlpha);
+        float disabledAlpha = ThemeUtils.getFloatFromAttrRes(android.R.attr.disabledAlpha, context);
         mSecondaryAlpha = Math.round(disabledAlpha * 0xFF);
         mSecondaryProgressDrawable.setAlpha(mSecondaryAlpha);
         mSecondaryProgressDrawable.setShowTrack(false);

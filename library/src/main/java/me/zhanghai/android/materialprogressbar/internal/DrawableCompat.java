@@ -7,6 +7,9 @@ package me.zhanghai.android.materialprogressbar.internal;
 
 import android.graphics.PorterDuff;
 
+/**
+ * @hide
+ */
 public class DrawableCompat {
 
     /**

@@ -49,7 +49,7 @@ public class IndeterminateHorizontalProgressDrawable extends IndeterminateProgre
         mProgressIntrinsicHeight = Math.round(PROGRESS_INTRINSIC_HEIGHT_DP * density);
         mPaddedIntrinsicHeight = Math.round(PADDED_INTRINSIC_HEIGHT_DP * density);
 
-        mTrackAlpha = ThemeUtils.getAttrFloat(context, android.R.attr.disabledAlpha);
+        mTrackAlpha = ThemeUtils.getFloatFromAttrRes(android.R.attr.disabledAlpha, context);
 
         mAnimators = new Animator[] {
                 Animators.createIndeterminateHorizontalRect1(mRect1TransformX),
