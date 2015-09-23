@@ -138,6 +138,7 @@ public class MaterialProgressBar extends ProgressBar {
     /**
      * Set whether the progress drawable should use an intrinsic padding. The default is true.
      *
+     * @param useIntrinsicPadding Whether the progress drawable should use its intrinsic padding.
      * @throws IllegalStateException If the progress drawable does not implement
      * {@link IntrinsicPaddingDrawable}.
      */

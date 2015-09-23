@@ -8,9 +8,6 @@ package me.zhanghai.android.materialprogressbar.internal;
 import android.content.Context;
 import android.content.res.TypedArray;
 
-/**
- * @hide
- */
 public class ThemeUtils {
 
     private ThemeUtils() {}
