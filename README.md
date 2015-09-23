@@ -25,12 +25,46 @@ Android 5.1.1
 Gradle:
 
 ```gradle
-compile 'me.zhanghai.android.materialprogressbar:library:1.0.2'
+compile 'me.zhanghai.android.materialprogressbar:library:1.1.0'
 ```
 
 ## Usage
 
-Three material design `Drawable`s are backported to Android 4.0 (API 14), so you can create one and set it directly on your `ProgressBar`.
+You can either simply use the [`MaterialProgressBar`](library/src/main/java/me/zhanghai/android/materialprogressbar/MaterialProgressBar.java) widget, or set drawables from this library on a regular `ProgressBar`.
+
+### Using Widget
+
+Simply replace your `ProgressBar` with `MaterialProgressBar`, and remember to apply corresponding style and attribute for correct behavior.
+
+For example, to create an indeterminate horizontal `MaterialProgressBar`:
+
+```xml
+<me.zhanghai.android.materialprogressbar.MaterialProgressBar
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:indeterminate="true"
+    app:mpb_progressStyle="horizontal"
+    style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal" />
+```
+
+In order to make your `ProgressBar` take the correct and consistent size on all versions, you will always need to use one of the styles from this library. The trick inside it is `android:minWidth`, `android:maxWidth` (and height) that controls the drawable size.
+
+- `Widget.MaterialProgressBar.ProgressBar`
+- `Widget.MaterialProgressBar.ProgressBar.Horizontal`
+- And more size and no-padding variants in [styles.xml](library/src/main/res/values/styles.xml)
+
+Available custom attributes:
+
+- `app:mpb_progressStyle`: Style of progress drawable: `horizontal` or `circular`. Defaults to `circular`.
+- `app:mpb_setBothDrawables`: Whether both determinate and indeterminate drawables should be set on this progress bar. Determinate circular progress drawable is not supported yet. Defaults to `false`.
+- `app:mpb_useIntrinsicPadding`: Whether progress drawable should use its intrinsic padding. Defaults to `true`.
+- `app:mpb_showTrack`: Whether progress drawable should show a track. Defaults to `true` for horizontal progress drawable, `false` otherwise.
+
+`android:tint` and `android:tintMode` are also backported so that they can control the tinting of progress drawables. The default tint color is `?colorControlActivated`, and the default tint mode is `src_in`.
+
+### Using Drawable
+
+Three material design drawables are backported to Android 4.0 (API 14), so you can create one and set it directly on your `ProgressBar`.
 
 - [`HorizontalProgressDrawable`](library/src/main/java/me/zhanghai/android/materialprogressbar/HorizontalProgressDrawable.java)
 - [`IndeterminateHorizontalProgressDrawable`](library/src/main/java/me/zhanghai/android/materialprogressbar/IndeterminateHorizontalProgressDrawable.java)
@@ -42,11 +76,7 @@ For example, to set a `IndeterminateHorizontalProgressDrawable` on a `ProgressBa
 progressBar.setIndeterminateDrawable(new IndeterminateHorizontalProgressDrawable(this));
 ```
 
-In order to make your `ProgressBar` take the correct and consistent size on all versions, you need to use one of the styles this library provided. The trick inside it is `android:minHeight`, `android:maxHeight` (and width) that controls the `Drawable` size.
-
-- `Widget.MaterialProgressBar.ProgressBar.Horizontal`
-- `Widget.MaterialProgressBar.ProgressBar`
-- And more size and no-padding variants in [styles.xml](library/src/main/res/values/styles.xml)
+You will also need to set a style from this library as in the section above.
 
 For example, to define an indeterminate horizontal `ProgressBar`.
 
@@ -59,11 +89,11 @@ For example, to define an indeterminate horizontal `ProgressBar`.
             style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal" />
 ```
 
-Don't forget to create and set the `Drawable` as above.
+Don't forget to create and set the drawable as above.
 
-You can also customize the behavior of these `Drawable`s by calling `setShowTrack()` and `setUseIntrinsicPadding()`. Tint-related methods `setTint()`, `setTintList()` and `setTintMode()` are also backported so that you can use them directly.
+You can also customize the behavior of these drawables by calling `setShowTrack()` and `setUseIntrinsicPadding()`. Tint-related methods `setTint()`, `setTintList()` and `setTintMode()` are also backported so that you can use them directly.
 
-For a detailed example, you can refer to the `onCreate()` method of the sample's [`MainActivity`](sample/src/main/java/me/zhanghai/android/materialprogressbar/sample/MainActivity.java) and its layout [main_activity.xml](sample/src/main/res/layout/main_activity.xml).
+For a detailed example, you can refer to the `onCreate()` method of the old sample's [`MainActivity`](//github.com/DreaminginCodeZH/MaterialProgressBar/blob/7529ea854a04207fcbf768aa574110e49c511867/sample/src/main/java/me/zhanghai/android/materialprogressbar/sample/MainActivity.java) and its layout [main_activity.xml](//github.com/DreaminginCodeZH/MaterialProgressBar/blob/7529ea854a04207fcbf768aa574110e49c511867/sample/src/main/res/layout/main_activity.xml).
 
 ## ProGuard
 
