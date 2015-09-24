@@ -97,11 +97,7 @@ For a detailed example, you can refer to the `onCreate()` method of the old samp
 
 ## ProGuard
 
-If you are using ProGuard, you need to add the following line to your ProGuard configuration file, so that `ObjectAnimator` can work properly.
-
-```
--keep class me.zhanghai.android.materialprogressbar.** { *; }
-```
+The AAR of this library has already included a Proguard configuration file to make `ObjectAnimator` work properly.
 
 ## Older versions
 
