@@ -18,7 +18,7 @@ Android 5.1.1
 
 ![Android 5.1.1](screenshot/android_5_1_1.png)
 
-[Sample application APK](dist/sample.apk)
+[Sample application APK](//github.com/DreaminginCodeZH/MaterialProgressBar/releases/download/v1.1.2/sample-release.apk)
 
 ## Integration
 
