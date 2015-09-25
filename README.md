@@ -25,7 +25,7 @@ Android 5.1.1
 Gradle:
 
 ```gradle
-compile 'me.zhanghai.android.materialprogressbar:library:1.1.1'
+compile 'me.zhanghai.android.materialprogressbar:library:1.1.2'
 ```
 
 ## Usage
