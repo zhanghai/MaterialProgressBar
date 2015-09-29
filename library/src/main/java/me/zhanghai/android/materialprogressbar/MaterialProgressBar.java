@@ -297,11 +297,11 @@ public class MaterialProgressBar extends ProgressBar {
         if (tint.mHasTintList || tint.mHasTintMode) {
 
             if (tint.mHasTintList) {
-                drawable.setTintList(tint.mTintList);
+                ((ProgressDrawableBase) drawable).setTintList(tint.mTintList);
             }
 
             if (tint.mHasTintMode) {
-                drawable.setTintMode(tint.mTintMode);
+                ((ProgressDrawableBase) drawable).setTintMode(tint.mTintMode);
             }
 
             // The drawable (or one of its children) may not have been
