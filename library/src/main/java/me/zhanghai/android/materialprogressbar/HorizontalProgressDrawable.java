@@ -5,6 +5,7 @@
 
 package me.zhanghai.android.materialprogressbar;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.PorterDuff;
@@ -95,6 +96,7 @@ public class HorizontalProgressDrawable extends LayerDrawable
      * {@inheritDoc}
      */
     @Override
+    @SuppressLint("NewApi")
     public void setTint(@ColorInt int tintColor) {
         mTrackDrawable.setTint(tintColor);
         mSecondaryProgressDrawable.setTint(tintColor);
@@ -105,6 +107,7 @@ public class HorizontalProgressDrawable extends LayerDrawable
      * {@inheritDoc}
      */
     @Override
+    @SuppressLint("NewApi")
     public void setTintList(@Nullable ColorStateList tint) {
         mTrackDrawable.setTintList(tint);
         mSecondaryProgressDrawable.setTintList(tint);
@@ -115,6 +118,7 @@ public class HorizontalProgressDrawable extends LayerDrawable
      * {@inheritDoc}
      */
     @Override
+    @SuppressLint("NewApi")
     public void setTintMode(@NonNull PorterDuff.Mode tintMode) {
         mTrackDrawable.setTintMode(tintMode);
         mSecondaryProgressDrawable.setTintMode(tintMode);
