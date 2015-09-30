@@ -15,6 +15,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.ProgressBar;
 
 import me.zhanghai.android.materialprogressbar.internal.DrawableCompat;
@@ -23,6 +24,8 @@ import me.zhanghai.android.materialprogressbar.internal.DrawableCompat;
  * A {@link ProgressBar} subclass that handles tasks related to backported progress drawable.
  */
 public class MaterialProgressBar extends ProgressBar {
+
+    private static final String TAG = MaterialProgressBar.class.getSimpleName();
 
     public static final int PROGRESS_STYLE_CIRCULAR = 0;
     public static final int PROGRESS_STYLE_HORIZONTAL = 1;
@@ -303,7 +306,10 @@ public class MaterialProgressBar extends ProgressBar {
                 if (drawable instanceof TintableDrawable) {
                     ((TintableDrawable) drawable).setTintList(tint.mTintList);
                 } else {
-                    drawable.setTintList(tint.mTintList);
+                    Log.w(TAG, "drawable did not implement TintableDrawable, it won't be tinted below Lollipop");
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        drawable.setTintList(tint.mTintList);
+                    }
                 }
             }
 
@@ -311,7 +317,10 @@ public class MaterialProgressBar extends ProgressBar {
                 if (drawable instanceof TintableDrawable) {
                     ((TintableDrawable) drawable).setTintMode(tint.mTintMode);
                 } else {
-                    drawable.setTintMode(tint.mTintMode);
+                    Log.w(TAG, "drawable did not implement TintableDrawable, it won't be tinted below Lollipop");
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        drawable.setTintMode(tint.mTintMode);
+                    }
                 }
             }
 
