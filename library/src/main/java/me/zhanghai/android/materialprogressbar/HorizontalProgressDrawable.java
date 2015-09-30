@@ -5,12 +5,14 @@
 
 package me.zhanghai.android.materialprogressbar;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
+import android.support.annotation.ColorInt;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
 
@@ -18,7 +20,7 @@ import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
  * A backported {@code Drawable} for determinate horizontal {@code ProgressBar}.
  */
 public class HorizontalProgressDrawable extends LayerDrawable
-        implements IntrinsicPaddingDrawable, ShowTrackDrawable {
+        implements IntrinsicPaddingDrawable, ShowTrackDrawable, TintableDrawable {
 
     private int mSecondaryAlpha;
     private SingleHorizontalProgressDrawable mTrackDrawable;
@@ -92,22 +94,18 @@ public class HorizontalProgressDrawable extends LayerDrawable
     /**
      * {@inheritDoc}
      */
-    // Rewrite for compatibility and workaround lint.
     @Override
-    @SuppressLint("NewApi")
-    public void setTint(int tint) {
-        mTrackDrawable.setTint(tint);
-        mSecondaryProgressDrawable.setTint(tint);
-        mProgressDrawable.setTint(tint);
+    public void setTint(@ColorInt int tintColor) {
+        mTrackDrawable.setTint(tintColor);
+        mSecondaryProgressDrawable.setTint(tintColor);
+        mProgressDrawable.setTint(tintColor);
     }
 
     /**
      * {@inheritDoc}
      */
-    // Rewrite for compatibility and workaround lint.
     @Override
-    @SuppressLint("NewApi")
-    public void setTintList(ColorStateList tint) {
+    public void setTintList(@Nullable ColorStateList tint) {
         mTrackDrawable.setTintList(tint);
         mSecondaryProgressDrawable.setTintList(tint);
         mProgressDrawable.setTintList(tint);
@@ -116,10 +114,8 @@ public class HorizontalProgressDrawable extends LayerDrawable
     /**
      * {@inheritDoc}
      */
-    // Rewrite for compatibility and workaround lint.
     @Override
-    @SuppressLint("NewApi")
-    public void setTintMode(PorterDuff.Mode tintMode) {
+    public void setTintMode(@NonNull PorterDuff.Mode tintMode) {
         mTrackDrawable.setTintMode(tintMode);
         mSecondaryProgressDrawable.setTintMode(tintMode);
         mProgressDrawable.setTintMode(tintMode);

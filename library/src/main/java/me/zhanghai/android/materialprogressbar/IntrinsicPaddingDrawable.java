@@ -5,6 +5,9 @@
 
 package me.zhanghai.android.materialprogressbar;
 
+/**
+ * A {@code Drawable} that has an intrinsic padding.
+ */
 public interface IntrinsicPaddingDrawable {
 
     /**

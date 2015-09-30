@@ -19,6 +19,9 @@ import android.widget.ProgressBar;
 
 import me.zhanghai.android.materialprogressbar.internal.DrawableCompat;
 
+/**
+ * A {@link ProgressBar} subclass that handles tasks related to backported progress drawable.
+ */
 public class MaterialProgressBar extends ProgressBar {
 
     public static final int PROGRESS_STYLE_CIRCULAR = 0;
@@ -297,11 +300,19 @@ public class MaterialProgressBar extends ProgressBar {
         if (tint.mHasTintList || tint.mHasTintMode) {
 
             if (tint.mHasTintList) {
-                ((ProgressDrawableBase) drawable).setTintList(tint.mTintList);
+                if (drawable instanceof TintableDrawable) {
+                    ((TintableDrawable) drawable).setTintList(tint.mTintList);
+                } else {
+                    drawable.setTintList(tint.mTintList);
+                }
             }
 
             if (tint.mHasTintMode) {
-                ((ProgressDrawableBase) drawable).setTintMode(tint.mTintMode);
+                if (drawable instanceof TintableDrawable) {
+                    ((TintableDrawable) drawable).setTintMode(tint.mTintMode);
+                } else {
+                    drawable.setTintMode(tint.mTintMode);
+                }
             }
 
             // The drawable (or one of its children) may not have been

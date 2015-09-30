@@ -5,6 +5,9 @@
 
 package me.zhanghai.android.materialprogressbar;
 
+/**
+ * A {@code Drawable} that has a track.
+ */
 public interface ShowTrackDrawable {
 
     /**
