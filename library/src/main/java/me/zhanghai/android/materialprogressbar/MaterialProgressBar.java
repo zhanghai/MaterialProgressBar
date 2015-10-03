@@ -76,9 +76,9 @@ public class MaterialProgressBar extends ProgressBar {
                     R.styleable.MaterialProgressBar_android_tint);
             mProgressTint.mHasTintList = true;
         }
-        if (a.hasValue(R.styleable.MaterialProgressBar_android_tintMode)) {
+        if (a.hasValue(R.styleable.MaterialProgressBar_mpb_tintMode)) {
             mProgressTint.mTintMode = DrawableCompat.parseTintMode(a.getInt(
-                    R.styleable.MaterialProgressBar_android_tintMode, -1), null);
+                    R.styleable.MaterialProgressBar_mpb_tintMode, -1), null);
             mProgressTint.mHasTintMode = true;
         }
         a.recycle();

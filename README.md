@@ -60,7 +60,7 @@ Available custom attributes:
 - `app:mpb_useIntrinsicPadding`: Whether progress drawable should use its intrinsic padding. Defaults to `true`.
 - `app:mpb_showTrack`: Whether progress drawable should show a track. Defaults to `true` for horizontal progress drawable, `false` otherwise.
 
-`android:tint` and `android:tintMode` are also backported so that they can control the tinting of progress drawables. The default tint color is `?colorControlActivated`, and the default tint mode is `src_in`.
+`android:tint` and `app:mpb_tintMode` are also backported so that they can control the tinting of progress drawables. The default tint color is `?colorControlActivated`, and the default tint mode is `src_in`.
 
 ### Using Drawable
 
