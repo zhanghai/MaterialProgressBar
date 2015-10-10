@@ -9,7 +9,6 @@ import android.animation.Animator;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.PixelFormat;
 import android.graphics.RectF;
 import android.support.annotation.Keep;
 
@@ -66,20 +65,6 @@ public class IndeterminateProgressDrawable extends IndeterminateProgressDrawable
     @Override
     public int getIntrinsicHeight() {
         return getIntrinsicSize();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public int getOpacity() {
-        if (mAlpha == 0) {
-            return PixelFormat.TRANSPARENT;
-        } else if (mAlpha == 0xFF) {
-            return PixelFormat.OPAQUE;
-        } else {
-            return PixelFormat.TRANSLUCENT;
-        }
     }
 
     @Override

@@ -11,6 +11,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
+import android.graphics.PixelFormat;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.Rect;
@@ -60,6 +61,11 @@ abstract class ProgressDrawableBase extends Drawable
             mUseIntrinsicPadding = useIntrinsicPadding;
             invalidateSelf();
         }
+    }
+
+    @Override
+    public int getAlpha() {
+        return mAlpha;
     }
 
     /**
@@ -129,9 +135,13 @@ abstract class ProgressDrawableBase extends Drawable
         return new PorterDuffColorFilter(color, tintMode);
     }
 
-    private boolean needMirroring() {
-        return DrawableCompat.isAutoMirrored(this)
-                && DrawableCompat.getLayoutDirection(this) == ViewCompat.LAYOUT_DIRECTION_RTL;
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int getOpacity() {
+        // Be safe.
+        return PixelFormat.TRANSLUCENT;
     }
 
     /**
@@ -168,7 +178,12 @@ abstract class ProgressDrawableBase extends Drawable
         canvas.restoreToCount(saveCount);
     }
 
-    abstract protected void onPreparePaint(Paint paint);
+    private boolean needMirroring() {
+        return DrawableCompat.isAutoMirrored(this)
+                && DrawableCompat.getLayoutDirection(this) == ViewCompat.LAYOUT_DIRECTION_RTL;
+    }
 
-    abstract protected void onDraw(Canvas canvas, int width, int height, Paint paint);
+    protected abstract void onPreparePaint(Paint paint);
+
+    protected abstract void onDraw(Canvas canvas, int width, int height, Paint paint);
 }
