@@ -34,7 +34,7 @@ public class HorizontalProgressDrawable extends LayerDrawable
      * @param context the {@code Context} for retrieving style information.
      */
     public HorizontalProgressDrawable(Context context) {
-        super(new Drawable[]{
+        super(new Drawable[] {
                 new SingleHorizontalProgressDrawable(context),
                 new SingleHorizontalProgressDrawable(context),
                 new SingleHorizontalProgressDrawable(context)
