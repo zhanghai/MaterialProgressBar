@@ -4,7 +4,7 @@
 
 Material design `ProgressBar` with consistent appearance on Android 4.0+.
 
-## Screenshot
+## Preview
 
 Android 4.4.4
 
@@ -18,7 +18,7 @@ Android 5.1.1
 
 ![Android 5.1.1](screenshot/android_5_1_1.png)
 
-[Sample application APK](//github.com/DreaminginCodeZH/MaterialProgressBar/releases/download/v1.1.4/sample-release.apk)
+[Sample APK](//github.com/DreaminginCodeZH/MaterialProgressBar/releases/download/v1.1.4/sample-release.apk)
 
 ## Integration
 
