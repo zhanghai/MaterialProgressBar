@@ -126,7 +126,7 @@ public class MaterialProgressBar extends ProgressBar {
     }
 
     /**
-     * Get whether the progress drawable is using an intrinsic padding. The default is true.
+     * Get whether the progress drawable is using an intrinsic padding. The default is {@code true}.
      *
      * @return Whether the progress drawable is using an intrinsic padding.
      * @throws IllegalStateException If the progress drawable does not implement
@@ -142,7 +142,7 @@ public class MaterialProgressBar extends ProgressBar {
     }
 
     /**
-     * Set whether the progress drawable should use an intrinsic padding. The default is true.
+     * Set whether the progress drawable should use an intrinsic padding. The default is {@code true}.
      *
      * @param useIntrinsicPadding Whether the progress drawable should use its intrinsic padding.
      * @throws IllegalStateException If the progress drawable does not implement
@@ -158,7 +158,7 @@ public class MaterialProgressBar extends ProgressBar {
     }
 
     /**
-     * Get whether the progress drawable is showing a track. The default is true.
+     * Get whether the progress drawable is showing a track. The default is {@code true}.
      *
      * @return Whether the progress drawable is showing a track, or {@code false} if the drawable
      * does not implement {@link ShowTrackDrawable}.
@@ -173,7 +173,7 @@ public class MaterialProgressBar extends ProgressBar {
     }
 
     /**
-     * Set whether the progress drawable should show a track. The default is true.
+     * Set whether the progress drawable should show a track. The default is {@code true}.
      *
      * @param showTrack Whether track should be shown. When {@code false}, does nothing if the
      *                  progress drawable does not implement {@link ShowTrackDrawable}. When
