@@ -16,10 +16,10 @@ import butterknife.ButterKnife;
 
 public class AboutActivity extends AppCompatActivity {
 
-    @Bind(R.id.about_version)
-    TextView versionText;
-    @Bind(R.id.about_github)
-    TextView githubText;
+    @Bind(R.id.version)
+    TextView mVersionText;
+    @Bind(R.id.github)
+    TextView mGithubText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +30,10 @@ public class AboutActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        String version = getString(R.string.about_version,
+        String version = getString(R.string.about_version_format,
                 AppUtils.getPackageInfo(this).versionName);
-        versionText.setText(version);
-        githubText.setMovementMethod(LinkMovementMethod.getInstance());
+        mVersionText.setText(version);
+        mGithubText.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
     @Override

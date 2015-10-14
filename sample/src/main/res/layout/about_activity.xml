@@ -5,57 +5,62 @@
   ~ All Rights Reserved.
   -->
 
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/screen_edge_horizontal_margin"
-    android:paddingRight="@dimen/screen_edge_horizontal_margin"
-    android:paddingTop="@dimen/screen_edge_vertical_margin"
-    android:paddingBottom="@dimen/screen_edge_vertical_margin"
-    android:gravity="center"
-    android:orientation="vertical"
+    android:fillViewport="true"
     tools:context=".AboutActivity">
 
-    <me.zhanghai.android.materialprogressbar.MaterialProgressBar
-        android:id="@+id/about_icon"
-        android:layout_width="192dp"
-        android:layout_height="192dp"
-        android:indeterminate="true"
-        style="@style/Widget.MaterialProgressBar.ProgressBar.Large" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/screen_edge_horizontal_margin"
+        android:paddingRight="@dimen/screen_edge_horizontal_margin"
+        android:paddingTop="@dimen/screen_edge_vertical_margin"
+        android:paddingBottom="@dimen/screen_edge_vertical_margin"
+        android:gravity="center"
+        android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/about_name"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="?android:attr/textColorPrimary" />
+        <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+            android:id="@+id/about_icon"
+            android:layout_width="192dp"
+            android:layout_height="192dp"
+            android:indeterminate="true"
+            style="@style/Widget.MaterialProgressBar.ProgressBar.Large" />
 
-    <TextView
-        android:id="@+id/about_version"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="?android:attr/textColorSecondary" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/about_name"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="?android:attr/textColorPrimary" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/about_credit"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="?android:attr/textColorSecondary" />
+        <TextView
+            android:id="@+id/version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="?android:attr/textColorSecondary" />
 
-    <TextView
-        android:id="@+id/about_github"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/about_github"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="?android:attr/textColorSecondary" />
-</LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/about_credit"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="?android:attr/textColorSecondary" />
+
+        <TextView
+            android:id="@+id/github"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/about_github"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="?android:attr/textColorSecondary" />
+    </LinearLayout>
+</ScrollView>
