@@ -2,7 +2,7 @@
 
 ![Icon](sample/src/main/launcher_icon-web.png)
 
-Material design `ProgressBar` with consistent appearance on Android 4.0+.
+Material Design `ProgressBar` with consistent appearance on Android 4.0+.
 
 ## Preview
 
@@ -64,7 +64,7 @@ Available custom attributes:
 
 ### Using Drawable
 
-Three material design drawables are backported to Android 4.0 (API 14), so you can create one and set it directly on your `ProgressBar`.
+Three Material Design drawables are backported to Android 4.0 (API 14), so you can create one and set it directly on your `ProgressBar`.
 
 - [`HorizontalProgressDrawable`](library/src/main/java/me/zhanghai/android/materialprogressbar/HorizontalProgressDrawable.java)
 - [`IndeterminateHorizontalProgressDrawable`](library/src/main/java/me/zhanghai/android/materialprogressbar/IndeterminateHorizontalProgressDrawable.java)
