@@ -2,7 +2,7 @@
 
 ![Icon](sample/src/main/launcher_icon-web.png)
 
-Material design ProgressBar with consistent appearance on Android 4.0+.
+Material design `ProgressBar` with consistent appearance on Android 4.0+.
 
 ## Screenshot
 
