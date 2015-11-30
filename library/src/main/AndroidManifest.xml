@@ -1,8 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+
 <!--
   ~ Copyright (c) 2015 Zhang Hai <Dreaming.in.Code.ZH@Gmail.com>
   ~ All Rights Reserved.
   -->
 
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    package="me.zhanghai.android.materialprogressbar" />
+<manifest package="me.zhanghai.android.materialprogressbar" />
