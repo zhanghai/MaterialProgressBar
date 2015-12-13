@@ -15,7 +15,8 @@ import android.util.Property;
 
 class ObjectAnimatorCompatBase {
 
-    private static final int NUM_POINTS = 500;
+    // As per android.support.v4.view.animation.FastOutLinearInInterpolator.
+    private static final int NUM_POINTS = 201;
 
     private ObjectAnimatorCompatBase() {}
 
