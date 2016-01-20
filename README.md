@@ -4,6 +4,14 @@
 
 Material Design `ProgressBar` with consistent appearance on Android 4.0+.
 
+## Why MaterialProgressBar?
+
+- Consistent appearance on Android 4.0+.
+- Correct tinting across platforms.
+- Able to remove the intrinsic padding of framework `ProgressBar`.
+- Able to hide the track of framework horizontal `ProgressBar`.
+- Use as a drop-in replacement for framework `ProgressBar`.
+
 ## Preview
 
 Android 4.4.4
