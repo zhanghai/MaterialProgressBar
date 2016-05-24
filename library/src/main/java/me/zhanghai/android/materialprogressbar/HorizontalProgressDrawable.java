@@ -124,4 +124,22 @@ public class HorizontalProgressDrawable extends LayerDrawable
         mSecondaryProgressDrawable.setTintMode(tintMode);
         mProgressDrawable.setTintMode(tintMode);
     }
+
+    /**
+     * Specifies tint color for the secondary progress.
+     *
+     * @param tintColor Color to use for tinting secondary progress
+     */
+    public void setSecondaryTint(@ColorInt int tintColor) {
+        mSecondaryProgressDrawable.setTint(tintColor);
+    }
+
+    /**
+     * Specifies tint color for the background track.
+     *
+     * @param tintColor Color to use for tinting the background track
+     */
+    public void setTrackTint(@ColorInt int tintColor) {
+        mTrackDrawable.setTint(tintColor);
+    }
 }
