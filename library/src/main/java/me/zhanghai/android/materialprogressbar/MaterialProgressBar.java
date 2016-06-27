@@ -152,8 +152,11 @@ public class MaterialProgressBar extends ProgressBar {
         Drawable drawable = getDrawable();
         if (drawable instanceof IntrinsicPaddingDrawable) {
             ((IntrinsicPaddingDrawable) drawable).setUseIntrinsicPadding(useIntrinsicPadding);
-        } else {
-            throw new IllegalStateException("Drawable does not implement IntrinsicPaddingDrawable");
+        }
+        Drawable indeterminateDrawable = getIndeterminateDrawable();
+        if (indeterminateDrawable instanceof IntrinsicPaddingDrawable) {
+            ((IntrinsicPaddingDrawable) indeterminateDrawable)
+                    .setUseIntrinsicPadding(useIntrinsicPadding);
         }
     }
 
@@ -185,8 +188,10 @@ public class MaterialProgressBar extends ProgressBar {
         Drawable drawable = getDrawable();
         if (drawable instanceof ShowTrackDrawable) {
             ((ShowTrackDrawable) drawable).setShowTrack(showTrack);
-        } else if (showTrack) {
-            throw new IllegalStateException("Drawable does not implement ShowTrackDrawable");
+        }
+        Drawable indeterminateDrawable = getIndeterminateDrawable();
+        if (indeterminateDrawable instanceof ShowTrackDrawable) {
+            ((ShowTrackDrawable) indeterminateDrawable).setShowTrack(showTrack);
         }
     }
 
