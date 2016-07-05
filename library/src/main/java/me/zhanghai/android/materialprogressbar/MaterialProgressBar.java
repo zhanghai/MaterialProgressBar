@@ -89,12 +89,16 @@ public class MaterialProgressBar extends ProgressBar {
                     throw new UnsupportedOperationException(
                             "Determinate circular drawable is not yet supported");
                 } else {
-                    setIndeterminateDrawable(new IndeterminateProgressDrawable(context));
+                    if (!isInEditMode()) {
+                        setIndeterminateDrawable(new IndeterminateProgressDrawable(context));
+                    }
                 }
                 break;
             case PROGRESS_STYLE_HORIZONTAL:
                 if (isIndeterminate() || setBothDrawables) {
-                    setIndeterminateDrawable(new IndeterminateHorizontalProgressDrawable(context));
+                    if (!isInEditMode()) {
+                        setIndeterminateDrawable(new IndeterminateHorizontalProgressDrawable(context));
+                    }
                 }
                 if (!isIndeterminate() || setBothDrawables) {
                     setProgressDrawable(new HorizontalProgressDrawable(context));
