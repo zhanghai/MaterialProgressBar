@@ -24,6 +24,7 @@
           ~ drawable, false otherwise.
           -->
         <attr name="mpb_showTrack" format="boolean" />
+        <attr name="mpb_rtl" format="boolean" />
         <attr name="android:tint" />
         <attr name="mpb_tintMode" format="enum">
             <enum name="src_over" value="3" />
