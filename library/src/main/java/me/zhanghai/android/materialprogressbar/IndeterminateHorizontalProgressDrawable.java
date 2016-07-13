@@ -18,7 +18,7 @@ import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
  * A backported {@code Drawable} for indeterminate horizontal {@code ProgressBar}.
  */
 public class IndeterminateHorizontalProgressDrawable extends IndeterminateProgressDrawableBase
-        implements ShowTrackDrawable {
+        implements ShowTrackDrawable, RTLableDrawable {
 
     private static final float PROGRESS_INTRINSIC_HEIGHT_DP = 3.2f;
     private static final float PADDED_INTRINSIC_HEIGHT_DP = 16;
@@ -31,6 +31,7 @@ public class IndeterminateHorizontalProgressDrawable extends IndeterminateProgre
     private int mProgressIntrinsicHeight;
     private int mPaddedIntrinsicHeight;
     private boolean mShowTrack = true;
+    private boolean mRTL = false;
     private float mTrackAlpha;
 
     private RectTransformX mRect1TransformX = new RectTransformX(RECT_1_TRANSFORM_X);
@@ -121,6 +122,25 @@ public class IndeterminateHorizontalProgressDrawable extends IndeterminateProgre
         canvas.drawRect(RECT_PROGRESS, paint);
 
         canvas.restoreToCount(saveCount);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean isRTL() {
+        return mRTL;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setRTL(boolean rtl) {
+        if (mRTL != rtl) {
+            mRTL = rtl;
+            invalidateSelf();
+        }
     }
 
     private static class RectTransformX {

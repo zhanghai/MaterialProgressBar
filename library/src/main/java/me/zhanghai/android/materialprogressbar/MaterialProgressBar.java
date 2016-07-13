@@ -81,6 +81,7 @@ public class MaterialProgressBar extends ProgressBar {
                     R.styleable.MaterialProgressBar_mpb_tintMode, -1), null);
             mProgressTint.mHasTintMode = true;
         }
+        boolean isRTL = a.getBoolean(R.styleable.MaterialProgressBar_mpb_rtl, false);
         a.recycle();
 
         switch (mProgressStyle) {
@@ -101,7 +102,7 @@ public class MaterialProgressBar extends ProgressBar {
                     }
                 }
                 if (!isIndeterminate() || setBothDrawables) {
-                    setProgressDrawable(new HorizontalProgressDrawable(context));
+                    setProgressDrawable(new HorizontalProgressDrawable(context, isRTL));
                 }
                 break;
             default:
@@ -109,6 +110,7 @@ public class MaterialProgressBar extends ProgressBar {
         }
         setUseIntrinsicPadding(useIntrinsicPadding);
         setShowTrack(showTrack);
+        setRTL(isRTL);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             setLayerType(LAYER_TYPE_SOFTWARE, null);
@@ -200,6 +202,26 @@ public class MaterialProgressBar extends ProgressBar {
         Drawable indeterminateDrawable = getIndeterminateDrawable();
         if (indeterminateDrawable instanceof ShowTrackDrawable) {
             ((ShowTrackDrawable) indeterminateDrawable).setShowTrack(showTrack);
+        }
+    }
+
+    public boolean isRTL() {
+        Drawable drawable = getDrawable();
+        if (drawable instanceof RTLableDrawable) {
+            return ((RTLableDrawable) drawable).isRTL();
+        } else {
+            return false;
+        }
+    }
+
+    public void setRTL(boolean rtl) {
+        Drawable drawable = getDrawable();
+        if (drawable instanceof RTLableDrawable) {
+            ((RTLableDrawable) drawable).setRTL(rtl);
+        }
+        Drawable indeterminateDrawable = getIndeterminateDrawable();
+        if (indeterminateDrawable instanceof RTLableDrawable) {
+            ((RTLableDrawable) indeterminateDrawable).setRTL(rtl);
         }
     }
 
