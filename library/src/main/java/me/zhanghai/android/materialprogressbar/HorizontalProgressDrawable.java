@@ -21,7 +21,7 @@ import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
  * A backported {@code Drawable} for determinate horizontal {@code ProgressBar}.
  */
 public class HorizontalProgressDrawable extends LayerDrawable
-        implements IntrinsicPaddingDrawable, ShowTrackDrawable, TintableDrawable {
+        implements IntrinsicPaddingDrawable, ShowTrackDrawable, TintableDrawable, RTLableDrawable {
 
     private int mSecondaryAlpha;
     private SingleHorizontalProgressDrawable mTrackDrawable;
@@ -32,8 +32,9 @@ public class HorizontalProgressDrawable extends LayerDrawable
      * Create a new {@code HorizontalProgressDrawable}.
      *
      * @param context the {@code Context} for retrieving style information.
+     * @param rtl true for right-to-left progressbar, false for left-to-right
      */
-    public HorizontalProgressDrawable(Context context) {
+    public HorizontalProgressDrawable(Context context, boolean rtl) {
         super(new Drawable[] {
                 new SingleHorizontalProgressDrawable(context),
                 new SingleHorizontalProgressDrawable(context),
@@ -49,10 +50,12 @@ public class HorizontalProgressDrawable extends LayerDrawable
         mSecondaryAlpha = Math.round(disabledAlpha * 0xFF);
         mSecondaryProgressDrawable.setAlpha(mSecondaryAlpha);
         mSecondaryProgressDrawable.setShowTrack(false);
+        mSecondaryProgressDrawable.setRTL(rtl);
 
         setId(2, android.R.id.progress);
         mProgressDrawable = (SingleHorizontalProgressDrawable) getDrawable(2);
         mProgressDrawable.setShowTrack(false);
+        mProgressDrawable.setRTL(rtl);
     }
 
     /**
@@ -123,5 +126,25 @@ public class HorizontalProgressDrawable extends LayerDrawable
         mTrackDrawable.setTintMode(tintMode);
         mSecondaryProgressDrawable.setTintMode(tintMode);
         mProgressDrawable.setTintMode(tintMode);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean isRTL() {
+        return mTrackDrawable.isRTL();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setRTL(boolean rtl) {
+        if (mTrackDrawable.isRTL() != rtl) {
+            mTrackDrawable.setRTL(rtl);
+            mSecondaryProgressDrawable.setRTL(rtl);
+            invalidateSelf();
+        }
     }
 }
