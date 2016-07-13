@@ -109,6 +109,10 @@ public class MaterialProgressBar extends ProgressBar {
         }
         setUseIntrinsicPadding(useIntrinsicPadding);
         setShowTrack(showTrack);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            setLayerType(LAYER_TYPE_SOFTWARE, null);
+        }
     }
 
     /**
