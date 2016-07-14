@@ -28,7 +28,6 @@ abstract class ProgressDrawableBase extends Drawable
         implements IntrinsicPaddingDrawable, TintableDrawable {
 
     protected boolean mUseIntrinsicPadding = true;
-    protected boolean mAutoMirrored;
     protected int mAlpha = 0xFF;
     protected ColorFilter mColorFilter;
     protected ColorStateList mTintList;
@@ -38,7 +37,6 @@ abstract class ProgressDrawableBase extends Drawable
     private Paint mPaint;
 
     public ProgressDrawableBase(Context context) {
-        setAutoMirrored(true);
         int colorControlActivated = ThemeUtils.getColorFromAttrRes(R.attr.colorControlActivated,
                 context);
         // setTint() has been overridden for compatibility; DrawableCompat won't work because
@@ -61,25 +59,6 @@ abstract class ProgressDrawableBase extends Drawable
     public void setUseIntrinsicPadding(boolean useIntrinsicPadding) {
         if (mUseIntrinsicPadding != useIntrinsicPadding) {
             mUseIntrinsicPadding = useIntrinsicPadding;
-            invalidateSelf();
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean isAutoMirrored() {
-        return mAutoMirrored;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void setAutoMirrored(boolean mirrored) {
-        if (mAutoMirrored != mirrored) {
-            mAutoMirrored = mirrored;
             invalidateSelf();
         }
     }
@@ -187,21 +166,9 @@ abstract class ProgressDrawableBase extends Drawable
         mPaint.setColorFilter(colorFilter);
 
         int saveCount = canvas.save();
-
         canvas.translate(bounds.left, bounds.top);
-        if (needMirroring()) {
-            canvas.translate(bounds.width(), 0);
-            canvas.scale(-1, 1);
-        }
-
         onDraw(canvas, bounds.width(), bounds.height(), mPaint);
-
         canvas.restoreToCount(saveCount);
-    }
-
-    private boolean needMirroring() {
-        return mAutoMirrored
-                && DrawableCompat.getLayoutDirection(this) == ViewCompat.LAYOUT_DIRECTION_RTL;
     }
 
     protected abstract void onPreparePaint(Paint paint);
