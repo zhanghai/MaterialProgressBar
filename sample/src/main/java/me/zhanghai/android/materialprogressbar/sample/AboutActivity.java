@@ -11,14 +11,14 @@ import android.text.method.LinkMovementMethod;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class AboutActivity extends AppCompatActivity {
 
-    @Bind(R.id.version)
+    @BindView(R.id.version)
     TextView mVersionText;
-    @Bind(R.id.github)
+    @BindView(R.id.github)
     TextView mGithubText;
 
     @Override
