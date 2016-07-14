@@ -103,6 +103,8 @@ Don't forget to create and set the drawable as above.
 
 You can also customize the behavior of these drawables by calling `setShowTrack()` and `setUseIntrinsicPadding()`. Tint-related methods `setTint()`, `setTintList()` and `setTintMode()` are also backported so that you can use them directly, but remember to take these drawables as their actual type or `TintableDrawable` because VM won't be able to find these methods on `Drawable` for legacy platforms.
 
+If you want to support API level < 18, you'll need to workaround a canvas limitation as in [here](https://github.com/DreaminginCodeZH/MaterialProgressBar/blob/0eee874b6fbd109eda2be01b7887647e589dcd9d/library/src/main/java/me/zhanghai/android/materialprogressbar/MaterialProgressBar.java#L122); Using `MaterialProgressBar` does this automatically.
+
 For a detailed example, you can refer to the `onCreate()` method of the old sample's [`MainActivity`](//github.com/DreaminginCodeZH/MaterialProgressBar/blob/7529ea854a04207fcbf768aa574110e49c511867/sample/src/main/java/me/zhanghai/android/materialprogressbar/sample/MainActivity.java) and its layout [main_activity.xml](//github.com/DreaminginCodeZH/MaterialProgressBar/blob/7529ea854a04207fcbf768aa574110e49c511867/sample/src/main/res/layout/main_activity.xml).
 
 ## ProGuard
