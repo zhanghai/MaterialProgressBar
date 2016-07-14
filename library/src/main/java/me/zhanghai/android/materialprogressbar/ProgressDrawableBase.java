@@ -16,19 +16,18 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.graphics.drawable.DrawableCompat;
-import android.support.v4.view.ViewCompat;
+import android.view.View;
 
 import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
 
-abstract class ProgressDrawableBase extends Drawable
-        implements IntrinsicPaddingDrawable, TintableDrawable {
+abstract class ProgressDrawableBase extends Drawable implements IntrinsicPaddingDrawable, TintableDrawable {
 
     protected boolean mUseIntrinsicPadding = true;
-    protected boolean mAutoMirrored;
     protected int mAlpha = 0xFF;
     protected ColorFilter mColorFilter;
     protected ColorStateList mTintList;
@@ -38,9 +37,7 @@ abstract class ProgressDrawableBase extends Drawable
     private Paint mPaint;
 
     public ProgressDrawableBase(Context context) {
-        setAutoMirrored(true);
-        int colorControlActivated = ThemeUtils.getColorFromAttrRes(R.attr.colorControlActivated,
-                context);
+        int colorControlActivated = ThemeUtils.getColorFromAttrRes(R.attr.colorControlActivated, context);
         // setTint() has been overridden for compatibility; DrawableCompat won't work because
         // wrapped Drawable won't be Animatable.
         setTint(colorControlActivated);
@@ -61,25 +58,6 @@ abstract class ProgressDrawableBase extends Drawable
     public void setUseIntrinsicPadding(boolean useIntrinsicPadding) {
         if (mUseIntrinsicPadding != useIntrinsicPadding) {
             mUseIntrinsicPadding = useIntrinsicPadding;
-            invalidateSelf();
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean isAutoMirrored() {
-        return mAutoMirrored;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void setAutoMirrored(boolean mirrored) {
-        if (mAutoMirrored != mirrored) {
-            mAutoMirrored = mirrored;
             invalidateSelf();
         }
     }
@@ -200,8 +178,18 @@ abstract class ProgressDrawableBase extends Drawable
     }
 
     private boolean needMirroring() {
-        return mAutoMirrored
-                && DrawableCompat.getLayoutDirection(this) == ViewCompat.LAYOUT_DIRECTION_RTL;
+        if (this instanceof RTLableDrawable) {
+            boolean isRTL = ((RTLableDrawable) this).isRTL();
+            if (isRTL) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 && DrawableCompat.getLayoutDirection(this) == View.LAYOUT_DIRECTION_RTL) {
+                    // if the progressbar is RTL but the LayoutDirection is already RTL then no mirroring is needed
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     protected abstract void onPreparePaint(Paint paint);

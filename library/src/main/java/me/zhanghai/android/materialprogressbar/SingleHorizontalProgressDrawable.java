@@ -12,7 +12,7 @@ import android.graphics.RectF;
 
 import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
 
-class SingleHorizontalProgressDrawable extends ProgressDrawableBase {
+class SingleHorizontalProgressDrawable extends ProgressDrawableBase implements RTLableDrawable, ShowTrackDrawable {
 
     private static final float PROGRESS_INTRINSIC_HEIGHT_DP = 3.2f;
     private static final float PADDED_INTRINSIC_HEIGHT_DP = 16;
@@ -24,6 +24,7 @@ class SingleHorizontalProgressDrawable extends ProgressDrawableBase {
     private int mPaddedIntrinsicHeight;
     private boolean mShowTrack = true;
     private float mTrackAlpha;
+    private boolean mRTL = false;
 
     public SingleHorizontalProgressDrawable(Context context) {
         super(context);
@@ -35,13 +36,36 @@ class SingleHorizontalProgressDrawable extends ProgressDrawableBase {
         mTrackAlpha = ThemeUtils.getFloatFromAttrRes(android.R.attr.disabledAlpha, context);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public boolean getShowTrack() {
         return mShowTrack;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public void setShowTrack(boolean showTrack) {
         if (mShowTrack != showTrack) {
             mShowTrack = showTrack;
+            invalidateSelf();
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public boolean isRTL() {
+        return mRTL;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void setRTL(boolean rtl) {
+        if (mRTL != rtl) {
+            mRTL = rtl;
             invalidateSelf();
         }
     }
