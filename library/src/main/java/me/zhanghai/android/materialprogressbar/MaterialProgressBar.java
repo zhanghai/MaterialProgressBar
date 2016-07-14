@@ -111,6 +111,24 @@ public class MaterialProgressBar extends ProgressBar {
         setShowTrack(showTrack);
     }
 
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+
+        // isHardwareAccelerated() only works when attached to a window.
+        fixCanvasScalingWhenHardwareAccelerated();
+    }
+
+    private void fixCanvasScalingWhenHardwareAccelerated() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR2) {
+            // Canvas scaling when hardware accelerated results in artifacts on older API levels, so
+            // we need to use software rendering
+            if (isHardwareAccelerated() && getLayerType() != LAYER_TYPE_SOFTWARE) {
+                setLayerType(LAYER_TYPE_SOFTWARE, null);
+            }
+        }
+    }
+
     /**
      * Get the style of current progress drawable.
      *
