@@ -15,7 +15,7 @@ import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
 class SingleHorizontalProgressDrawable extends ProgressDrawableBase {
 
     private static final float PROGRESS_INTRINSIC_HEIGHT_DP = 3.2f;
-    private static final float PADDED_INTRINSIC_HEIGHT_DP = 16;
+    private static final int PADDED_INTRINSIC_HEIGHT_DP = 16;
     private static final RectF RECT_BOUND = new RectF(-180, -1, 180, 1);
     private static final RectF RECT_PADDED_BOUND = new RectF(-180, -5, 180, 5);
     private static final int LEVEL_MAX = 10000;

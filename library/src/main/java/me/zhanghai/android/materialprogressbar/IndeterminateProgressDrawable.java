@@ -17,8 +17,8 @@ import android.support.annotation.Keep;
  */
 public class IndeterminateProgressDrawable extends IndeterminateProgressDrawableBase {
 
-    private static final float PROGRESS_INTRINSIC_SIZE_DP = 3.2f;
-    private static final float PADDED_INTRINSIC_SIZE_DP = 16;
+    private static final int PROGRESS_INTRINSIC_SIZE_DP = 42;
+    private static final int PADDED_INTRINSIC_SIZE_DP = 48;
     private static final RectF RECT_BOUND = new RectF(-21, -21, 21, 21);
     private static final RectF RECT_PADDED_BOUND = new RectF(-24, -24, 24, 24);
     private static final RectF RECT_PROGRESS = new RectF(-19, -19, 19, 19);
