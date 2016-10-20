@@ -36,6 +36,8 @@ abstract class ProgressDrawableBase extends Drawable
 
     private Paint mPaint;
 
+    private DummyConstantState mConstantState = new DummyConstantState();
+
     public ProgressDrawableBase(Context context) {
         int colorControlActivated = ThemeUtils.getColorFromAttrRes(R.attr.colorControlActivated,
                 context);
@@ -174,4 +176,28 @@ abstract class ProgressDrawableBase extends Drawable
     protected abstract void onPreparePaint(Paint paint);
 
     protected abstract void onDraw(Canvas canvas, int width, int height, Paint paint);
+
+    // Workaround LayerDrawable.ChildDrawable which calls getConstantState().newDrawable()
+    // without checking for null.
+    // We are never inflated from XML so the protocol of ConstantState does not apply to us. In
+    // order to make LayerDrawable happy, we return ourselves from DummyConstantState.newDrawable().
+
+    @Override
+    public ConstantState getConstantState() {
+        return mConstantState;
+    }
+
+    private class DummyConstantState extends ConstantState {
+
+        @Override
+        public int getChangingConfigurations() {
+            return 0;
+        }
+
+        @NonNull
+        @Override
+        public Drawable newDrawable() {
+            return ProgressDrawableBase.this;
+        }
+    }
 }

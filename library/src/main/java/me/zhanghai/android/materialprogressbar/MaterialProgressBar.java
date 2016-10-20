@@ -440,7 +440,7 @@ public class MaterialProgressBar extends ProgressBar {
     }
 
     private void applyPrimaryProgressTint() {
-        if (getProgressDrawable() != null) {
+        if (getProgressDrawable() == null) {
             return;
         }
         if (mProgressTintInfo.mHasProgressTintList || mProgressTintInfo.mHasProgressTintMode) {
@@ -454,7 +454,7 @@ public class MaterialProgressBar extends ProgressBar {
     }
 
     private void applySecondaryProgressTint() {
-        if (getProgressDrawable() != null) {
+        if (getProgressDrawable() == null) {
             return;
         }
         if (mProgressTintInfo.mHasSecondaryProgressTintList
@@ -471,7 +471,7 @@ public class MaterialProgressBar extends ProgressBar {
     }
 
     private void applyProgressBackgroundTint() {
-        if (getProgressDrawable() != null) {
+        if (getProgressDrawable() == null) {
             return;
         }
         if (mProgressTintInfo.mHasProgressBackgroundTintList
@@ -488,32 +488,33 @@ public class MaterialProgressBar extends ProgressBar {
 
     @Nullable
     private Drawable getTintTargetFromProgressDrawable(int layerId, boolean shouldFallback) {
+        Drawable progressDrawable = getProgressDrawable();
+        if (progressDrawable == null) {
+            return null;
+        }
+        progressDrawable.mutate();
         Drawable layerDrawable = null;
-        final Drawable progressDrawable = getProgressDrawable();
-        if (progressDrawable != null) {
-            progressDrawable.mutate();
-            if (progressDrawable instanceof LayerDrawable) {
-                layerDrawable = ((LayerDrawable) progressDrawable).findDrawableByLayerId(layerId);
-            }
-            if (layerDrawable == null && shouldFallback) {
-                layerDrawable = progressDrawable;
-            }
+        if (progressDrawable instanceof LayerDrawable) {
+            layerDrawable = ((LayerDrawable) progressDrawable).findDrawableByLayerId(layerId);
+        }
+        if (layerDrawable == null && shouldFallback) {
+            layerDrawable = progressDrawable;
         }
         return layerDrawable;
     }
 
     private void applyIndeterminateTint() {
         Drawable indeterminateDrawable = getIndeterminateDrawable();
-        if (indeterminateDrawable != null) {
-            if (mProgressTintInfo.mHasIndeterminateTintList
-                    || mProgressTintInfo.mHasIndeterminateTintMode) {
-                indeterminateDrawable.mutate();
-                applyTintForDrawable(indeterminateDrawable,
-                        mProgressTintInfo.mIndeterminateTintList,
-                        mProgressTintInfo.mHasIndeterminateTintList,
-                        mProgressTintInfo.mIndeterminateTintMode,
-                        mProgressTintInfo.mHasIndeterminateTintMode);
-            }
+        if (indeterminateDrawable == null) {
+            return;
+        }
+        if (mProgressTintInfo.mHasIndeterminateTintList
+                || mProgressTintInfo.mHasIndeterminateTintMode) {
+            indeterminateDrawable.mutate();
+            applyTintForDrawable(indeterminateDrawable, mProgressTintInfo.mIndeterminateTintList,
+                    mProgressTintInfo.mHasIndeterminateTintList,
+                    mProgressTintInfo.mIndeterminateTintMode,
+                    mProgressTintInfo.mHasIndeterminateTintMode);
         }
     }
 
