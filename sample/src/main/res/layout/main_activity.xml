@@ -37,7 +37,6 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
 
         <ProgressBar
-            android:id="@+id/horizontal_progress_native"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:progress="30"
@@ -51,12 +50,28 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
 
         <me.zhanghai.android.materialprogressbar.MaterialProgressBar
-            android:id="@+id/horizontal_progress_library"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:progress="30"
             android:secondaryProgress="60"
             app:mpb_progressStyle="horizontal"
+            style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal" />
+
+        <TextView
+            android:text="@string/library_implementation_tinted"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+
+        <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:progress="30"
+            android:secondaryProgress="60"
+            app:mpb_progressStyle="horizontal"
+            app:mpb_progressTint="@color/tint"
+            app:mpb_secondaryProgressTint="@color/tint"
+            app:mpb_progressBackgroundTint="@color/tint"
             style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal" />
 
         <!-- Indeterminate horizontal progress -->
@@ -74,7 +89,6 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
 
         <ProgressBar
-            android:id="@+id/indeterminate_horizontal_progress_native"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:indeterminate="true"
@@ -87,11 +101,24 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
 
         <me.zhanghai.android.materialprogressbar.MaterialProgressBar
-            android:id="@+id/indeterminate_horizontal_progress_library"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:indeterminate="true"
             app:mpb_progressStyle="horizontal"
+            style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal" />
+
+        <TextView
+            android:text="@string/library_implementation_tinted"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+
+        <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            app:mpb_progressStyle="horizontal"
+            app:mpb_indeterminateTint="@color/tint"
             style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal" />
 
         <!-- Indeterminate progress -->
@@ -113,7 +140,6 @@
             android:layout_height="wrap_content">
 
             <ProgressBar
-                android:id="@+id/indeterminate_progress_large_native"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left|bottom"
@@ -121,7 +147,6 @@
                 style="?android:progressBarStyleLarge" />
 
             <ProgressBar
-                android:id="@+id/indeterminate_progress_native"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|bottom"
@@ -129,7 +154,6 @@
                 style="?android:progressBarStyle" />
 
             <ProgressBar
-                android:id="@+id/indeterminate_progress_small_native"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right|bottom"
@@ -148,7 +172,6 @@
             android:layout_height="wrap_content">
 
             <me.zhanghai.android.materialprogressbar.MaterialProgressBar
-                android:id="@+id/indeterminate_progress_large_library"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left|bottom"
@@ -156,7 +179,6 @@
                 style="@style/Widget.MaterialProgressBar.ProgressBar.Large" />
 
             <me.zhanghai.android.materialprogressbar.MaterialProgressBar
-                android:id="@+id/indeterminate_progress_library"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|bottom"
@@ -164,7 +186,6 @@
                 style="@style/Widget.MaterialProgressBar.ProgressBar" />
 
             <me.zhanghai.android.materialprogressbar.MaterialProgressBar
-                android:id="@+id/indeterminate_progress_small_library"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right|bottom"
@@ -204,7 +225,6 @@
             </FrameLayout>
 
             <me.zhanghai.android.materialprogressbar.MaterialProgressBar
-                android:id="@+id/horizontal_progress_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
@@ -240,7 +260,6 @@
             </FrameLayout>
 
             <me.zhanghai.android.materialprogressbar.MaterialProgressBar
-                android:id="@+id/indeterminate_horizontal_progress_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"

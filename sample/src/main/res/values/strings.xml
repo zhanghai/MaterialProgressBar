@@ -11,6 +11,7 @@
 
     <string name="native_implementation">Native Implementation</string>
     <string name="library_implementation">Library Implementation</string>
+    <string name="library_implementation_tinted">Library Implementation (Tinted)</string>
     <string name="horizontal_progress">Horizontal ProgressBar</string>
     <string name="indeterminate_horizontal_progress">Indeterminate Horizontal ProgressBar</string>
     <string name="indeterminate_progress">Indeterminate ProgressBar</string>
