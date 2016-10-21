@@ -18,8 +18,8 @@
     </style>
 
     <style name="Widget.MaterialProgressBar.ProgressBar.Horizontal.NoPadding">
-        <item name="android:minHeight">3.2dp</item>
-        <item name="android:maxHeight">3.2dp</item>
+        <item name="android:minHeight">4dp</item>
+        <item name="android:maxHeight">4dp</item>
     </style>
 
     <style name="Widget.MaterialProgressBar.ProgressBar" parent="android:Widget.ProgressBar">

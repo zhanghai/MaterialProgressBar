@@ -23,7 +23,7 @@ public class IndeterminateHorizontalProgressDrawable extends IndeterminateProgre
     private static final int PROGRESS_INTRINSIC_HEIGHT_DP = 4;
     private static final int PADDED_INTRINSIC_HEIGHT_DP = 16;
     private static final RectF RECT_BOUND = new RectF(-180, -1, 180, 1);
-    private static final RectF RECT_PADDED_BOUND = new RectF(-180, -5, 180, 5);
+    private static final RectF RECT_PADDED_BOUND = new RectF(-180, -4, 180, 4);
     private static final RectF RECT_PROGRESS = new RectF(-144, -1, 144, 1);
     private static final RectTransformX RECT_1_TRANSFORM_X = new RectTransformX(-522.6f, 0.1f);
     private static final RectTransformX RECT_2_TRANSFORM_X = new RectTransformX(-197.6f, 0.1f);
