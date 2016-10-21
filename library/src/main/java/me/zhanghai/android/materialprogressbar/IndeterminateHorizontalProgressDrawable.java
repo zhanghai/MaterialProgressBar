@@ -20,7 +20,7 @@ import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
 public class IndeterminateHorizontalProgressDrawable extends IndeterminateProgressDrawableBase
         implements ShowTrackDrawable {
 
-    private static final float PROGRESS_INTRINSIC_HEIGHT_DP = 3.2f;
+    private static final int PROGRESS_INTRINSIC_HEIGHT_DP = 4;
     private static final int PADDED_INTRINSIC_HEIGHT_DP = 16;
     private static final RectF RECT_BOUND = new RectF(-180, -1, 180, 1);
     private static final RectF RECT_PADDED_BOUND = new RectF(-180, -5, 180, 5);
