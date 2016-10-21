@@ -9,7 +9,7 @@
 
     <string name="app_name">MaterialProgressBar Sample</string>
 
-    <string name="native_implementation">Native Implementation</string>
+    <string name="framework_implementation">Framework Implementation</string>
     <string name="library_implementation">Library Implementation</string>
     <string name="library_implementation_tinted">Library Implementation (Tinted)</string>
     <string name="horizontal_progress">Horizontal ProgressBar</string>

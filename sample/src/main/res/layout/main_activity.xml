@@ -33,7 +33,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/native_implementation"
+            android:text="@string/framework_implementation"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
 
         <ProgressBar
@@ -85,7 +85,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/native_implementation"
+            android:text="@string/framework_implementation"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
 
         <ProgressBar
@@ -132,7 +132,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/native_implementation"
+            android:text="@string/framework_implementation"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
 
         <FrameLayout
