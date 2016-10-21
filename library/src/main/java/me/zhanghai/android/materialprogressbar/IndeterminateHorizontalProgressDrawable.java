@@ -17,7 +17,7 @@ import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
 /**
  * A backported {@code Drawable} for indeterminate horizontal {@code ProgressBar}.
  */
-public class IndeterminateHorizontalProgressDrawable extends IndeterminateProgressDrawableBase
+public class IndeterminateHorizontalProgressDrawable extends BaseIndeterminateProgressDrawable
         implements ShowTrackDrawable {
 
     private static final int PROGRESS_INTRINSIC_HEIGHT_DP = 4;

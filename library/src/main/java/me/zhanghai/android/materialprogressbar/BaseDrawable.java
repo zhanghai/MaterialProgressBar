@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015 Zhang Hai <Dreaming.in.Code.ZH@Gmail.com>
+ * Copyright (c) 2016 Zhang Hai <Dreaming.in.Code.ZH@Gmail.com>
  * All Rights Reserved.
  */
 
@@ -19,15 +19,11 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.graphics.drawable.DrawableCompat;
-import android.support.v4.view.ViewCompat;
 
 import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
 
-abstract class ProgressDrawableBase extends Drawable
-        implements IntrinsicPaddingDrawable, TintableDrawable {
+abstract class BaseDrawable extends Drawable implements TintableDrawable {
 
-    protected boolean mUseIntrinsicPadding = true;
     protected int mAlpha = 0xFF;
     protected ColorFilter mColorFilter;
     protected ColorStateList mTintList;
@@ -38,31 +34,12 @@ abstract class ProgressDrawableBase extends Drawable
 
     private DummyConstantState mConstantState = new DummyConstantState();
 
-    public ProgressDrawableBase(Context context) {
+    public BaseDrawable(Context context) {
         int colorControlActivated = ThemeUtils.getColorFromAttrRes(R.attr.colorControlActivated,
                 context);
         // setTint() has been overridden for compatibility; DrawableCompat won't work because
         // wrapped Drawable won't be Animatable.
         setTint(colorControlActivated);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean getUseIntrinsicPadding() {
-        return mUseIntrinsicPadding;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void setUseIntrinsicPadding(boolean useIntrinsicPadding) {
-        if (mUseIntrinsicPadding != useIntrinsicPadding) {
-            mUseIntrinsicPadding = useIntrinsicPadding;
-            invalidateSelf();
-        }
     }
 
     @Override
@@ -197,7 +174,7 @@ abstract class ProgressDrawableBase extends Drawable
         @NonNull
         @Override
         public Drawable newDrawable() {
-            return ProgressDrawableBase.this;
+            return BaseDrawable.this;
         }
     }
 }

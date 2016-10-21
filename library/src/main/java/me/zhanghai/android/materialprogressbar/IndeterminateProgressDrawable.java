@@ -15,7 +15,7 @@ import android.support.annotation.Keep;
 /**
  * A backported {@code Drawable} for indeterminate circular {@code ProgressBar}.
  */
-public class IndeterminateProgressDrawable extends IndeterminateProgressDrawableBase {
+public class IndeterminateProgressDrawable extends BaseIndeterminateProgressDrawable {
 
     private static final int PROGRESS_INTRINSIC_SIZE_DP = 42;
     private static final int PADDED_INTRINSIC_SIZE_DP = 48;

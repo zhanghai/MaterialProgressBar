@@ -10,12 +10,12 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Animatable;
 
-abstract class IndeterminateProgressDrawableBase extends ProgressDrawableBase
+abstract class BaseIndeterminateProgressDrawable extends BaseProgressDrawable
         implements Animatable {
 
     protected Animator[] mAnimators;
 
-    public IndeterminateProgressDrawableBase(Context context) {
+    public BaseIndeterminateProgressDrawable(Context context) {
         super(context);
     }
 

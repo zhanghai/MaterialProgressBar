@@ -12,7 +12,7 @@ import android.graphics.RectF;
 
 import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
 
-class SingleHorizontalProgressDrawable extends ProgressDrawableBase {
+class SingleHorizontalProgressDrawable extends BaseProgressDrawable {
 
     private static final int PROGRESS_INTRINSIC_HEIGHT_DP = 4;
     private static final int PADDED_INTRINSIC_HEIGHT_DP = 16;
