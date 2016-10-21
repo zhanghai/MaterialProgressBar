@@ -25,15 +25,15 @@
         <!-- Horizontal progress -->
 
         <TextView
-            android:text="@string/horizontal_progress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/horizontal_progress"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
         <TextView
-            android:text="@string/native_implementation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/native_implementation"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
 
         <ProgressBar
@@ -44,9 +44,9 @@
             style="?android:progressBarStyleHorizontal" />
 
         <TextView
-            android:text="@string/library_implementation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/library_implementation"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
 
         <me.zhanghai.android.materialprogressbar.MaterialProgressBar
@@ -58,9 +58,9 @@
             style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal" />
 
         <TextView
-            android:text="@string/library_implementation_tinted"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/library_implementation_tinted"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
 
         <me.zhanghai.android.materialprogressbar.MaterialProgressBar
@@ -77,15 +77,15 @@
         <!-- Indeterminate horizontal progress -->
 
         <TextView
-            android:text="@string/indeterminate_horizontal_progress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/indeterminate_horizontal_progress"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
         <TextView
-            android:text="@string/native_implementation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/native_implementation"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
 
         <ProgressBar
@@ -95,9 +95,9 @@
             style="?android:progressBarStyleHorizontal" />
 
         <TextView
-            android:text="@string/library_implementation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/library_implementation"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
 
         <me.zhanghai.android.materialprogressbar.MaterialProgressBar
@@ -108,9 +108,9 @@
             style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal" />
 
         <TextView
-            android:text="@string/library_implementation_tinted"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/library_implementation_tinted"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
 
         <me.zhanghai.android.materialprogressbar.MaterialProgressBar
@@ -124,15 +124,15 @@
         <!-- Indeterminate progress -->
 
         <TextView
-            android:text="@string/indeterminate_progress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/indeterminate_progress"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
         <TextView
-            android:text="@string/native_implementation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/native_implementation"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
 
         <FrameLayout
@@ -162,9 +162,9 @@
         </FrameLayout>
 
         <TextView
-            android:text="@string/library_implementation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/library_implementation"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
 
         <FrameLayout
@@ -196,9 +196,9 @@
         <!-- Toolbar -->
 
         <TextView
-            android:text="@string/toolbar_progress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/toolbar_progress"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
         <FrameLayout
