@@ -24,7 +24,6 @@
         android:orientation="vertical">
 
         <me.zhanghai.android.materialprogressbar.MaterialProgressBar
-            android:id="@+id/about_icon"
             android:layout_width="192dp"
             android:layout_height="192dp"
             android:indeterminate="true"

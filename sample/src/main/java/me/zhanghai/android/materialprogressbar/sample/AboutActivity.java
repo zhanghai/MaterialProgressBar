@@ -30,8 +30,7 @@ public class AboutActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        String version = getString(R.string.about_version_format,
-                AppUtils.getPackageInfo(this).versionName);
+        String version = getString(R.string.about_version_format, BuildConfig.VERSION_NAME);
         mVersionText.setText(version);
         mGithubText.setMovementMethod(LinkMovementMethod.getInstance());
     }

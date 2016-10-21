@@ -23,6 +23,6 @@
     <string name="about_title">About</string>
     <string name="about_name">MaterialProgressBar</string>
     <string name="about_version_format">Version %1$s</string>
-    <string name="about_credit">Zhang Hai 2015</string>
+    <string name="about_credit">Zhang Hai 2015–2016</string>
     <string name="about_github"><a href="https://github.com/DreaminginCodeZH/MaterialProgressBar">View on GitHub</a></string>
 </resources>

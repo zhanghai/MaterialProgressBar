@@ -28,6 +28,10 @@
 
         <activity
             android:name=".AboutActivity"
-            android:label="@string/about_title" />
+            android:label="@string/about_title">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
     </application>
 </manifest>
