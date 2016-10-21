@@ -5,12 +5,10 @@
 
 package me.zhanghai.android.materialprogressbar;
 
-import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
-import android.graphics.Paint;
 import android.graphics.PixelFormat;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
@@ -20,8 +18,6 @@ import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
-
 abstract class BaseDrawable extends Drawable implements TintableDrawable {
 
     protected int mAlpha = 0xFF;
@@ -30,17 +26,7 @@ abstract class BaseDrawable extends Drawable implements TintableDrawable {
     protected PorterDuff.Mode mTintMode = PorterDuff.Mode.SRC_IN;
     protected PorterDuffColorFilter mTintFilter;
 
-    private Paint mPaint;
-
     private DummyConstantState mConstantState = new DummyConstantState();
-
-    public BaseDrawable(Context context) {
-        int colorControlActivated = ThemeUtils.getColorFromAttrRes(R.attr.colorControlActivated,
-                context);
-        // setTint() has been overridden for compatibility; DrawableCompat won't work because
-        // wrapped Drawable won't be Animatable.
-        setTint(colorControlActivated);
-    }
 
     @Override
     public int getAlpha() {
@@ -134,25 +120,17 @@ abstract class BaseDrawable extends Drawable implements TintableDrawable {
             return;
         }
 
-        if (mPaint == null) {
-            mPaint = new Paint();
-            mPaint.setAntiAlias(true);
-            mPaint.setColor(Color.BLACK);
-            onPreparePaint(mPaint);
-        }
-        mPaint.setAlpha(mAlpha);
-        ColorFilter colorFilter = mColorFilter != null ? mColorFilter : mTintFilter;
-        mPaint.setColorFilter(colorFilter);
-
         int saveCount = canvas.save();
         canvas.translate(bounds.left, bounds.top);
-        onDraw(canvas, bounds.width(), bounds.height(), mPaint);
+        onDraw(canvas, bounds.width(), bounds.height());
         canvas.restoreToCount(saveCount);
     }
 
-    protected abstract void onPreparePaint(Paint paint);
+    protected ColorFilter getColorFilterForDrawing() {
+        return mColorFilter != null ? mColorFilter : mTintFilter;
+    }
 
-    protected abstract void onDraw(Canvas canvas, int width, int height, Paint paint);
+    protected abstract void onDraw(Canvas canvas, int width, int height);
 
     // Workaround LayerDrawable.ChildDrawable which calls getConstantState().newDrawable()
     // without checking for null.
