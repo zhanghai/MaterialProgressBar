@@ -75,8 +75,9 @@ abstract class BaseDrawable extends Drawable implements TintableDrawable {
     @Override
     public void setTintList(@Nullable ColorStateList tint) {
         mTintList = tint;
-        mTintFilter = makeTintFilter(mTintList, mTintMode);
-        invalidateSelf();
+        if (updateTintFilter()) {
+            invalidateSelf();
+        }
     }
 
     /**
@@ -85,19 +86,28 @@ abstract class BaseDrawable extends Drawable implements TintableDrawable {
     @Override
     public void setTintMode(@NonNull PorterDuff.Mode tintMode) {
         mTintMode = tintMode;
-        mTintFilter = makeTintFilter(mTintList, mTintMode);
-        invalidateSelf();
+        if (updateTintFilter()) {
+            invalidateSelf();
+        }
     }
 
-    private PorterDuffColorFilter makeTintFilter(ColorStateList tint, PorterDuff.Mode tintMode) {
+    @Override
+    protected boolean onStateChange(int[] state) {
+        return updateTintFilter();
+    }
 
-        if (tint == null || tintMode == null) {
-            return null;
+    private boolean updateTintFilter() {
+
+        if (mTintList == null || mTintMode == null) {
+            boolean hadTintFilter = mTintFilter != null;
+            mTintFilter = null;
+            return hadTintFilter;
         }
 
-        int color = tint.getColorForState(getState(), Color.TRANSPARENT);
+        int tintColor = mTintList.getColorForState(getState(), Color.TRANSPARENT);
         // They made PorterDuffColorFilter.setColor() and setMode() @hide.
-        return new PorterDuffColorFilter(color, tintMode);
+        mTintFilter = new PorterDuffColorFilter(tintColor, mTintMode);
+        return true;
     }
 
     /**
