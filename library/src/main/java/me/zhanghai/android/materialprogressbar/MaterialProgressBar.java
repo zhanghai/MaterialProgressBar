@@ -9,12 +9,12 @@ import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.content.res.TypedArray;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Build;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.TintTypedArray;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.ProgressBar;
@@ -32,6 +32,7 @@ public class MaterialProgressBar extends ProgressBar {
     public static final int PROGRESS_STYLE_HORIZONTAL = 1;
 
     private int mProgressStyle;
+
     private TintInfo mProgressTintInfo = new TintInfo();
 
     public MaterialProgressBar(Context context) {
@@ -63,8 +64,8 @@ public class MaterialProgressBar extends ProgressBar {
     private void init(AttributeSet attrs, int defStyleAttr, int defStyleRes) {
 
         Context context = getContext();
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.MaterialProgressBar,
-                defStyleAttr, defStyleRes);
+        TintTypedArray a = TintTypedArray.obtainStyledAttributes(context, attrs,
+                R.styleable.MaterialProgressBar, defStyleAttr, defStyleRes);
         mProgressStyle = a.getInt(R.styleable.MaterialProgressBar_mpb_progressStyle,
                 PROGRESS_STYLE_CIRCULAR);
         boolean setBothDrawables = a.getBoolean(
@@ -487,7 +488,6 @@ public class MaterialProgressBar extends ProgressBar {
         }
     }
 
-    @Nullable
     private Drawable getTintTargetFromProgressDrawable(int layerId, boolean shouldFallback) {
         Drawable progressDrawable = getProgressDrawable();
         if (progressDrawable == null) {
