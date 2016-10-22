@@ -5,6 +5,7 @@
 
 package me.zhanghai.android.materialprogressbar;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -18,6 +19,7 @@ abstract class BaseProgressDrawable extends BaseDrawable implements IntrinsicPad
 
     private Paint mPaint;
 
+    @SuppressLint("NewApi")
     public BaseProgressDrawable(Context context) {
         int colorControlActivated = ThemeUtils.getColorFromAttrRes(R.attr.colorControlActivated,
                 context);
