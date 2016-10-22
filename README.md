@@ -70,7 +70,7 @@ Available custom attributes:
 
 8 tint-related attributes such as `android:mpb_progressTint` and `app:mpb_progressTintMode` are also supported so that they can control the tinting of progress drawables. The default tint color is `?colorControlActivated`, and the default tint mode is `src_in`.
 
-For a detailed example, you can refer to the [sample app's layout](//github.com/DreaminginCodeZH/MaterialProgressBar/blob/master/sample/src/main/res/layout/main_activity.xml), there you can find examples such as removing progress bar padding or track.
+For a detailed example, you can refer to the [sample app's layout](//github.com/DreaminginCodeZH/MaterialProgressBar/blob/master/sample/src/main/res/layout/main_activity.xml), where you can find examples such as removing progress bar padding or track.
 
 ### Using Drawable
 
