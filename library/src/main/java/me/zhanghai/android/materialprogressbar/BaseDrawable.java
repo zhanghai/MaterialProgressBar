@@ -92,6 +92,11 @@ abstract class BaseDrawable extends Drawable implements TintableDrawable {
     }
 
     @Override
+    public boolean isStateful() {
+        return mTintList != null && mTintList.isStateful();
+    }
+
+    @Override
     protected boolean onStateChange(int[] state) {
         return updateTintFilter();
     }
