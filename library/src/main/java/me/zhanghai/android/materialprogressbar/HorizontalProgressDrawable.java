@@ -160,6 +160,7 @@ public class HorizontalProgressDrawable extends LayerDrawable implements Intrins
         updateSecondaryProgressTint();
     }
 
+    @SuppressLint("NewApi")
     private void updateSecondaryProgressTint() {
         if (mHasSecondaryProgressTintColor) {
             int tintColor = mSecondaryProgressTintColor;
