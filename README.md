@@ -26,14 +26,14 @@ Android 5.1.1
 
 ![Android 5.1.1](screenshot/android_5_1_1.png)
 
-[Sample APK](//github.com/DreaminginCodeZH/MaterialProgressBar/releases/download/v1.2.0/sample-release.apk)
+[Sample APK](//github.com/DreaminginCodeZH/MaterialProgressBar/releases/download/v1.3.0/sample-release.apk)
 
 ## Integration
 
 Gradle:
 
 ```gradle
-compile 'me.zhanghai.android.materialprogressbar:library:1.2.0'
+compile 'me.zhanghai.android.materialprogressbar:library:1.3.0'
 ```
 
 ## Usage
