@@ -72,7 +72,8 @@ public class MaterialProgressBar extends ProgressBar {
                 R.styleable.MaterialProgressBar_mpb_setBothDrawables, false);
         boolean useIntrinsicPadding = a.getBoolean(
                 R.styleable.MaterialProgressBar_mpb_useIntrinsicPadding, true);
-        boolean showTrack = a.getBoolean(R.styleable.MaterialProgressBar_mpb_showTrack,
+        boolean showProgressBackground = a.getBoolean(
+                R.styleable.MaterialProgressBar_mpb_showProgressBackground,
                 mProgressStyle == PROGRESS_STYLE_HORIZONTAL);
         if (a.hasValue(R.styleable.MaterialProgressBar_mpb_progressTint)) {
             mProgressTintInfo.mProgressTint = a.getColorStateList(
@@ -142,7 +143,7 @@ public class MaterialProgressBar extends ProgressBar {
                 throw new IllegalArgumentException("Unknown progress style: " + mProgressStyle);
         }
         setUseIntrinsicPadding(useIntrinsicPadding);
-        setShowTrack(showTrack);
+        setShowProgressBackground(showProgressBackground);
     }
 
     @Override
@@ -218,37 +219,37 @@ public class MaterialProgressBar extends ProgressBar {
     }
 
     /**
-     * Get whether the current drawable is showing a track. The default is {@code true}.
+     * Get whether the current drawable is showing a background. The default is {@code true}.
      *
-     * @return Whether the current drawable is showing a track, or {@code false} if the drawable
-     * does not implement {@link ShowTrackDrawable}.
+     * @return Whether the current drawable is showing a background, or {@code false} if the
+     * drawable does not implement {@link ShowBackgroundDrawable}.
      */
-    public boolean getShowTrack() {
+    public boolean getShowProgressBackground() {
         Drawable drawable = getCurrentDrawable();
-        if (drawable instanceof ShowTrackDrawable) {
-            return ((ShowTrackDrawable) drawable).getShowTrack();
+        if (drawable instanceof ShowBackgroundDrawable) {
+            return ((ShowBackgroundDrawable) drawable).getShowBackground();
         } else {
             return false;
         }
     }
 
     /**
-     * Set whether the current drawable should show a track. The default is {@code true}.
+     * Set whether the current drawable should show a background. The default is {@code true}.
      *
-     * @param showTrack Whether track should be shown. When {@code false}, does nothing if the
-     *                  progress drawable does not implement {@link ShowTrackDrawable}. When
-     *                  {@code true}, throws {@link IllegalStateException}.
-     * @throws IllegalStateException If {@code showTrack} is {@code true} but the current drawable
-     * does not implement {@link ShowTrackDrawable}.
+     * @param show Whether background should be shown. When {@code false}, does nothing if the
+     *             progress drawable does not implement {@link ShowBackgroundDrawable}, otherwise a
+     *             {@link IllegalStateException} is thrown.
+     * @throws IllegalStateException If {@code show} is {@code true} but the current drawable
+     * does not implement {@link ShowBackgroundDrawable}.
      */
-    public void setShowTrack(boolean showTrack) {
+    public void setShowProgressBackground(boolean show) {
         Drawable drawable = getCurrentDrawable();
-        if (drawable instanceof ShowTrackDrawable) {
-            ((ShowTrackDrawable) drawable).setShowTrack(showTrack);
+        if (drawable instanceof ShowBackgroundDrawable) {
+            ((ShowBackgroundDrawable) drawable).setShowBackground(show);
         }
         Drawable indeterminateDrawable = getIndeterminateDrawable();
-        if (indeterminateDrawable instanceof ShowTrackDrawable) {
-            ((ShowTrackDrawable) indeterminateDrawable).setShowTrack(showTrack);
+        if (indeterminateDrawable instanceof ShowBackgroundDrawable) {
+            ((ShowBackgroundDrawable) indeterminateDrawable).setShowBackground(show);
         }
     }
 

@@ -232,7 +232,7 @@
                 android:secondaryProgress="60"
                 app:mpb_progressStyle="horizontal"
                 app:mpb_useIntrinsicPadding="false"
-                app:mpb_showTrack="false"
+                app:mpb_showProgressBackground="false"
                 style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal.NoPadding" />
         </FrameLayout>
 
@@ -266,7 +266,7 @@
                 android:indeterminate="true"
                 app:mpb_progressStyle="horizontal"
                 app:mpb_useIntrinsicPadding="false"
-                app:mpb_showTrack="false"
+                app:mpb_showProgressBackground="false"
                 style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal.NoPadding" />
         </FrameLayout>
     </LinearLayout>

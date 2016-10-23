@@ -18,7 +18,7 @@ import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
  * A backported {@code Drawable} for indeterminate horizontal {@code ProgressBar}.
  */
 public class IndeterminateHorizontalProgressDrawable extends BaseIndeterminateProgressDrawable
-        implements ShowTrackDrawable {
+        implements ShowBackgroundDrawable {
 
     private static final int PROGRESS_INTRINSIC_HEIGHT_DP = 4;
     private static final int PADDED_INTRINSIC_HEIGHT_DP = 16;
@@ -30,8 +30,8 @@ public class IndeterminateHorizontalProgressDrawable extends BaseIndeterminatePr
 
     private int mProgressIntrinsicHeight;
     private int mPaddedIntrinsicHeight;
-    private boolean mShowTrack = true;
-    private float mTrackAlpha;
+    private boolean mShowBackground = true;
+    private float mBackgroundAlpha;
 
     private RectTransformX mRect1TransformX = new RectTransformX(RECT_1_TRANSFORM_X);
     private RectTransformX mRect2TransformX = new RectTransformX(RECT_2_TRANSFORM_X);
@@ -48,7 +48,7 @@ public class IndeterminateHorizontalProgressDrawable extends BaseIndeterminatePr
         mProgressIntrinsicHeight = Math.round(PROGRESS_INTRINSIC_HEIGHT_DP * density);
         mPaddedIntrinsicHeight = Math.round(PADDED_INTRINSIC_HEIGHT_DP * density);
 
-        mTrackAlpha = ThemeUtils.getFloatFromAttrRes(android.R.attr.disabledAlpha, context);
+        mBackgroundAlpha = ThemeUtils.getFloatFromAttrRes(android.R.attr.disabledAlpha, context);
 
         mAnimators = new Animator[] {
                 Animators.createIndeterminateHorizontalRect1(mRect1TransformX),
@@ -60,17 +60,17 @@ public class IndeterminateHorizontalProgressDrawable extends BaseIndeterminatePr
      * {@inheritDoc}
      */
     @Override
-    public boolean getShowTrack() {
-        return mShowTrack;
+    public boolean getShowBackground() {
+        return mShowBackground;
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setShowTrack(boolean showTrack) {
-        if (mShowTrack != showTrack) {
-            mShowTrack = showTrack;
+    public void setShowBackground(boolean show) {
+        if (mShowBackground != show) {
+            mShowBackground = show;
             invalidateSelf();
         }
     }
@@ -99,16 +99,16 @@ public class IndeterminateHorizontalProgressDrawable extends BaseIndeterminatePr
             canvas.translate(RECT_BOUND.width() / 2, RECT_BOUND.height() / 2);
         }
 
-        if (mShowTrack) {
-            paint.setAlpha(Math.round(mAlpha * mTrackAlpha));
-            drawTrackRect(canvas, paint);
+        if (mShowBackground) {
+            paint.setAlpha(Math.round(mAlpha * mBackgroundAlpha));
+            drawBackgroundRect(canvas, paint);
             paint.setAlpha(mAlpha);
         }
         drawProgressRect(canvas, mRect2TransformX, paint);
         drawProgressRect(canvas, mRect1TransformX, paint);
     }
 
-    private static void drawTrackRect(Canvas canvas, Paint paint) {
+    private static void drawBackgroundRect(Canvas canvas, Paint paint) {
         canvas.drawRect(RECT_BOUND, paint);
     }
 

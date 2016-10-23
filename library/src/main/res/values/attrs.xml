@@ -20,10 +20,10 @@
         <!-- Whether progress drawable should use its intrinsic padding. Defaults to true. -->
         <attr name="mpb_useIntrinsicPadding" format="boolean" />
         <!--
-          ~ Whether progress drawable should show a track. Defaults to true for horizontal progress
-          ~ drawable, false otherwise.
+          ~ Whether progress drawable should show a background. Defaults to true for horizontal
+          ~ progress drawable, false otherwise.
           -->
-        <attr name="mpb_showTrack" format="boolean" />
+        <attr name="mpb_showProgressBackground" format="boolean" />
         <attr name="mpb_progressTint" format="color|reference" />
         <attr name="mpb_progressTintMode" format="enum">
             <enum name="src_over" value="3" />

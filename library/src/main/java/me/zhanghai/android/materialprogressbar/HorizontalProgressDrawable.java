@@ -23,14 +23,14 @@ import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
 /**
  * A backported {@code Drawable} for determinate horizontal {@code ProgressBar}.
  */
-public class HorizontalProgressDrawable extends LayerDrawable
-        implements IntrinsicPaddingDrawable, ShowTrackDrawable, TintableDrawable {
+public class HorizontalProgressDrawable extends LayerDrawable implements IntrinsicPaddingDrawable,
+        ShowBackgroundDrawable, TintableDrawable {
 
     private static final String TAG = HorizontalProgressDrawable.class.getSimpleName();
 
-    private float mDisabledAlpha;
+    private float mBackgroundAlpha;
 
-    private HorizontalProgressTrackDrawable mTrackDrawable;
+    private HorizontalProgressBackgroundDrawable mBackgroundDrawable;
     private SingleHorizontalProgressDrawable mSecondaryProgressDrawable;
     private SingleHorizontalProgressDrawable mProgressDrawable;
 
@@ -46,15 +46,15 @@ public class HorizontalProgressDrawable extends LayerDrawable
      */
     public HorizontalProgressDrawable(Context context) {
         super(new Drawable[] {
-                new HorizontalProgressTrackDrawable(context),
+                new HorizontalProgressBackgroundDrawable(context),
                 new SingleHorizontalProgressDrawable(context),
                 new SingleHorizontalProgressDrawable(context)
         });
 
-        mDisabledAlpha = ThemeUtils.getFloatFromAttrRes(android.R.attr.disabledAlpha, context);
+        mBackgroundAlpha = ThemeUtils.getFloatFromAttrRes(android.R.attr.disabledAlpha, context);
 
         setId(0, android.R.id.background);
-        mTrackDrawable = (HorizontalProgressTrackDrawable) getDrawable(0);
+        mBackgroundDrawable = (HorizontalProgressBackgroundDrawable) getDrawable(0);
         setId(1, android.R.id.secondaryProgress);
         mSecondaryProgressDrawable = (SingleHorizontalProgressDrawable) getDrawable(1);
         setId(2, android.R.id.progress);
@@ -68,17 +68,17 @@ public class HorizontalProgressDrawable extends LayerDrawable
     /**
      * {@inheritDoc}
      */
-    public boolean getShowTrack() {
-        return mTrackDrawable.getShowTrack();
+    public boolean getShowBackground() {
+        return mBackgroundDrawable.getShowBackground();
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setShowTrack(boolean showTrack) {
-        if (mTrackDrawable.getShowTrack() != showTrack) {
-            mTrackDrawable.setShowTrack(showTrack);
+    public void setShowBackground(boolean show) {
+        if (mBackgroundDrawable.getShowBackground() != show) {
+            mBackgroundDrawable.setShowBackground(show);
             updateSecondaryProgressTint();
         }
     }
@@ -88,7 +88,7 @@ public class HorizontalProgressDrawable extends LayerDrawable
      */
     @Override
     public boolean getUseIntrinsicPadding() {
-        return mTrackDrawable.getUseIntrinsicPadding();
+        return mBackgroundDrawable.getUseIntrinsicPadding();
     }
 
     /**
@@ -96,7 +96,7 @@ public class HorizontalProgressDrawable extends LayerDrawable
      */
     @Override
     public void setUseIntrinsicPadding(boolean useIntrinsicPadding) {
-        mTrackDrawable.setUseIntrinsicPadding(useIntrinsicPadding);
+        mBackgroundDrawable.setUseIntrinsicPadding(useIntrinsicPadding);
         mSecondaryProgressDrawable.setUseIntrinsicPadding(useIntrinsicPadding);
         mProgressDrawable.setUseIntrinsicPadding(useIntrinsicPadding);
     }
@@ -107,10 +107,10 @@ public class HorizontalProgressDrawable extends LayerDrawable
     @Override
     @SuppressLint("NewApi")
     public void setTint(@ColorInt int tintColor) {
-        // Modulate alpha of tintColor against mDisabledAlpha.
-        int backgroundTintColor = ColorUtils.setAlphaComponent(tintColor,
-                Math.round(Color.alpha(tintColor) * mDisabledAlpha));
-        mTrackDrawable.setTint(backgroundTintColor);
+        // Modulate alpha of tintColor against mBackgroundAlpha.
+        int backgroundTintColor = ColorUtils.setAlphaComponent(tintColor, Math.round(
+                Color.alpha(tintColor) * mBackgroundAlpha));
+        mBackgroundDrawable.setTint(backgroundTintColor);
         setSecondaryProgressTint(backgroundTintColor);
         mProgressDrawable.setTint(tintColor);
     }
@@ -126,11 +126,11 @@ public class HorizontalProgressDrawable extends LayerDrawable
             if (!tint.isOpaque()) {
                 Log.w(TAG, "setTintList() called with a non-opaque ColorStateList, its original alpha will be discarded");
             }
-            backgroundTint = tint.withAlpha(Math.round(0xFF * mDisabledAlpha));
+            backgroundTint = tint.withAlpha(Math.round(0xFF * mBackgroundAlpha));
         } else {
             backgroundTint = null;
         }
-        mTrackDrawable.setTintList(backgroundTint);
+        mBackgroundDrawable.setTintList(backgroundTint);
         setSecondaryProgressTintList(backgroundTint);
         mProgressDrawable.setTintList(tint);
     }
@@ -141,7 +141,7 @@ public class HorizontalProgressDrawable extends LayerDrawable
     @Override
     @SuppressLint("NewApi")
     public void setTintMode(@NonNull PorterDuff.Mode tintMode) {
-        mTrackDrawable.setTintMode(tintMode);
+        mBackgroundDrawable.setTintMode(tintMode);
         mSecondaryProgressDrawable.setTintMode(tintMode);
         mProgressDrawable.setTintMode(tintMode);
     }
@@ -163,20 +163,20 @@ public class HorizontalProgressDrawable extends LayerDrawable
     private void updateSecondaryProgressTint() {
         if (mHasSecondaryProgressTintColor) {
             int tintColor = mSecondaryProgressTintColor;
-            if (!getShowTrack()) {
-                // Alpha of tintColor may not be mDisabledAlpha because we modulated it in
+            if (!getShowBackground()) {
+                // Alpha of tintColor may not be mBackgroundAlpha because we modulated it in
                 // setTint().
                 float backgroundAlpha = (float) Color.alpha(tintColor) / 0xFF;
-                tintColor = ColorUtils.setAlphaComponent(tintColor,
-                        Math.round(0xFF * compositeAlpha(backgroundAlpha, backgroundAlpha)));
+                tintColor = ColorUtils.setAlphaComponent(tintColor, Math.round(
+                        0xFF * compositeAlpha(backgroundAlpha, backgroundAlpha)));
             }
             mSecondaryProgressDrawable.setTint(tintColor);
         } else if (mHasSecondaryProgressTint) {
             ColorStateList tint = mSecondaryProgressTint;
-            if (!getShowTrack()) {
+            if (!getShowBackground()) {
                 // Composite alpha so that the secondary progress looks as before.
-                tint = tint.withAlpha(Math.round(0xFF * compositeAlpha(mDisabledAlpha,
-                        mDisabledAlpha)));
+                tint = tint.withAlpha(Math.round(0xFF * compositeAlpha(mBackgroundAlpha,
+                        mBackgroundAlpha)));
             }
             mSecondaryProgressDrawable.setTintList(tint);
         }
