@@ -9,7 +9,7 @@ Material Design `ProgressBar` with consistent appearance on Android 4.0+.
 - Consistent appearance on Android 4.0+.
 - Correct tinting across platforms.
 - Able to remove the intrinsic padding of framework `ProgressBar`.
-- Able to hide the track of framework horizontal `ProgressBar`.
+- Able to hide the progress background of framework horizontal `ProgressBar`.
 - Used as a drop-in replacement for framework `ProgressBar`.
 
 ## Preview
@@ -66,11 +66,11 @@ Available custom attributes:
 - `app:mpb_progressStyle`: Style of progress drawable: `circular` or `horizontal`. Defaults to `circular`.
 - `app:mpb_setBothDrawables`: Whether both determinate and indeterminate drawables should be set on this progress bar. Determinate circular progress drawable is not supported yet. Defaults to `false`.
 - `app:mpb_useIntrinsicPadding`: Whether progress drawable should use its intrinsic padding. Defaults to `true`.
-- `app:mpb_showTrack`: Whether progress drawable should show a track. Defaults to `true` for horizontal progress drawable, `false` otherwise.
+- `app:mpb_showProgressBackground`: Whether progress drawable should show a progress background. Defaults to `true` for horizontal progress drawable, `false` otherwise.
 
 8 tint-related attributes such as `android:mpb_progressTint` and `app:mpb_progressTintMode` are also supported so that they can control the tinting of progress drawables. The default tint color is `?colorControlActivated`, and the default tint mode is `src_in`.
 
-For a detailed example, you can refer to the [sample app's layout](//github.com/DreaminginCodeZH/MaterialProgressBar/blob/master/sample/src/main/res/layout/main_activity.xml), where you can find examples such as removing progress bar padding or track.
+For a detailed example, you can refer to the [sample app's layout](//github.com/DreaminginCodeZH/MaterialProgressBar/blob/master/sample/src/main/res/layout/main_activity.xml), where you can find examples such as removing progress padding or background.
 
 ### Using Drawable
 
@@ -101,7 +101,7 @@ For example, to define an indeterminate horizontal `ProgressBar`.
 
 Don't forget to create and set the drawable as above.
 
-You can also customize the behavior of these drawables by calling `setShowTrack()` and `setUseIntrinsicPadding()`. Tint-related methods `setTint()`, `setTintList()` and `setTintMode()` are also backported so that you can use them directly, but remember to take these drawables as their actual type or `TintableDrawable` because VM won't be able to find these methods on `Drawable` for legacy platforms.
+You can also customize the behavior of these drawables by calling `setShowBackground()` and `setUseIntrinsicPadding()`. Tint-related methods `setTint()`, `setTintList()` and `setTintMode()` are also backported so that you can use them directly, but remember to take these drawables as their actual type or `TintableDrawable` because VM won't be able to find these methods on `Drawable` for legacy platforms.
 
 If you want to support API level < 18, you'll need to workaround a canvas limitation as in [here](https://github.com/DreaminginCodeZH/MaterialProgressBar/blob/0eee874b6fbd109eda2be01b7887647e589dcd9d/library/src/main/java/me/zhanghai/android/materialprogressbar/MaterialProgressBar.java#L122); Using `MaterialProgressBar` does this automatically.
 
