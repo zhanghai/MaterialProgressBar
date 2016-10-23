@@ -6,10 +6,7 @@
 package me.zhanghai.android.materialprogressbar.sample;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v4.app.TaskStackBuilder;
@@ -17,15 +14,6 @@ import android.support.v4.app.TaskStackBuilder;
 public class AppUtils {
 
     private AppUtils() {}
-
-    public static PackageInfo getPackageInfo(Context context) {
-        try {
-            return context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
-        } catch (PackageManager.NameNotFoundException e) {
-            // Should never happen.
-            throw new RuntimeException(e);
-        }
-    }
 
     // From http://developer.android.com/training/implementing-navigation/ancestral.html#NavigateUp .
     public static void navigateUp(Activity activity, Bundle extras) {

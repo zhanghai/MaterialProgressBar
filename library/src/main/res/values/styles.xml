@@ -9,7 +9,8 @@
 
     <style name="Widget.MaterialProgressBar.ProgressBar.Horizontal" parent="android:Widget.ProgressBar.Horizontal">
         <!--
-        Disabled for correct behavior on Android 4.x
+        Disabled for correct behavior on Android 4.x, see
+        https://github.com/android/platform_frameworks_base/commit/911743652b597057a1bd7ef8a921e9ff8dce0f4a#diff-149f45c5ff2d3185bb79688ba17bc432L536
         <item name="android:progressDrawable">@null</item>
         -->
         <item name="android:indeterminateDrawable">@null</item>

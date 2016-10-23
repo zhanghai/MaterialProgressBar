@@ -7,17 +7,12 @@ package me.zhanghai.android.materialprogressbar;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
 
 import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
 
-abstract class BaseProgressDrawable extends BaseDrawable implements IntrinsicPaddingDrawable {
+abstract class BaseProgressDrawable extends BasePaintDrawable implements IntrinsicPaddingDrawable {
 
     protected boolean mUseIntrinsicPadding = true;
-
-    private Paint mPaint;
 
     @SuppressLint("NewApi")
     public BaseProgressDrawable(Context context) {
@@ -46,23 +41,4 @@ abstract class BaseProgressDrawable extends BaseDrawable implements IntrinsicPad
             invalidateSelf();
         }
     }
-
-    @Override
-    protected final void onDraw(Canvas canvas, int width, int height) {
-
-        if (mPaint == null) {
-            mPaint = new Paint();
-            mPaint.setAntiAlias(true);
-            mPaint.setColor(Color.BLACK);
-            onPreparePaint(mPaint);
-        }
-        mPaint.setAlpha(mAlpha);
-        mPaint.setColorFilter(getColorFilterForDrawing());
-
-        onDraw(canvas, width, height, mPaint);
-    }
-
-    protected abstract void onPreparePaint(Paint paint);
-
-    protected abstract void onDraw(Canvas canvas, int width, int height, Paint paint);
 }
