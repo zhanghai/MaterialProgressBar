@@ -6,17 +6,25 @@
 package me.zhanghai.android.materialprogressbar;
 
 import android.animation.Animator;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Animatable;
+
+import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
 
 abstract class BaseIndeterminateProgressDrawable extends BaseProgressDrawable
         implements Animatable {
 
     protected Animator[] mAnimators;
 
+    @SuppressLint("NewApi")
     public BaseIndeterminateProgressDrawable(Context context) {
-        super(context);
+        int controlActivatedColor = ThemeUtils.getColorFromAttrRes(R.attr.colorControlActivated,
+                context);
+        // setTint() has been overridden for compatibility; DrawableCompat won't work because
+        // wrapped Drawable won't be Animatable.
+        setTint(controlActivatedColor);
     }
 
     /**

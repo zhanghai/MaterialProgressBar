@@ -7,4 +7,5 @@
 
 <resources>
     <color name="tint">#f44336</color>
+    <color name="tint_background">#42f44336</color>
 </resources>

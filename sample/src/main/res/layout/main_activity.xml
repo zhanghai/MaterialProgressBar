@@ -70,8 +70,8 @@
             android:secondaryProgress="60"
             app:mpb_progressStyle="horizontal"
             app:mpb_progressTint="@color/tint"
-            app:mpb_secondaryProgressTint="@color/tint"
-            app:mpb_progressBackgroundTint="@color/tint"
+            app:mpb_secondaryProgressTint="@color/tint_background"
+            app:mpb_progressBackgroundTint="@color/tint_background"
             style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal" />
 
         <!-- Indeterminate horizontal progress -->

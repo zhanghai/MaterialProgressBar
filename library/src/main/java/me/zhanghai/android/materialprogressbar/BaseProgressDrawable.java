@@ -5,23 +5,9 @@
 
 package me.zhanghai.android.materialprogressbar;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
-
-import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
-
 abstract class BaseProgressDrawable extends BasePaintDrawable implements IntrinsicPaddingDrawable {
 
     protected boolean mUseIntrinsicPadding = true;
-
-    @SuppressLint("NewApi")
-    public BaseProgressDrawable(Context context) {
-        int colorControlActivated = ThemeUtils.getColorFromAttrRes(R.attr.colorControlActivated,
-                context);
-        // setTint() has been overridden for compatibility; DrawableCompat won't work because
-        // wrapped Drawable won't be Animatable.
-        setTint(colorControlActivated);
-    }
 
     /**
      * {@inheritDoc}

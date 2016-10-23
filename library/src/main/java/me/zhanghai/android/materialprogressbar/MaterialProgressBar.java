@@ -75,9 +75,9 @@ public class MaterialProgressBar extends ProgressBar {
         boolean showTrack = a.getBoolean(R.styleable.MaterialProgressBar_mpb_showTrack,
                 mProgressStyle == PROGRESS_STYLE_HORIZONTAL);
         if (a.hasValue(R.styleable.MaterialProgressBar_mpb_progressTint)) {
-            mProgressTintInfo.mProgressTintList = a.getColorStateList(
+            mProgressTintInfo.mProgressTint = a.getColorStateList(
                     R.styleable.MaterialProgressBar_mpb_progressTint);
-            mProgressTintInfo.mHasProgressTintList = true;
+            mProgressTintInfo.mHasProgressTint = true;
         }
         if (a.hasValue(R.styleable.MaterialProgressBar_mpb_progressTintMode)) {
             mProgressTintInfo.mProgressTintMode = DrawableCompat.parseTintMode(a.getInt(
@@ -85,9 +85,9 @@ public class MaterialProgressBar extends ProgressBar {
             mProgressTintInfo.mHasProgressTintMode = true;
         }
         if (a.hasValue(R.styleable.MaterialProgressBar_mpb_secondaryProgressTint)) {
-            mProgressTintInfo.mSecondaryProgressTintList = a.getColorStateList(
+            mProgressTintInfo.mSecondaryProgressTint = a.getColorStateList(
                     R.styleable.MaterialProgressBar_mpb_secondaryProgressTint);
-            mProgressTintInfo.mHasSecondaryProgressTintList = true;
+            mProgressTintInfo.mHasSecondaryProgressTint = true;
         }
         if (a.hasValue(R.styleable.MaterialProgressBar_mpb_secondaryProgressTintMode)) {
             mProgressTintInfo.mSecondaryProgressTintMode = DrawableCompat.parseTintMode(a.getInt(
@@ -95,9 +95,9 @@ public class MaterialProgressBar extends ProgressBar {
             mProgressTintInfo.mHasSecondaryProgressTintMode = true;
         }
         if (a.hasValue(R.styleable.MaterialProgressBar_mpb_progressBackgroundTint)) {
-            mProgressTintInfo.mProgressBackgroundTintList = a.getColorStateList(
+            mProgressTintInfo.mProgressBackgroundTint = a.getColorStateList(
                     R.styleable.MaterialProgressBar_mpb_progressBackgroundTint);
-            mProgressTintInfo.mHasProgressBackgroundTintList = true;
+            mProgressTintInfo.mHasProgressBackgroundTint = true;
         }
         if (a.hasValue(R.styleable.MaterialProgressBar_mpb_progressBackgroundTintMode)) {
             mProgressTintInfo.mProgressBackgroundTintMode = DrawableCompat.parseTintMode(a.getInt(
@@ -105,9 +105,9 @@ public class MaterialProgressBar extends ProgressBar {
             mProgressTintInfo.mHasProgressBackgroundTintMode = true;
         }
         if (a.hasValue(R.styleable.MaterialProgressBar_mpb_indeterminateTint)) {
-            mProgressTintInfo.mIndeterminateTintList = a.getColorStateList(
+            mProgressTintInfo.mIndeterminateTint = a.getColorStateList(
                     R.styleable.MaterialProgressBar_mpb_indeterminateTint);
-            mProgressTintInfo.mHasIndeterminateTintList = true;
+            mProgressTintInfo.mHasIndeterminateTint = true;
         }
         if (a.hasValue(R.styleable.MaterialProgressBar_mpb_indeterminateTintMode)) {
             mProgressTintInfo.mIndeterminateTintMode = DrawableCompat.parseTintMode(a.getInt(
@@ -278,7 +278,7 @@ public class MaterialProgressBar extends ProgressBar {
     @Nullable
     @Override
     public ColorStateList getProgressTintList() {
-        return mProgressTintInfo.mProgressTintList;
+        return mProgressTintInfo.mProgressTint;
     }
 
     /**
@@ -286,8 +286,8 @@ public class MaterialProgressBar extends ProgressBar {
      */
     @Override
     public void setProgressTintList(@Nullable ColorStateList tint) {
-        mProgressTintInfo.mProgressTintList = tint;
-        mProgressTintInfo.mHasProgressTintList = true;
+        mProgressTintInfo.mProgressTint = tint;
+        mProgressTintInfo.mHasProgressTint = true;
 
         applyPrimaryProgressTint();
     }
@@ -318,7 +318,7 @@ public class MaterialProgressBar extends ProgressBar {
     @Nullable
     @Override
     public ColorStateList getSecondaryProgressTintList() {
-        return mProgressTintInfo.mSecondaryProgressTintList;
+        return mProgressTintInfo.mSecondaryProgressTint;
     }
 
     /**
@@ -326,8 +326,8 @@ public class MaterialProgressBar extends ProgressBar {
      */
     @Override
     public void setSecondaryProgressTintList(@Nullable ColorStateList tint) {
-        mProgressTintInfo.mSecondaryProgressTintList = tint;
-        mProgressTintInfo.mHasSecondaryProgressTintList = true;
+        mProgressTintInfo.mSecondaryProgressTint = tint;
+        mProgressTintInfo.mHasSecondaryProgressTint = true;
 
         applySecondaryProgressTint();
     }
@@ -358,7 +358,7 @@ public class MaterialProgressBar extends ProgressBar {
     @Nullable
     @Override
     public ColorStateList getProgressBackgroundTintList() {
-        return mProgressTintInfo.mProgressBackgroundTintList;
+        return mProgressTintInfo.mProgressBackgroundTint;
     }
 
     /**
@@ -366,8 +366,8 @@ public class MaterialProgressBar extends ProgressBar {
      */
     @Override
     public void setProgressBackgroundTintList(@Nullable ColorStateList tint) {
-        mProgressTintInfo.mProgressBackgroundTintList = tint;
-        mProgressTintInfo.mHasProgressBackgroundTintList = true;
+        mProgressTintInfo.mProgressBackgroundTint = tint;
+        mProgressTintInfo.mHasProgressBackgroundTint = true;
 
         applyProgressBackgroundTint();
     }
@@ -398,7 +398,7 @@ public class MaterialProgressBar extends ProgressBar {
     @Nullable
     @Override
     public ColorStateList getIndeterminateTintList() {
-        return mProgressTintInfo.mIndeterminateTintList;
+        return mProgressTintInfo.mIndeterminateTint;
     }
 
     /**
@@ -406,8 +406,8 @@ public class MaterialProgressBar extends ProgressBar {
      */
     @Override
     public void setIndeterminateTintList(@Nullable ColorStateList tint) {
-        mProgressTintInfo.mIndeterminateTintList = tint;
-        mProgressTintInfo.mHasIndeterminateTintList = true;
+        mProgressTintInfo.mIndeterminateTint = tint;
+        mProgressTintInfo.mHasIndeterminateTint = true;
 
         applyIndeterminateTint();
     }
@@ -445,11 +445,11 @@ public class MaterialProgressBar extends ProgressBar {
         if (getProgressDrawable() == null) {
             return;
         }
-        if (mProgressTintInfo.mHasProgressTintList || mProgressTintInfo.mHasProgressTintMode) {
+        if (mProgressTintInfo.mHasProgressTint || mProgressTintInfo.mHasProgressTintMode) {
             Drawable target = getTintTargetFromProgressDrawable(android.R.id.progress, true);
             if (target != null) {
-                applyTintForDrawable(target, mProgressTintInfo.mProgressTintList,
-                        mProgressTintInfo.mHasProgressTintList, mProgressTintInfo.mProgressTintMode,
+                applyTintForDrawable(target, mProgressTintInfo.mProgressTint,
+                        mProgressTintInfo.mHasProgressTint, mProgressTintInfo.mProgressTintMode,
                         mProgressTintInfo.mHasProgressTintMode);
             }
         }
@@ -459,13 +459,13 @@ public class MaterialProgressBar extends ProgressBar {
         if (getProgressDrawable() == null) {
             return;
         }
-        if (mProgressTintInfo.mHasSecondaryProgressTintList
+        if (mProgressTintInfo.mHasSecondaryProgressTint
                 || mProgressTintInfo.mHasSecondaryProgressTintMode) {
             Drawable target = getTintTargetFromProgressDrawable(android.R.id.secondaryProgress,
                     false);
             if (target != null) {
-                applyTintForDrawable(target, mProgressTintInfo.mSecondaryProgressTintList,
-                        mProgressTintInfo.mHasSecondaryProgressTintList,
+                applyTintForDrawable(target, mProgressTintInfo.mSecondaryProgressTint,
+                        mProgressTintInfo.mHasSecondaryProgressTint,
                         mProgressTintInfo.mSecondaryProgressTintMode,
                         mProgressTintInfo.mHasSecondaryProgressTintMode);
             }
@@ -476,12 +476,12 @@ public class MaterialProgressBar extends ProgressBar {
         if (getProgressDrawable() == null) {
             return;
         }
-        if (mProgressTintInfo.mHasProgressBackgroundTintList
+        if (mProgressTintInfo.mHasProgressBackgroundTint
                 || mProgressTintInfo.mHasProgressBackgroundTintMode) {
             Drawable target = getTintTargetFromProgressDrawable(android.R.id.background, false);
             if (target != null) {
-                applyTintForDrawable(target, mProgressTintInfo.mProgressBackgroundTintList,
-                        mProgressTintInfo.mHasProgressBackgroundTintList,
+                applyTintForDrawable(target, mProgressTintInfo.mProgressBackgroundTint,
+                        mProgressTintInfo.mHasProgressBackgroundTint,
                         mProgressTintInfo.mProgressBackgroundTintMode,
                         mProgressTintInfo.mHasProgressBackgroundTintMode);
             }
@@ -509,11 +509,11 @@ public class MaterialProgressBar extends ProgressBar {
         if (indeterminateDrawable == null) {
             return;
         }
-        if (mProgressTintInfo.mHasIndeterminateTintList
+        if (mProgressTintInfo.mHasIndeterminateTint
                 || mProgressTintInfo.mHasIndeterminateTintMode) {
             indeterminateDrawable.mutate();
-            applyTintForDrawable(indeterminateDrawable, mProgressTintInfo.mIndeterminateTintList,
-                    mProgressTintInfo.mHasIndeterminateTintList,
+            applyTintForDrawable(indeterminateDrawable, mProgressTintInfo.mIndeterminateTint,
+                    mProgressTintInfo.mHasIndeterminateTint,
                     mProgressTintInfo.mIndeterminateTintMode,
                     mProgressTintInfo.mHasIndeterminateTintMode);
         }
@@ -522,20 +522,20 @@ public class MaterialProgressBar extends ProgressBar {
     // Progress drawables in this library has already rewritten tint related methods for
     // compatibility.
     @SuppressLint("NewApi")
-    private void applyTintForDrawable(Drawable drawable, ColorStateList tintList,
-                                      boolean hasTintList, PorterDuff.Mode tintMode,
+    private void applyTintForDrawable(Drawable drawable, ColorStateList tint,
+                                      boolean hasTint, PorterDuff.Mode tintMode,
                                       boolean hasTintMode) {
 
-        if (hasTintList || hasTintMode) {
+        if (hasTint || hasTintMode) {
 
-            if (hasTintList) {
+            if (hasTint) {
                 if (drawable instanceof TintableDrawable) {
                     //noinspection RedundantCast
-                    ((TintableDrawable) drawable).setTintList(tintList);
+                    ((TintableDrawable) drawable).setTintList(tint);
                 } else {
                     Log.w(TAG, "Drawable did not implement TintableDrawable, it won't be tinted below Lollipop");
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        drawable.setTintList(tintList);
+                        drawable.setTintList(tint);
                     }
                 }
             }
@@ -562,24 +562,24 @@ public class MaterialProgressBar extends ProgressBar {
 
     private static class TintInfo {
 
-        public ColorStateList mProgressTintList;
+        public ColorStateList mProgressTint;
         public PorterDuff.Mode mProgressTintMode;
-        public boolean mHasProgressTintList;
+        public boolean mHasProgressTint;
         public boolean mHasProgressTintMode;
 
-        public ColorStateList mSecondaryProgressTintList;
+        public ColorStateList mSecondaryProgressTint;
         public PorterDuff.Mode mSecondaryProgressTintMode;
-        public boolean mHasSecondaryProgressTintList;
+        public boolean mHasSecondaryProgressTint;
         public boolean mHasSecondaryProgressTintMode;
 
-        public ColorStateList mProgressBackgroundTintList;
+        public ColorStateList mProgressBackgroundTint;
         public PorterDuff.Mode mProgressBackgroundTintMode;
-        public boolean mHasProgressBackgroundTintList;
+        public boolean mHasProgressBackgroundTint;
         public boolean mHasProgressBackgroundTintMode;
 
-        public ColorStateList mIndeterminateTintList;
+        public ColorStateList mIndeterminateTint;
         public PorterDuff.Mode mIndeterminateTintMode;
-        public boolean mHasIndeterminateTintList;
+        public boolean mHasIndeterminateTint;
         public boolean mHasIndeterminateTintMode;
     }
 }

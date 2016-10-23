@@ -8,50 +8,13 @@ package me.zhanghai.android.materialprogressbar;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.RectF;
 
-import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
+class SingleHorizontalProgressDrawable extends BaseSingleHorizontalProgressDrawable {
 
-class SingleHorizontalProgressDrawable extends BaseProgressDrawable {
-
-    private static final int PROGRESS_INTRINSIC_HEIGHT_DP = 4;
-    private static final int PADDED_INTRINSIC_HEIGHT_DP = 16;
-    private static final RectF RECT_BOUND = new RectF(-180, -1, 180, 1);
-    private static final RectF RECT_PADDED_BOUND = new RectF(-180, -4, 180, 4);
     private static final int LEVEL_MAX = 10000;
-
-    private int mProgressIntrinsicHeight;
-    private int mPaddedIntrinsicHeight;
-    private boolean mShowTrack = true;
-    private float mTrackAlpha;
 
     public SingleHorizontalProgressDrawable(Context context) {
         super(context);
-
-        float density = context.getResources().getDisplayMetrics().density;
-        mProgressIntrinsicHeight = Math.round(PROGRESS_INTRINSIC_HEIGHT_DP * density);
-        mPaddedIntrinsicHeight = Math.round(PADDED_INTRINSIC_HEIGHT_DP * density);
-
-        mTrackAlpha = ThemeUtils.getFloatFromAttrRes(android.R.attr.disabledAlpha, context);
-    }
-
-    public boolean getShowTrack() {
-        return mShowTrack;
-    }
-
-    public void setShowTrack(boolean showTrack) {
-        if (mShowTrack != showTrack) {
-            mShowTrack = showTrack;
-            invalidateSelf();
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public int getIntrinsicHeight() {
-        return mUseIntrinsicPadding ? mPaddedIntrinsicHeight : mProgressIntrinsicHeight;
     }
 
     @Override
@@ -61,34 +24,7 @@ class SingleHorizontalProgressDrawable extends BaseProgressDrawable {
     }
 
     @Override
-    protected void onPreparePaint(Paint paint) {
-        paint.setStyle(Paint.Style.FILL);
-    }
-
-    @Override
-    protected void onDraw(Canvas canvas, int width, int height, Paint paint) {
-
-        if (mUseIntrinsicPadding) {
-            canvas.scale(width / RECT_PADDED_BOUND.width(), height / RECT_PADDED_BOUND.height());
-            canvas.translate(RECT_PADDED_BOUND.width() / 2, RECT_PADDED_BOUND.height() / 2);
-        } else {
-            canvas.scale(width / RECT_BOUND.width(), height / RECT_BOUND.height());
-            canvas.translate(RECT_BOUND.width() / 2, RECT_BOUND.height() / 2);
-        }
-
-        if (mShowTrack) {
-            paint.setAlpha(Math.round(mAlpha * mTrackAlpha));
-            drawTrackRect(canvas, paint);
-            paint.setAlpha(mAlpha);
-        }
-        drawProgressRect(canvas, paint);
-    }
-
-    private static void drawTrackRect(Canvas canvas, Paint paint) {
-        canvas.drawRect(RECT_BOUND, paint);
-    }
-
-    private void drawProgressRect(Canvas canvas, Paint paint) {
+    protected void onDrawRect(Canvas canvas, Paint paint) {
 
         int level = getLevel();
         if (level == 0) {
@@ -98,7 +34,7 @@ class SingleHorizontalProgressDrawable extends BaseProgressDrawable {
         int saveCount = canvas.save();
         canvas.scale((float) level / LEVEL_MAX, 1, RECT_BOUND.left, 0);
 
-        canvas.drawRect(RECT_BOUND, paint);
+        super.onDrawRect(canvas, paint);
 
         canvas.restoreToCount(saveCount);
     }
