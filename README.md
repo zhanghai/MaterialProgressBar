@@ -68,7 +68,7 @@ Available custom attributes:
 - `app:mpb_useIntrinsicPadding`: Whether progress drawable should use its intrinsic padding. Defaults to `true`.
 - `app:mpb_showProgressBackground`: Whether progress drawable should show a progress background. Defaults to `true` for horizontal progress drawable, `false` otherwise.
 
-8 tint-related attributes such as `android:mpb_progressTint` and `app:mpb_progressTintMode` are also supported so that they can control the tinting of progress drawables. The default tint color is `?colorControlActivated`, and the default tint mode is `src_in`.
+8 tint-related attributes such as `app:mpb_progressTint` and `app:mpb_progressTintMode` are also supported so that they can control the tinting of progress drawables. The default tint color is `?colorControlActivated`, and the default tint mode is `src_in`.
 
 For a detailed example, you can refer to the [sample app's layout](//github.com/DreaminginCodeZH/MaterialProgressBar/blob/master/sample/src/main/res/layout/main_activity.xml), where you can find examples such as removing progress padding or background.
 
