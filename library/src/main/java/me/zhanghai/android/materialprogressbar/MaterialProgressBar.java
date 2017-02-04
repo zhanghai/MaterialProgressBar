@@ -31,8 +31,10 @@ public class MaterialProgressBar extends ProgressBar {
     public static final int PROGRESS_STYLE_CIRCULAR = 0;
     public static final int PROGRESS_STYLE_HORIZONTAL = 1;
 
+    // This field remains false inside super class constructor.
+    @SuppressWarnings("FieldCanBeLocal")
+    private boolean mSuperInitialized = true;
     private int mProgressStyle;
-
     private TintInfo mProgressTintInfo = new TintInfo();
 
     public MaterialProgressBar(Context context) {
@@ -144,6 +146,15 @@ public class MaterialProgressBar extends ProgressBar {
         }
         setUseIntrinsicPadding(useIntrinsicPadding);
         setShowProgressBackground(showProgressBackground);
+    }
+
+    @Override
+    public synchronized void setIndeterminate(boolean indeterminate) {
+        super.setIndeterminate(indeterminate);
+
+        if (mSuperInitialized && !(getCurrentDrawable() instanceof MaterialProgressDrawable)) {
+            Log.w(TAG, "Current drawable is not a MaterialProgressDrawable, you may want to set app:mpb_setBothDrawables");
+        }
     }
 
     @Override

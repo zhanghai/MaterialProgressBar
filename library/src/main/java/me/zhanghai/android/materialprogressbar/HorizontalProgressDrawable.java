@@ -24,7 +24,7 @@ import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
  * A backported {@code Drawable} for determinate horizontal {@code ProgressBar}.
  */
 public class HorizontalProgressDrawable extends LayerDrawable implements IntrinsicPaddingDrawable,
-        ShowBackgroundDrawable, TintableDrawable {
+        MaterialProgressDrawable, ShowBackgroundDrawable, TintableDrawable {
 
     private static final String TAG = HorizontalProgressDrawable.class.getSimpleName();
 
