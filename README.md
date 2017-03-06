@@ -14,6 +14,10 @@ Material Design `ProgressBar` with consistent appearance on Android 4.0+.
 
 ## Preview
 
+<a href="https://play.google.com/store/apps/details?id=me.zhanghai.android.materialprogressbar.sample" target="_blank"><img alt="Google Play" height="90" src="https://play.google.com/intl/en_US/badges/images/generic/en_badge_web_generic.png"/></a>
+
+[Sample APK](//github.com/DreaminginCodeZH/MaterialProgressBar/releases/download/v1.3.0/sample-release.apk)
+
 Android 4.4.4
 
 ![Android 4.4.4](screenshot/android_4_4_4.png)
@@ -25,8 +29,6 @@ Samsung Android 5.0.1 (native implementation fails to tint)
 Android 6.0.1
 
 ![Android 6.0.1](screenshot/android_6_0_1.png)
-
-[Sample APK](//github.com/DreaminginCodeZH/MaterialProgressBar/releases/download/v1.3.0/sample-release.apk)
 
 ## Integration
 
