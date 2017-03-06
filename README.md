@@ -22,9 +22,9 @@ Samsung Android 5.0.1 (native implementation fails to tint)
 
 ![Samsung Android 5.0.1](screenshot/android_5_0_1_samsung.png)
 
-Android 5.1.1
+Android 6.0.1
 
-![Android 5.1.1](screenshot/android_5_1_1.png)
+![Android 6.0.1](screenshot/android_6_0_1.png)
 
 [Sample APK](//github.com/DreaminginCodeZH/MaterialProgressBar/releases/download/v1.3.0/sample-release.apk)
 
