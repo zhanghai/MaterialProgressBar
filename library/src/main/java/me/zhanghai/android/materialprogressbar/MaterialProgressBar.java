@@ -122,13 +122,14 @@ public class MaterialProgressBar extends ProgressBar {
 
         switch (mProgressStyle) {
             case PROGRESS_STYLE_CIRCULAR:
-                if (!isIndeterminate() || setBothDrawables) {
-                    throw new UnsupportedOperationException(
-                            "Determinate circular drawable is not yet supported");
-                } else {
+                if (isIndeterminate() || setBothDrawables) {
                     if (!isInEditMode()) {
                         setIndeterminateDrawable(new IndeterminateProgressDrawable(context));
                     }
+                }
+                if (!isIndeterminate() || setBothDrawables) {
+                    throw new UnsupportedOperationException(
+                            "Determinate circular drawable is not yet supported");
                 }
                 break;
             case PROGRESS_STYLE_HORIZONTAL:
