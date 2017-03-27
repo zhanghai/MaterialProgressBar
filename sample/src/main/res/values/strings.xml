@@ -10,10 +10,12 @@
     <string name="app_name">MaterialProgressBar Sample</string>
 
     <string name="framework_implementation">Framework Implementation</string>
+    <string name="framework_implementation_not_implemented">Framework Implementation: not implemented</string>
     <string name="library_implementation">Library Implementation</string>
     <string name="library_implementation_tinted">Library Implementation (Tinted)</string>
     <string name="determinate_horizontal_progress">Determinate Horizontal ProgressBar</string>
     <string name="indeterminate_horizontal_progress">Indeterminate Horizontal ProgressBar</string>
+    <string name="determinate_circular_progress">Determinate Circular ProgressBar</string>
     <string name="indeterminate_circular_progress">Indeterminate Circular ProgressBar</string>
     <string name="toolbar_progress">ProgressBar on Toolbar</string>
     <string name="horizontal_progress_toolbar">Horizontal</string>

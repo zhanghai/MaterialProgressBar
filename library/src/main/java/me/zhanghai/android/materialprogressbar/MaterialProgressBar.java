@@ -35,6 +35,9 @@ public class MaterialProgressBar extends ProgressBar {
     @SuppressWarnings("FieldCanBeLocal")
     private boolean mSuperInitialized = true;
     private int mProgressStyle;
+    // Super class ProgressBar does not support determinate circular progress bars. Use this
+    // member to force a determinate circular progress bar.
+    private boolean mForceDeterminate;
     private TintInfo mProgressTintInfo = new TintInfo();
 
     public MaterialProgressBar(Context context) {
@@ -71,6 +74,8 @@ public class MaterialProgressBar extends ProgressBar {
                 R.styleable.MaterialProgressBar, defStyleAttr, defStyleRes);
         mProgressStyle = a.getInt(R.styleable.MaterialProgressBar_mpb_progressStyle,
                 PROGRESS_STYLE_CIRCULAR);
+        mForceDeterminate = a.getBoolean(R.styleable.MaterialProgressBar__mpb_forceDeterminate,
+                false);
         boolean setBothDrawables = a.getBoolean(
                 R.styleable.MaterialProgressBar_mpb_setBothDrawables, false);
         boolean useIntrinsicPadding = a.getBoolean(
@@ -128,8 +133,7 @@ public class MaterialProgressBar extends ProgressBar {
                     }
                 }
                 if (!isIndeterminate() || setBothDrawables) {
-                    throw new UnsupportedOperationException(
-                            "Determinate circular drawable is not yet supported");
+                    setProgressDrawable(new DeterminateCircularProgressDrawable(context));
                 }
                 break;
             case PROGRESS_STYLE_HORIZONTAL:
@@ -148,6 +152,12 @@ public class MaterialProgressBar extends ProgressBar {
         }
         setUseIntrinsicPadding(useIntrinsicPadding);
         setShowProgressBackground(showProgressBackground);
+    }
+
+    @Override
+    public synchronized boolean isIndeterminate() {
+        if (mForceDeterminate) return false;
+        return super.isIndeterminate();
     }
 
     @Override
@@ -572,6 +582,18 @@ public class MaterialProgressBar extends ProgressBar {
                 drawable.setState(getDrawableState());
             }
         }
+    }
+
+    @Override
+    public synchronized void setSecondaryProgress(int secondaryProgress) {
+        if (mProgressStyle == PROGRESS_STYLE_CIRCULAR) {
+            // Circular MaterialProgressBar does not support secondary progress.
+            // setSecondaryProgress() is called by the super constructor, so we must ignore this call
+            // without an assertion
+            return;
+        }
+
+        super.setSecondaryProgress(secondaryProgress);
     }
 
     private static class TintInfo {

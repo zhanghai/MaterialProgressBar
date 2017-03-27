@@ -14,7 +14,7 @@
         </attr>
         <!--
           ~ Whether both determinate and indeterminate drawables should be set on this progress bar.
-          ~ Determinate ring progress drawable is not supported yet. Defaults to false.
+          ~ Defaults to false.
           -->
         <attr name="mpb_setBothDrawables" format="boolean" />
         <!-- Whether progress drawable should use its intrinsic padding. Defaults to true. -->
@@ -60,5 +60,9 @@
             <enum name="screen" value="15" />
             <enum name="add" value="16" />
         </attr>
+
+
+        <!-- private -->
+        <attr name="_mpb_forceDeterminate" format="boolean" />
     </declare-styleable>
 </resources>
