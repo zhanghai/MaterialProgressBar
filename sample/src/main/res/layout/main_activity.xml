@@ -22,12 +22,12 @@
         android:paddingBottom="@dimen/screen_edge_vertical_margin"
         android:orientation="vertical">
 
-        <!-- Horizontal progress -->
+        <!-- Determinate horizontal progress -->
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/horizontal_progress"
+            android:text="@string/determinate_horizontal_progress"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
         <TextView
@@ -121,12 +121,12 @@
             app:mpb_indeterminateTint="@color/tint"
             style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal" />
 
-        <!-- Indeterminate progress -->
+        <!-- Indeterminate circular progress -->
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/indeterminate_progress"
+            android:text="@string/indeterminate_circular_progress"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
         <TextView
