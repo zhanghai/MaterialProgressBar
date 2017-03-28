@@ -12,10 +12,10 @@ public abstract class BaseSingleCircularProgressDrawable extends BaseProgressDra
     /**
      * A dummy value smaller or equal to any size we need to use this because
      * {@link ProgressBar#setProgressDrawable(Drawable)} sets maxHeight to at
-     * least this value. 16px = 16dp on low-end 1x MDPI device, so this should
-     * be a good lower bound.
+     * least this value. 12px = 12dp on low-end 1x MDPI device, and 12dp is smaller
+     * than the Small.NoPadding style, so this should be a good lower bound.
      */
-    static final private int INTRINSIC_SIZE_IN_PX = 16;
+    static final private int INTRINSIC_SIZE_IN_PX = 12;
 
     protected static final RectF RECT_BOUND = new RectF(-21, -21, 21, 21);
     protected static final RectF RECT_PADDED_BOUND = new RectF(-24, -24, 24, 24);
