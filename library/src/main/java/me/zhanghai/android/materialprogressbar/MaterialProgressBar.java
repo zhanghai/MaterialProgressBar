@@ -63,6 +63,7 @@ public class MaterialProgressBar extends ProgressBar {
         init(attrs, defStyleAttr, defStyleRes);
     }
 
+    @SuppressWarnings("RestrictedApi")
     private void init(AttributeSet attrs, int defStyleAttr, int defStyleRes) {
 
         Context context = getContext();
