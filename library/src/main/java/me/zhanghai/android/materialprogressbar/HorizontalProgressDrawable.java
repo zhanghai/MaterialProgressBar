@@ -18,6 +18,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.graphics.ColorUtils;
 import android.util.Log;
 
+import me.zhanghai.android.materialprogressbar.internal.Colors;
 import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
 
 /**
@@ -169,22 +170,17 @@ public class HorizontalProgressDrawable extends LayerDrawable implements Intrins
                 // setTint().
                 float backgroundAlpha = (float) Color.alpha(tintColor) / 0xFF;
                 tintColor = ColorUtils.setAlphaComponent(tintColor, Math.round(
-                        0xFF * compositeAlpha(backgroundAlpha, backgroundAlpha)));
+                        0xFF * Colors.compositeAlpha(backgroundAlpha, backgroundAlpha)));
             }
             mSecondaryProgressDrawable.setTint(tintColor);
         } else if (mHasSecondaryProgressTint) {
             ColorStateList tint = mSecondaryProgressTint;
             if (!getShowBackground()) {
                 // Composite alpha so that the secondary progress looks as before.
-                tint = tint.withAlpha(Math.round(0xFF * compositeAlpha(mBackgroundAlpha,
+                tint = tint.withAlpha(Math.round(0xFF * Colors.compositeAlpha(mBackgroundAlpha,
                         mBackgroundAlpha)));
             }
             mSecondaryProgressDrawable.setTintList(tint);
         }
-    }
-
-    // See https://en.wikipedia.org/wiki/Alpha_compositing
-    private float compositeAlpha(float alpha1, float alpha2) {
-        return alpha1 + alpha2 * (1 - alpha1);
     }
 }
