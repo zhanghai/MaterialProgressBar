@@ -20,7 +20,9 @@
     <string name="toolbar_progress">ProgressBar on Toolbar</string>
     <string name="horizontal_progress_toolbar">Horizontal</string>
     <string name="indeterminate_horizontal_progress_toolbar">Indeterminate Horizontal</string>
+
     <string name="action_about">About</string>
+    <string name="action_circular_determinate_examples">Circular Determinate Examples</string>
 
     <string name="circular_determinate_title">Circular Determinate Examples</string>
 
