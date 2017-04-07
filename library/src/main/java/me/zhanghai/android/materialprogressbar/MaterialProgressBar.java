@@ -13,6 +13,7 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.TintTypedArray;
 import android.util.AttributeSet;
@@ -466,11 +467,13 @@ public class MaterialProgressBar extends ProgressBar {
     }
 
     private void applyPrimaryProgressTint() {
-        if (getProgressDrawable() == null) {
+        Drawable progressDrawable = getProgressDrawable();
+        if (progressDrawable == null) {
             return;
         }
         if (mProgressTintInfo.mHasProgressTint || mProgressTintInfo.mHasProgressTintMode) {
-            Drawable target = getTintTargetFromProgressDrawable(android.R.id.progress, true);
+            Drawable target = getTintTargetFromProgressDrawable(progressDrawable,
+                    android.R.id.progress, true);
             if (target != null) {
                 applyTintForDrawable(target, mProgressTintInfo.mProgressTint,
                         mProgressTintInfo.mHasProgressTint, mProgressTintInfo.mProgressTintMode,
@@ -480,13 +483,14 @@ public class MaterialProgressBar extends ProgressBar {
     }
 
     private void applySecondaryProgressTint() {
-        if (getProgressDrawable() == null) {
+        Drawable progressDrawable = getProgressDrawable();
+        if (progressDrawable == null) {
             return;
         }
         if (mProgressTintInfo.mHasSecondaryProgressTint
                 || mProgressTintInfo.mHasSecondaryProgressTintMode) {
-            Drawable target = getTintTargetFromProgressDrawable(android.R.id.secondaryProgress,
-                    false);
+            Drawable target = getTintTargetFromProgressDrawable(progressDrawable,
+                    android.R.id.secondaryProgress, false);
             if (target != null) {
                 applyTintForDrawable(target, mProgressTintInfo.mSecondaryProgressTint,
                         mProgressTintInfo.mHasSecondaryProgressTint,
@@ -497,12 +501,14 @@ public class MaterialProgressBar extends ProgressBar {
     }
 
     private void applyProgressBackgroundTint() {
-        if (getProgressDrawable() == null) {
+        Drawable progressDrawable = getProgressDrawable();
+        if (progressDrawable == null) {
             return;
         }
         if (mProgressTintInfo.mHasProgressBackgroundTint
                 || mProgressTintInfo.mHasProgressBackgroundTintMode) {
-            Drawable target = getTintTargetFromProgressDrawable(android.R.id.background, false);
+            Drawable target = getTintTargetFromProgressDrawable(progressDrawable,
+                    android.R.id.background, false);
             if (target != null) {
                 applyTintForDrawable(target, mProgressTintInfo.mProgressBackgroundTint,
                         mProgressTintInfo.mHasProgressBackgroundTint,
@@ -512,11 +518,8 @@ public class MaterialProgressBar extends ProgressBar {
         }
     }
 
-    private Drawable getTintTargetFromProgressDrawable(int layerId, boolean shouldFallback) {
-        Drawable progressDrawable = getProgressDrawable();
-        if (progressDrawable == null) {
-            return null;
-        }
+    private Drawable getTintTargetFromProgressDrawable(
+            @NonNull Drawable progressDrawable, int layerId, boolean shouldFallback) {
         progressDrawable.mutate();
         Drawable layerDrawable = null;
         if (progressDrawable instanceof LayerDrawable) {
