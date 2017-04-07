@@ -33,11 +33,11 @@ class DeterminateCircularProgressDrawable extends LayerDrawable
     private boolean mHasSecondaryProgressTintColor;
     private int mSecondaryProgressTintColor;
 
-    public DeterminateCircularProgressDrawable(Context context) {
+    public DeterminateCircularProgressDrawable(Context context, int determinateCircularStyle) {
         super(new Drawable[] {
                 new SingleCircularProgressBackgroundDrawable(),
-                new SingleCircularProgressDrawable(),
-                new SingleCircularProgressDrawable(),
+                new SingleCircularProgressDrawable(determinateCircularStyle),
+                new SingleCircularProgressDrawable(determinateCircularStyle),
         });
 
         mBackgroundAlpha = ThemeUtils.getFloatFromAttrRes(android.R.attr.disabledAlpha, context);

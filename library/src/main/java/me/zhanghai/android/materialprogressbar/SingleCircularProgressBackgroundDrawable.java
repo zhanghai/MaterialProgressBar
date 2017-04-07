@@ -10,6 +10,10 @@ public class SingleCircularProgressBackgroundDrawable extends SingleCircularProg
 
     private boolean mShow = true;
 
+    public SingleCircularProgressBackgroundDrawable() {
+        super(MaterialProgressBar.DETERMINATE_CIRCULAR_STYLE_FIXEDSTARTTOP);
+    }
+
     @Override
     public boolean getShowBackground() {
         return mShow;

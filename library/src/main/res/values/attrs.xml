@@ -61,6 +61,12 @@
             <enum name="add" value="16" />
         </attr>
 
+        <!-- Style of progress drawable: fixedStartTop or movingStart. Defaults to fixedStartTop. -->
+        <attr name="mpb_determinateCircularStyle" format="enum">
+            <enum name="fixed_start_top" value="0" />
+            <enum name="moving_start" value="1" />
+        </attr>
+
 
         <!-- private -->
         <attr name="_mpb_forceDeterminate" format="boolean" />

@@ -32,10 +32,14 @@ public class MaterialProgressBar extends ProgressBar {
     public static final int PROGRESS_STYLE_CIRCULAR = 0;
     public static final int PROGRESS_STYLE_HORIZONTAL = 1;
 
+    public static final int DETERMINATE_CIRCULAR_STYLE_FIXEDSTARTTOP = 0;
+    public static final int DETERMINATE_CIRCULAR_STYLE_MOVINSTART = 1;
+
     // This field remains false inside super class constructor.
     @SuppressWarnings("FieldCanBeLocal")
     private boolean mSuperInitialized = true;
     private int mProgressStyle;
+    private int mDeterminateCircularStyle;
     // Super class ProgressBar does not support determinate circular progress bars. Use this
     // member to force a determinate circular progress bar.
     private boolean mForceDeterminate;
@@ -75,6 +79,9 @@ public class MaterialProgressBar extends ProgressBar {
                 R.styleable.MaterialProgressBar, defStyleAttr, defStyleRes);
         mProgressStyle = a.getInt(R.styleable.MaterialProgressBar_mpb_progressStyle,
                 PROGRESS_STYLE_CIRCULAR);
+        mDeterminateCircularStyle = a.getInt(
+                R.styleable.MaterialProgressBar_mpb_determinateCircularStyle,
+                DETERMINATE_CIRCULAR_STYLE_FIXEDSTARTTOP);
         mForceDeterminate = a.getBoolean(R.styleable.MaterialProgressBar__mpb_forceDeterminate,
                 false);
         boolean setBothDrawables = a.getBoolean(
@@ -134,7 +141,7 @@ public class MaterialProgressBar extends ProgressBar {
                     }
                 }
                 if (!isIndeterminate() || setBothDrawables) {
-                    setProgressDrawable(new DeterminateCircularProgressDrawable(context));
+                    setProgressDrawable(new DeterminateCircularProgressDrawable(context, mDeterminateCircularStyle));
                 }
                 break;
             case PROGRESS_STYLE_HORIZONTAL:
