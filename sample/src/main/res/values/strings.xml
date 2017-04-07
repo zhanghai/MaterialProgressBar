@@ -22,6 +22,8 @@
     <string name="indeterminate_horizontal_progress_toolbar">Indeterminate Horizontal</string>
     <string name="action_about">About</string>
 
+    <string name="circular_determinate_title">Circular Determinate Examples</string>
+
     <string name="about_title">About</string>
     <string name="about_name">MaterialProgressBar</string>
     <string name="about_version_format">Version %1$s</string>
