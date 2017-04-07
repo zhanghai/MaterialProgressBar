@@ -3,6 +3,7 @@ package me.zhanghai.android.materialprogressbar;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
 
 public class SingleCircularProgressDrawable extends BaseSingleCircularProgressDrawable {
 
@@ -19,6 +20,9 @@ public class SingleCircularProgressDrawable extends BaseSingleCircularProgressDr
     private static final float LEADING_ANGLE_MAX = 720;
     private static final float TRAILING_ANGLE_MAX = 360;
 
+    /**
+     * Value from {@link Drawable#getLevel()}
+     */
     private static final int LEVEL_MAX = 10000;
 
     public SingleCircularProgressDrawable() {

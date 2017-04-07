@@ -8,9 +8,13 @@ package me.zhanghai.android.materialprogressbar;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
 
 class SingleHorizontalProgressDrawable extends BaseSingleHorizontalProgressDrawable {
 
+    /**
+     * Value from {@link Drawable#getLevel()}
+     */
     private static final int LEVEL_MAX = 10000;
 
     public SingleHorizontalProgressDrawable(Context context) {
