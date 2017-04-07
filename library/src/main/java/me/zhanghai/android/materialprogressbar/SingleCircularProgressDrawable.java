@@ -23,7 +23,7 @@ public class SingleCircularProgressDrawable extends BaseSingleCircularProgressDr
     /**
      * Value from {@link Drawable#getLevel()}
      */
-    private static final int LEVEL_MAX = 10000;
+    protected static final int LEVEL_MAX = 10000;
 
     public SingleCircularProgressDrawable() {
         super();
@@ -35,10 +35,17 @@ public class SingleCircularProgressDrawable extends BaseSingleCircularProgressDr
         return true;
     }
 
+    /**
+     * Custom wrapper around final {@link Drawable#getLevel()} such that we can override it
+     */
+    protected int getLevelImpl() {
+        return getLevel();
+    }
+
     @Override
     protected void onDrawRing(Canvas canvas, Paint paint) {
 
-        int level = getLevel();
+        int level = getLevelImpl();
         if (level == 0) {
             return;
         }

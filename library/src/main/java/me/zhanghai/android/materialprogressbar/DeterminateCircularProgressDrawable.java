@@ -24,6 +24,7 @@ class DeterminateCircularProgressDrawable extends LayerDrawable
 
     private float mBackgroundAlpha;
 
+    private SingleCircularProgressBackgroundDrawable mBackgroundDrawable;
     private SingleCircularProgressDrawable mProgressDrawable;
     private SingleCircularProgressDrawable mSecondaryProgressDrawable;
 
@@ -34,16 +35,19 @@ class DeterminateCircularProgressDrawable extends LayerDrawable
 
     public DeterminateCircularProgressDrawable(Context context) {
         super(new Drawable[] {
+                new SingleCircularProgressBackgroundDrawable(),
                 new SingleCircularProgressDrawable(),
                 new SingleCircularProgressDrawable(),
         });
 
         mBackgroundAlpha = ThemeUtils.getFloatFromAttrRes(android.R.attr.disabledAlpha, context);
 
-        setId(0, android.R.id.secondaryProgress);
-        mSecondaryProgressDrawable = (SingleCircularProgressDrawable) getDrawable(0);
-        setId(1, android.R.id.progress);
-        mProgressDrawable = (SingleCircularProgressDrawable) getDrawable(1);
+        setId(0, android.R.id.background);
+        mBackgroundDrawable = (SingleCircularProgressBackgroundDrawable) getDrawable(0);
+        setId(1, android.R.id.secondaryProgress);
+        mSecondaryProgressDrawable = (SingleCircularProgressDrawable) getDrawable(1);
+        setId(2, android.R.id.progress);
+        mProgressDrawable = (SingleCircularProgressDrawable) getDrawable(2);
 
         int controlActivatedColor = ThemeUtils.getColorFromAttrRes(R.attr.colorControlActivated,
                 context);
@@ -55,7 +59,7 @@ class DeterminateCircularProgressDrawable extends LayerDrawable
      */
     @Override
     public boolean getShowBackground() {
-        return false;
+        return mBackgroundDrawable.getShowBackground();
     }
 
     /**
@@ -63,6 +67,10 @@ class DeterminateCircularProgressDrawable extends LayerDrawable
      */
     @Override
     public void setShowBackground(boolean show) {
+        if (mBackgroundDrawable.getShowBackground() != show) {
+            mBackgroundDrawable.setShowBackground(show);
+            updateSecondaryProgressTint();
+        }
     }
 
     /**
@@ -78,6 +86,7 @@ class DeterminateCircularProgressDrawable extends LayerDrawable
      */
     @Override
     public void setUseIntrinsicPadding(boolean useIntrinsicPadding) {
+        mBackgroundDrawable.setUseIntrinsicPadding(useIntrinsicPadding);
         mSecondaryProgressDrawable.setUseIntrinsicPadding(useIntrinsicPadding);
         mProgressDrawable.setUseIntrinsicPadding(useIntrinsicPadding);
     }
@@ -91,6 +100,7 @@ class DeterminateCircularProgressDrawable extends LayerDrawable
         // Modulate alpha of tintColor against mBackgroundAlpha.
         int backgroundTintColor = ColorUtils.setAlphaComponent(tintColor, Math.round(
                 Color.alpha(tintColor) * mBackgroundAlpha));
+        mBackgroundDrawable.setTint(backgroundTintColor);
         setSecondaryProgressTint(backgroundTintColor);
         mProgressDrawable.setTint(tintColor);
     }
@@ -110,6 +120,7 @@ class DeterminateCircularProgressDrawable extends LayerDrawable
         } else {
             backgroundTint = null;
         }
+        mBackgroundDrawable.setTintList(backgroundTint);
         setSecondaryProgressTintList(backgroundTint);
         mProgressDrawable.setTintList(tint);
     }
@@ -120,6 +131,7 @@ class DeterminateCircularProgressDrawable extends LayerDrawable
     @Override
     @SuppressLint("NewApi")
     public void setTintMode(@NonNull PorterDuff.Mode tintMode) {
+        mBackgroundDrawable.setTintMode(tintMode);
         mProgressDrawable.setTintMode(tintMode);
         mSecondaryProgressDrawable.setTintMode(tintMode);
     }
