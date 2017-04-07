@@ -69,6 +69,7 @@ public class HorizontalProgressDrawable extends LayerDrawable implements Intrins
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean getShowBackground() {
         return mBackgroundDrawable.getShowBackground();
     }
