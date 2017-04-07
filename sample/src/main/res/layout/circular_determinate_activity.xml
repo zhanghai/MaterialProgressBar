@@ -46,7 +46,7 @@
                 android:progress="30"
                 android:secondaryProgress="60"
                 android:max="100"
-                app:mpb_progressBackgroundTint="#33000000"
+                app:mpb_showProgressBackground="true"
                 style="@style/Widget.MaterialProgressBar.ProgressBar.Circular.Determinate" />
 
             <me.zhanghai.android.materialprogressbar.MaterialProgressBar
@@ -83,6 +83,7 @@
                 android:max="100"
                 app:mpb_progressTint="@color/tint"
                 app:mpb_secondaryProgressTint="@color/tint_background"
+                app:mpb_showProgressBackground="true"
                 app:mpb_progressBackgroundTint="@color/tint_background"
                 style="@style/Widget.MaterialProgressBar.ProgressBar.Circular.Determinate" />
         </GridLayout>
