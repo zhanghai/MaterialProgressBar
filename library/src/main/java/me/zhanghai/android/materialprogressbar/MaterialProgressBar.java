@@ -584,18 +584,6 @@ public class MaterialProgressBar extends ProgressBar {
         }
     }
 
-    @Override
-    public synchronized void setSecondaryProgress(int secondaryProgress) {
-        if (mProgressStyle == PROGRESS_STYLE_CIRCULAR) {
-            // Circular MaterialProgressBar does not support secondary progress.
-            // setSecondaryProgress() is called by the super constructor, so we must ignore this call
-            // without an assertion
-            return;
-        }
-
-        super.setSecondaryProgress(secondaryProgress);
-    }
-
     private static class TintInfo {
 
         public ColorStateList mProgressTint;

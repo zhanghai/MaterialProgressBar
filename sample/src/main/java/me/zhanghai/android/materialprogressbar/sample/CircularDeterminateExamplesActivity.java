@@ -18,9 +18,10 @@ public class CircularDeterminateExamplesActivity extends AppCompatActivity {
     }
 
     private void setupDeterminateCircleProgressBars() {
-        final MaterialProgressBar determinateCircular1 = (MaterialProgressBar) findViewById(R.id.cd_default);
-        final MaterialProgressBar determinateCircular2 = (MaterialProgressBar) findViewById(R.id.cd_tinted);
-        final MaterialProgressBar determinateCircular3 = (MaterialProgressBar) findViewById(R.id.cd_default);
+        final MaterialProgressBar cdDefault = (MaterialProgressBar) findViewById(R.id.cd_default);
+        final MaterialProgressBar cdTinted = (MaterialProgressBar) findViewById(R.id.cd_tinted);
+        final MaterialProgressBar cdSecondary = (MaterialProgressBar) findViewById(R.id.cd_secondary);
+        final MaterialProgressBar cdSecondaryTinted = (MaterialProgressBar) findViewById(R.id.cd_secondary_tinted);
 
         new Thread() {
             @Override
@@ -37,19 +38,32 @@ public class CircularDeterminateExamplesActivity extends AppCompatActivity {
                             public void run() {
                                 if (0 <= progress && progress <= 100) {
                                     // progress
-                                    determinateCircular1.setProgress(progress);
-                                    determinateCircular2.setProgress(progress);
-                                    determinateCircular3.setProgress(progress);
+                                    cdDefault.setProgress(progress);
+                                    cdTinted.setProgress(progress);
+                                    cdSecondary.setProgress(progress);
+                                    cdSecondaryTinted.setProgress(progress);
+
+                                    int secondary = Math.min((int) Math.round(progress*1.333), 100);
+                                    cdSecondary.setSecondaryProgress(secondary);
+                                    cdSecondaryTinted.setSecondaryProgress(secondary);
                                 } else if (progress <= 125) {
                                     // rest at end position
-                                    determinateCircular1.setProgress(100);
-                                    determinateCircular2.setProgress(100);
-                                    determinateCircular3.setProgress(100);
+                                    cdDefault.setProgress(100);
+                                    cdTinted.setProgress(100);
+                                    cdSecondary.setProgress(100);
+                                    cdSecondaryTinted.setProgress(100);
+
+                                    cdSecondary.setSecondaryProgress(100);
+                                    cdSecondaryTinted.setSecondaryProgress(100);
                                 } else if (progress <= 150) {
                                     // rest at start position
-                                    determinateCircular1.setProgress(0);
-                                    determinateCircular2.setProgress(0);
-                                    determinateCircular3.setProgress(0);
+                                    cdDefault.setProgress(0);
+                                    cdTinted.setProgress(0);
+                                    cdSecondary.setProgress(0);
+                                    cdSecondaryTinted.setProgress(0);
+
+                                    cdSecondary.setSecondaryProgress(0);
+                                    cdSecondaryTinted.setSecondaryProgress(0);
                                 } else {
                                     Log.wtf(TAG, "Broken value for `progress`");
                                 }
