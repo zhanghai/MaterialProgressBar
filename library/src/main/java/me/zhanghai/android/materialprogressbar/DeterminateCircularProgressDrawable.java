@@ -101,7 +101,7 @@ class DeterminateCircularProgressDrawable extends LayerDrawable
         int backgroundTintColor = ColorUtils.setAlphaComponent(tintColor, Math.round(
                 Color.alpha(tintColor) * mBackgroundAlpha));
         mBackgroundDrawable.setTint(backgroundTintColor);
-        setSecondaryProgressTint(backgroundTintColor);
+        setSecondaryProgressTintColor(backgroundTintColor);
         mProgressDrawable.setTint(tintColor);
     }
 
@@ -136,18 +136,22 @@ class DeterminateCircularProgressDrawable extends LayerDrawable
         mSecondaryProgressDrawable.setTintMode(tintMode);
     }
 
-    private void setSecondaryProgressTint(int tintColor) {
+    void setSecondaryProgressTintColor(int tintColor) {
         mHasSecondaryProgressTintColor = true;
         mSecondaryProgressTintColor = tintColor;
         mHasSecondaryProgressTint = false;
         updateSecondaryProgressTint();
     }
 
-    private void setSecondaryProgressTintList(ColorStateList tint) {
+    void setSecondaryProgressTintList(ColorStateList tint) {
         mHasSecondaryProgressTintColor = false;
         mHasSecondaryProgressTint = true;
         mSecondaryProgressTint = tint;
         updateSecondaryProgressTint();
+    }
+
+    void setSecondaryProgressTintMode(@NonNull PorterDuff.Mode tintMode) {
+        mSecondaryProgressDrawable.setTintMode(tintMode);
     }
 
     @SuppressLint("NewApi")

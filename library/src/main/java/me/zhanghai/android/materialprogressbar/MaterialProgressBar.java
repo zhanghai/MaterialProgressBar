@@ -489,13 +489,28 @@ public class MaterialProgressBar extends ProgressBar {
         }
         if (mProgressTintInfo.mHasSecondaryProgressTint
                 || mProgressTintInfo.mHasSecondaryProgressTintMode) {
-            Drawable target = getTintTargetFromProgressDrawable(progressDrawable,
-                    android.R.id.secondaryProgress, false);
-            if (target != null) {
-                applyTintForDrawable(target, mProgressTintInfo.mSecondaryProgressTint,
-                        mProgressTintInfo.mHasSecondaryProgressTint,
-                        mProgressTintInfo.mSecondaryProgressTintMode,
-                        mProgressTintInfo.mHasSecondaryProgressTintMode);
+
+            if (progressDrawable instanceof DeterminateCircularProgressDrawable) {
+                // Don't apply to secondary progress directly in this case as
+                // DeterminateCircularProgressDrawable needs to know about the color update
+
+                if (mProgressTintInfo.mHasSecondaryProgressTint) {
+                    ((DeterminateCircularProgressDrawable) progressDrawable)
+                            .setSecondaryProgressTintList(mProgressTintInfo.mSecondaryProgressTint);
+                }
+                if (mProgressTintInfo.mHasSecondaryProgressTintMode) {
+                    ((DeterminateCircularProgressDrawable) progressDrawable)
+                            .setSecondaryProgressTintMode(mProgressTintInfo.mSecondaryProgressTintMode);
+                }
+            } else {
+                Drawable target = getTintTargetFromProgressDrawable(progressDrawable,
+                        android.R.id.secondaryProgress, false);
+                if (target != null) {
+                    applyTintForDrawable(target, mProgressTintInfo.mSecondaryProgressTint,
+                            mProgressTintInfo.mHasSecondaryProgressTint,
+                            mProgressTintInfo.mSecondaryProgressTintMode,
+                            mProgressTintInfo.mHasSecondaryProgressTintMode);
+                }
             }
         }
     }
