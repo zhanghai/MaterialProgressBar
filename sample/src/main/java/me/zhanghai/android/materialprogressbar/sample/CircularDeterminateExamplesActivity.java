@@ -29,20 +29,40 @@ public class CircularDeterminateExamplesActivity extends AppCompatActivity {
         final MaterialProgressBar cdTintedSecondary = (MaterialProgressBar) findViewById(R.id.cd_tinted_secondary);
         final MaterialProgressBar cdTintedSecondaryBackground = (MaterialProgressBar) findViewById(R.id.cd_tinted_secondary_background);
 
+        final MaterialProgressBar cdmDefault = (MaterialProgressBar) findViewById(R.id.cd_moving_default);
+        final MaterialProgressBar cdmSecondary = (MaterialProgressBar) findViewById(R.id.cd_moving_secondary);
+        final MaterialProgressBar cdmSecondaryBackground = (MaterialProgressBar) findViewById(R.id.cd_moving_secondary_background);
+
+        final MaterialProgressBar cdmTinted = (MaterialProgressBar) findViewById(R.id.cd_moving_tinted);
+        final MaterialProgressBar cdmTintedSecondary = (MaterialProgressBar) findViewById(R.id.cd_moving_tinted_secondary);
+        final MaterialProgressBar cdmTintedSecondaryBackground = (MaterialProgressBar) findViewById(R.id.cd_moving_tinted_secondary_background);
+
         final List<MaterialProgressBar> all = Arrays.asList(
                 cdDefault,
                 cdSecondary,
                 cdSecondaryBackground,
                 cdTinted,
                 cdTintedSecondary,
-                cdTintedSecondaryBackground
+                cdTintedSecondaryBackground,
+
+                cdmDefault,
+                cdmSecondary,
+                cdmSecondaryBackground,
+                cdmTinted,
+                cdmTintedSecondary,
+                cdmTintedSecondaryBackground
         );
 
         final List<MaterialProgressBar> withSecondary = Arrays.asList(
                 cdSecondary,
                 cdSecondaryBackground,
                 cdTintedSecondary,
-                cdTintedSecondaryBackground
+                cdTintedSecondaryBackground,
+
+                cdmSecondary,
+                cdmSecondaryBackground,
+                cdmTintedSecondary,
+                cdmTintedSecondaryBackground
         );
 
         new Thread() {

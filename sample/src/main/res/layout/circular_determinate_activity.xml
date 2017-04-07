@@ -12,6 +12,7 @@
         android:layout_height="wrap_content">
 
         <GridLayout
+            android:id="@+id/cd_fixed_start_top"
             android:columnCount="3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -88,6 +89,89 @@
                 style="@style/Widget.MaterialProgressBar.ProgressBar.Circular.Determinate" />
         </GridLayout>
 
+        <GridLayout
+            android:id="@+id/cd_moving_start"
+            android:columnCount="3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+                android:id="@+id/cd_moving_default"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:indeterminate="false"
+                android:progress="30"
+                android:max="100"
+                app:mpb_determinateCircularStyle="moving_start"
+                style="@style/Widget.MaterialProgressBar.ProgressBar.Circular.Determinate" />
+
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+                android:id="@+id/cd_moving_secondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:indeterminate="false"
+                android:progress="30"
+                android:secondaryProgress="60"
+                android:max="100"
+                app:mpb_determinateCircularStyle="moving_start"
+                style="@style/Widget.MaterialProgressBar.ProgressBar.Circular.Determinate" />
+
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+                android:id="@+id/cd_moving_secondary_background"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:indeterminate="false"
+                android:progress="30"
+                android:secondaryProgress="60"
+                android:max="100"
+                app:mpb_showProgressBackground="true"
+                app:mpb_determinateCircularStyle="moving_start"
+                style="@style/Widget.MaterialProgressBar.ProgressBar.Circular.Determinate" />
+
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+                android:id="@+id/cd_moving_tinted"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:indeterminate="false"
+                android:progress="30"
+                android:max="100"
+                app:mpb_progressTint="@color/tint"
+                app:mpb_determinateCircularStyle="moving_start"
+                style="@style/Widget.MaterialProgressBar.ProgressBar.Circular.Determinate" />
+
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+                android:id="@+id/cd_moving_tinted_secondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:indeterminate="false"
+                android:progress="30"
+                android:secondaryProgress="60"
+                android:max="100"
+                app:mpb_progressTint="@color/tint"
+                app:mpb_secondaryProgressTint="@color/tint_background"
+                app:mpb_determinateCircularStyle="moving_start"
+                style="@style/Widget.MaterialProgressBar.ProgressBar.Circular.Determinate" />
+
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+                android:id="@+id/cd_moving_tinted_secondary_background"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:indeterminate="false"
+                android:progress="30"
+                android:max="100"
+                app:mpb_progressTint="@color/tint"
+                app:mpb_secondaryProgressTint="@color/tint_background"
+                app:mpb_showProgressBackground="true"
+                app:mpb_progressBackgroundTint="@color/tint_background"
+                app:mpb_determinateCircularStyle="moving_start"
+                style="@style/Widget.MaterialProgressBar.ProgressBar.Circular.Determinate" />
+        </GridLayout>
 
     </LinearLayout>
 </ScrollView>
