@@ -28,8 +28,8 @@
         </activity>
 
         <activity
-            android:name=".CircularDeterminateExamplesActivity"
-            android:label="@string/circular_determinate_title"
+            android:name=".DeterminateCircularExamplesActivity"
+            android:label="@string/determinate_circular_title"
             android:launchMode="singleTop"
             android:exported="true">
         </activity>

@@ -22,9 +22,9 @@
     <string name="indeterminate_horizontal_progress_toolbar">Indeterminate Horizontal</string>
 
     <string name="action_about">About</string>
-    <string name="action_circular_determinate_examples">Circular Determinate Examples</string>
+    <string name="action_determinate_circular_examples">@string/determinate_circular_title</string>
 
-    <string name="circular_determinate_title">Circular Determinate Examples</string>
+    <string name="determinate_circular_title">Determinate Circular Examples</string>
 
     <string name="about_title">About</string>
     <string name="about_name">MaterialProgressBar</string>

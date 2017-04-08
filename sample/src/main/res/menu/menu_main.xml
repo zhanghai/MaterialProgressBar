@@ -18,8 +18,8 @@
         app:showAsAction="never"/>
 
     <item
-        android:id="@+id/action_circular_determinate_examples"
-        android:title="@string/action_circular_determinate_examples"
+        android:id="@+id/action_determinate_circular_examples"
+        android:title="@string/action_determinate_circular_examples"
         android:orderInCategory="100"
         app:showAsAction="never"/>
 </menu>

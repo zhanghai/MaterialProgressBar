@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".CircularDeterminateExamplesActivity">
+    tools:context=".DeterminateCircularExamplesActivity">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical"
@@ -18,7 +18,7 @@
             android:layout_height="wrap_content">
 
             <me.zhanghai.android.materialprogressbar.MaterialProgressBar
-                android:id="@+id/cd_default"
+                android:id="@+id/dc_default"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
@@ -28,7 +28,7 @@
                 style="@style/Widget.MaterialProgressBar.ProgressBar.Circular.Determinate" />
 
             <me.zhanghai.android.materialprogressbar.MaterialProgressBar
-                android:id="@+id/cd_secondary"
+                android:id="@+id/dc_secondary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
@@ -39,7 +39,7 @@
                 style="@style/Widget.MaterialProgressBar.ProgressBar.Circular.Determinate" />
 
             <me.zhanghai.android.materialprogressbar.MaterialProgressBar
-                android:id="@+id/cd_secondary_background"
+                android:id="@+id/dc_secondary_background"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
@@ -51,7 +51,7 @@
                 style="@style/Widget.MaterialProgressBar.ProgressBar.Circular.Determinate" />
 
             <me.zhanghai.android.materialprogressbar.MaterialProgressBar
-                android:id="@+id/cd_tinted"
+                android:id="@+id/dc_tinted"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
@@ -62,7 +62,7 @@
                 style="@style/Widget.MaterialProgressBar.ProgressBar.Circular.Determinate" />
 
             <me.zhanghai.android.materialprogressbar.MaterialProgressBar
-                android:id="@+id/cd_tinted_secondary"
+                android:id="@+id/dc_tinted_secondary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
@@ -75,7 +75,7 @@
                 style="@style/Widget.MaterialProgressBar.ProgressBar.Circular.Determinate" />
 
             <me.zhanghai.android.materialprogressbar.MaterialProgressBar
-                android:id="@+id/cd_tinted_secondary_background"
+                android:id="@+id/dc_tinted_secondary_background"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
@@ -96,7 +96,7 @@
             android:layout_height="wrap_content">
 
             <me.zhanghai.android.materialprogressbar.MaterialProgressBar
-                android:id="@+id/cd_moving_default"
+                android:id="@+id/dc_moving_default"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
@@ -107,7 +107,7 @@
                 style="@style/Widget.MaterialProgressBar.ProgressBar.Circular.Determinate" />
 
             <me.zhanghai.android.materialprogressbar.MaterialProgressBar
-                android:id="@+id/cd_moving_secondary"
+                android:id="@+id/dc_moving_secondary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
@@ -119,7 +119,7 @@
                 style="@style/Widget.MaterialProgressBar.ProgressBar.Circular.Determinate" />
 
             <me.zhanghai.android.materialprogressbar.MaterialProgressBar
-                android:id="@+id/cd_moving_secondary_background"
+                android:id="@+id/dc_moving_secondary_background"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
@@ -132,7 +132,7 @@
                 style="@style/Widget.MaterialProgressBar.ProgressBar.Circular.Determinate" />
 
             <me.zhanghai.android.materialprogressbar.MaterialProgressBar
-                android:id="@+id/cd_moving_tinted"
+                android:id="@+id/dc_moving_tinted"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
@@ -144,7 +144,7 @@
                 style="@style/Widget.MaterialProgressBar.ProgressBar.Circular.Determinate" />
 
             <me.zhanghai.android.materialprogressbar.MaterialProgressBar
-                android:id="@+id/cd_moving_tinted_secondary"
+                android:id="@+id/dc_moving_tinted_secondary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
@@ -158,7 +158,7 @@
                 style="@style/Widget.MaterialProgressBar.ProgressBar.Circular.Determinate" />
 
             <me.zhanghai.android.materialprogressbar.MaterialProgressBar
-                android:id="@+id/cd_moving_tinted_secondary_background"
+                android:id="@+id/dc_moving_tinted_secondary_background"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"

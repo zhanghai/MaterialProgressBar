@@ -9,60 +9,60 @@ import java.util.List;
 
 import me.zhanghai.android.materialprogressbar.MaterialProgressBar;
 
-public class CircularDeterminateExamplesActivity extends AppCompatActivity {
+public class DeterminateCircularExamplesActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.circular_determinate_activity);
+        setContentView(R.layout.determinate_circular_activity);
         setupDeterminateCircleProgressBars();
     }
 
     private void setupDeterminateCircleProgressBars() {
-        final MaterialProgressBar cdDefault = (MaterialProgressBar) findViewById(R.id.cd_default);
-        final MaterialProgressBar cdSecondary = (MaterialProgressBar) findViewById(R.id.cd_secondary);
-        final MaterialProgressBar cdSecondaryBackground = (MaterialProgressBar) findViewById(R.id.cd_secondary_background);
+        final MaterialProgressBar dcDefault = (MaterialProgressBar) findViewById(R.id.dc_default);
+        final MaterialProgressBar dcSecondary = (MaterialProgressBar) findViewById(R.id.dc_secondary);
+        final MaterialProgressBar dcSecondaryBackground = (MaterialProgressBar) findViewById(R.id.dc_secondary_background);
 
-        final MaterialProgressBar cdTinted = (MaterialProgressBar) findViewById(R.id.cd_tinted);
-        final MaterialProgressBar cdTintedSecondary = (MaterialProgressBar) findViewById(R.id.cd_tinted_secondary);
-        final MaterialProgressBar cdTintedSecondaryBackground = (MaterialProgressBar) findViewById(R.id.cd_tinted_secondary_background);
+        final MaterialProgressBar dcTinted = (MaterialProgressBar) findViewById(R.id.dc_tinted);
+        final MaterialProgressBar dcTintedSecondary = (MaterialProgressBar) findViewById(R.id.dc_tinted_secondary);
+        final MaterialProgressBar dcTintedSecondaryBackground = (MaterialProgressBar) findViewById(R.id.dc_tinted_secondary_background);
 
-        final MaterialProgressBar cdmDefault = (MaterialProgressBar) findViewById(R.id.cd_moving_default);
-        final MaterialProgressBar cdmSecondary = (MaterialProgressBar) findViewById(R.id.cd_moving_secondary);
-        final MaterialProgressBar cdmSecondaryBackground = (MaterialProgressBar) findViewById(R.id.cd_moving_secondary_background);
+        final MaterialProgressBar dcmDefault = (MaterialProgressBar) findViewById(R.id.dc_moving_default);
+        final MaterialProgressBar dcmSecondary = (MaterialProgressBar) findViewById(R.id.dc_moving_secondary);
+        final MaterialProgressBar dcmSecondaryBackground = (MaterialProgressBar) findViewById(R.id.dc_moving_secondary_background);
 
-        final MaterialProgressBar cdmTinted = (MaterialProgressBar) findViewById(R.id.cd_moving_tinted);
-        final MaterialProgressBar cdmTintedSecondary = (MaterialProgressBar) findViewById(R.id.cd_moving_tinted_secondary);
-        final MaterialProgressBar cdmTintedSecondaryBackground = (MaterialProgressBar) findViewById(R.id.cd_moving_tinted_secondary_background);
+        final MaterialProgressBar dcmTinted = (MaterialProgressBar) findViewById(R.id.dc_moving_tinted);
+        final MaterialProgressBar dcmTintedSecondary = (MaterialProgressBar) findViewById(R.id.dc_moving_tinted_secondary);
+        final MaterialProgressBar dcmTintedSecondaryBackground = (MaterialProgressBar) findViewById(R.id.dc_moving_tinted_secondary_background);
 
         final List<MaterialProgressBar> all = Arrays.asList(
-                cdDefault,
-                cdSecondary,
-                cdSecondaryBackground,
-                cdTinted,
-                cdTintedSecondary,
-                cdTintedSecondaryBackground,
+                dcDefault,
+                dcSecondary,
+                dcSecondaryBackground,
+                dcTinted,
+                dcTintedSecondary,
+                dcTintedSecondaryBackground,
 
-                cdmDefault,
-                cdmSecondary,
-                cdmSecondaryBackground,
-                cdmTinted,
-                cdmTintedSecondary,
-                cdmTintedSecondaryBackground
+                dcmDefault,
+                dcmSecondary,
+                dcmSecondaryBackground,
+                dcmTinted,
+                dcmTintedSecondary,
+                dcmTintedSecondaryBackground
         );
 
         final List<MaterialProgressBar> withSecondary = Arrays.asList(
-                cdSecondary,
-                cdSecondaryBackground,
-                cdTintedSecondary,
-                cdTintedSecondaryBackground,
+                dcSecondary,
+                dcSecondaryBackground,
+                dcTintedSecondary,
+                dcTintedSecondaryBackground,
 
-                cdmSecondary,
-                cdmSecondaryBackground,
-                cdmTintedSecondary,
-                cdmTintedSecondaryBackground
+                dcmSecondary,
+                dcmSecondaryBackground,
+                dcmTintedSecondary,
+                dcmTintedSecondaryBackground
         );
 
         new Thread() {
