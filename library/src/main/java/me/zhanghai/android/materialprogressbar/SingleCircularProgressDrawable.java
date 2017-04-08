@@ -4,7 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 
-public class SingleCircularProgressDrawable extends BaseSingleCircularProgressDrawable {
+class SingleCircularProgressDrawable extends BaseSingleCircularProgressDrawable {
 
     @SuppressWarnings("unused")
     private static final String TAG = SingleCircularProgressDrawable.class.getSimpleName();
@@ -15,14 +15,14 @@ public class SingleCircularProgressDrawable extends BaseSingleCircularProgressDr
     /**
      * Value from {@link Drawable#getLevel()}
      */
-    protected static final int LEVEL_MAX = 10000;
+    static final int LEVEL_MAX = 10000;
 
     private final float mLeadingAngleMin;
     private final float mTrailingAngleMin;
     private final float mLeadingAngleMax;
     private final float mTrailingAngleMax;
 
-    public SingleCircularProgressDrawable(int determinateCircularStyle) {
+    SingleCircularProgressDrawable(int determinateCircularStyle) {
         super();
 
         switch (determinateCircularStyle) {

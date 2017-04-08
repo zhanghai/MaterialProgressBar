@@ -16,6 +16,10 @@ import android.util.Log;
 import me.zhanghai.android.materialprogressbar.internal.Colors;
 import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
 
+/**
+ * Package private as this does only work together with MaterialProgressBar and is not suitable
+ * for another ProgressBar
+ */
 class DeterminateCircularProgressDrawable extends LayerDrawable
         implements IntrinsicPaddingDrawable, MaterialProgressDrawable, ShowBackgroundDrawable, TintableDrawable {
 
@@ -33,7 +37,7 @@ class DeterminateCircularProgressDrawable extends LayerDrawable
     private boolean mHasSecondaryProgressTintColor;
     private int mSecondaryProgressTintColor;
 
-    public DeterminateCircularProgressDrawable(Context context, int determinateCircularStyle) {
+    DeterminateCircularProgressDrawable(Context context, int determinateCircularStyle) {
         super(new Drawable[] {
                 new SingleCircularProgressBackgroundDrawable(),
                 new SingleCircularProgressDrawable(determinateCircularStyle),
@@ -136,6 +140,7 @@ class DeterminateCircularProgressDrawable extends LayerDrawable
         mSecondaryProgressDrawable.setTintMode(tintMode);
     }
 
+    @SuppressWarnings("WeakerAccess")
     void setSecondaryProgressTintColor(int tintColor) {
         mHasSecondaryProgressTintColor = true;
         mSecondaryProgressTintColor = tintColor;

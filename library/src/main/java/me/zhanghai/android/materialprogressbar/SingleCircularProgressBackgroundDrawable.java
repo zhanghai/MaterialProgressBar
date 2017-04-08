@@ -5,12 +5,12 @@ import android.graphics.Canvas;
 /**
  * Implement background by using a full (i.e. 100 %) SingleCircularProgressDrawable (see level)
  */
-public class SingleCircularProgressBackgroundDrawable extends SingleCircularProgressDrawable
+class SingleCircularProgressBackgroundDrawable extends SingleCircularProgressDrawable
         implements ShowBackgroundDrawable {
 
     private boolean mShow = true;
 
-    public SingleCircularProgressBackgroundDrawable() {
+    SingleCircularProgressBackgroundDrawable() {
         super(MaterialProgressBar.DETERMINATE_CIRCULAR_STYLE_FIXEDSTARTTOP);
     }
 
