@@ -3,6 +3,7 @@ package me.zhanghai.android.materialprogressbar.sample;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,14 +11,27 @@ import java.util.List;
 import me.zhanghai.android.materialprogressbar.MaterialProgressBar;
 
 public class DeterminateCircularExamplesActivity extends AppCompatActivity {
-    private static final String TAG = MainActivity.class.getSimpleName();
+    private static final String TAG = DeterminateCircularExamplesActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.determinate_circular_activity);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         setupDeterminateCircleProgressBars();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                AppUtils.navigateUp(this);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private void setupDeterminateCircleProgressBars() {

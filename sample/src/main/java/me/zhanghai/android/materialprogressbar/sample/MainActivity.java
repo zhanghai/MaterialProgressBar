@@ -85,8 +85,10 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_about:
                 startActivity(new Intent(this, AboutActivity.class));
+                return true;
             case R.id.action_determinate_circular_examples:
                 startActivity(new Intent(this, DeterminateCircularExamplesActivity.class));
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
