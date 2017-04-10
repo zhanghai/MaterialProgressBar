@@ -35,8 +35,6 @@ public abstract class BaseSingleCircularProgressDrawable extends BaseProgressDra
     protected void onPreparePaint(Paint paint) {
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(4);
-        paint.setStrokeCap(Paint.Cap.SQUARE);
-        paint.setStrokeJoin(Paint.Join.MITER);
     }
 
     @Override
