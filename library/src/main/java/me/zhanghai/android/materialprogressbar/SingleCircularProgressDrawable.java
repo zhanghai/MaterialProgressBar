@@ -4,7 +4,8 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 
-class SingleCircularProgressDrawable extends BaseSingleCircularProgressDrawable {
+class SingleCircularProgressDrawable extends BaseSingleCircularProgressDrawable
+        implements ShowBackgroundDrawable {
 
     /**
      * Value from {@link Drawable#getLevel()}
@@ -15,6 +16,8 @@ class SingleCircularProgressDrawable extends BaseSingleCircularProgressDrawable 
     private final float mStartAngleMax;
     private final float mEndAngleMin;
     private final float mEndAngleMax;
+
+    private boolean mShowBackground;
 
     SingleCircularProgressDrawable(int determinateCircularStyle) {
         super();
@@ -47,6 +50,19 @@ class SingleCircularProgressDrawable extends BaseSingleCircularProgressDrawable 
     }
 
     @Override
+    public boolean getShowBackground() {
+        return mShowBackground;
+    }
+
+    @Override
+    public void setShowBackground(boolean show) {
+        if (mShowBackground != show) {
+            mShowBackground = show;
+            invalidateSelf();
+        }
+    }
+
+    @Override
     protected void onDrawRing(Canvas canvas, Paint paint) {
 
         int level = getLevel();
@@ -58,6 +74,11 @@ class SingleCircularProgressDrawable extends BaseSingleCircularProgressDrawable 
         float startAngle = mStartAngleMin + ratio * (mStartAngleMax - mStartAngleMin);
         float endAngle = mEndAngleMin + ratio * (mEndAngleMax - mEndAngleMin);
         float sweepAngle = endAngle - startAngle;
+
         drawRing(canvas, paint, startAngle, sweepAngle);
+        if (mShowBackground) {
+            // Draw twice to emulate the background for secondary progress.
+            super.drawRing(canvas, paint, startAngle, sweepAngle);
+        }
     }
 }
