@@ -13,7 +13,6 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Build;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.TintTypedArray;
 import android.util.AttributeSet;
@@ -163,7 +162,8 @@ public class MaterialProgressBar extends ProgressBar {
         super.setIndeterminate(indeterminate);
 
         if (mSuperInitialized && !(getCurrentDrawable() instanceof MaterialProgressDrawable)) {
-            Log.w(TAG, "Current drawable is not a MaterialProgressDrawable, you may want to set app:mpb_setBothDrawables");
+            Log.w(TAG,
+                    "Current drawable is not a MaterialProgressDrawable, you may want to set app:mpb_setBothDrawables");
         }
     }
 
@@ -464,13 +464,11 @@ public class MaterialProgressBar extends ProgressBar {
     }
 
     private void applyPrimaryProgressTint() {
-        Drawable progressDrawable = getProgressDrawable();
-        if (progressDrawable == null) {
+        if (getProgressDrawable() == null) {
             return;
         }
         if (mProgressTintInfo.mHasProgressTint || mProgressTintInfo.mHasProgressTintMode) {
-            Drawable target = getTintTargetFromProgressDrawable(progressDrawable,
-                    android.R.id.progress, true);
+            Drawable target = getTintTargetFromProgressDrawable(android.R.id.progress, true);
             if (target != null) {
                 applyTintForDrawable(target, mProgressTintInfo.mProgressTint,
                         mProgressTintInfo.mHasProgressTint, mProgressTintInfo.mProgressTintMode,
@@ -480,47 +478,29 @@ public class MaterialProgressBar extends ProgressBar {
     }
 
     private void applySecondaryProgressTint() {
-        Drawable progressDrawable = getProgressDrawable();
-        if (progressDrawable == null) {
+        if (getProgressDrawable() == null) {
             return;
         }
         if (mProgressTintInfo.mHasSecondaryProgressTint
                 || mProgressTintInfo.mHasSecondaryProgressTintMode) {
-
-            /*if (progressDrawable instanceof CircularProgressDrawable) {
-                // Don't apply to secondary progress directly in this case as
-                // CircularProgressDrawable needs to know about the color update
-
-                if (mProgressTintInfo.mHasSecondaryProgressTint) {
-                    ((CircularProgressDrawable) progressDrawable)
-                            .setSecondaryProgressTintList(mProgressTintInfo.mSecondaryProgressTint);
-                }
-                if (mProgressTintInfo.mHasSecondaryProgressTintMode) {
-                    ((CircularProgressDrawable) progressDrawable)
-                            .setSecondaryProgressTintMode(mProgressTintInfo.mSecondaryProgressTintMode);
-                }
-            } else */{
-                Drawable target = getTintTargetFromProgressDrawable(progressDrawable,
-                        android.R.id.secondaryProgress, false);
-                if (target != null) {
-                    applyTintForDrawable(target, mProgressTintInfo.mSecondaryProgressTint,
-                            mProgressTintInfo.mHasSecondaryProgressTint,
-                            mProgressTintInfo.mSecondaryProgressTintMode,
-                            mProgressTintInfo.mHasSecondaryProgressTintMode);
-                }
+            Drawable target = getTintTargetFromProgressDrawable(android.R.id.secondaryProgress,
+                    false);
+            if (target != null) {
+                applyTintForDrawable(target, mProgressTintInfo.mSecondaryProgressTint,
+                        mProgressTintInfo.mHasSecondaryProgressTint,
+                        mProgressTintInfo.mSecondaryProgressTintMode,
+                        mProgressTintInfo.mHasSecondaryProgressTintMode);
             }
         }
     }
 
     private void applyProgressBackgroundTint() {
-        Drawable progressDrawable = getProgressDrawable();
-        if (progressDrawable == null) {
+        if (getProgressDrawable() == null) {
             return;
         }
         if (mProgressTintInfo.mHasProgressBackgroundTint
                 || mProgressTintInfo.mHasProgressBackgroundTintMode) {
-            Drawable target = getTintTargetFromProgressDrawable(progressDrawable,
-                    android.R.id.background, false);
+            Drawable target = getTintTargetFromProgressDrawable(android.R.id.background, false);
             if (target != null) {
                 applyTintForDrawable(target, mProgressTintInfo.mProgressBackgroundTint,
                         mProgressTintInfo.mHasProgressBackgroundTint,
@@ -530,8 +510,11 @@ public class MaterialProgressBar extends ProgressBar {
         }
     }
 
-    private Drawable getTintTargetFromProgressDrawable(
-            @NonNull Drawable progressDrawable, int layerId, boolean shouldFallback) {
+    private Drawable getTintTargetFromProgressDrawable(int layerId, boolean shouldFallback) {
+        Drawable progressDrawable = getProgressDrawable();
+        if (progressDrawable == null) {
+            return null;
+        }
         progressDrawable.mutate();
         Drawable layerDrawable = null;
         if (progressDrawable instanceof LayerDrawable) {
@@ -572,7 +555,8 @@ public class MaterialProgressBar extends ProgressBar {
                     //noinspection RedundantCast
                     ((TintableDrawable) drawable).setTintList(tint);
                 } else {
-                    Log.w(TAG, "Drawable did not implement TintableDrawable, it won't be tinted below Lollipop");
+                    Log.w(TAG,
+                            "Drawable did not implement TintableDrawable, it won't be tinted below Lollipop");
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                         drawable.setTintList(tint);
                     }
@@ -584,7 +568,8 @@ public class MaterialProgressBar extends ProgressBar {
                     //noinspection RedundantCast
                     ((TintableDrawable) drawable).setTintMode(tintMode);
                 } else {
-                    Log.w(TAG, "Drawable did not implement TintableDrawable, it won't be tinted below Lollipop");
+                    Log.w(TAG,
+                            "Drawable did not implement TintableDrawable, it won't be tinted below Lollipop");
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                         drawable.setTintMode(tintMode);
                     }
