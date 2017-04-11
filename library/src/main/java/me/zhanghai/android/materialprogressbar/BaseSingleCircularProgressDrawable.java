@@ -1,35 +1,14 @@
 package me.zhanghai.android.materialprogressbar;
 
-import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
-import android.widget.ProgressBar;
 
-public abstract class BaseSingleCircularProgressDrawable extends BaseProgressDrawable {
+abstract class BaseSingleCircularProgressDrawable extends BaseProgressDrawable {
 
-    /**
-     * A dummy value smaller or equal to any size we need to use this because
-     * {@link ProgressBar#setProgressDrawable(Drawable)} sets maxHeight to at
-     * least this value. 12px = 12dp on low-end 1x MDPI device, and 12dp is smaller
-     * than the Small.NoPadding style, so this should be a good lower bound.
-     */
-    static final private int INTRINSIC_SIZE_IN_PX = 12;
-
-    protected static final RectF RECT_BOUND = new RectF(-21, -21, 21, 21);
-    protected static final RectF RECT_PADDED_BOUND = new RectF(-24, -24, 24, 24);
-    protected static final RectF RECT_PROGRESS = new RectF(-19, -19, 19, 19);
-
-    @Override
-    public int getIntrinsicHeight() {
-        return INTRINSIC_SIZE_IN_PX;
-    }
-
-    @Override
-    public int getIntrinsicWidth() {
-        return INTRINSIC_SIZE_IN_PX;
-    }
+    private static final RectF RECT_BOUND = new RectF(-21, -21, 21, 21);
+    private static final RectF RECT_PADDED_BOUND = new RectF(-24, -24, 24, 24);
+    private static final RectF RECT_PROGRESS = new RectF(-19, -19, 19, 19);
 
     @Override
     protected void onPreparePaint(Paint paint) {
@@ -51,5 +30,9 @@ public abstract class BaseSingleCircularProgressDrawable extends BaseProgressDra
         onDrawRing(canvas, paint);
     }
 
-    abstract protected void onDrawRing(Canvas canvas, Paint paint);
+    protected abstract void onDrawRing(Canvas canvas, Paint paint);
+
+    protected void drawRing(Canvas canvas, Paint paint, float startAngle, float sweepAngle) {
+        canvas.drawArc(RECT_PROGRESS, -90 + startAngle, sweepAngle, false, paint);
+    }
 }

@@ -9,7 +9,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
-public abstract class BasePaintDrawable extends BaseDrawable {
+abstract class BasePaintDrawable extends BaseDrawable {
 
     private Paint mPaint;
 

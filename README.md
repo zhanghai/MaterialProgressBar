@@ -80,7 +80,7 @@ Three Material Design drawables are backported to Android 4.0 (API 14), so you c
 
 - [`HorizontalProgressDrawable`](library/src/main/java/me/zhanghai/android/materialprogressbar/HorizontalProgressDrawable.java)
 - [`IndeterminateHorizontalProgressDrawable`](library/src/main/java/me/zhanghai/android/materialprogressbar/IndeterminateHorizontalProgressDrawable.java)
-- [`IndeterminateProgressDrawable`](library/src/main/java/me/zhanghai/android/materialprogressbar/IndeterminateProgressDrawable.java)
+- [`IndeterminateCircularProgressDrawable`](library/src/main/java/me/zhanghai/android/materialprogressbar/IndeterminateCircularProgressDrawable.java)
 
 For example, to set a `IndeterminateHorizontalProgressDrawable` on a `ProgressBar`.
 

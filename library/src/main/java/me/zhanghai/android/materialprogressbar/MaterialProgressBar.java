@@ -137,11 +137,11 @@ public class MaterialProgressBar extends ProgressBar {
             case PROGRESS_STYLE_CIRCULAR:
                 if (isIndeterminate() || setBothDrawables) {
                     if (!isInEditMode()) {
-                        setIndeterminateDrawable(new IndeterminateProgressDrawable(context));
+                        setIndeterminateDrawable(new IndeterminateCircularProgressDrawable(context));
                     }
                 }
                 if (!isIndeterminate() || setBothDrawables) {
-                    setProgressDrawable(new DeterminateCircularProgressDrawable(context, mDeterminateCircularStyle));
+                    setProgressDrawable(new CircularProgressDrawable(mDeterminateCircularStyle, context));
                 }
                 break;
             case PROGRESS_STYLE_HORIZONTAL:
@@ -497,19 +497,19 @@ public class MaterialProgressBar extends ProgressBar {
         if (mProgressTintInfo.mHasSecondaryProgressTint
                 || mProgressTintInfo.mHasSecondaryProgressTintMode) {
 
-            if (progressDrawable instanceof DeterminateCircularProgressDrawable) {
+            /*if (progressDrawable instanceof CircularProgressDrawable) {
                 // Don't apply to secondary progress directly in this case as
-                // DeterminateCircularProgressDrawable needs to know about the color update
+                // CircularProgressDrawable needs to know about the color update
 
                 if (mProgressTintInfo.mHasSecondaryProgressTint) {
-                    ((DeterminateCircularProgressDrawable) progressDrawable)
+                    ((CircularProgressDrawable) progressDrawable)
                             .setSecondaryProgressTintList(mProgressTintInfo.mSecondaryProgressTint);
                 }
                 if (mProgressTintInfo.mHasSecondaryProgressTintMode) {
-                    ((DeterminateCircularProgressDrawable) progressDrawable)
+                    ((CircularProgressDrawable) progressDrawable)
                             .setSecondaryProgressTintMode(mProgressTintInfo.mSecondaryProgressTintMode);
                 }
-            } else {
+            } else */{
                 Drawable target = getTintTargetFromProgressDrawable(progressDrawable,
                         android.R.id.secondaryProgress, false);
                 if (target != null) {

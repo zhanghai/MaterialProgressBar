@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2017 Zhang Hai <Dreaming.in.Code.ZH@Gmail.com>
+ * All Rights Reserved.
+ */
+
 package me.zhanghai.android.materialprogressbar;
 
 import android.annotation.SuppressLint;
@@ -10,48 +15,43 @@ import android.graphics.drawable.LayerDrawable;
 import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.graphics.ColorUtils;
 import android.util.Log;
 
-import me.zhanghai.android.materialprogressbar.internal.Colors;
+import me.zhanghai.android.materialprogressbar.internal.ColorUtils;
 import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
 
-/**
- * Package private as this does only work together with MaterialProgressBar and is not suitable
- * for another ProgressBar
- */
-class DeterminateCircularProgressDrawable extends LayerDrawable
-        implements IntrinsicPaddingDrawable, MaterialProgressDrawable, ShowBackgroundDrawable, TintableDrawable {
-
-    @SuppressWarnings("unused")
-    private static final String TAG = DeterminateCircularProgressDrawable.class.getSimpleName();
+class BaseProgressLayerDrawable<
+        ProgressDrawableType extends IntrinsicPaddingDrawable & TintableDrawable,
+        BackgroundDrawableType extends IntrinsicPaddingDrawable & ShowBackgroundDrawable
+                & TintableDrawable>
+        extends LayerDrawable implements IntrinsicPaddingDrawable, MaterialProgressDrawable,
+        ShowBackgroundDrawable, TintableDrawable {
 
     private float mBackgroundAlpha;
 
-    private SingleCircularProgressBackgroundDrawable mBackgroundDrawable;
-    private SingleCircularProgressDrawable mProgressDrawable;
-    private SingleCircularProgressDrawable mSecondaryProgressDrawable;
+    private BackgroundDrawableType mBackgroundDrawable;
+    private ProgressDrawableType mSecondaryProgressDrawable;
+    private ProgressDrawableType mProgressDrawable;
 
     private boolean mHasSecondaryProgressTint;
     private ColorStateList mSecondaryProgressTint;
     private boolean mHasSecondaryProgressTintColor;
     private int mSecondaryProgressTintColor;
 
-    DeterminateCircularProgressDrawable(Context context, int determinateCircularStyle) {
-        super(new Drawable[] {
-                new SingleCircularProgressBackgroundDrawable(),
-                new SingleCircularProgressDrawable(determinateCircularStyle),
-                new SingleCircularProgressDrawable(determinateCircularStyle),
-        });
+    public BaseProgressLayerDrawable(Drawable[] layers, Context context) {
+        super(layers);
 
         mBackgroundAlpha = ThemeUtils.getFloatFromAttrRes(android.R.attr.disabledAlpha, context);
 
         setId(0, android.R.id.background);
-        mBackgroundDrawable = (SingleCircularProgressBackgroundDrawable) getDrawable(0);
+        //noinspection unchecked
+        mBackgroundDrawable = (BackgroundDrawableType) getDrawable(0);
         setId(1, android.R.id.secondaryProgress);
-        mSecondaryProgressDrawable = (SingleCircularProgressDrawable) getDrawable(1);
+        //noinspection unchecked
+        mSecondaryProgressDrawable = (ProgressDrawableType) getDrawable(1);
         setId(2, android.R.id.progress);
-        mProgressDrawable = (SingleCircularProgressDrawable) getDrawable(2);
+        //noinspection unchecked
+        mProgressDrawable = (ProgressDrawableType) getDrawable(2);
 
         int controlActivatedColor = ThemeUtils.getColorFromAttrRes(R.attr.colorControlActivated,
                 context);
@@ -82,7 +82,7 @@ class DeterminateCircularProgressDrawable extends LayerDrawable
      */
     @Override
     public boolean getUseIntrinsicPadding() {
-        return mProgressDrawable.getUseIntrinsicPadding();
+        return mBackgroundDrawable.getUseIntrinsicPadding();
     }
 
     /**
@@ -102,10 +102,10 @@ class DeterminateCircularProgressDrawable extends LayerDrawable
     @SuppressLint("NewApi")
     public void setTint(@ColorInt int tintColor) {
         // Modulate alpha of tintColor against mBackgroundAlpha.
-        int backgroundTintColor = ColorUtils.setAlphaComponent(tintColor, Math.round(
-                Color.alpha(tintColor) * mBackgroundAlpha));
+        int backgroundTintColor = android.support.v4.graphics.ColorUtils.setAlphaComponent(
+                tintColor, Math.round(Color.alpha(tintColor) * mBackgroundAlpha));
         mBackgroundDrawable.setTint(backgroundTintColor);
-        setSecondaryProgressTintColor(backgroundTintColor);
+        setSecondaryProgressTint(backgroundTintColor);
         mProgressDrawable.setTint(tintColor);
     }
 
@@ -118,7 +118,8 @@ class DeterminateCircularProgressDrawable extends LayerDrawable
         ColorStateList backgroundTint;
         if (tint != null) {
             if (!tint.isOpaque()) {
-                Log.w(TAG, "setTintList() called with a non-opaque ColorStateList, its original alpha will be discarded");
+                Log.w(getClass().getSimpleName(),
+                        "setTintList() called with a non-opaque ColorStateList, its original alpha will be discarded");
             }
             backgroundTint = tint.withAlpha(Math.round(0xFF * mBackgroundAlpha));
         } else {
@@ -136,27 +137,22 @@ class DeterminateCircularProgressDrawable extends LayerDrawable
     @SuppressLint("NewApi")
     public void setTintMode(@NonNull PorterDuff.Mode tintMode) {
         mBackgroundDrawable.setTintMode(tintMode);
-        mProgressDrawable.setTintMode(tintMode);
         mSecondaryProgressDrawable.setTintMode(tintMode);
+        mProgressDrawable.setTintMode(tintMode);
     }
 
-    @SuppressWarnings("WeakerAccess")
-    void setSecondaryProgressTintColor(int tintColor) {
+    private void setSecondaryProgressTint(int tintColor) {
         mHasSecondaryProgressTintColor = true;
         mSecondaryProgressTintColor = tintColor;
         mHasSecondaryProgressTint = false;
         updateSecondaryProgressTint();
     }
 
-    void setSecondaryProgressTintList(ColorStateList tint) {
+    private void setSecondaryProgressTintList(ColorStateList tint) {
         mHasSecondaryProgressTintColor = false;
         mHasSecondaryProgressTint = true;
         mSecondaryProgressTint = tint;
         updateSecondaryProgressTint();
-    }
-
-    void setSecondaryProgressTintMode(@NonNull PorterDuff.Mode tintMode) {
-        mSecondaryProgressDrawable.setTintMode(tintMode);
     }
 
     @SuppressLint("NewApi")
@@ -167,15 +163,16 @@ class DeterminateCircularProgressDrawable extends LayerDrawable
                 // Alpha of tintColor may not be mBackgroundAlpha because we modulated it in
                 // setTint().
                 float backgroundAlpha = (float) Color.alpha(tintColor) / 0xFF;
-                tintColor = ColorUtils.setAlphaComponent(tintColor, Math.round(
-                        0xFF * Colors.compositeAlpha(backgroundAlpha, backgroundAlpha)));
+                tintColor = android.support.v4.graphics.ColorUtils.setAlphaComponent(tintColor,
+                        Math.round(0xFF * ColorUtils.compositeAlpha(backgroundAlpha,
+                                backgroundAlpha)));
             }
             mSecondaryProgressDrawable.setTint(tintColor);
         } else if (mHasSecondaryProgressTint) {
             ColorStateList tint = mSecondaryProgressTint;
             if (!getShowBackground()) {
                 // Composite alpha so that the secondary progress looks as before.
-                tint = tint.withAlpha(Math.round(0xFF * Colors.compositeAlpha(mBackgroundAlpha,
+                tint = tint.withAlpha(Math.round(0xFF * ColorUtils.compositeAlpha(mBackgroundAlpha,
                         mBackgroundAlpha)));
             }
             mSecondaryProgressDrawable.setTintList(tint);

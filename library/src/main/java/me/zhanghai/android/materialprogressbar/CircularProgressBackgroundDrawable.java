@@ -1,18 +1,12 @@
 package me.zhanghai.android.materialprogressbar;
 
 import android.graphics.Canvas;
+import android.graphics.Paint;
 
-/**
- * Implement background by using a full (i.e. 100 %) SingleCircularProgressDrawable (see level)
- */
-class SingleCircularProgressBackgroundDrawable extends SingleCircularProgressDrawable
+class CircularProgressBackgroundDrawable extends BaseSingleCircularProgressDrawable
         implements ShowBackgroundDrawable {
 
     private boolean mShow = true;
-
-    SingleCircularProgressBackgroundDrawable() {
-        super(MaterialProgressBar.DETERMINATE_CIRCULAR_STYLE_FIXEDSTARTTOP);
-    }
 
     @Override
     public boolean getShowBackground() {
@@ -28,14 +22,14 @@ class SingleCircularProgressBackgroundDrawable extends SingleCircularProgressDra
     }
 
     @Override
-    protected int getLevelImpl() {
-        return LEVEL_MAX;
-    }
-
-    @Override
     public void draw(Canvas canvas) {
         if (mShow) {
             super.draw(canvas);
         }
+    }
+
+    @Override
+    protected void onDrawRing(Canvas canvas, Paint paint) {
+        drawRing(canvas, paint, 0, 360);
     }
 }
