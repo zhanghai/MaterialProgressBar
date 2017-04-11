@@ -62,7 +62,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
             android:layout_marginBottom="4dp"
             android:text="@string/normal_tinted_progress"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
@@ -106,7 +106,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
             android:layout_marginBottom="4dp"
             android:text="@string/dynamic_progress"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
@@ -147,7 +147,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
             android:layout_marginBottom="4dp"
             android:text="@string/dynamic_tinted_progress"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
