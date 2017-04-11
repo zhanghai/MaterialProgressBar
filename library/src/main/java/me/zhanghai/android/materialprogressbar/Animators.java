@@ -9,6 +9,7 @@ import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.graphics.Path;
 
 import me.zhanghai.android.materialprogressbar.internal.ObjectAnimatorCompat;
@@ -137,18 +138,21 @@ class Animators {
      */
     public static Animator createIndeterminate(Object target) {
 
+        @SuppressLint("ObjectAnimatorBinding")
         ObjectAnimator trimPathStartAnimator = ObjectAnimator.ofFloat(target, "trimPathStart", 0,
                 0.75f);
         trimPathStartAnimator.setDuration(1333);
         trimPathStartAnimator.setInterpolator(Interpolators.TRIM_PATH_START.INSTANCE);
         trimPathStartAnimator.setRepeatCount(ValueAnimator.INFINITE);
 
+        @SuppressLint("ObjectAnimatorBinding")
         ObjectAnimator trimPathEndAnimator = ObjectAnimator.ofFloat(target, "trimPathEnd", 0,
                 0.75f);
         trimPathEndAnimator.setDuration(1333);
         trimPathEndAnimator.setInterpolator(Interpolators.TRIM_PATH_END.INSTANCE);
         trimPathEndAnimator.setRepeatCount(ValueAnimator.INFINITE);
 
+        @SuppressLint("ObjectAnimatorBinding")
         ObjectAnimator trimPathOffsetAnimator = ObjectAnimator.ofFloat(target, "trimPathOffset", 0,
                 0.25f);
         trimPathOffsetAnimator.setDuration(1333);
@@ -169,6 +173,7 @@ class Animators {
      * @return An Animator object that is set up to behave the same as the its native counterpart.
      */
     public static Animator createIndeterminateRotation(Object target) {
+        @SuppressLint("ObjectAnimatorBinding")
         ObjectAnimator rotationAnimator = ObjectAnimator.ofFloat(target, "rotation", 0, 720);
         rotationAnimator.setDuration(6665);
         rotationAnimator.setInterpolator(Interpolators.LINEAR.INSTANCE);
