@@ -153,7 +153,7 @@
                 android:indeterminate="false"
                 android:progress="1"
                 android:max="100"
-                style="@style/Widget.MaterialProgressBar.ProgressBar.Circular.Determinate.Large" />
+                style="@style/Widget.MaterialProgressBar.ProgressBar.Large" />
 
             <me.zhanghai.android.materialprogressbar.MaterialProgressBar
                 android:id="@+id/determinate_circular2"
@@ -163,7 +163,7 @@
                 android:indeterminate="false"
                 android:progress="30"
                 android:max="100"
-                style="@style/Widget.MaterialProgressBar.ProgressBar.Circular.Determinate" />
+                style="@style/Widget.MaterialProgressBar.ProgressBar" />
 
             <me.zhanghai.android.materialprogressbar.MaterialProgressBar
                 android:id="@+id/determinate_circular3"
@@ -173,7 +173,7 @@
                 android:indeterminate="false"
                 android:progress="100"
                 android:max="100"
-                style="@style/Widget.MaterialProgressBar.ProgressBar.Circular.Determinate.Small" />
+                style="@style/Widget.MaterialProgressBar.ProgressBar.Small" />
         </FrameLayout>
 
         <!-- Indeterminate circular progress -->

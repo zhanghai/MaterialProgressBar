@@ -32,17 +32,13 @@ public class MaterialProgressBar extends ProgressBar {
     public static final int PROGRESS_STYLE_CIRCULAR = 0;
     public static final int PROGRESS_STYLE_HORIZONTAL = 1;
 
-    public static final int DETERMINATE_CIRCULAR_STYLE_FIXEDSTARTTOP = 0;
-    public static final int DETERMINATE_CIRCULAR_STYLE_MOVINSTART = 1;
+    public static final int DETERMINATE_CIRCULAR_PROGRESS_STYLE_NORMAL = 0;
+    public static final int DETERMINATE_CIRCULAR_PROGRESS_STYLE_DYNAMIC = 1;
 
     // This field remains false inside super class constructor.
     @SuppressWarnings("FieldCanBeLocal")
     private boolean mSuperInitialized = true;
     private int mProgressStyle;
-    private int mDeterminateCircularStyle;
-    // Super class ProgressBar does not support determinate circular progress bars. Use this
-    // member to force a determinate circular progress bar.
-    private boolean mForceDeterminate;
     private TintInfo mProgressTintInfo = new TintInfo();
 
     public MaterialProgressBar(Context context) {
@@ -79,11 +75,6 @@ public class MaterialProgressBar extends ProgressBar {
                 R.styleable.MaterialProgressBar, defStyleAttr, defStyleRes);
         mProgressStyle = a.getInt(R.styleable.MaterialProgressBar_mpb_progressStyle,
                 PROGRESS_STYLE_CIRCULAR);
-        mDeterminateCircularStyle = a.getInt(
-                R.styleable.MaterialProgressBar_mpb_determinateCircularStyle,
-                DETERMINATE_CIRCULAR_STYLE_FIXEDSTARTTOP);
-        mForceDeterminate = a.getBoolean(R.styleable.MaterialProgressBar__mpb_forceDeterminate,
-                false);
         boolean setBothDrawables = a.getBoolean(
                 R.styleable.MaterialProgressBar_mpb_setBothDrawables, false);
         boolean useIntrinsicPadding = a.getBoolean(
@@ -91,6 +82,9 @@ public class MaterialProgressBar extends ProgressBar {
         boolean showProgressBackground = a.getBoolean(
                 R.styleable.MaterialProgressBar_mpb_showProgressBackground,
                 mProgressStyle == PROGRESS_STYLE_HORIZONTAL);
+        int determinateCircularProgressStyle = a.getInt(
+                R.styleable.MaterialProgressBar_mpb_determinateCircularProgressStyle,
+                DETERMINATE_CIRCULAR_PROGRESS_STYLE_NORMAL);
         if (a.hasValue(R.styleable.MaterialProgressBar_mpb_progressTint)) {
             mProgressTintInfo.mProgressTint = a.getColorStateList(
                     R.styleable.MaterialProgressBar_mpb_progressTint);
@@ -137,11 +131,13 @@ public class MaterialProgressBar extends ProgressBar {
             case PROGRESS_STYLE_CIRCULAR:
                 if (isIndeterminate() || setBothDrawables) {
                     if (!isInEditMode()) {
-                        setIndeterminateDrawable(new IndeterminateCircularProgressDrawable(context));
+                        setIndeterminateDrawable(new IndeterminateCircularProgressDrawable(
+                                context));
                     }
                 }
                 if (!isIndeterminate() || setBothDrawables) {
-                    setProgressDrawable(new CircularProgressDrawable(mDeterminateCircularStyle, context));
+                    setProgressDrawable(new CircularProgressDrawable(
+                            determinateCircularProgressStyle, context));
                 }
                 break;
             case PROGRESS_STYLE_HORIZONTAL:
@@ -160,12 +156,6 @@ public class MaterialProgressBar extends ProgressBar {
         }
         setUseIntrinsicPadding(useIntrinsicPadding);
         setShowProgressBackground(showProgressBackground);
-    }
-
-    @Override
-    public synchronized boolean isIndeterminate() {
-        if (mForceDeterminate) return false;
-        return super.isIndeterminate();
     }
 
     @Override

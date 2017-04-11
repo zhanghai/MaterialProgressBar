@@ -25,6 +25,8 @@
 
     <style name="Widget.MaterialProgressBar.ProgressBar" parent="android:Widget.ProgressBar">
         <item name="android:indeterminateDrawable">@null</item>
+        <!-- We have support for determinate circular progress drawable. -->
+        <item name="android:indeterminateOnly">false</item>
         <item name="android:minWidth">48dp</item>
         <item name="android:maxWidth">48dp</item>
         <item name="android:minHeight">48dp</item>
@@ -60,54 +62,6 @@
     </style>
 
     <style name="Widget.MaterialProgressBar.ProgressBar.Small.NoPadding">
-        <item name="android:minWidth">14dp</item>
-        <item name="android:maxWidth">14dp</item>
-        <item name="android:minHeight">14dp</item>
-        <item name="android:maxHeight">14dp</item>
-    </style>
-
-    <!--
-    Hack: set style to horizontal and override progressDrawable to archive circular determinate
-    -->
-    <style name="Widget.MaterialProgressBar.ProgressBar.Circular.Determinate" parent="android:Widget.ProgressBar.Horizontal">
-        <item name="_mpb_forceDeterminate">true</item>
-
-        <item name="android:indeterminateDrawable">@null</item>
-        <item name="android:minWidth">48dp</item>
-        <item name="android:maxWidth">48dp</item>
-        <item name="android:minHeight">48dp</item>
-        <item name="android:maxHeight">48dp</item>
-    </style>
-
-    <style name="Widget.MaterialProgressBar.ProgressBar.Circular.Determinate.NoPadding">
-        <item name="android:minWidth">42dp</item>
-        <item name="android:maxWidth">42dp</item>
-        <item name="android:minHeight">42dp</item>
-        <item name="android:maxHeight">42dp</item>
-    </style>
-
-    <style name="Widget.MaterialProgressBar.ProgressBar.Circular.Determinate.Large">
-        <item name="android:minWidth">76dp</item>
-        <item name="android:maxWidth">76dp</item>
-        <item name="android:minHeight">76dp</item>
-        <item name="android:maxHeight">76dp</item>
-    </style>
-
-    <style name="Widget.MaterialProgressBar.ProgressBar.Circular.Determinate.Large.NoPadding">
-        <item name="android:minWidth">66.5dp</item>
-        <item name="android:maxWidth">66.5dp</item>
-        <item name="android:minHeight">66.5dp</item>
-        <item name="android:maxHeight">66.5dp</item>
-    </style>
-
-    <style name="Widget.MaterialProgressBar.ProgressBar.Circular.Determinate.Small">
-        <item name="android:minWidth">16dp</item>
-        <item name="android:maxWidth">16dp</item>
-        <item name="android:minHeight">16dp</item>
-        <item name="android:maxHeight">16dp</item>
-    </style>
-
-    <style name="Widget.MaterialProgressBar.ProgressBar.Circular.Determinate.Small.NoPadding">
         <item name="android:minWidth">14dp</item>
         <item name="android:maxWidth">14dp</item>
         <item name="android:minHeight">14dp</item>

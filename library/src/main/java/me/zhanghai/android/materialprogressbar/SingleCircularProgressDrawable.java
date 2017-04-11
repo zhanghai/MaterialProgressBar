@@ -23,13 +23,13 @@ class SingleCircularProgressDrawable extends BaseSingleCircularProgressDrawable
         super();
 
         switch (determinateCircularStyle) {
-            case MaterialProgressBar.DETERMINATE_CIRCULAR_STYLE_FIXEDSTARTTOP:
+            case MaterialProgressBar.DETERMINATE_CIRCULAR_PROGRESS_STYLE_NORMAL:
                 mStartAngleMin = 0;
                 mStartAngleMax = 0;
                 mEndAngleMin = 0;
                 mEndAngleMax = 360;
                 break;
-            case MaterialProgressBar.DETERMINATE_CIRCULAR_STYLE_MOVINSTART:
+            case MaterialProgressBar.DETERMINATE_CIRCULAR_PROGRESS_STYLE_DYNAMIC:
                 // leading and trailing angles start at 15° or 5 minutes
                 // https://storage.googleapis.com/material-design/publish/material_v_10/assets/0B14F_FSUCc01N2kzc1hlaFR5WlU/061101_Circular_Sheet_xhdpi_005.webm
                 mStartAngleMin = 15;
