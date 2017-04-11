@@ -31,7 +31,7 @@
         <attr name="mpb_showProgressBackground" format="boolean" />
 
         <!--
-          ~ Style of determinate circular progress drawable: static or dynamic. Defaults to static.
+          ~ Style of determinate circular progress drawable: normal or dynamic. Defaults to normal.
           -->
         <attr name="mpb_determinateCircularProgressStyle" format="enum">
             <enum name="normal" value="0" />

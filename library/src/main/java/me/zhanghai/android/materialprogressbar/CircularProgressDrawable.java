@@ -10,12 +10,9 @@ import android.graphics.drawable.Drawable;
 
 /**
  * A new {@code Drawable} for determinate circular {@code ProgressBar}.
- *
- * Package private as this does only work together with MaterialProgressBar and is not suitable
- * for another ProgressBar
  */
-class CircularProgressDrawable extends BaseProgressLayerDrawable<SingleCircularProgressDrawable,
-        CircularProgressBackgroundDrawable> {
+public class CircularProgressDrawable extends BaseProgressLayerDrawable<
+        SingleCircularProgressDrawable, CircularProgressBackgroundDrawable> {
 
     /**
      * Create a new {@code CircularProgressDrawable}.

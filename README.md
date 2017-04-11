@@ -10,6 +10,7 @@ Material Design `ProgressBar` with consistent appearance on Android 4.0+.
 - Correct tinting across platforms.
 - Able to remove the intrinsic padding of framework `ProgressBar`.
 - Able to hide the progress background of framework horizontal `ProgressBar`.
+- Able to show a determinate circular progress.
 - Used as a drop-in replacement for framework `ProgressBar`.
 
 ## Preview
@@ -69,6 +70,7 @@ Available custom attributes:
 - `app:mpb_setBothDrawables`: Whether both determinate and indeterminate drawables should be set on this progress bar. Defaults to `false`.
 - `app:mpb_useIntrinsicPadding`: Whether progress drawable should use its intrinsic padding. Defaults to `true`.
 - `app:mpb_showProgressBackground`: Whether progress drawable should show a progress background. Defaults to `true` for horizontal progress drawable, `false` otherwise.
+- `app:mpb_determinateCircularProgressStyle`: Style of determinate circular progress drawable: normal or dynamic. Defaults to `normal`.
 
 8 tint-related attributes such as `app:mpb_progressTint` and `app:mpb_progressTintMode` are also supported so that they can control the tinting of progress drawables. The default tint color is `?colorControlActivated`, and the default tint mode is `src_in`.
 
@@ -80,6 +82,7 @@ Three Material Design drawables are backported to Android 4.0 (API 14), so you c
 
 - [`HorizontalProgressDrawable`](library/src/main/java/me/zhanghai/android/materialprogressbar/HorizontalProgressDrawable.java)
 - [`IndeterminateHorizontalProgressDrawable`](library/src/main/java/me/zhanghai/android/materialprogressbar/IndeterminateHorizontalProgressDrawable.java)
+- [`CircularProgressDrawable`](library/src/main/java/me/zhanghai/android/materialprogressbar/CircularProgressDrawable.java)
 - [`IndeterminateCircularProgressDrawable`](library/src/main/java/me/zhanghai/android/materialprogressbar/IndeterminateCircularProgressDrawable.java)
 
 For example, to set a `IndeterminateHorizontalProgressDrawable` on a `ProgressBar`.
