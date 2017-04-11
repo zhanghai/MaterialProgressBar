@@ -38,6 +38,7 @@ abstract class BaseSingleCircularProgressDrawable extends BaseProgressDrawable {
     protected abstract void onDrawRing(Canvas canvas, Paint paint);
 
     protected void drawRing(Canvas canvas, Paint paint, float startAngle, float sweepAngle) {
+        // startAngle starts at 3 o'clock on a watch.
         canvas.drawArc(RECT_PROGRESS, -90 + startAngle, sweepAngle, false, paint);
     }
 }

@@ -17,35 +17,25 @@ class SingleCircularProgressDrawable extends BaseSingleCircularProgressDrawable
      */
     private static final int LEVEL_MAX = 10000;
 
-    private final float mStartAngleMin;
+    private static final float START_ANGLE_MAX_NORMAL = 0;
+    private static final float START_ANGLE_MAX_DYNAMIC = 360;
+    private static final float SWEEP_ANGLE_MAX = 360;
+
     private final float mStartAngleMax;
-    private final float mEndAngleMin;
-    private final float mEndAngleMax;
 
     private boolean mShowBackground;
 
-    SingleCircularProgressDrawable(int determinateCircularStyle) {
-        super();
-
-        switch (determinateCircularStyle) {
+    SingleCircularProgressDrawable(int style) {
+        switch (style) {
             case MaterialProgressBar.DETERMINATE_CIRCULAR_PROGRESS_STYLE_NORMAL:
-                mStartAngleMin = 0;
-                mStartAngleMax = 0;
-                mEndAngleMin = 0;
-                mEndAngleMax = 360;
+                mStartAngleMax = START_ANGLE_MAX_NORMAL;
                 break;
             case MaterialProgressBar.DETERMINATE_CIRCULAR_PROGRESS_STYLE_DYNAMIC:
-                // leading and trailing angles start at 15° or 5 minutes
-                // https://storage.googleapis.com/material-design/publish/material_v_10/assets/0B14F_FSUCc01N2kzc1hlaFR5WlU/061101_Circular_Sheet_xhdpi_005.webm
-                mStartAngleMin = 15;
-                mStartAngleMax = 360;
-                mEndAngleMin = 15;
-                mEndAngleMax = 720;
+                mStartAngleMax = START_ANGLE_MAX_DYNAMIC;
                 break;
             default:
-                throw new AssertionError("Invalid value for determinateCircularStyle");
+                throw new IllegalArgumentException("Invalid value for style");
         }
-
     }
 
     @Override
@@ -76,14 +66,13 @@ class SingleCircularProgressDrawable extends BaseSingleCircularProgressDrawable
         }
 
         float ratio = (float) level / LEVEL_MAX;
-        float startAngle = mStartAngleMin + ratio * (mStartAngleMax - mStartAngleMin);
-        float endAngle = mEndAngleMin + ratio * (mEndAngleMax - mEndAngleMin);
-        float sweepAngle = endAngle - startAngle;
+        float startAngle = ratio * mStartAngleMax;
+        float sweepAngle = ratio * SWEEP_ANGLE_MAX;
 
         drawRing(canvas, paint, startAngle, sweepAngle);
         if (mShowBackground) {
             // Draw twice to emulate the background for secondary progress.
-            super.drawRing(canvas, paint, startAngle, sweepAngle);
+            drawRing(canvas, paint, startAngle, sweepAngle);
         }
     }
 }
