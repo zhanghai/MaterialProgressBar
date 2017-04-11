@@ -25,6 +25,10 @@
     <string name="action_determinate_circular_sample">@string/determinate_circular_title</string>
 
     <string name="determinate_circular_title">Determinate Circular Sample</string>
+    <string name="normal_progress">Normal Style</string>
+    <string name="normal_tinted_progress">Normal Style (Tinted)</string>
+    <string name="dynamic_progress">Dynamic Style</string>
+    <string name="dynamic_tinted_progress">Dynamic Style (Tinted)</string>
 
     <string name="about_title">About</string>
     <string name="about_name">MaterialProgressBar</string>

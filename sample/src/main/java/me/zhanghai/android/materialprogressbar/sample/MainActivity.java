@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.animation.LinearInterpolator;
 import android.widget.ProgressBar;
 
 import butterknife.BindViews;
@@ -19,11 +18,14 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindViews({ R.id.determinate_circular_progress_1, R.id.determinate_circular_progress_2,
-            R.id.determinate_circular_progress_3 })
-    ProgressBar[] mCircularDeterminateProgresses;
+    @BindViews({
+            R.id.determinate_circular_large_progress,
+            R.id.determinate_circular_progress,
+            R.id.determinate_circular_small_progress
+    })
+    ProgressBar[] mDeterminateCircularProgressBars;
 
-    private ValueAnimator mCircularDeterminateProgressAnimator;
+    private ValueAnimator mDeterminateCircularProgressAnimator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,33 +34,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.main_activity);
         ButterKnife.bind(this);
 
-        mCircularDeterminateProgressAnimator = ValueAnimator.ofInt(0, 150);
-        mCircularDeterminateProgressAnimator.setDuration(6000);
-        mCircularDeterminateProgressAnimator.setInterpolator(new LinearInterpolator());
-        mCircularDeterminateProgressAnimator.setRepeatCount(ValueAnimator.INFINITE);
-        mCircularDeterminateProgressAnimator.addUpdateListener(
-                new ValueAnimator.AnimatorUpdateListener() {
-                        @Override
-                        public void onAnimationUpdate(ValueAnimator animator) {
-                            for (ProgressBar progressBar : mCircularDeterminateProgresses) {
-                                progressBar.setProgress((int) animator.getAnimatedValue());
-                            }
-                        }
-                });
+        mDeterminateCircularProgressAnimator =
+                Animators.makeDeterminateCircularPrimaryProgressAnimator(
+                        mDeterminateCircularProgressBars);
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
+    public void onAttachedToWindow() {
+        super.onAttachedToWindow();
 
-        mCircularDeterminateProgressAnimator.start();
+        mDeterminateCircularProgressAnimator.start();
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
+    public void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
 
-        mCircularDeterminateProgressAnimator.end();
+        mDeterminateCircularProgressAnimator.end();
     }
 
     @Override
