@@ -29,9 +29,9 @@ class BaseProgressLayerDrawable<
 
     private float mBackgroundAlpha;
 
-    private BackgroundDrawableType mBackgroundDrawable;
-    private ProgressDrawableType mSecondaryProgressDrawable;
     private ProgressDrawableType mProgressDrawable;
+    private ProgressDrawableType mSecondaryProgressDrawable;
+    private BackgroundDrawableType mBackgroundDrawable;
 
     private boolean mHasSecondaryProgressTint;
     private ColorStateList mSecondaryProgressTint;
@@ -41,7 +41,7 @@ class BaseProgressLayerDrawable<
     public BaseProgressLayerDrawable(Drawable[] layers, Context context) {
         super(layers);
 
-        mBackgroundAlpha = ThemeUtils.getFloatFromAttrRes(android.R.attr.disabledAlpha, context);
+        mBackgroundAlpha = ThemeUtils.getFloatFromAttrRes(android.R.attr.disabledAlpha, 1, context);
 
         setId(0, android.R.id.background);
         //noinspection unchecked
@@ -54,7 +54,7 @@ class BaseProgressLayerDrawable<
         mProgressDrawable = (ProgressDrawableType) getDrawable(2);
 
         int controlActivatedColor = ThemeUtils.getColorFromAttrRes(R.attr.colorControlActivated,
-                context);
+                Color.BLACK, context);
         setTint(controlActivatedColor);
     }
 

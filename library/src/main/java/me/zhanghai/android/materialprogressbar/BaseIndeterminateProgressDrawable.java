@@ -9,6 +9,7 @@ import android.animation.Animator;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.drawable.Animatable;
 
 import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
@@ -21,7 +22,7 @@ abstract class BaseIndeterminateProgressDrawable extends BaseProgressDrawable
     @SuppressLint("NewApi")
     public BaseIndeterminateProgressDrawable(Context context) {
         int controlActivatedColor = ThemeUtils.getColorFromAttrRes(R.attr.colorControlActivated,
-                context);
+                Color.BLACK, context);
         // setTint() has been overridden for compatibility; DrawableCompat won't work because
         // wrapped Drawable won't be Animatable.
         setTint(controlActivatedColor);
