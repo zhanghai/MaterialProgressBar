@@ -19,7 +19,7 @@ public class CircularProgressDrawable extends BaseProgressLayerDrawable<
      *
      * @param context the {@code Context} for retrieving style information.
      */
-    CircularProgressDrawable(int style, Context context) {
+    public CircularProgressDrawable(int style, Context context) {
         super(new Drawable[] {
                 new CircularProgressBackgroundDrawable(),
                 new SingleCircularProgressDrawable(style),
