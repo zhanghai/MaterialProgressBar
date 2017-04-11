@@ -12,13 +12,23 @@
     <string name="framework_implementation">Framework Implementation</string>
     <string name="library_implementation">Library Implementation</string>
     <string name="library_implementation_tinted">Library Implementation (Tinted)</string>
-    <string name="horizontal_progress">Horizontal ProgressBar</string>
+    <string name="determinate_horizontal_progress">Determinate Horizontal ProgressBar</string>
     <string name="indeterminate_horizontal_progress">Indeterminate Horizontal ProgressBar</string>
-    <string name="indeterminate_progress">Indeterminate ProgressBar</string>
+    <string name="determinate_circular_progress">Determinate Circular ProgressBar</string>
+    <string name="indeterminate_circular_progress">Indeterminate Circular ProgressBar</string>
     <string name="toolbar_progress">ProgressBar on Toolbar</string>
     <string name="horizontal_progress_toolbar">Horizontal</string>
     <string name="indeterminate_horizontal_progress_toolbar">Indeterminate Horizontal</string>
+    <string name="not_available"><i>(Not Available)</i></string>
+
     <string name="action_about">About</string>
+    <string name="action_determinate_circular_sample">@string/determinate_circular_title</string>
+
+    <string name="determinate_circular_title">Determinate Circular Sample</string>
+    <string name="normal_progress">Normal Style</string>
+    <string name="normal_tinted_progress">Normal Style (Tinted)</string>
+    <string name="dynamic_progress">Dynamic Style</string>
+    <string name="dynamic_tinted_progress">Dynamic Style (Tinted)</string>
 
     <string name="about_title">About</string>
     <string name="about_name">MaterialProgressBar</string>

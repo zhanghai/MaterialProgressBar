@@ -28,6 +28,15 @@
         </activity>
 
         <activity
+            android:name=".DeterminateCircularSampleActivity"
+            android:label="@string/determinate_circular_title"
+            android:launchMode="singleTop">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
+        <activity
             android:name=".AboutActivity"
             android:label="@string/about_title"
             android:launchMode="singleTop">

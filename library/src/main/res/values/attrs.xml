@@ -6,24 +6,38 @@
   -->
 
 <resources>
+
     <declare-styleable name="MaterialProgressBar">
+
         <!-- Style of progress drawable: horizontal or circular. Defaults to circular. -->
         <attr name="mpb_progressStyle" format="enum">
             <enum name="circular" value="0" />
             <enum name="horizontal" value="1" />
         </attr>
+
         <!--
           ~ Whether both determinate and indeterminate drawables should be set on this progress bar.
-          ~ Determinate ring progress drawable is not supported yet. Defaults to false.
+          ~ Defaults to false.
           -->
         <attr name="mpb_setBothDrawables" format="boolean" />
+
         <!-- Whether progress drawable should use its intrinsic padding. Defaults to true. -->
         <attr name="mpb_useIntrinsicPadding" format="boolean" />
+
         <!--
           ~ Whether progress drawable should show a background. Defaults to true for horizontal
           ~ progress drawable, false otherwise.
           -->
         <attr name="mpb_showProgressBackground" format="boolean" />
+
+        <!--
+          ~ Style of determinate circular progress drawable: static or dynamic. Defaults to static.
+          -->
+        <attr name="mpb_determinateCircularProgressStyle" format="enum">
+            <enum name="normal" value="0" />
+            <enum name="dynamic" value="1" />
+        </attr>
+
         <attr name="mpb_progressTint" format="color|reference" />
         <attr name="mpb_progressTintMode" format="enum">
             <enum name="src_over" value="3" />

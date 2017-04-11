@@ -25,6 +25,8 @@
 
     <style name="Widget.MaterialProgressBar.ProgressBar" parent="android:Widget.ProgressBar">
         <item name="android:indeterminateDrawable">@null</item>
+        <!-- We have support for determinate circular progress drawable. -->
+        <item name="android:indeterminateOnly">false</item>
         <item name="android:minWidth">48dp</item>
         <item name="android:maxWidth">48dp</item>
         <item name="android:minHeight">48dp</item>

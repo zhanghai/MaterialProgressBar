@@ -66,7 +66,7 @@ In order to make your `ProgressBar` take the correct and consistent size on all 
 Available custom attributes:
 
 - `app:mpb_progressStyle`: Style of progress drawable: `circular` or `horizontal`. Defaults to `circular`.
-- `app:mpb_setBothDrawables`: Whether both determinate and indeterminate drawables should be set on this progress bar. Determinate circular progress drawable is not supported yet. Defaults to `false`.
+- `app:mpb_setBothDrawables`: Whether both determinate and indeterminate drawables should be set on this progress bar. Defaults to `false`.
 - `app:mpb_useIntrinsicPadding`: Whether progress drawable should use its intrinsic padding. Defaults to `true`.
 - `app:mpb_showProgressBackground`: Whether progress drawable should show a progress background. Defaults to `true` for horizontal progress drawable, `false` otherwise.
 
@@ -80,7 +80,7 @@ Three Material Design drawables are backported to Android 4.0 (API 14), so you c
 
 - [`HorizontalProgressDrawable`](library/src/main/java/me/zhanghai/android/materialprogressbar/HorizontalProgressDrawable.java)
 - [`IndeterminateHorizontalProgressDrawable`](library/src/main/java/me/zhanghai/android/materialprogressbar/IndeterminateHorizontalProgressDrawable.java)
-- [`IndeterminateProgressDrawable`](library/src/main/java/me/zhanghai/android/materialprogressbar/IndeterminateProgressDrawable.java)
+- [`IndeterminateCircularProgressDrawable`](library/src/main/java/me/zhanghai/android/materialprogressbar/IndeterminateCircularProgressDrawable.java)
 
 For example, to set a `IndeterminateHorizontalProgressDrawable` on a `ProgressBar`.
 

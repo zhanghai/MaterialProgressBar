@@ -31,6 +31,9 @@ public class MaterialProgressBar extends ProgressBar {
     public static final int PROGRESS_STYLE_CIRCULAR = 0;
     public static final int PROGRESS_STYLE_HORIZONTAL = 1;
 
+    public static final int DETERMINATE_CIRCULAR_PROGRESS_STYLE_NORMAL = 0;
+    public static final int DETERMINATE_CIRCULAR_PROGRESS_STYLE_DYNAMIC = 1;
+
     // This field remains false inside super class constructor.
     @SuppressWarnings("FieldCanBeLocal")
     private boolean mSuperInitialized = true;
@@ -78,6 +81,9 @@ public class MaterialProgressBar extends ProgressBar {
         boolean showProgressBackground = a.getBoolean(
                 R.styleable.MaterialProgressBar_mpb_showProgressBackground,
                 mProgressStyle == PROGRESS_STYLE_HORIZONTAL);
+        int determinateCircularProgressStyle = a.getInt(
+                R.styleable.MaterialProgressBar_mpb_determinateCircularProgressStyle,
+                DETERMINATE_CIRCULAR_PROGRESS_STYLE_NORMAL);
         if (a.hasValue(R.styleable.MaterialProgressBar_mpb_progressTint)) {
             mProgressTintInfo.mProgressTint = a.getColorStateList(
                     R.styleable.MaterialProgressBar_mpb_progressTint);
@@ -122,13 +128,15 @@ public class MaterialProgressBar extends ProgressBar {
 
         switch (mProgressStyle) {
             case PROGRESS_STYLE_CIRCULAR:
-                if (!isIndeterminate() || setBothDrawables) {
-                    throw new UnsupportedOperationException(
-                            "Determinate circular drawable is not yet supported");
-                } else {
+                if (isIndeterminate() || setBothDrawables) {
                     if (!isInEditMode()) {
-                        setIndeterminateDrawable(new IndeterminateProgressDrawable(context));
+                        setIndeterminateDrawable(new IndeterminateCircularProgressDrawable(
+                                context));
                     }
+                }
+                if (!isIndeterminate() || setBothDrawables) {
+                    setProgressDrawable(new CircularProgressDrawable(
+                            determinateCircularProgressStyle, context));
                 }
                 break;
             case PROGRESS_STYLE_HORIZONTAL:
@@ -154,7 +162,8 @@ public class MaterialProgressBar extends ProgressBar {
         super.setIndeterminate(indeterminate);
 
         if (mSuperInitialized && !(getCurrentDrawable() instanceof MaterialProgressDrawable)) {
-            Log.w(TAG, "Current drawable is not a MaterialProgressDrawable, you may want to set app:mpb_setBothDrawables");
+            Log.w(TAG,
+                    "Current drawable is not a MaterialProgressDrawable, you may want to set app:mpb_setBothDrawables");
         }
     }
 
@@ -546,7 +555,8 @@ public class MaterialProgressBar extends ProgressBar {
                     //noinspection RedundantCast
                     ((TintableDrawable) drawable).setTintList(tint);
                 } else {
-                    Log.w(TAG, "Drawable did not implement TintableDrawable, it won't be tinted below Lollipop");
+                    Log.w(TAG,
+                            "Drawable did not implement TintableDrawable, it won't be tinted below Lollipop");
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                         drawable.setTintList(tint);
                     }
@@ -558,7 +568,8 @@ public class MaterialProgressBar extends ProgressBar {
                     //noinspection RedundantCast
                     ((TintableDrawable) drawable).setTintMode(tintMode);
                 } else {
-                    Log.w(TAG, "Drawable did not implement TintableDrawable, it won't be tinted below Lollipop");
+                    Log.w(TAG,
+                            "Drawable did not implement TintableDrawable, it won't be tinted below Lollipop");
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                         drawable.setTintMode(tintMode);
                     }

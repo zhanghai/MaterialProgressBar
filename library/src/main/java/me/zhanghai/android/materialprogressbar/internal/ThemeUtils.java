@@ -12,19 +12,19 @@ public class ThemeUtils {
 
     private ThemeUtils() {}
 
-    public static int getColorFromAttrRes(int attr, Context context) {
-        TypedArray a = context.obtainStyledAttributes(new int[] {attr});
+    public static int getColorFromAttrRes(int attrRes, int defaultValue, Context context) {
+        TypedArray a = context.obtainStyledAttributes(new int[] { attrRes });
         try {
-            return a.getColor(0, 0);
+            return a.getColor(0, defaultValue);
         } finally {
             a.recycle();
         }
     }
 
-    public static float getFloatFromAttrRes(int attrRes, Context context) {
-        TypedArray a = context.obtainStyledAttributes(new int[] {attrRes});
+    public static float getFloatFromAttrRes(int attrRes, float defaultValue, Context context) {
+        TypedArray a = context.obtainStyledAttributes(new int[] { attrRes });
         try {
-            return a.getFloat(0, 0);
+            return a.getFloat(0, defaultValue);
         } finally {
             a.recycle();
         }

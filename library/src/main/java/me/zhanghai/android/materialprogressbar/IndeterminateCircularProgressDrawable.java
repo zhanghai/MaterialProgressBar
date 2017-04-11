@@ -15,7 +15,7 @@ import android.support.annotation.Keep;
 /**
  * A backported {@code Drawable} for indeterminate circular {@code ProgressBar}.
  */
-public class IndeterminateProgressDrawable extends BaseIndeterminateProgressDrawable
+public class IndeterminateCircularProgressDrawable extends BaseIndeterminateProgressDrawable
         implements MaterialProgressDrawable {
 
     private static final int PROGRESS_INTRINSIC_SIZE_DP = 42;
@@ -31,11 +31,11 @@ public class IndeterminateProgressDrawable extends BaseIndeterminateProgressDraw
     private RingRotation mRingRotation = new RingRotation();
 
     /**
-     * Create a new {@code IndeterminateProgressDrawable}.
+     * Create a new {@code IndeterminateCircularProgressDrawable}.
      *
      * @param context the {@code Context} for retrieving style information.
      */
-    public IndeterminateProgressDrawable(Context context) {
+    public IndeterminateCircularProgressDrawable(Context context) {
         super(context);
 
         float density = context.getResources().getDisplayMetrics().density;
