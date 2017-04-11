@@ -15,11 +15,11 @@
         android:id="@+id/action_about"
         android:title="@string/action_about"
         android:orderInCategory="100"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
 
     <item
-        android:id="@+id/action_determinate_circular_examples"
-        android:title="@string/action_determinate_circular_examples"
+        android:id="@+id/action_determinate_circular_sample"
+        android:title="@string/action_determinate_circular_sample"
         android:orderInCategory="100"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
 </menu>

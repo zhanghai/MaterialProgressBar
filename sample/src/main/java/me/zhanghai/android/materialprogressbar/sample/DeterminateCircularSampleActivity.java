@@ -10,8 +10,7 @@ import java.util.List;
 
 import me.zhanghai.android.materialprogressbar.MaterialProgressBar;
 
-public class DeterminateCircularExamplesActivity extends AppCompatActivity {
-    private static final String TAG = DeterminateCircularExamplesActivity.class.getSimpleName();
+public class DeterminateCircularSampleActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,8 +119,6 @@ public class DeterminateCircularExamplesActivity extends AppCompatActivity {
                                     for (MaterialProgressBar bar : withSecondary) {
                                         bar.setSecondaryProgress(0);
                                     }
-                                } else {
-                                    Log.wtf(TAG, "Broken value for `progress`");
                                 }
                             }
                         });
