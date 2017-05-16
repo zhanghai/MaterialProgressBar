@@ -13,6 +13,10 @@ Material Design `ProgressBar` with consistent appearance on Android 4.0+.
 - Able to show a determinate circular progress.
 - Used as a drop-in replacement for framework `ProgressBar`.
 
+## FOO-999
+
+Added a thing for FOO-999
+
 ## Preview
 
 <a href="https://play.google.com/store/apps/details?id=me.zhanghai.android.materialprogressbar.sample" target="_blank"><img alt="Google Play" height="90" src="https://play.google.com/intl/en_US/badges/images/generic/en_badge_web_generic.png"/></a>
