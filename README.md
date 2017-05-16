@@ -13,6 +13,10 @@ Material Design `ProgressBar` with consistent appearance on Android 4.0+.
 - Able to show a determinate circular progress.
 - Used as a drop-in replacement for framework `ProgressBar`.
 
+## FOO-999
+
+Added a thing for FOO-999
+
 ## Preview
 
 <a href="https://play.google.com/store/apps/details?id=me.zhanghai.android.materialprogressbar.sample" target="_blank"><img alt="Google Play" height="90" src="https://play.google.com/intl/en_US/badges/images/generic/en_badge_web_generic.png"/></a>
@@ -122,7 +126,7 @@ Neither Support v4 nor AppCompat v7 backported animation API to versions prior t
 
 ## License
 
-    Copyright 2015 Zhang Hai
+    Copyright 2017 Zhang Hai
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -135,3 +139,5 @@ Neither Support v4 nor AppCompat v7 backported animation API to versions prior t
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
+
+More stuff in master
