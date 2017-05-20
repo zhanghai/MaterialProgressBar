@@ -294,6 +294,43 @@ public class MaterialProgressBar extends ProgressBar {
         }
     }
 
+    @Override
+    public void setIndeterminate(boolean indeterminate) {
+        super.setIndeterminate(indeterminate);
+        Drawable d = getCurrentDrawable();
+        if (d instanceof HorizontalProgressDrawable ||
+                d instanceof IndeterminateProgressDrawable ||
+                d instanceof IndeterminateHorizontalProgressDrawable) {
+            return;
+        }
+
+        Context context = getContext();
+        switch (mProgressStyle) {
+            case PROGRESS_STYLE_CIRCULAR:
+                // We don't throw here like we do above because it seems the default ProgressBar
+                // implementation seems to call setIndeterminate(false) before setting it
+                // to true.
+                if (isIndeterminate()) {
+                    if (!isInEditMode()) {
+                        setIndeterminateDrawable(new IndeterminateProgressDrawable(context));
+                    }
+                }
+                break;
+            case PROGRESS_STYLE_HORIZONTAL:
+                if (isIndeterminate()) {
+                    if (!isInEditMode()) {
+                        setIndeterminateDrawable(new IndeterminateHorizontalProgressDrawable(
+                                context));
+                    }
+                } else {
+                    setProgressDrawable(new HorizontalProgressDrawable(context));
+                }
+                break;
+            default:
+                throw new IllegalArgumentException("Unknown progress style: " + mProgressStyle);
+        }
+    }
+
     /**
      * {@inheritDoc}
      */
