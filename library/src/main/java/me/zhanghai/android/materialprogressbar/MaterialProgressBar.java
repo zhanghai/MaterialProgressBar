@@ -172,13 +172,14 @@ public class MaterialProgressBar extends ProgressBar {
         super.onAttachedToWindow();
 
         // isHardwareAccelerated() only works when attached to a window.
-        fixCanvasScalingWhenHardwareAccelerated();
+        fixCanvasScalingAndColorFilterWhenHardwareAccelerated();
     }
 
-    private void fixCanvasScalingWhenHardwareAccelerated() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR2) {
-            // Canvas scaling when hardware accelerated results in artifacts on older API levels, so
-            // we need to use software rendering
+    private void fixCanvasScalingAndColorFilterWhenHardwareAccelerated() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            // Canvas scaling when hardware accelerated results in artifacts on API < 18, and color
+            // filter with alpha results in some dark color on API < 20, so we need to use software
+            // layer.
             if (isHardwareAccelerated() && getLayerType() != LAYER_TYPE_SOFTWARE) {
                 setLayerType(LAYER_TYPE_SOFTWARE, null);
             }
