@@ -112,8 +112,8 @@ class BaseProgressLayerDrawable<
         ColorStateList backgroundTint;
         if (tint != null) {
             if (!tint.isOpaque()) {
-                Log.w(getClass().getSimpleName(),
-                        "setTintList() called with a non-opaque ColorStateList, its original alpha will be discarded");
+                Log.w(getClass().getSimpleName(), "setTintList() called with a non-opaque" +
+                        " ColorStateList, its original alpha will be discarded");
             }
             backgroundTint = tint.withAlpha(Math.round(0xFF * mBackgroundAlpha));
         } else {

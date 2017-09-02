@@ -162,8 +162,8 @@ public class MaterialProgressBar extends ProgressBar {
         super.setIndeterminate(indeterminate);
 
         if (mSuperInitialized && !(getCurrentDrawable() instanceof MaterialProgressDrawable)) {
-            Log.w(TAG,
-                    "Current drawable is not a MaterialProgressDrawable, you may want to set app:mpb_setBothDrawables");
+            Log.w(TAG, "Current drawable is not a MaterialProgressDrawable, you may want to set" +
+                    " app:mpb_setBothDrawables");
         }
     }
 
@@ -556,8 +556,8 @@ public class MaterialProgressBar extends ProgressBar {
                     //noinspection RedundantCast
                     ((TintableDrawable) drawable).setTintList(tint);
                 } else {
-                    Log.w(TAG,
-                            "Drawable did not implement TintableDrawable, it won't be tinted below Lollipop");
+                    Log.w(TAG, "Drawable did not implement TintableDrawable, it won't be tinted" +
+                            " below Lollipop");
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                         drawable.setTintList(tint);
                     }
@@ -569,8 +569,8 @@ public class MaterialProgressBar extends ProgressBar {
                     //noinspection RedundantCast
                     ((TintableDrawable) drawable).setTintMode(tintMode);
                 } else {
-                    Log.w(TAG,
-                            "Drawable did not implement TintableDrawable, it won't be tinted below Lollipop");
+                    Log.w(TAG, "Drawable did not implement TintableDrawable, it won't be tinted" +
+                            " below Lollipop");
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                         drawable.setTintMode(tintMode);
                     }
