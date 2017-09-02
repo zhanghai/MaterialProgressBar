@@ -17,7 +17,7 @@ Material Design `ProgressBar` with consistent appearance on Android 4.0+.
 
 <a href="https://play.google.com/store/apps/details?id=me.zhanghai.android.materialprogressbar.sample" target="_blank"><img alt="Google Play" height="90" src="https://play.google.com/intl/en_US/badges/images/generic/en_badge_web_generic.png"/></a>
 
-[Sample APK](//github.com/DreaminginCodeZH/MaterialProgressBar/releases/download/v1.4.1/sample-release.apk)
+[Sample APK](//github.com/DreaminginCodeZH/MaterialProgressBar/releases/download/v1.4.2/sample-release.apk)
 
 Android 4.4.4
 
@@ -36,7 +36,7 @@ Android 6.0.1
 Gradle:
 
 ```gradle
-compile 'me.zhanghai.android.materialprogressbar:library:1.4.1'
+compile 'me.zhanghai.android.materialprogressbar:library:1.4.2'
 ```
 
 ## Usage
