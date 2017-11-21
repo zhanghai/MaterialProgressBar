@@ -400,7 +400,12 @@ public class MaterialProgressBar extends ProgressBar {
     }
 
     private void logProgressBarTintWarning() {
-        Log.w(TAG, "Non-support version of tint method called, it will crash below Lollipop");
+        if (getContext().getApplicationInfo().minSdkVersion >= Build.VERSION_CODES.LOLLIPOP) {
+            return;
+        }
+        Log.w(TAG, "Non-support version of tint method called, this is error-prone and will crash" +
+                " below Lollipop if you are calling it as a method of ProgressBar instead of" +
+                " MaterialProgressBar");
     }
 
     /**
