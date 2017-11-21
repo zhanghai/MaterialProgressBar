@@ -537,7 +537,7 @@ public class MaterialProgressBar extends ProgressBar {
     }
 
     /**
-     * @see ProgressBar#setSupportProgressTintList(ColorStateList)
+     * @see ProgressBar#setProgressBackgroundTintList(ColorStateList)
      */
     public void setSupportProgressBackgroundTintList(@Nullable ColorStateList tint) {
         mProgressTintInfo.mProgressBackgroundTint = tint;
