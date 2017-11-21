@@ -295,6 +295,115 @@ public class MaterialProgressBar extends ProgressBar {
         }
     }
 
+    @Nullable
+    @Override
+    public ColorStateList getProgressTintList() {
+        logProgressBarTintWarning();
+        return super.getProgressTintList();
+    }
+
+    @Override
+    public void setProgressTintList(@Nullable ColorStateList tint) {
+        logProgressBarTintWarning();
+        super.setProgressTintList(tint);
+    }
+
+    @Nullable
+    @Override
+    public PorterDuff.Mode getProgressTintMode() {
+        logProgressBarTintWarning();
+        return super.getProgressTintMode();
+    }
+
+    @Override
+    public void setProgressTintMode(@Nullable PorterDuff.Mode tintMode) {
+        logProgressBarTintWarning();
+        super.setProgressTintMode(tintMode);
+    }
+
+    @Nullable
+    @Override
+    public ColorStateList getSecondaryProgressTintList() {
+        logProgressBarTintWarning();
+        return super.getSecondaryProgressTintList();
+    }
+
+    @Override
+    public void setSecondaryProgressTintList(@Nullable ColorStateList tint) {
+        logProgressBarTintWarning();
+        super.setSecondaryProgressTintList(tint);
+    }
+
+    @Nullable
+    @Override
+    public PorterDuff.Mode getSecondaryProgressTintMode() {
+        logProgressBarTintWarning();
+        return super.getSecondaryProgressTintMode();
+    }
+
+    @Override
+    public void setSecondaryProgressTintMode(@Nullable PorterDuff.Mode tintMode) {
+        logProgressBarTintWarning();
+        super.setSecondaryProgressTintMode(tintMode);
+    }
+
+    @Nullable
+    @Override
+    public ColorStateList getProgressBackgroundTintList() {
+        logProgressBarTintWarning();
+        return super.getProgressBackgroundTintList();
+    }
+
+    @Override
+    public void setProgressBackgroundTintList(@Nullable ColorStateList tint) {
+        logProgressBarTintWarning();
+        super.setProgressBackgroundTintList(tint);
+    }
+
+    @Nullable
+    @Override
+    public PorterDuff.Mode getProgressBackgroundTintMode() {
+        logProgressBarTintWarning();
+        return super.getProgressBackgroundTintMode();
+    }
+
+    @Override
+    public void setProgressBackgroundTintMode(@Nullable PorterDuff.Mode tintMode) {
+        logProgressBarTintWarning();
+        super.setProgressBackgroundTintMode(tintMode);
+    }
+
+    @Nullable
+    @Override
+    public ColorStateList getIndeterminateTintList() {
+        logProgressBarTintWarning();
+        return super.getIndeterminateTintList();
+    }
+
+    @Override
+    public void setIndeterminateTintList(@Nullable ColorStateList tint) {
+        logProgressBarTintWarning();
+        super.setIndeterminateTintList(tint);
+    }
+
+    @Nullable
+    @Override
+    public PorterDuff.Mode getIndeterminateTintMode() {
+        logProgressBarTintWarning();
+        return super.getIndeterminateTintMode();
+    }
+
+    @Override
+    public void setIndeterminateTintMode(@Nullable PorterDuff.Mode tintMode) {
+        logProgressBarTintWarning();
+        super.setIndeterminateTintMode(tintMode);
+    }
+
+    private void logProgressBarTintWarning() {
+        Log.w(TAG, "Non-support version of tint method called, progress bar won't be tinted below" +
+                " Lollipop");
+    }
+
     /**
      * @see #getProgressTintList()
      */
@@ -540,8 +649,7 @@ public class MaterialProgressBar extends ProgressBar {
                     //noinspection RedundantCast
                     ((TintableDrawable) drawable).setTintList(tint);
                 } else {
-                    Log.w(TAG, "Drawable did not implement TintableDrawable, it won't be tinted" +
-                            " below Lollipop");
+                    logDrawableTintWarning();
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                         drawable.setTintList(tint);
                     }
@@ -553,8 +661,7 @@ public class MaterialProgressBar extends ProgressBar {
                     //noinspection RedundantCast
                     ((TintableDrawable) drawable).setTintMode(tintMode);
                 } else {
-                    Log.w(TAG, "Drawable did not implement TintableDrawable, it won't be tinted" +
-                            " below Lollipop");
+                    logDrawableTintWarning();
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                         drawable.setTintMode(tintMode);
                     }
@@ -567,6 +674,11 @@ public class MaterialProgressBar extends ProgressBar {
                 drawable.setState(getDrawableState());
             }
         }
+    }
+
+    private void logDrawableTintWarning() {
+        Log.w(TAG, "Drawable did not implement TintableDrawable, it won't be tinted below" +
+                " Lollipop");
     }
 
     private static class TintInfo {
