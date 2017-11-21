@@ -295,6 +295,9 @@ public class MaterialProgressBar extends ProgressBar {
         }
     }
 
+    /**
+     * @deprecated Use {@link #getSupportProgressTintList()} instead.
+     */
     @Nullable
     @Override
     public ColorStateList getProgressTintList() {
@@ -302,12 +305,18 @@ public class MaterialProgressBar extends ProgressBar {
         return getSupportProgressTintList();
     }
 
+    /**
+     * @deprecated Use {@link #setSupportProgressTintList(ColorStateList)} instead.
+     */
     @Override
     public void setProgressTintList(@Nullable ColorStateList tint) {
         logProgressBarTintWarning();
         setSupportProgressTintList(tint);
     }
 
+    /**
+     * @deprecated Use {@link #getSupportProgressTintMode()} instead.
+     */
     @Nullable
     @Override
     public PorterDuff.Mode getProgressTintMode() {
@@ -315,12 +324,18 @@ public class MaterialProgressBar extends ProgressBar {
         return getSupportProgressTintMode();
     }
 
+    /**
+     * @deprecated Use {@link #setSupportProgressTintMode(PorterDuff.Mode)} instead.
+     */
     @Override
     public void setProgressTintMode(@Nullable PorterDuff.Mode tintMode) {
         logProgressBarTintWarning();
         setSupportProgressTintMode(tintMode);
     }
 
+    /**
+     * @deprecated Use {@link #getSupportSecondaryProgressTintList()} instead.
+     */
     @Nullable
     @Override
     public ColorStateList getSecondaryProgressTintList() {
@@ -328,12 +343,18 @@ public class MaterialProgressBar extends ProgressBar {
         return getSupportSecondaryProgressTintList();
     }
 
+    /**
+     * @deprecated Use {@link #setSupportSecondaryProgressTintList(ColorStateList)} instead.
+     */
     @Override
     public void setSecondaryProgressTintList(@Nullable ColorStateList tint) {
         logProgressBarTintWarning();
         setSupportSecondaryProgressTintList(tint);
     }
 
+    /**
+     * @deprecated Use {@link #getSupportSecondaryProgressTintMode()} instead.
+     */
     @Nullable
     @Override
     public PorterDuff.Mode getSecondaryProgressTintMode() {
@@ -341,12 +362,18 @@ public class MaterialProgressBar extends ProgressBar {
         return getSupportSecondaryProgressTintMode();
     }
 
+    /**
+     * @deprecated Use {@link #setSupportSecondaryProgressTintMode(PorterDuff.Mode)} instead.
+     */
     @Override
     public void setSecondaryProgressTintMode(@Nullable PorterDuff.Mode tintMode) {
         logProgressBarTintWarning();
         setSupportSecondaryProgressTintMode(tintMode);
     }
 
+    /**
+     * @deprecated Use {@link #getSupportProgressBackgroundTintList()} instead.
+     */
     @Nullable
     @Override
     public ColorStateList getProgressBackgroundTintList() {
@@ -354,12 +381,18 @@ public class MaterialProgressBar extends ProgressBar {
         return getSupportProgressBackgroundTintList();
     }
 
+    /**
+     * @deprecated Use {@link #setSupportProgressBackgroundTintList(ColorStateList)} instead.
+     */
     @Override
     public void setProgressBackgroundTintList(@Nullable ColorStateList tint) {
         logProgressBarTintWarning();
         setSupportProgressBackgroundTintList(tint);
     }
 
+    /**
+     * @deprecated Use {@link #getSupportProgressBackgroundTintMode()} instead.
+     */
     @Nullable
     @Override
     public PorterDuff.Mode getProgressBackgroundTintMode() {
@@ -367,12 +400,18 @@ public class MaterialProgressBar extends ProgressBar {
         return getSupportProgressBackgroundTintMode();
     }
 
+    /**
+     * @deprecated Use {@link #setSupportProgressBackgroundTintMode(PorterDuff.Mode)} instead.
+     */
     @Override
     public void setProgressBackgroundTintMode(@Nullable PorterDuff.Mode tintMode) {
         logProgressBarTintWarning();
         setSupportProgressBackgroundTintMode(tintMode);
     }
 
+    /**
+     * @deprecated Use {@link #getSupportIndeterminateTintList()} instead.
+     */
     @Nullable
     @Override
     public ColorStateList getIndeterminateTintList() {
@@ -380,12 +419,18 @@ public class MaterialProgressBar extends ProgressBar {
         return getSupportIndeterminateTintList();
     }
 
+    /**
+     * @deprecated Use {@link #setSupportIndeterminateTintList(ColorStateList)} instead.
+     */
     @Override
     public void setIndeterminateTintList(@Nullable ColorStateList tint) {
         logProgressBarTintWarning();
         setSupportIndeterminateTintList(tint);
     }
 
+    /**
+     * @deprecated Use {@link #getSupportIndeterminateTintMode()} instead.
+     */
     @Nullable
     @Override
     public PorterDuff.Mode getIndeterminateTintMode() {
@@ -393,6 +438,9 @@ public class MaterialProgressBar extends ProgressBar {
         return getSupportIndeterminateTintMode();
     }
 
+    /**
+     * @deprecated Use {@link #setSupportIndeterminateTintMode(PorterDuff.Mode)} instead.
+     */
     @Override
     public void setIndeterminateTintMode(@Nullable PorterDuff.Mode tintMode) {
         logProgressBarTintWarning();
@@ -409,7 +457,7 @@ public class MaterialProgressBar extends ProgressBar {
     }
 
     /**
-     * @see #getProgressTintList()
+     * @see ProgressBar#getProgressTintList()
      */
     @Nullable
     public ColorStateList getSupportProgressTintList() {
@@ -417,7 +465,7 @@ public class MaterialProgressBar extends ProgressBar {
     }
 
     /**
-     * @see #setProgressTintList(ColorStateList)
+     * @see ProgressBar#setProgressTintList(ColorStateList)
      */
     public void setSupportProgressTintList(@Nullable ColorStateList tint) {
         mProgressTintInfo.mProgressTint = tint;
@@ -427,7 +475,7 @@ public class MaterialProgressBar extends ProgressBar {
     }
 
     /**
-     * @see #getProgressTintMode()
+     * @see ProgressBar#getProgressTintMode()
      */
     @Nullable
     public PorterDuff.Mode getSupportProgressTintMode() {
@@ -435,7 +483,7 @@ public class MaterialProgressBar extends ProgressBar {
     }
 
     /**
-     * @see #setProgressTintMode(PorterDuff.Mode)
+     * @see ProgressBar#setProgressTintMode(PorterDuff.Mode)
      */
     public void setSupportProgressTintMode(@Nullable PorterDuff.Mode tintMode) {
         mProgressTintInfo.mProgressTintMode = tintMode;
@@ -445,7 +493,7 @@ public class MaterialProgressBar extends ProgressBar {
     }
 
     /**
-     * @see #getSecondaryProgressTintList()
+     * @see ProgressBar#getSecondaryProgressTintList()
      */
     @Nullable
     public ColorStateList getSupportSecondaryProgressTintList() {
@@ -453,7 +501,7 @@ public class MaterialProgressBar extends ProgressBar {
     }
 
     /**
-     * @see #setSecondaryProgressTintList(ColorStateList)
+     * @see ProgressBar#setSecondaryProgressTintList(ColorStateList)
      */
     public void setSupportSecondaryProgressTintList(@Nullable ColorStateList tint) {
         mProgressTintInfo.mSecondaryProgressTint = tint;
@@ -463,7 +511,7 @@ public class MaterialProgressBar extends ProgressBar {
     }
 
     /**
-     * @see #getSecondaryProgressTintMode()
+     * @see ProgressBar#getSecondaryProgressTintMode()
      */
     @Nullable
     public PorterDuff.Mode getSupportSecondaryProgressTintMode() {
@@ -471,7 +519,7 @@ public class MaterialProgressBar extends ProgressBar {
     }
 
     /**
-     * @see #setSecondaryProgressTintMode(PorterDuff.Mode)
+     * @see ProgressBar#setSecondaryProgressTintMode(PorterDuff.Mode)
      */
     public void setSupportSecondaryProgressTintMode(@Nullable PorterDuff.Mode tintMode) {
         mProgressTintInfo.mSecondaryProgressTintMode = tintMode;
@@ -481,7 +529,7 @@ public class MaterialProgressBar extends ProgressBar {
     }
 
     /**
-     * @see #getProgressBackgroundTintList()
+     * @see ProgressBar#getProgressBackgroundTintList()
      */
     @Nullable
     public ColorStateList getSupportProgressBackgroundTintList() {
@@ -489,7 +537,7 @@ public class MaterialProgressBar extends ProgressBar {
     }
 
     /**
-     * @see #setSupportProgressTintList(ColorStateList)
+     * @see ProgressBar#setSupportProgressTintList(ColorStateList)
      */
     public void setSupportProgressBackgroundTintList(@Nullable ColorStateList tint) {
         mProgressTintInfo.mProgressBackgroundTint = tint;
@@ -499,7 +547,7 @@ public class MaterialProgressBar extends ProgressBar {
     }
 
     /**
-     * @see #getProgressBackgroundTintMode()
+     * @see ProgressBar#getProgressBackgroundTintMode()
      */
     @Nullable
     public PorterDuff.Mode getSupportProgressBackgroundTintMode() {
@@ -507,7 +555,7 @@ public class MaterialProgressBar extends ProgressBar {
     }
 
     /**
-     * @see #setProgressBackgroundTintMode(PorterDuff.Mode)
+     * @see ProgressBar#setProgressBackgroundTintMode(PorterDuff.Mode)
      */
     public void setSupportProgressBackgroundTintMode(@Nullable PorterDuff.Mode tintMode) {
         mProgressTintInfo.mProgressBackgroundTintMode = tintMode;
@@ -517,7 +565,7 @@ public class MaterialProgressBar extends ProgressBar {
     }
 
     /**
-     * @see #getIndeterminateTintList()
+     * @see ProgressBar#getIndeterminateTintList()
      */
     @Nullable
     public ColorStateList getSupportIndeterminateTintList() {
@@ -525,7 +573,7 @@ public class MaterialProgressBar extends ProgressBar {
     }
 
     /**
-     * @see #setIndeterminateTintList(ColorStateList)
+     * @see ProgressBar#setIndeterminateTintList(ColorStateList)
      */
     public void setSupportIndeterminateTintList(@Nullable ColorStateList tint) {
         mProgressTintInfo.mIndeterminateTint = tint;
@@ -535,7 +583,7 @@ public class MaterialProgressBar extends ProgressBar {
     }
 
     /**
-     * @see #getIndeterminateTintMode()
+     * @see ProgressBar#getIndeterminateTintMode()
      */
     @Nullable
     public PorterDuff.Mode getSupportIndeterminateTintMode() {
@@ -543,7 +591,7 @@ public class MaterialProgressBar extends ProgressBar {
     }
 
     /**
-     * @see #setIndeterminateTintMode(PorterDuff.Mode)
+     * @see ProgressBar#setIndeterminateTintMode(PorterDuff.Mode)
      */
     public void setSupportIndeterminateTintMode(@Nullable PorterDuff.Mode tintMode) {
         mProgressTintInfo.mIndeterminateTintMode = tintMode;
