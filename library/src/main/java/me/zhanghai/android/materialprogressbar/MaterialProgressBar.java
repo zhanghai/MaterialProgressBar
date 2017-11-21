@@ -299,109 +299,108 @@ public class MaterialProgressBar extends ProgressBar {
     @Override
     public ColorStateList getProgressTintList() {
         logProgressBarTintWarning();
-        return super.getProgressTintList();
+        return getSupportProgressTintList();
     }
 
     @Override
     public void setProgressTintList(@Nullable ColorStateList tint) {
         logProgressBarTintWarning();
-        super.setProgressTintList(tint);
+        setSupportProgressTintList(tint);
     }
 
     @Nullable
     @Override
     public PorterDuff.Mode getProgressTintMode() {
         logProgressBarTintWarning();
-        return super.getProgressTintMode();
+        return getSupportProgressTintMode();
     }
 
     @Override
     public void setProgressTintMode(@Nullable PorterDuff.Mode tintMode) {
         logProgressBarTintWarning();
-        super.setProgressTintMode(tintMode);
+        setSupportProgressTintMode(tintMode);
     }
 
     @Nullable
     @Override
     public ColorStateList getSecondaryProgressTintList() {
         logProgressBarTintWarning();
-        return super.getSecondaryProgressTintList();
+        return getSupportSecondaryProgressTintList();
     }
 
     @Override
     public void setSecondaryProgressTintList(@Nullable ColorStateList tint) {
         logProgressBarTintWarning();
-        super.setSecondaryProgressTintList(tint);
+        setSupportSecondaryProgressTintList(tint);
     }
 
     @Nullable
     @Override
     public PorterDuff.Mode getSecondaryProgressTintMode() {
         logProgressBarTintWarning();
-        return super.getSecondaryProgressTintMode();
+        return getSupportSecondaryProgressTintMode();
     }
 
     @Override
     public void setSecondaryProgressTintMode(@Nullable PorterDuff.Mode tintMode) {
         logProgressBarTintWarning();
-        super.setSecondaryProgressTintMode(tintMode);
+        setSupportSecondaryProgressTintMode(tintMode);
     }
 
     @Nullable
     @Override
     public ColorStateList getProgressBackgroundTintList() {
         logProgressBarTintWarning();
-        return super.getProgressBackgroundTintList();
+        return getSupportProgressBackgroundTintList();
     }
 
     @Override
     public void setProgressBackgroundTintList(@Nullable ColorStateList tint) {
         logProgressBarTintWarning();
-        super.setProgressBackgroundTintList(tint);
+        setSupportProgressBackgroundTintList(tint);
     }
 
     @Nullable
     @Override
     public PorterDuff.Mode getProgressBackgroundTintMode() {
         logProgressBarTintWarning();
-        return super.getProgressBackgroundTintMode();
+        return getSupportProgressBackgroundTintMode();
     }
 
     @Override
     public void setProgressBackgroundTintMode(@Nullable PorterDuff.Mode tintMode) {
         logProgressBarTintWarning();
-        super.setProgressBackgroundTintMode(tintMode);
+        setSupportProgressBackgroundTintMode(tintMode);
     }
 
     @Nullable
     @Override
     public ColorStateList getIndeterminateTintList() {
         logProgressBarTintWarning();
-        return super.getIndeterminateTintList();
+        return getSupportIndeterminateTintList();
     }
 
     @Override
     public void setIndeterminateTintList(@Nullable ColorStateList tint) {
         logProgressBarTintWarning();
-        super.setIndeterminateTintList(tint);
+        setSupportIndeterminateTintList(tint);
     }
 
     @Nullable
     @Override
     public PorterDuff.Mode getIndeterminateTintMode() {
         logProgressBarTintWarning();
-        return super.getIndeterminateTintMode();
+        return getSupportIndeterminateTintMode();
     }
 
     @Override
     public void setIndeterminateTintMode(@Nullable PorterDuff.Mode tintMode) {
         logProgressBarTintWarning();
-        super.setIndeterminateTintMode(tintMode);
+        setSupportIndeterminateTintMode(tintMode);
     }
 
     private void logProgressBarTintWarning() {
-        Log.w(TAG, "Non-support version of tint method called, progress bar won't be tinted below" +
-                " Lollipop");
+        Log.w(TAG, "Non-support version of tint method called, it will crash below Lollipop");
     }
 
     /**
