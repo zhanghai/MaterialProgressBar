@@ -122,7 +122,7 @@ Neither Support v4 nor AppCompat v7 backported animation API to versions prior t
 
 ## License
 
-    Copyright 2015 Zhang Hai
+    Copyright 2015 Hai Zhang
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
