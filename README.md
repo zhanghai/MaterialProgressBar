@@ -36,7 +36,7 @@ Android 6.0.1
 Gradle:
 
 ```gradle
-compile 'me.zhanghai.android.materialprogressbar:library:1.4.2'
+implementation 'me.zhanghai.android.materialprogressbar:library:1.4.2'
 ```
 
 ## Usage
