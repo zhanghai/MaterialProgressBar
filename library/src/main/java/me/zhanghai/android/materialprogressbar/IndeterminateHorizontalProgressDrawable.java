@@ -25,16 +25,16 @@ public class IndeterminateHorizontalProgressDrawable extends BaseIndeterminatePr
     private static final RectF RECT_BOUND = new RectF(-180, -1, 180, 1);
     private static final RectF RECT_PADDED_BOUND = new RectF(-180, -4, 180, 4);
     private static final RectF RECT_PROGRESS = new RectF(-144, -1, 144, 1);
-    private static final RectTransformX RECT_1_TRANSFORM_X = new RectTransformX(-522.6f, 0.1f);
-    private static final RectTransformX RECT_2_TRANSFORM_X = new RectTransformX(-197.6f, 0.1f);
+    private static final RectTransform RECT_1_TRANSFORM_X = new RectTransform(-522.6f, 0.1f, 0f, 1f);
+    private static final RectTransform RECT_2_TRANSFORM_X = new RectTransform(-197.6f, 0.1f, 0f, 1f);
 
     private int mProgressIntrinsicHeight;
     private int mPaddedIntrinsicHeight;
     private boolean mShowBackground = true;
     private float mBackgroundAlpha;
 
-    private RectTransformX mRect1TransformX = new RectTransformX(RECT_1_TRANSFORM_X);
-    private RectTransformX mRect2TransformX = new RectTransformX(RECT_2_TRANSFORM_X);
+    private RectTransform mRect1Transform = new RectTransform(RECT_1_TRANSFORM_X);
+    private RectTransform mRect2Transform = new RectTransform(RECT_2_TRANSFORM_X);
 
     /**
      * Create a new {@code IndeterminateHorizontalProgressDrawable}.
@@ -50,9 +50,9 @@ public class IndeterminateHorizontalProgressDrawable extends BaseIndeterminatePr
 
         mBackgroundAlpha = ThemeUtils.getFloatFromAttrRes(android.R.attr.disabledAlpha, 0, context);
 
-        mAnimators = new Animator[] {
-                Animators.createIndeterminateHorizontalRect1(mRect1TransformX),
-                Animators.createIndeterminateHorizontalRect2(mRect2TransformX)
+        mAnimators = new Animator[]{
+                Animators.createIndeterminateHorizontalRect1(mRect1Transform),
+                Animators.createIndeterminateHorizontalRect2(mRect2Transform)
         };
     }
 
@@ -104,38 +104,45 @@ public class IndeterminateHorizontalProgressDrawable extends BaseIndeterminatePr
             drawBackgroundRect(canvas, paint);
             paint.setAlpha(mAlpha);
         }
-        drawProgressRect(canvas, mRect2TransformX, paint);
-        drawProgressRect(canvas, mRect1TransformX, paint);
+        drawProgressRect(canvas, mRect2Transform, paint);
+        drawProgressRect(canvas, mRect1Transform, paint);
     }
 
     private static void drawBackgroundRect(Canvas canvas, Paint paint) {
         canvas.drawRect(RECT_BOUND, paint);
     }
 
-    private static void drawProgressRect(Canvas canvas, RectTransformX transformX, Paint paint) {
+    private static void drawProgressRect(Canvas canvas, RectTransform transform, Paint paint) {
 
         int saveCount = canvas.save();
-        canvas.translate(transformX.mTranslateX, 0);
-        canvas.scale(transformX.mScaleX, 1);
+        canvas.translate(transform.mTranslateX, transform.mTranslateY);
+        canvas.scale(transform.mScaleX, transform.mScaleY);
 
         canvas.drawRect(RECT_PROGRESS, paint);
 
         canvas.restoreToCount(saveCount);
     }
 
-    private static class RectTransformX {
+    private static class RectTransform {
 
         public float mTranslateX;
-        public float mScaleX;
+        public float mTranslateY;
 
-        public RectTransformX(float translateX, float scaleX) {
+        public float mScaleX;
+        public float mScaleY;
+
+        public RectTransform(float translateX, float scaleX, float translateY, float scaleY) {
             mTranslateX = translateX;
             mScaleX = scaleX;
+            mTranslateY = translateY;
+            mScaleY = scaleY;
         }
 
-        public RectTransformX(RectTransformX that) {
+        public RectTransform(RectTransform that) {
             mTranslateX = that.mTranslateX;
             mScaleX = that.mScaleX;
+            mTranslateY = that.mTranslateY;
+            mScaleY = that.mScaleY;
         }
 
         @Keep
@@ -148,6 +155,18 @@ public class IndeterminateHorizontalProgressDrawable extends BaseIndeterminatePr
         @SuppressWarnings("unused")
         public void setScaleX(float scaleX) {
             mScaleX = scaleX;
+        }
+
+        @Keep
+        @SuppressWarnings("unused")
+        public void setTranslateY(float translateY) {
+            mTranslateY = translateY;
+        }
+
+        @Keep
+        @SuppressWarnings("unused")
+        public void setScaleY(float scaleY) {
+            mScaleY = scaleY;
         }
     }
 }
