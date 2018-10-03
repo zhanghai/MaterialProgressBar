@@ -8,8 +8,9 @@ package me.zhanghai.android.materialprogressbar.sample;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
-import android.support.v4.app.TaskStackBuilder;
+
+import androidx.core.app.NavUtils;
+import androidx.core.app.TaskStackBuilder;
 
 public class AppUtils {
 

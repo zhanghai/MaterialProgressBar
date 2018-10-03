@@ -10,7 +10,8 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.support.annotation.Keep;
+
+import androidx.annotation.Keep;
 
 /**
  * A backported {@code Drawable} for indeterminate circular {@code ProgressBar}.

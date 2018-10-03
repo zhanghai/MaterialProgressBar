@@ -10,8 +10,8 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.support.annotation.Keep;
 
+import androidx.annotation.Keep;
 import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
 
 /**
