@@ -27,3 +27,10 @@ dependencies {
 }
 
 apply from: '../gradle-mvn-push.gradle'
+
+// HACK: We are referencing our dependencies in JavaDoc. This hack fixes the classpath for the
+// androidJavadocs task.
+afterEvaluate {
+    androidJavadocs.classpath += project.android.libraryVariants.toList().first().javaCompile
+            .classpath
+}
