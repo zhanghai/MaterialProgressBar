@@ -13,11 +13,12 @@ import android.graphics.drawable.Drawable;
 import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.graphics.drawable.TintAwareDrawable;
 
 /**
  * A {@code Drawable} that is tintable.
  */
-public interface TintableDrawable {
+public interface TintableDrawable extends TintAwareDrawable {
 
     /**
      * Specifies tint color for this drawable.

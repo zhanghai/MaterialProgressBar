@@ -130,8 +130,8 @@ public class MaterialProgressBar extends ProgressBar {
             case PROGRESS_STYLE_CIRCULAR:
                 if (isIndeterminate() || setBothDrawables) {
                     if (!isInEditMode()) {
-                        setIndeterminateDrawable(new IndeterminateCircularProgressDrawable(
-                                context));
+                        setIndeterminateDrawable(
+                                new AnimationScaleIndeterminateCircularProgressDrawable(context));
                     }
                 }
                 if (!isIndeterminate() || setBothDrawables) {
@@ -258,11 +258,8 @@ public class MaterialProgressBar extends ProgressBar {
     /**
      * Set whether the current drawable should show a background. The default is {@code true}.
      *
-     * @param show Whether background should be shown. When {@code false}, does nothing if the
-     *             progress drawable does not implement {@link ShowBackgroundDrawable}, otherwise a
-     *             {@link IllegalStateException} is thrown.
-     * @throws IllegalStateException If {@code show} is {@code true} but the current drawable
-     * does not implement {@link ShowBackgroundDrawable}.
+     * @param show Whether background should be shown. Does nothing if the progress drawable does
+     *            not implement {@link ShowBackgroundDrawable}.
      */
     public void setShowProgressBackground(boolean show) {
         Drawable drawable = getCurrentDrawable();
