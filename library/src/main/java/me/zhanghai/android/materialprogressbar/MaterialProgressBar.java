@@ -17,6 +17,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.ProgressBar;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.TintTypedArray;
 import me.zhanghai.android.materialprogressbar.internal.DrawableCompat;
@@ -38,36 +39,38 @@ public class MaterialProgressBar extends ProgressBar {
     @SuppressWarnings("FieldCanBeLocal")
     private boolean mSuperInitialized = true;
     private int mProgressStyle;
-    private TintInfo mProgressTintInfo = new TintInfo();
+    @NonNull
+    private final TintInfo mProgressTintInfo = new TintInfo();
 
-    public MaterialProgressBar(Context context) {
+    public MaterialProgressBar(@NonNull Context context) {
         super(context);
 
         init(null, 0, 0);
     }
 
-    public MaterialProgressBar(Context context, AttributeSet attrs) {
+    public MaterialProgressBar(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
 
         init(attrs, 0, 0);
     }
 
-    public MaterialProgressBar(Context context, AttributeSet attrs, int defStyleAttr) {
+    public MaterialProgressBar(@NonNull Context context, @Nullable AttributeSet attrs,
+                               int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
         init(attrs, defStyleAttr, 0);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public MaterialProgressBar(Context context, AttributeSet attrs, int defStyleAttr,
-                               int defStyleRes) {
+    public MaterialProgressBar(@NonNull Context context, @Nullable AttributeSet attrs,
+                               int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
 
         init(attrs, defStyleAttr, defStyleRes);
     }
 
     @SuppressWarnings("RestrictedApi")
-    private void init(AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    private void init(@Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
 
         Context context = getContext();
         TintTypedArray a = TintTypedArray.obtainStyledAttributes(context, attrs,
@@ -200,6 +203,7 @@ public class MaterialProgressBar extends ProgressBar {
      *
      * @return The current drawable.
      */
+    @Nullable
     public Drawable getCurrentDrawable() {
         return isIndeterminate() ? getIndeterminateDrawable() : getProgressDrawable();
     }
@@ -207,16 +211,15 @@ public class MaterialProgressBar extends ProgressBar {
     /**
      * Get whether the current drawable is using an intrinsic padding. The default is {@code true}.
      *
-     * @return Whether the current drawable is using an intrinsic padding.
-     * @throws IllegalStateException If the current drawable does not implement
-     * {@link IntrinsicPaddingDrawable}.
+     * @return Whether the current drawable is using an intrinsic padding, or {@code false} if the
+     *         drawable does not implement {@link IntrinsicPaddingDrawable}.
      */
     public boolean getUseIntrinsicPadding() {
         Drawable drawable = getCurrentDrawable();
         if (drawable instanceof IntrinsicPaddingDrawable) {
             return ((IntrinsicPaddingDrawable) drawable).getUseIntrinsicPadding();
         } else {
-            throw new IllegalStateException("Drawable does not implement IntrinsicPaddingDrawable");
+            return false;
         }
     }
 
@@ -224,9 +227,9 @@ public class MaterialProgressBar extends ProgressBar {
      * Set whether the current drawable should use an intrinsic padding. The default is
      * {@code true}.
      *
-     * @param useIntrinsicPadding Whether the current drawable should use its intrinsic padding.
-     * @throws IllegalStateException If the current drawable does not implement
-     * {@link IntrinsicPaddingDrawable}.
+     * @param useIntrinsicPadding Whether the current drawable should use its intrinsic padding, or
+     *                            ignored if the progress drawable does not implement
+     *                            {@link IntrinsicPaddingDrawable}.
      */
     public void setUseIntrinsicPadding(boolean useIntrinsicPadding) {
         Drawable drawable = getCurrentDrawable();
@@ -244,7 +247,7 @@ public class MaterialProgressBar extends ProgressBar {
      * Get whether the current drawable is showing a background. The default is {@code true}.
      *
      * @return Whether the current drawable is showing a background, or {@code false} if the
-     * drawable does not implement {@link ShowBackgroundDrawable}.
+     *         drawable does not implement {@link ShowBackgroundDrawable}.
      */
     public boolean getShowProgressBackground() {
         Drawable drawable = getCurrentDrawable();
@@ -258,8 +261,8 @@ public class MaterialProgressBar extends ProgressBar {
     /**
      * Set whether the current drawable should show a background. The default is {@code true}.
      *
-     * @param show Whether background should be shown. Does nothing if the progress drawable does
-     *            not implement {@link ShowBackgroundDrawable}.
+     * @param show Whether background should be shown, or ignored if the progress drawable does not
+     *             implement {@link ShowBackgroundDrawable}.
      */
     public void setShowProgressBackground(boolean show) {
         Drawable drawable = getCurrentDrawable();
@@ -273,20 +276,22 @@ public class MaterialProgressBar extends ProgressBar {
     }
 
     @Override
-    public void setProgressDrawable(Drawable d) {
-        super.setProgressDrawable(d);
+    public void setProgressDrawable(@Nullable Drawable drawable) {
+        super.setProgressDrawable(drawable);
 
         // mProgressTintInfo can be null during super class initialization.
+        //noinspection ConstantConditions
         if (mProgressTintInfo != null) {
             applyProgressTints();
         }
     }
 
     @Override
-    public void setIndeterminateDrawable(Drawable d) {
-        super.setIndeterminateDrawable(d);
+    public void setIndeterminateDrawable(@Nullable Drawable drawable) {
+        super.setIndeterminateDrawable(drawable);
 
         // mProgressTintInfo can be null during super class initialization.
+        //noinspection ConstantConditions
         if (mProgressTintInfo != null) {
             applyIndeterminateTint();
         }
@@ -653,6 +658,7 @@ public class MaterialProgressBar extends ProgressBar {
         }
     }
 
+    @Nullable
     private Drawable getTintTargetFromProgressDrawable(int layerId, boolean shouldFallback) {
         Drawable progressDrawable = getProgressDrawable();
         if (progressDrawable == null) {
@@ -687,8 +693,8 @@ public class MaterialProgressBar extends ProgressBar {
     // Progress drawables in this library has already rewritten tint related methods for
     // compatibility.
     @SuppressLint("NewApi")
-    private void applyTintForDrawable(Drawable drawable, ColorStateList tint,
-                                      boolean hasTint, PorterDuff.Mode tintMode,
+    private void applyTintForDrawable(@NonNull Drawable drawable, @Nullable ColorStateList tint,
+                                      boolean hasTint, @Nullable PorterDuff.Mode tintMode,
                                       boolean hasTintMode) {
 
         if (hasTint || hasTintMode) {
@@ -732,22 +738,30 @@ public class MaterialProgressBar extends ProgressBar {
 
     private static class TintInfo {
 
+        @Nullable
         public ColorStateList mProgressTint;
+        @Nullable
         public PorterDuff.Mode mProgressTintMode;
         public boolean mHasProgressTint;
         public boolean mHasProgressTintMode;
 
+        @Nullable
         public ColorStateList mSecondaryProgressTint;
+        @Nullable
         public PorterDuff.Mode mSecondaryProgressTintMode;
         public boolean mHasSecondaryProgressTint;
         public boolean mHasSecondaryProgressTintMode;
 
+        @Nullable
         public ColorStateList mProgressBackgroundTint;
+        @Nullable
         public PorterDuff.Mode mProgressBackgroundTintMode;
         public boolean mHasProgressBackgroundTint;
         public boolean mHasProgressBackgroundTintMode;
 
+        @Nullable
         public ColorStateList mIndeterminateTint;
+        @Nullable
         public PorterDuff.Mode mIndeterminateTintMode;
         public boolean mHasIndeterminateTint;
         public boolean mHasIndeterminateTintMode;

@@ -9,6 +9,9 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 
+import androidx.annotation.IntRange;
+import androidx.annotation.NonNull;
+
 class SingleCircularProgressDrawable extends BaseSingleCircularProgressDrawable
         implements ShowBackgroundDrawable {
 
@@ -39,7 +42,7 @@ class SingleCircularProgressDrawable extends BaseSingleCircularProgressDrawable
     }
 
     @Override
-    protected boolean onLevelChange(int level) {
+    protected boolean onLevelChange(@IntRange(from = 0, to = LEVEL_MAX) int level) {
         invalidateSelf();
         return true;
     }
@@ -58,7 +61,7 @@ class SingleCircularProgressDrawable extends BaseSingleCircularProgressDrawable
     }
 
     @Override
-    protected void onDrawRing(Canvas canvas, Paint paint) {
+    protected void onDrawRing(@NonNull Canvas canvas, @NonNull Paint paint) {
 
         int level = getLevel();
         if (level == 0) {

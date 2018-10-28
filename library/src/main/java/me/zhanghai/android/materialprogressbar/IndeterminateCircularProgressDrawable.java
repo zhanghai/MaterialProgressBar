@@ -11,7 +11,10 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
 
+import androidx.annotation.Dimension;
 import androidx.annotation.Keep;
+import androidx.annotation.NonNull;
+import androidx.annotation.Px;
 
 /**
  * A backported {@code Drawable} for indeterminate circular {@code ProgressBar}.
@@ -19,24 +22,30 @@ import androidx.annotation.Keep;
 public class IndeterminateCircularProgressDrawable extends BaseIndeterminateProgressDrawable
         implements MaterialProgressDrawable {
 
+    @Dimension(unit = Dimension.DP)
     private static final int PROGRESS_INTRINSIC_SIZE_DP = 42;
+    @Dimension(unit = Dimension.DP)
     private static final int PADDED_INTRINSIC_SIZE_DP = 48;
     private static final RectF RECT_BOUND = new RectF(-21, -21, 21, 21);
     private static final RectF RECT_PADDED_BOUND = new RectF(-24, -24, 24, 24);
     private static final RectF RECT_PROGRESS = new RectF(-19, -19, 19, 19);
 
-    private int mProgressIntrinsicSize;
-    private int mPaddedIntrinsicSize;
+    @Px
+    private final int mProgressIntrinsicSize;
+    @Px
+    private final int mPaddedIntrinsicSize;
 
-    private RingPathTransform mRingPathTransform = new RingPathTransform();
-    private RingRotation mRingRotation = new RingRotation();
+    @NonNull
+    private final RingPathTransform mRingPathTransform = new RingPathTransform();
+    @NonNull
+    private final RingRotation mRingRotation = new RingRotation();
 
     /**
      * Create a new {@code IndeterminateCircularProgressDrawable}.
      *
      * @param context the {@code Context} for retrieving style information.
      */
-    public IndeterminateCircularProgressDrawable(Context context) {
+    public IndeterminateCircularProgressDrawable(@NonNull Context context) {
         super(context);
 
         float density = context.getResources().getDisplayMetrics().density;
@@ -49,6 +58,7 @@ public class IndeterminateCircularProgressDrawable extends BaseIndeterminateProg
         };
     }
 
+    @Px
     private int getIntrinsicSize() {
         return mUseIntrinsicPadding ? mPaddedIntrinsicSize : mProgressIntrinsicSize;
     }
@@ -57,6 +67,7 @@ public class IndeterminateCircularProgressDrawable extends BaseIndeterminateProg
      * {@inheritDoc}
      */
     @Override
+    @Px
     public int getIntrinsicWidth() {
         return getIntrinsicSize();
     }
@@ -65,12 +76,13 @@ public class IndeterminateCircularProgressDrawable extends BaseIndeterminateProg
      * {@inheritDoc}
      */
     @Override
+    @Px
     public int getIntrinsicHeight() {
         return getIntrinsicSize();
     }
 
     @Override
-    protected void onPreparePaint(Paint paint) {
+    protected void onPreparePaint(@NonNull Paint paint) {
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(4);
         paint.setStrokeCap(Paint.Cap.SQUARE);
@@ -78,7 +90,7 @@ public class IndeterminateCircularProgressDrawable extends BaseIndeterminateProg
     }
 
     @Override
-    protected void onDraw(Canvas canvas, int width, int height, Paint paint) {
+    protected void onDraw(@NonNull Canvas canvas, int width, int height, @NonNull Paint paint) {
 
         if (mUseIntrinsicPadding) {
             canvas.scale(width / RECT_PADDED_BOUND.width(), height / RECT_PADDED_BOUND.height());
@@ -91,7 +103,7 @@ public class IndeterminateCircularProgressDrawable extends BaseIndeterminateProg
         drawRing(canvas, paint);
     }
 
-    private void drawRing(Canvas canvas, Paint paint) {
+    private void drawRing(@NonNull Canvas canvas, @NonNull Paint paint) {
 
         int saveCount = canvas.save();
         canvas.rotate(mRingRotation.mRotation);

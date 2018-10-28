@@ -8,6 +8,8 @@ package me.zhanghai.android.materialprogressbar;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
+import androidx.annotation.NonNull;
+
 class CircularProgressBackgroundDrawable extends BaseSingleCircularProgressDrawable
         implements ShowBackgroundDrawable {
 
@@ -27,14 +29,14 @@ class CircularProgressBackgroundDrawable extends BaseSingleCircularProgressDrawa
     }
 
     @Override
-    public void draw(Canvas canvas) {
+    public void draw(@NonNull Canvas canvas) {
         if (mShow) {
             super.draw(canvas);
         }
     }
 
     @Override
-    protected void onDrawRing(Canvas canvas, Paint paint) {
+    protected void onDrawRing(@NonNull Canvas canvas, @NonNull Paint paint) {
         drawRing(canvas, paint, 0, 360);
     }
 }

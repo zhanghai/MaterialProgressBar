@@ -10,23 +10,32 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
 
+import androidx.annotation.Dimension;
+import androidx.annotation.NonNull;
+import androidx.annotation.Px;
+
 class BaseSingleHorizontalProgressDrawable extends BaseProgressDrawable {
 
+    @Dimension(unit = Dimension.DP)
     private static final int PROGRESS_INTRINSIC_HEIGHT_DP = 4;
+    @Dimension(unit = Dimension.DP)
     private static final int PADDED_INTRINSIC_HEIGHT_DP = 16;
     protected static final RectF RECT_BOUND = new RectF(-180, -1, 180, 1);
     private static final RectF RECT_PADDED_BOUND = new RectF(-180, -4, 180, 4);
 
-    private int mProgressIntrinsicHeight;
-    private int mPaddedIntrinsicHeight;
+    @Px
+    private final int mProgressIntrinsicHeight;
+    @Px
+    private final int mPaddedIntrinsicHeight;
 
-    public BaseSingleHorizontalProgressDrawable(Context context) {
+    public BaseSingleHorizontalProgressDrawable(@NonNull Context context) {
         float density = context.getResources().getDisplayMetrics().density;
         mProgressIntrinsicHeight = Math.round(PROGRESS_INTRINSIC_HEIGHT_DP * density);
         mPaddedIntrinsicHeight = Math.round(PADDED_INTRINSIC_HEIGHT_DP * density);
     }
 
     @Override
+    @Px
     public int getIntrinsicHeight() {
         return mUseIntrinsicPadding ? mPaddedIntrinsicHeight : mProgressIntrinsicHeight;
     }

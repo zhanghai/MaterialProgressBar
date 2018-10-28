@@ -12,6 +12,8 @@ import android.graphics.Path;
 import android.graphics.PathMeasure;
 import android.util.Property;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.Size;
 
 class ObjectAnimatorCompatBase {
@@ -21,21 +23,25 @@ class ObjectAnimatorCompatBase {
 
     private ObjectAnimatorCompatBase() {}
 
-    public static ObjectAnimator ofArgb(Object target, String propertyName, int... values) {
+    @NonNull
+    public static ObjectAnimator ofArgb(@Nullable Object target, @NonNull String propertyName,
+                                        int... values) {
         ObjectAnimator animator = ObjectAnimator.ofInt(target, propertyName, values);
         animator.setEvaluator(new ArgbEvaluator());
         return animator;
     }
 
-    public static <T> ObjectAnimator ofArgb(T target, Property<T, Integer> property,
-                                            int... values) {
+    @NonNull
+    public static <T> ObjectAnimator ofArgb(@Nullable T target,
+                                            @NonNull Property<T, Integer> property, int... values) {
         ObjectAnimator animator = ObjectAnimator.ofInt(target, property, values);
         animator.setEvaluator(new ArgbEvaluator());
         return animator;
     }
 
-    public static ObjectAnimator ofFloat(Object target, String xPropertyName, String yPropertyName,
-                                         Path path) {
+    @NonNull
+    public static ObjectAnimator ofFloat(@Nullable Object target, @NonNull String xPropertyName,
+                                         @NonNull String yPropertyName, @NonNull Path path) {
 
         float[] xValues = new float[NUM_POINTS];
         float[] yValues = new float[NUM_POINTS];
@@ -47,8 +53,11 @@ class ObjectAnimatorCompatBase {
         return ObjectAnimator.ofPropertyValuesHolder(target, xPvh, yPvh);
     }
 
-    public static <T> ObjectAnimator ofFloat(T target, Property<T, Float> xProperty,
-                                             Property<T, Float> yProperty, Path path) {
+    @NonNull
+    public static <T> ObjectAnimator ofFloat(@Nullable T target,
+                                             @NonNull Property<T, Float> xProperty,
+                                             @NonNull Property<T, Float> yProperty,
+                                             @NonNull Path path) {
 
         float[] xValues = new float[NUM_POINTS];
         float[] yValues = new float[NUM_POINTS];
@@ -60,8 +69,9 @@ class ObjectAnimatorCompatBase {
         return ObjectAnimator.ofPropertyValuesHolder(target, xPvh, yPvh);
     }
 
-    public static ObjectAnimator ofInt(Object target, String xPropertyName, String yPropertyName,
-                                       Path path) {
+    @NonNull
+    public static ObjectAnimator ofInt(@Nullable Object target, @NonNull String xPropertyName,
+                                       @NonNull String yPropertyName, @NonNull Path path) {
 
         int[] xValues = new int[NUM_POINTS];
         int[] yValues = new int[NUM_POINTS];
@@ -73,8 +83,11 @@ class ObjectAnimatorCompatBase {
         return ObjectAnimator.ofPropertyValuesHolder(target, xPvh, yPvh);
     }
 
-    public static <T> ObjectAnimator ofInt(T target, Property<T, Integer> xProperty,
-                                           Property<T, Integer> yProperty, Path path) {
+    @NonNull
+    public static <T> ObjectAnimator ofInt(@Nullable T target,
+                                           @NonNull Property<T, Integer> xProperty,
+                                           @NonNull Property<T, Integer> yProperty,
+                                           @NonNull Path path) {
 
         int[] xValues = new int[NUM_POINTS];
         int[] yValues = new int[NUM_POINTS];
@@ -86,8 +99,9 @@ class ObjectAnimatorCompatBase {
         return ObjectAnimator.ofPropertyValuesHolder(target, xPvh, yPvh);
     }
 
-    private static void calculateXYValues(Path path, @Size(NUM_POINTS) float[] xValues,
-                                          @Size(NUM_POINTS) float[] yValues) {
+    private static void calculateXYValues(@NonNull Path path,
+                                          @NonNull @Size(NUM_POINTS) float[] xValues,
+                                          @NonNull @Size(NUM_POINTS) float[] yValues) {
 
         PathMeasure pathMeasure = new PathMeasure(path, false /* forceClosed */);
         float pathLength = pathMeasure.getLength();
@@ -101,8 +115,9 @@ class ObjectAnimatorCompatBase {
         }
     }
 
-    private static void calculateXYValues(Path path, @Size(NUM_POINTS) int[] xValues,
-                                          @Size(NUM_POINTS) int[] yValues) {
+    private static void calculateXYValues(@NonNull Path path,
+                                          @NonNull @Size(NUM_POINTS) int[] xValues,
+                                          @NonNull @Size(NUM_POINTS) int[] yValues) {
 
         PathMeasure pathMeasure = new PathMeasure(path, false /* forceClosed */);
         float pathLength = pathMeasure.getLength();

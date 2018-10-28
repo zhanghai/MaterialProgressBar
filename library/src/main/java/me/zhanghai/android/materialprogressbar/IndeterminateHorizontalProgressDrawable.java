@@ -11,7 +11,11 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
 
+import androidx.annotation.Dimension;
+import androidx.annotation.FloatRange;
 import androidx.annotation.Keep;
+import androidx.annotation.NonNull;
+import androidx.annotation.Px;
 import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
 
 /**
@@ -20,7 +24,9 @@ import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
 public class IndeterminateHorizontalProgressDrawable extends BaseIndeterminateProgressDrawable
         implements MaterialProgressDrawable, ShowBackgroundDrawable {
 
+    @Dimension(unit = Dimension.DP)
     private static final int PROGRESS_INTRINSIC_HEIGHT_DP = 4;
+    @Dimension(unit = Dimension.DP)
     private static final int PADDED_INTRINSIC_HEIGHT_DP = 16;
     private static final RectF RECT_BOUND = new RectF(-180, -1, 180, 1);
     private static final RectF RECT_PADDED_BOUND = new RectF(-180, -4, 180, 4);
@@ -28,20 +34,26 @@ public class IndeterminateHorizontalProgressDrawable extends BaseIndeterminatePr
     private static final RectTransformX RECT_1_TRANSFORM_X = new RectTransformX(-522.6f, 0.1f);
     private static final RectTransformX RECT_2_TRANSFORM_X = new RectTransformX(-197.6f, 0.1f);
 
-    private int mProgressIntrinsicHeight;
-    private int mPaddedIntrinsicHeight;
-    private boolean mShowBackground = true;
+    @Px
+    private final int mProgressIntrinsicHeight;
+    @Px
+    private final int mPaddedIntrinsicHeight;
+    @FloatRange(from = 0, to = 1)
     private float mBackgroundAlpha;
 
-    private RectTransformX mRect1TransformX = new RectTransformX(RECT_1_TRANSFORM_X);
-    private RectTransformX mRect2TransformX = new RectTransformX(RECT_2_TRANSFORM_X);
+    private boolean mShowBackground = true;
+
+    @NonNull
+    private final RectTransformX mRect1TransformX = new RectTransformX(RECT_1_TRANSFORM_X);
+    @NonNull
+    private final RectTransformX mRect2TransformX = new RectTransformX(RECT_2_TRANSFORM_X);
 
     /**
      * Create a new {@code IndeterminateHorizontalProgressDrawable}.
      *
      * @param context the {@code Context} for retrieving style information.
      */
-    public IndeterminateHorizontalProgressDrawable(Context context) {
+    public IndeterminateHorizontalProgressDrawable(@NonNull Context context) {
         super(context);
 
         float density = context.getResources().getDisplayMetrics().density;
@@ -79,6 +91,7 @@ public class IndeterminateHorizontalProgressDrawable extends BaseIndeterminatePr
      * {@inheritDoc}
      */
     @Override
+    @Px
     public int getIntrinsicHeight() {
         return mUseIntrinsicPadding ? mPaddedIntrinsicHeight : mProgressIntrinsicHeight;
     }

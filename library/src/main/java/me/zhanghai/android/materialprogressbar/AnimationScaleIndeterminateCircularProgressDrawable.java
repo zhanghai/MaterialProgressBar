@@ -27,6 +27,7 @@ public class AnimationScaleIndeterminateCircularProgressDrawable
         getIntrinsicPaddingDrawable().setUseIntrinsicPadding(useIntrinsicPadding);
     }
 
+    @NonNull
     private IntrinsicPaddingDrawable getIntrinsicPaddingDrawable() {
         return (IntrinsicPaddingDrawable) getCurrent();
     }

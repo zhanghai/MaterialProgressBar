@@ -9,12 +9,16 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 abstract class BasePaintDrawable extends BaseDrawable {
 
+    @Nullable
     private Paint mPaint;
 
     @Override
-    protected final void onDraw(Canvas canvas, int width, int height) {
+    protected final void onDraw(@NonNull Canvas canvas, int width, int height) {
 
         if (mPaint == null) {
             mPaint = new Paint();
@@ -28,7 +32,8 @@ abstract class BasePaintDrawable extends BaseDrawable {
         onDraw(canvas, width, height, mPaint);
     }
 
-    protected abstract void onPreparePaint(Paint paint);
+    protected abstract void onPreparePaint(@NonNull Paint paint);
 
-    protected abstract void onDraw(Canvas canvas, int width, int height, Paint paint);
+    protected abstract void onDraw(@NonNull Canvas canvas, int width, int height,
+                                   @NonNull Paint paint);
 }

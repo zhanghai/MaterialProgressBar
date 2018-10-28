@@ -7,12 +7,15 @@ package me.zhanghai.android.materialprogressbar.internal;
 
 import android.graphics.PorterDuff;
 
+import androidx.annotation.Nullable;
+
 public class DrawableCompat {
 
     /**
      * Parses a {@link android.graphics.PorterDuff.Mode} from a tintMode attribute's enum value.
      */
-    public static PorterDuff.Mode parseTintMode(int value, PorterDuff.Mode defaultMode) {
+    public static @Nullable PorterDuff.Mode parseTintMode(int value,
+                                                          @Nullable PorterDuff.Mode defaultMode) {
         switch (value) {
             case 3: return PorterDuff.Mode.SRC_OVER;
             case 5: return PorterDuff.Mode.SRC_IN;

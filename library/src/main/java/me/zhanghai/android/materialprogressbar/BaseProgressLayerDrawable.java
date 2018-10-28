@@ -15,6 +15,7 @@ import android.graphics.drawable.LayerDrawable;
 import android.util.Log;
 
 import androidx.annotation.ColorInt;
+import androidx.annotation.FloatRange;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.graphics.ColorUtils;
@@ -27,13 +28,17 @@ class BaseProgressLayerDrawable<
         extends LayerDrawable implements IntrinsicPaddingDrawable, MaterialProgressDrawable,
         ShowBackgroundDrawable, TintableDrawable {
 
+    @FloatRange(from = 0, to = 1)
     private float mBackgroundAlpha;
 
-    private BackgroundDrawableType mBackgroundDrawable;
-    private ProgressDrawableType mSecondaryProgressDrawable;
-    private ProgressDrawableType mProgressDrawable;
+    @NonNull
+    private final BackgroundDrawableType mBackgroundDrawable;
+    @NonNull
+    private final ProgressDrawableType mSecondaryProgressDrawable;
+    @NonNull
+    private final ProgressDrawableType mProgressDrawable;
 
-    public BaseProgressLayerDrawable(Drawable[] layers, Context context) {
+    public BaseProgressLayerDrawable(@NonNull Drawable[] layers, @NonNull Context context) {
         super(layers);
 
         mBackgroundAlpha = ThemeUtils.getFloatFromAttrRes(android.R.attr.disabledAlpha, 0, context);
@@ -116,7 +121,7 @@ class BaseProgressLayerDrawable<
                 Log.w(getClass().getSimpleName(), "setTintList() called with a non-opaque" +
                         " ColorStateList, its original alpha will be discarded");
             }
-            backgroundTint = tint.withAlpha(Math.round(0xFF * mBackgroundAlpha));
+            backgroundTint = tint.withAlpha(Math.round(mBackgroundAlpha * 255));
         } else {
             backgroundTint = null;
         }

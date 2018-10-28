@@ -11,37 +11,51 @@ import android.graphics.Path;
 import android.os.Build;
 import android.util.Property;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
 class ObjectAnimatorCompatLollipop {
 
     private ObjectAnimatorCompatLollipop() {}
 
-    public static ObjectAnimator ofArgb(Object target, String propertyName, int... values) {
+    @NonNull
+    public static ObjectAnimator ofArgb(@Nullable Object target, @NonNull String propertyName,
+                                        int... values) {
         return ObjectAnimator.ofArgb(target, propertyName, values);
     }
 
-    public static <T> ObjectAnimator ofArgb(T target, Property<T, Integer> property,
-                                            int... values) {
+    @NonNull
+    public static <T> ObjectAnimator ofArgb(@Nullable T target,
+                                            @NonNull Property<T, Integer> property, int... values) {
         return ObjectAnimator.ofArgb(target, property, values);
     }
 
-    public static ObjectAnimator ofFloat(Object target, String xPropertyName, String yPropertyName,
-                                         Path path) {
+    @NonNull
+    public static ObjectAnimator ofFloat(@Nullable Object target, @NonNull String xPropertyName,
+                                         @NonNull String yPropertyName, @NonNull Path path) {
         return ObjectAnimator.ofFloat(target, xPropertyName, yPropertyName, path);
     }
 
-    public static <T> ObjectAnimator ofFloat(T target, Property<T, Float> xProperty,
-                                             Property<T, Float> yProperty, Path path) {
+    @NonNull
+    public static <T> ObjectAnimator ofFloat(@Nullable T target,
+                                             @NonNull Property<T, Float> xProperty,
+                                             @NonNull Property<T, Float> yProperty,
+                                             @NonNull Path path) {
         return ObjectAnimator.ofFloat(target, xProperty, yProperty, path);
     }
 
-    public static ObjectAnimator ofInt(Object target, String xPropertyName, String yPropertyName,
-                                       Path path) {
+    @NonNull
+    public static ObjectAnimator ofInt(@Nullable Object target, @NonNull String xPropertyName,
+                                       @NonNull String yPropertyName, @NonNull Path path) {
         return ObjectAnimator.ofInt(target, xPropertyName, yPropertyName, path);
     }
 
-    public static <T> ObjectAnimator ofInt(T target, Property<T, Integer> xProperty,
-                                           Property<T, Integer> yProperty, Path path) {
+    @NonNull
+    public static <T> ObjectAnimator ofInt(@Nullable T target,
+                                           @NonNull Property<T, Integer> xProperty,
+                                           @NonNull Property<T, Integer> yProperty,
+                                           @NonNull Path path) {
         return ObjectAnimator.ofInt(target, xProperty, yProperty, path);
     }
 }

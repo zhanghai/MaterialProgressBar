@@ -8,7 +8,9 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
 
+import androidx.annotation.Dimension;
 import androidx.annotation.NonNull;
+import androidx.annotation.Px;
 import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
 
 public class StaticIndeterminateCircularProgressDrawable extends BaseProgressDrawable {
@@ -64,13 +66,17 @@ public class StaticIndeterminateCircularProgressDrawable extends BaseProgressDra
         PATH_PROGRESS.close();
     }
 
+    @Dimension(unit = Dimension.DP)
     private static final int PROGRESS_INTRINSIC_SIZE_DP = 42;
+    @Dimension(unit = Dimension.DP)
     private static final int PADDED_INTRINSIC_SIZE_DP = 48;
     // To keep the same ratio as indeterminate circular progress drawable.
     private static final RectF RECT_PROGRESS_BOUND = new RectF(3, 3, 21, 21);
     private static final RectF RECT_PADDED_BOUND = new RectF(0, 0, 24, 24);
 
+    @Px
     private final int mProgressIntrinsicSize;
+    @Px
     private final int mPaddedIntrinsicSize;
 
     @NonNull
@@ -95,6 +101,7 @@ public class StaticIndeterminateCircularProgressDrawable extends BaseProgressDra
         setTint(controlActivatedColor);
     }
 
+    @Px
     private int getIntrinsicSize() {
         return mUseIntrinsicPadding ? mPaddedIntrinsicSize : mProgressIntrinsicSize;
     }
@@ -103,6 +110,7 @@ public class StaticIndeterminateCircularProgressDrawable extends BaseProgressDra
      * {@inheritDoc}
      */
     @Override
+    @Px
     public int getIntrinsicWidth() {
         return getIntrinsicSize();
     }
@@ -111,17 +119,18 @@ public class StaticIndeterminateCircularProgressDrawable extends BaseProgressDra
      * {@inheritDoc}
      */
     @Override
+    @Px
     public int getIntrinsicHeight() {
         return getIntrinsicSize();
     }
 
     @Override
-    protected void onPreparePaint(Paint paint) {
+    protected void onPreparePaint(@NonNull Paint paint) {
         paint.setStyle(Paint.Style.FILL);
     }
 
     @Override
-    protected void onDraw(Canvas canvas, int width, int height, Paint paint) {
+    protected void onDraw(@NonNull Canvas canvas, int width, int height, @NonNull Paint paint) {
         // Drawing the transformed path makes rendering much less blurry than using canvas transform
         // directly. See https://stackoverflow.com/a/16091390 .
         RectF bound = mUseIntrinsicPadding ? RECT_PADDED_BOUND : RECT_PROGRESS_BOUND;

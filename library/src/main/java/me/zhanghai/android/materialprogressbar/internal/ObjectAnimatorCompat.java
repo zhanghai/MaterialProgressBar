@@ -10,6 +10,9 @@ import android.graphics.Path;
 import android.os.Build;
 import android.util.Property;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 /**
  * Helper for accessing features in {@link ObjectAnimator} introduced after API level 11 (for
  * {@link android.animation.PropertyValuesHolder}) in a backward compatible fashion.
@@ -32,11 +35,14 @@ public class ObjectAnimatorCompat {
      * @param values A set of values that the animation will animate between over time.
      * @return An ObjectAnimator object that is set up to animate between the given values.
      */
-    public static ObjectAnimator ofArgb(Object target, String propertyName, int... values) {
+    @NonNull
+    public static ObjectAnimator ofArgb(@Nullable Object target, @NonNull String propertyName,
+                                        int... values) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             return ObjectAnimatorCompatLollipop.ofArgb(target, propertyName, values);
+        } else {
+            return ObjectAnimatorCompatBase.ofArgb(target, propertyName, values);
         }
-        return ObjectAnimatorCompatBase.ofArgb(target, propertyName, values);
     }
 
     /**
@@ -51,12 +57,14 @@ public class ObjectAnimatorCompat {
      * @param values A set of values that the animation will animate between over time.
      * @return An ObjectAnimator object that is set up to animate between the given values.
      */
-    public static <T> ObjectAnimator ofArgb(T target, Property<T, Integer> property,
-                                            int... values) {
+    @NonNull
+    public static <T> ObjectAnimator ofArgb(@Nullable T target,
+                                            @NonNull Property<T, Integer> property, int... values) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             return ObjectAnimatorCompatLollipop.ofArgb(target, property, values);
+        } else {
+            return ObjectAnimatorCompatBase.ofArgb(target, property, values);
         }
-        return ObjectAnimatorCompatBase.ofArgb(target, property, values);
     }
 
     /**
@@ -75,12 +83,14 @@ public class ObjectAnimatorCompat {
      * @param path The {@code Path} to animate values along.
      * @return An ObjectAnimator object that is set up to animate along {@code path}.
      */
-    public static ObjectAnimator ofFloat(Object target, String xPropertyName, String yPropertyName,
-                                         Path path) {
+    @NonNull
+    public static ObjectAnimator ofFloat(@Nullable Object target, @NonNull String xPropertyName,
+                                         @NonNull String yPropertyName, @NonNull Path path) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             return ObjectAnimatorCompatLollipop.ofFloat(target, xPropertyName, yPropertyName, path);
+        } else {
+            return ObjectAnimatorCompatBase.ofFloat(target, xPropertyName, yPropertyName, path);
         }
-        return ObjectAnimatorCompatBase.ofFloat(target, xPropertyName, yPropertyName, path);
     }
 
     /**
@@ -95,12 +105,16 @@ public class ObjectAnimatorCompat {
      * @param path The {@code Path} to animate values along.
      * @return An ObjectAnimator object that is set up to animate along {@code path}.
      */
-    public static <T> ObjectAnimator ofFloat(T target, Property<T, Float> xProperty,
-                                             Property<T, Float> yProperty, Path path) {
+    @NonNull
+    public static <T> ObjectAnimator ofFloat(@Nullable T target,
+                                             @NonNull Property<T, Float> xProperty,
+                                             @NonNull Property<T, Float> yProperty,
+                                             @NonNull Path path) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             return ObjectAnimatorCompatLollipop.ofFloat(target, xProperty, yProperty, path);
+        } else {
+            return ObjectAnimatorCompatBase.ofFloat(target, xProperty, yProperty, path);
         }
-        return ObjectAnimatorCompatBase.ofFloat(target, xProperty, yProperty, path);
     }
 
     /**
@@ -119,12 +133,14 @@ public class ObjectAnimatorCompat {
      * @param path The {@code Path} to animate values along.
      * @return An ObjectAnimator object that is set up to animate along {@code path}.
      */
-    public static ObjectAnimator ofInt(Object target, String xPropertyName, String yPropertyName,
-                                       Path path) {
+    @NonNull
+    public static ObjectAnimator ofInt(@Nullable Object target, @NonNull String xPropertyName,
+                                       @NonNull String yPropertyName, @NonNull Path path) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             return ObjectAnimatorCompatLollipop.ofInt(target, xPropertyName, yPropertyName, path);
+        } else {
+            return ObjectAnimatorCompatBase.ofInt(target, xPropertyName, yPropertyName, path);
         }
-        return ObjectAnimatorCompatBase.ofInt(target, xPropertyName, yPropertyName, path);
     }
 
     /**
@@ -139,11 +155,15 @@ public class ObjectAnimatorCompat {
      * @param path The {@code Path} to animate values along.
      * @return An ObjectAnimator object that is set up to animate along {@code path}.
      */
-    public static <T> ObjectAnimator ofInt(T target, Property<T, Integer> xProperty,
-                                           Property<T, Integer> yProperty, Path path) {
+    @NonNull
+    public static <T> ObjectAnimator ofInt(@Nullable T target,
+                                           @NonNull Property<T, Integer> xProperty,
+                                           @NonNull Property<T, Integer> yProperty,
+                                           @NonNull Path path) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             return ObjectAnimatorCompatLollipop.ofInt(target, xProperty, yProperty, path);
+        } else {
+            return ObjectAnimatorCompatBase.ofInt(target, xProperty, yProperty, path);
         }
-        return ObjectAnimatorCompatBase.ofInt(target, xProperty, yProperty, path);
     }
 }

@@ -12,15 +12,17 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.Animatable;
 
+import androidx.annotation.NonNull;
 import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
 
 abstract class BaseIndeterminateProgressDrawable extends BaseProgressDrawable
         implements Animatable {
 
+    @NonNull
     protected Animator[] mAnimators;
 
     @SuppressLint("NewApi")
-    public BaseIndeterminateProgressDrawable(Context context) {
+    public BaseIndeterminateProgressDrawable(@NonNull Context context) {
         int controlActivatedColor = ThemeUtils.getColorFromAttrRes(R.attr.colorControlActivated,
                 Color.BLACK, context);
         // setTint() has been overridden for compatibility; DrawableCompat won't work because
@@ -32,7 +34,7 @@ abstract class BaseIndeterminateProgressDrawable extends BaseProgressDrawable
      * {@inheritDoc}
      */
     @Override
-    public void draw(Canvas canvas) {
+    public void draw(@NonNull Canvas canvas) {
         super.draw(canvas);
 
         if (isStarted()) {

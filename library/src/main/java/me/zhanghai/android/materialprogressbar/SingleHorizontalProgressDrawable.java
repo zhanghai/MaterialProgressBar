@@ -10,6 +10,9 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 
+import androidx.annotation.IntRange;
+import androidx.annotation.NonNull;
+
 class SingleHorizontalProgressDrawable extends BaseSingleHorizontalProgressDrawable
         implements ShowBackgroundDrawable {
 
@@ -20,12 +23,12 @@ class SingleHorizontalProgressDrawable extends BaseSingleHorizontalProgressDrawa
 
     private boolean mShowBackground;
 
-    public SingleHorizontalProgressDrawable(Context context) {
+    public SingleHorizontalProgressDrawable(@NonNull Context context) {
         super(context);
     }
 
     @Override
-    protected boolean onLevelChange(int level) {
+    protected boolean onLevelChange(@IntRange(from = 0, to = LEVEL_MAX) int level) {
         invalidateSelf();
         return true;
     }
@@ -44,7 +47,7 @@ class SingleHorizontalProgressDrawable extends BaseSingleHorizontalProgressDrawa
     }
 
     @Override
-    protected void onDrawRect(Canvas canvas, Paint paint) {
+    protected void onDrawRect(@NonNull Canvas canvas, @NonNull Paint paint) {
 
         int level = getLevel();
         if (level == 0) {

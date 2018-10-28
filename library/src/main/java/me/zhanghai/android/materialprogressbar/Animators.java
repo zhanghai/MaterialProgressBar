@@ -12,6 +12,7 @@ import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.graphics.Path;
 
+import androidx.annotation.NonNull;
 import me.zhanghai.android.materialprogressbar.internal.ObjectAnimatorCompat;
 
 /**
@@ -81,7 +82,8 @@ class Animators {
      * @param target The object whose properties are to be animated.
      * @return An Animator object that is set up to behave the same as the its native counterpart.
      */
-    public static Animator createIndeterminateHorizontalRect1(Object target) {
+    @NonNull
+    public static Animator createIndeterminateHorizontalRect1(@NonNull Object target) {
 
         ObjectAnimator translateXAnimator = ObjectAnimatorCompat.ofFloat(target, "translateX", null,
                 PATH_INDETERMINATE_HORIZONTAL_RECT1_TRANSLATE_X);
@@ -109,7 +111,8 @@ class Animators {
      * @param target The object whose properties are to be animated.
      * @return An Animator object that is set up to behave the same as the its native counterpart.
      */
-    public static Animator createIndeterminateHorizontalRect2(Object target) {
+    @NonNull
+    public static Animator createIndeterminateHorizontalRect2(@NonNull Object target) {
 
         ObjectAnimator translateXAnimator = ObjectAnimatorCompat.ofFloat(target, "translateX", null,
                 PATH_INDETERMINATE_HORIZONTAL_RECT2_TRANSLATE_X);
@@ -136,7 +139,8 @@ class Animators {
      * @param target The object whose properties are to be animated.
      * @return An Animator object that is set up to behave the same as the its native counterpart.
      */
-    public static Animator createIndeterminate(Object target) {
+    @NonNull
+    public static Animator createIndeterminate(@NonNull Object target) {
 
         @SuppressLint("ObjectAnimatorBinding")
         ObjectAnimator trimPathStartAnimator = ObjectAnimator.ofFloat(target, "trimPathStart", 0,
@@ -172,7 +176,8 @@ class Animators {
      * @param target The object whose properties are to be animated.
      * @return An Animator object that is set up to behave the same as the its native counterpart.
      */
-    public static Animator createIndeterminateRotation(Object target) {
+    @NonNull
+    public static Animator createIndeterminateRotation(@NonNull Object target) {
         @SuppressLint("ObjectAnimatorBinding")
         ObjectAnimator rotationAnimator = ObjectAnimator.ofFloat(target, "rotation", 0, 720);
         rotationAnimator.setDuration(6665);

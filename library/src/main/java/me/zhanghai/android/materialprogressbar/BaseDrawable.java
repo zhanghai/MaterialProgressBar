@@ -16,19 +16,27 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 
 import androidx.annotation.ColorInt;
+import androidx.annotation.IntRange;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 abstract class BaseDrawable extends Drawable implements TintableDrawable {
 
-    protected int mAlpha = 0xFF;
+    @IntRange(from = 0, to = 255)
+    protected int mAlpha = 255;
+    @Nullable
     protected ColorFilter mColorFilter;
+    @Nullable
     protected ColorStateList mTintList;
+    @NonNull
     protected PorterDuff.Mode mTintMode = PorterDuff.Mode.SRC_IN;
+    @Nullable
     protected PorterDuffColorFilter mTintFilter;
 
-    private DummyConstantState mConstantState = new DummyConstantState();
+    @NonNull
+    private final DummyConstantState mConstantState = new DummyConstantState();
 
+    @IntRange(from = 0, to = 255)
     @Override
     public int getAlpha() {
         return mAlpha;
@@ -38,7 +46,7 @@ abstract class BaseDrawable extends Drawable implements TintableDrawable {
      * {@inheritDoc}
      */
     @Override
-    public void setAlpha(int alpha) {
+    public void setAlpha(@IntRange(from = 0, to = 255) int alpha) {
         if (mAlpha != alpha) {
             mAlpha = alpha;
             invalidateSelf();
@@ -48,6 +56,7 @@ abstract class BaseDrawable extends Drawable implements TintableDrawable {
     /**
      * {@inheritDoc}
      */
+    @Nullable
     @Override
     public ColorFilter getColorFilter() {
         return mColorFilter;
@@ -98,7 +107,7 @@ abstract class BaseDrawable extends Drawable implements TintableDrawable {
     }
 
     @Override
-    protected boolean onStateChange(int[] state) {
+    protected boolean onStateChange(@NonNull int[] state) {
         return updateTintFilter();
     }
 
@@ -129,7 +138,7 @@ abstract class BaseDrawable extends Drawable implements TintableDrawable {
      * {@inheritDoc}
      */
     @Override
-    public void draw(Canvas canvas) {
+    public void draw(@NonNull Canvas canvas) {
 
         Rect bounds = getBounds();
         if (bounds.width() == 0 || bounds.height() == 0) {
@@ -142,17 +151,19 @@ abstract class BaseDrawable extends Drawable implements TintableDrawable {
         canvas.restoreToCount(saveCount);
     }
 
+    @Nullable
     protected ColorFilter getColorFilterForDrawing() {
         return mColorFilter != null ? mColorFilter : mTintFilter;
     }
 
-    protected abstract void onDraw(Canvas canvas, int width, int height);
+    protected abstract void onDraw(@NonNull Canvas canvas, int width, int height);
 
     // Workaround LayerDrawable.ChildDrawable which calls getConstantState().newDrawable()
     // without checking for null.
     // We are never inflated from XML so the protocol of ConstantState does not apply to us. In
     // order to make LayerDrawable happy, we return ourselves from DummyConstantState.newDrawable().
 
+    @NonNull
     @Override
     public ConstantState getConstantState() {
         return mConstantState;

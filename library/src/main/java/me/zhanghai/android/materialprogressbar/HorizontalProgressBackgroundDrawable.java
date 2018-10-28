@@ -8,12 +8,14 @@ package me.zhanghai.android.materialprogressbar;
 import android.content.Context;
 import android.graphics.Canvas;
 
+import androidx.annotation.NonNull;
+
 class HorizontalProgressBackgroundDrawable extends BaseSingleHorizontalProgressDrawable
         implements ShowBackgroundDrawable {
 
     private boolean mShow = true;
 
-    public HorizontalProgressBackgroundDrawable(Context context) {
+    public HorizontalProgressBackgroundDrawable(@NonNull Context context) {
         super(context);
     }
 
@@ -31,7 +33,7 @@ class HorizontalProgressBackgroundDrawable extends BaseSingleHorizontalProgressD
     }
 
     @Override
-    public void draw(Canvas canvas) {
+    public void draw(@NonNull Canvas canvas) {
         if (mShow) {
             super.draw(canvas);
         }
