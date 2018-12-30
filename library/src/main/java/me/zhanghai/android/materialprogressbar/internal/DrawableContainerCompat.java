@@ -39,7 +39,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.core.graphics.drawable.DrawableCompat;
 
-/**
+/*
  * @see androidx.appcompat.graphics.drawable.DrawableContainer
  */
 public class DrawableContainerCompat extends Drawable implements Drawable.Callback {
