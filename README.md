@@ -17,7 +17,7 @@ Material Design `ProgressBar` with consistent appearance on Android 4.0+.
 
 <a href="https://play.google.com/store/apps/details?id=me.zhanghai.android.materialprogressbar.sample" target="_blank"><img alt="Google Play" height="90" src="https://play.google.com/intl/en_US/badges/images/generic/en_badge_web_generic.png"/></a>
 
-[Sample APK](//github.com/DreaminginCodeZH/MaterialProgressBar/releases/download/v1.6.1/sample-release.apk)
+[Sample APK](//github.com/zhanghai/MaterialProgressBar/releases/download/v1.6.1/sample-release.apk)
 
 Android 4.4.4
 
@@ -74,7 +74,7 @@ Available custom attributes:
 
 8 tint-related attributes such as `app:mpb_progressTint` and `app:mpb_progressTintMode` are also supported so that they can control the tinting of progress drawables. The default tint color is `?colorControlActivated`, and the default tint mode is `src_in`.
 
-For a detailed example, you can refer to the [sample app's layout](//github.com/DreaminginCodeZH/MaterialProgressBar/blob/master/sample/src/main/res/layout/main_activity.xml), where you can find examples such as removing progress padding or background.
+For a detailed example, you can refer to the [sample app's layout](//github.com/zhanghai/MaterialProgressBar/blob/master/sample/src/main/res/layout/main_activity.xml), where you can find examples such as removing progress padding or background.
 
 ### Using Drawable
 
@@ -108,9 +108,9 @@ Don't forget to create and set the drawable as above.
 
 You can also customize the behavior of these drawables by calling `setShowBackground()` and `setUseIntrinsicPadding()`. Tint-related methods `setTint()`, `setTintList()` and `setTintMode()` are also backported so that you can use them directly, but remember to take these drawables as their actual type or `TintableDrawable` because VM won't be able to find these methods on `Drawable` for legacy platforms.
 
-If you want to support API level < 18, you'll need to workaround a canvas limitation as in [here](https://github.com/DreaminginCodeZH/MaterialProgressBar/blob/0eee874b6fbd109eda2be01b7887647e589dcd9d/library/src/main/java/me/zhanghai/android/materialprogressbar/MaterialProgressBar.java#L122); Using `MaterialProgressBar` does this automatically.
+If you want to support API level < 18, you'll need to workaround a canvas limitation as in [here](https://github.com/zhanghai/MaterialProgressBar/blob/0eee874b6fbd109eda2be01b7887647e589dcd9d/library/src/main/java/me/zhanghai/android/materialprogressbar/MaterialProgressBar.java#L122); Using `MaterialProgressBar` does this automatically.
 
-For a detailed example, you can refer to the `onCreate()` method of the old sample's [`MainActivity`](//github.com/DreaminginCodeZH/MaterialProgressBar/blob/7529ea854a04207fcbf768aa574110e49c511867/sample/src/main/java/me/zhanghai/android/materialprogressbar/sample/MainActivity.java) and its layout [main_activity.xml](//github.com/DreaminginCodeZH/MaterialProgressBar/blob/7529ea854a04207fcbf768aa574110e49c511867/sample/src/main/res/layout/main_activity.xml).
+For a detailed example, you can refer to the `onCreate()` method of the old sample's [`MainActivity`](//github.com/zhanghai/MaterialProgressBar/blob/7529ea854a04207fcbf768aa574110e49c511867/sample/src/main/java/me/zhanghai/android/materialprogressbar/sample/MainActivity.java) and its layout [main_activity.xml](//github.com/zhanghai/MaterialProgressBar/blob/7529ea854a04207fcbf768aa574110e49c511867/sample/src/main/res/layout/main_activity.xml).
 
 ## ProGuard
 
