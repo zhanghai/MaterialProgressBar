@@ -680,9 +680,11 @@ public class MaterialProgressBar extends ProgressBar {
 
     private void applyIndeterminateTint() {
         Drawable indeterminateDrawable = getIndeterminateDrawable();
+
         if (indeterminateDrawable == null) {
             return;
         }
+
         if (mProgressTintInfo.mHasIndeterminateTint
                 || mProgressTintInfo.mHasIndeterminateTintMode) {
             indeterminateDrawable.mutate();
@@ -692,6 +694,12 @@ public class MaterialProgressBar extends ProgressBar {
                     , mProgressTintInfo.mHasIndeterminateTint
                     , mProgressTintInfo.mIndeterminateTintMode
                     , mProgressTintInfo.mHasIndeterminateTintMode
+            );
+        }
+
+        if (mProgressTintInfo.mHasIndeterminateBackgroundTint) {
+            ((IndeterminateHorizontalProgressDrawable) indeterminateDrawable).setBackgroundTintList(
+                    mProgressTintInfo.mIndeterminateBackgroundTint
             );
         }
     }

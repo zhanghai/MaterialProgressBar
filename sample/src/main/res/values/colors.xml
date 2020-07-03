@@ -8,6 +8,4 @@
 <resources>
     <color name="tint">#f44336</color>
     <color name="tint_background">#42f44336</color>
-
-    <color name="tint_background_indeterminate">#00FF00</color>
 </resources>
