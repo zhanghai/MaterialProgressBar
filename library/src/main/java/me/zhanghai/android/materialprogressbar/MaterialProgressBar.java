@@ -437,6 +437,26 @@ public class MaterialProgressBar extends ProgressBar {
     }
 
     /**
+     * Get the indeterminate progress bar background {@link ColorStateList}.
+     */
+    public ColorStateList getIndeterminateBackgroundTintList() {
+        logProgressBarTintWarning();
+        return mProgressTintInfo.mIndeterminateBackgroundTint;
+    }
+
+    /**
+     * Set the indeterminate progress bar background {@link ColorStateList}.
+     */
+    public void setIndeterminateBackgroundTintList(@Nullable ColorStateList tint) {
+        logProgressBarTintWarning();
+
+        mProgressTintInfo.mIndeterminateBackgroundTint = tint;
+        mProgressTintInfo.mHasIndeterminateBackgroundTint = true;
+
+        applyIndeterminateTint();
+    }
+
+    /**
      * @deprecated Use {@link #getSupportIndeterminateTintMode()} instead.
      */
     @Nullable
