@@ -119,6 +119,7 @@
             android:indeterminate="true"
             app:mpb_progressStyle="horizontal"
             app:mpb_indeterminateTint="@color/tint"
+            app:mpb_indeterminateBackgroundTint="@color/tint_background"
             style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal" />
 
         <!-- Determinate circular progress -->

@@ -7,6 +7,7 @@ package me.zhanghai.android.materialprogressbar;
 
 import android.animation.Animator;
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
@@ -16,6 +17,7 @@ import androidx.annotation.FloatRange;
 import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.annotation.Px;
+
 import me.zhanghai.android.materialprogressbar.internal.ThemeUtils;
 
 /**
@@ -48,6 +50,8 @@ public class IndeterminateHorizontalProgressDrawable extends BaseIndeterminatePr
     @NonNull
     private final RectTransformX mRect2TransformX = new RectTransformX(RECT_2_TRANSFORM_X);
 
+    private ColorStateList mBackgroundTintList;
+
     /**
      * Create a new {@code IndeterminateHorizontalProgressDrawable}.
      *
@@ -62,7 +66,7 @@ public class IndeterminateHorizontalProgressDrawable extends BaseIndeterminatePr
 
         mBackgroundAlpha = ThemeUtils.getFloatFromAttrRes(android.R.attr.disabledAlpha, 0, context);
 
-        mAnimators = new Animator[] {
+        mAnimators = new Animator[]{
                 Animators.createIndeterminateHorizontalRect1(mRect1TransformX),
                 Animators.createIndeterminateHorizontalRect2(mRect2TransformX)
         };
@@ -74,6 +78,10 @@ public class IndeterminateHorizontalProgressDrawable extends BaseIndeterminatePr
     @Override
     public boolean getShowBackground() {
         return mShowBackground;
+    }
+
+    public void setBackgroundTintList(ColorStateList tintList) {
+        mBackgroundTintList = tintList;
     }
 
     /**
@@ -113,9 +121,15 @@ public class IndeterminateHorizontalProgressDrawable extends BaseIndeterminatePr
         }
 
         if (mShowBackground) {
-            paint.setAlpha(Math.round(mAlpha * mBackgroundAlpha));
-            drawBackgroundRect(canvas, paint);
-            paint.setAlpha(mAlpha);
+            if (mBackgroundTintList == null) {
+                paint.setAlpha(Math.round(mAlpha * mBackgroundAlpha));
+                drawBackgroundRect(canvas, paint);
+                paint.setAlpha(mAlpha);
+            } else {
+                Paint backgroundPaint = new Paint();
+                backgroundPaint.setColor(mBackgroundTintList.getDefaultColor());
+                drawBackgroundRect(canvas, backgroundPaint);
+            }
         }
         drawProgressRect(canvas, mRect2TransformX, paint);
         drawProgressRect(canvas, mRect1TransformX, paint);
