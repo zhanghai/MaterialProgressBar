@@ -66,6 +66,7 @@
             <enum name="add" value="16" />
         </attr>
         <attr name="mpb_indeterminateTint" format="color|reference" />
+        <attr name="mpb_indeterminateBackgroundTint" format="color|reference" />
         <attr name="mpb_indeterminateTintMode" format="enum">
             <enum name="src_over" value="3" />
             <enum name="src_in" value="5" />
